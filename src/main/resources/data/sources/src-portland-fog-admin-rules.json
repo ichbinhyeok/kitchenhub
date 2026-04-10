@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-portland-fog-admin-rules",
+  "scopeType": "fog_rule",
+  "scopeKey": "portland-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Portland Bureau of Environmental Services",
+  "title": "Fats, Oils, and Grease Removal Program Administrative Rules",
+  "sourceUrl": "https://www.portland.gov/sites/default/files/2020-06/enb-4-26-fog-7-19-380679.pdf",
+  "quoteSummary": "Portland BES FOG rules apply to food service establishments, require approved interceptors, set default cleaning at 30 days for HGIs and 90 days for GGIs, and require maintenance reports within 14 days after cleaning.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

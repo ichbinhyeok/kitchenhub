@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-charlotte-fire-prevention",
+  "scopeType": "hood_rule",
+  "scopeKey": "charlotte-hood-system-records",
+  "sourceTier": "tier_2",
+  "agency": "Charlotte Fire Department",
+  "title": "Fire Prevention",
+  "sourceUrl": "https://www.charlottenc.gov/Public-Safety/Fire-Department/Fire-Prevention",
+  "quoteSummary": "Charlotte Fire's Prevention Bureau asks businesses to send life-safety inspection reports, including hood suppression systems, and provides inspection-prep guidance.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

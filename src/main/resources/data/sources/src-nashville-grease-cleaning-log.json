@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-grease-cleaning-log",
+  "scopeType": "fog_rule",
+  "scopeKey": "nashville-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Metro Nashville Water Services",
+  "title": "Grease Cleaning Log",
+  "sourceUrl": "https://www.nashville.gov/sites/default/files/2024-01/grease_cleaning_log.pdf?ct=1706034692",
+  "quoteSummary": "Metro Water provides a grease cleaning log form that records the date cleaned, service company, grease waste hauler, gallons removed, disposal location, and notes for grease control equipment maintenance.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

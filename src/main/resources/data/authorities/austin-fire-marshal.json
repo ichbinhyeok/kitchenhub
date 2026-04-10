@@ -1,0 +1,11 @@
+{
+  "authorityId": "austin-fire-marshal",
+  "authorityType": "fire_ahj",
+  "authorityName": "Austin Fire Department Fire Marshal's Office",
+  "city": "austin",
+  "state": "tx",
+  "baseUrl": "https://www.austintexas.gov/department/fire-marshals-office",
+  "contactUrl": "https://www.austintexas.gov/services/request-fire-inspection",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

@@ -1,0 +1,12 @@
+{
+  "path": "/fl/tampa/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "fl",
+  "city": "tampa",
+  "authorityId": "tampa-fire-marshal",
+  "profileId": "tampa-fl-kitchen-compliance",
+  "canonicalPath": "/fl/tampa/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Tampa Fire publishes restaurant safety and fire marshal inspection guidance for hood systems.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

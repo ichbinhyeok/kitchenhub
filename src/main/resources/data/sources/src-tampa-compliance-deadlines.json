@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-tampa-compliance-deadlines",
+  "scopeType": "fog_rule",
+  "scopeKey": "tampa-fog-food-service",
+  "sourceTier": "tier_2",
+  "agency": "City of Tampa Wastewater Department",
+  "title": "Grease Management Ordinance Compliance Deadlines",
+  "sourceUrl": "https://www.tampa.gov/wastewater/programs/grease-ordinance/ordinance/grease-management-ordinance-compliance-deadlines",
+  "quoteSummary": "Tampa says food service facilities and grease haulers must keep pump logs and maintenance records on site for three years, and NOV timelines can require cleaning within 24 hours or pumping within 72 hours.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

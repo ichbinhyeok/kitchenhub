@@ -1,0 +1,11 @@
+{
+  "authorityId": "charlotte-fire-prevention",
+  "authorityType": "fire_ahj",
+  "authorityName": "Charlotte Fire Department Fire Prevention Bureau",
+  "city": "charlotte",
+  "state": "nc",
+  "baseUrl": "https://www.charlottenc.gov/Public-Safety/Fire-Department/Fire-Prevention",
+  "contactUrl": "https://www.charlottenc.gov/Public-Safety/Fire-Department/Fire-Prevention",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

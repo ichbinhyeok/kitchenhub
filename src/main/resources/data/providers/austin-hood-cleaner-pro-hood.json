@@ -1,0 +1,15 @@
+{
+  "providerId": "pro-hood-cleaning-austin",
+  "providerName": "Pro Hood Cleaning",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "austin-tx-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://prohoodcleaning.com/",
+  "email": "Prohoodcleaning@yahoo.com",
+  "phone": "512-751-7450",
+  "officialApprovalSourceUrl": "https://www.austintexas.gov/sites/default/files/files/Fire/Prevention/Maintenance-Inspection-Considerations.pdf",
+  "internalNote": "Pro Hood Cleaning publishes Austin hood cleaning coverage, inspection-ready photo documentation, and direct local contact details."
+}

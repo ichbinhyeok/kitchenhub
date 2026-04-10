@@ -1,0 +1,24 @@
+{
+  "recordId": "charlotte-fire-inspection",
+  "city": "charlotte",
+  "state": "nc",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Current hood suppression or service report.",
+    "Certificate of Occupancy checklist items or upfit inspection packet if applicable.",
+    "Grease trap maintenance and hauler records.",
+    "Access to labeled fire-safety systems and panels."
+  ],
+  "commonFailureReasons": [
+    "Missing life-safety system reports.",
+    "Expired hood-service proof.",
+    "Blocked access or unlabeled fire-safety systems."
+  ],
+  "rescheduleMethod": "Call Charlotte Fire Prevention at 704-336-2101 to request another inspection.",
+  "penaltyOrEscalation": "Missing records can delay occupancy approval and trigger follow-up inspection.",
+  "sourceRefs": [
+    "src-charlotte-self-inspection-checklist",
+    "src-charlotte-co-checklist",
+    "src-charlotte-fire-prevention"
+  ]
+}

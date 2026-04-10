@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-charlotte-hood-service-frequency",
+  "scopeType": "hood_rule",
+  "scopeKey": "charlotte-hood-system-records",
+  "sourceTier": "tier_2",
+  "agency": "Charlotte Fire Department",
+  "title": "Frequency of Kitchen Hood System Service",
+  "sourceUrl": "https://www.charlottenc.gov/files/sharedassets/city/v/1/public-safety/fire/documents/cfd_interpretation-frequency_of_kitchen_hood_system_service.pdf",
+  "quoteSummary": "Charlotte Fire says hood-system service is every 3 months for high-volume cooking and every 6 months for all other cooking operations.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

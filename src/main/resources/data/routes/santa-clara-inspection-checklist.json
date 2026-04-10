@@ -1,0 +1,12 @@
+{
+  "path": "/ca/santa-clara/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "ca",
+  "city": "santa clara",
+  "authorityId": "santa-clara-fire-department",
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "canonicalPath": "/ca/santa-clara/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Santa Clara publishes inspection timing, fire code adoption, and fee-backed enforcement context for local fire inspection prep.",
+  "lastGenerated": "2026-04-07T17:00:00+09:00"
+}

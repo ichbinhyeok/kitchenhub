@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-portland-inspection-fees",
+  "scopeType": "inspection_prep",
+  "scopeKey": "portland-fire-inspection",
+  "sourceTier": "tier_1",
+  "agency": "Portland Fire & Rescue",
+  "title": "Pay Fire Inspection or Citation Fee",
+  "sourceUrl": "https://www.portland.gov/fire/permits-inspections/pay-fire-inspection-or-citation-fee",
+  "quoteSummary": "Portland bills fire inspections and citations through the Fire Marshal's office and provides invoice support for inspection and citation fees.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

@@ -1,0 +1,15 @@
+{
+  "providerId": "kitchen-guard-grand-island",
+  "providerName": "Kitchen Guard of Nebraska",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "grand-island-ne-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://kitchenguard.com/nebraska/hood-cleaning/",
+  "email": "marketing@kitchenguard.com",
+  "phone": "402-480-6102",
+  "officialApprovalSourceUrl": "https://www.grand-island.com/o/gifire/page/apply-for-a-permit",
+  "internalNote": "Kitchen Guard of Nebraska publishes Grand Island in its Nebraska hood-cleaning service area and advertises NFPA 96-compliant hood cleaning, repairs, and digital inspection reporting."
+}

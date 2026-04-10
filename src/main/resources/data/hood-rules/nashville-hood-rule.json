@@ -1,0 +1,21 @@
+{
+  "ruleId": "nashville-hood-rule",
+  "authorityId": "nashville-fire-marshal",
+  "city": "nashville",
+  "state": "tn",
+  "hoodType": "kitchen exhaust and hood suppression systems",
+  "cleaningFrequencyBands": [
+    "Nashville requires service providers to submit Semi-Annual Kitchen Hood Cleaning reports through Inspection Reports Online.",
+    "Nashville's vent hood procedures require cleaning when the hood or duct system is contaminated with grease and require a dated certificate or label from the cleaning company in the kitchen area."
+  ],
+  "certificateRequirement": "Keep hood cleaning certificates, suppression inspection reports, and any related fire-inspection records available on site for the Fire Marshal's Office.",
+  "serviceTagRequirement": "The cleaning company must leave a dated certificate or label in the kitchen area, and service providers must submit required reports through Nashville's Inspection Reports Online workflow.",
+  "reportRetentionRule": "Property owners can register in Inspection Reports Online to receive hood suppression and hood cleaning reports, and those reports should stay with the site's inspection paperwork.",
+  "suppressionInspectionRequirement": "Annual and semi-annual hood suppression inspections are required to be reported through Inspection Reports Online by the service provider.",
+  "sourceRefs": [
+    "src-nashville-vent-hood-procedures",
+    "src-nashville-irol",
+    "src-nashville-fire-inspections"
+  ],
+  "lastVerified": "2026-04-07"
+}

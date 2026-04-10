@@ -1,0 +1,26 @@
+{
+  "recordId": "portland-fire-inspection",
+  "city": "portland",
+  "state": "or",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Current kitchen exhaust cleaning report sheet and hood or suppression service documentation.",
+    "Current six-month kitchen hood extinguishing system inspection tag or report.",
+    "Grease interceptor maintenance reports and disposal-site paperwork if the site operates FOG equipment.",
+    "Any outstanding fire inspection correction notices or permit-related approvals."
+  ],
+  "commonFailureReasons": [
+    "Kitchen exhaust systems show grease buildup beyond the frequency allowed by the fire code.",
+    "Type I hood suppression inspection tags or service paperwork are missing or expired.",
+    "Records requested during the fire inspection are not on site or cannot be produced quickly.",
+    "Prior inspection hazards remain open when the reinspection occurs."
+  ],
+  "rescheduleMethod": "Use Portland Fire & Rescue's commercial inspection request workflow or coordinate directly with the assigned inspector for requested or follow-up inspections.",
+  "penaltyOrEscalation": "Portland bills fire-safety inspections and can assess reinspection fees or extra violation charges when hazards are not corrected before the follow-up inspection.",
+  "sourceRefs": [
+    "src-portland-fire-inspection-program",
+    "src-portland-commercial-inspection-request",
+    "src-portland-inspection-fees",
+    "src-portland-small-business-fire-safety"
+  ]
+}

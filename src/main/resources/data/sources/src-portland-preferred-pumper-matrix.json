@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-portland-preferred-pumper-matrix",
+  "scopeType": "fog_rule",
+  "scopeKey": "portland-fog-food-service",
+  "sourceTier": "tier_2",
+  "agency": "Regional Preferred Pumper Program",
+  "title": "Preferred Pumper Matrix",
+  "sourceUrl": "https://static1.squarespace.com/static/58c02df503596ee56b2eee03/t/68278731d3231448c94c45d5/1747420977838/Preferred%2BPumper%2BMatrix%2BMay2025.pdf",
+  "quoteSummary": "The Preferred Pumper matrix lists participating grease haulers serving Portland and says the program certifies providers to standards established by local governments.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

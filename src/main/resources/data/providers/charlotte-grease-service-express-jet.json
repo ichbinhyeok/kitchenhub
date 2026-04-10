@@ -1,0 +1,15 @@
+{
+  "providerId": "express-jet-services-charlotte",
+  "providerName": "Express Jet Services",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "charlotte-nc-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://expressjetnc.com/",
+  "email": "admin@expressjetnc.com",
+  "phone": "919-892-7107",
+  "officialApprovalSourceUrl": "https://www.charlottenc.gov/files/sharedassets/cltwater/v/1/documents/developmentprojects/customer-assistance/flow-free/permitted-grease-hauler-list-2023.pdf",
+  "internalNote": "Express Jet Services publishes grease trap cleaning and pumping services, and Charlotte Water's permitted hauler list names the company with a direct email contact."
+}

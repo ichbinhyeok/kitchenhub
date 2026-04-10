@@ -1,0 +1,10 @@
+{
+  "profileId": "miami-fl-kitchen-compliance",
+  "city": "miami",
+  "state": "fl",
+  "fogAuthorityId": "miami-dade-rer-fog-control",
+  "hoodAuthorityId": "miami-dade-building-mechanical",
+  "launchTier": 2,
+  "indexable": true,
+  "decisionReason": "Miami-Dade publishes a FOG operating permit, maintenance-log workflow, liquid waste transporter program, and county building and fire inspection rules for commercial hoods."
+}

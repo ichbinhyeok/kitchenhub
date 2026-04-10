@@ -1,0 +1,72 @@
+name: deploy-oracle-vm
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: deploy-oracle-vm
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: maven
+
+      - name: Build release
+        run: ./mvnw -B test package
+
+      - name: Prepare SSH
+        env:
+          ORACLE_HOST: ${{ secrets.ORACLE_HOST }}
+          ORACLE_SSH_PORT: ${{ secrets.ORACLE_SSH_PORT }}
+          ORACLE_SSH_PRIVATE_KEY: ${{ secrets.ORACLE_SSH_PRIVATE_KEY }}
+        run: |
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "${ORACLE_SSH_PRIVATE_KEY}" > ~/.ssh/oracle_vm_key
+          chmod 600 ~/.ssh/oracle_vm_key
+          ssh-keyscan -p "${ORACLE_SSH_PORT:-22}" -H "${ORACLE_HOST}" >> ~/.ssh/known_hosts
+
+      - name: Upload release and restart service
+        env:
+          ORACLE_HOST: ${{ secrets.ORACLE_HOST }}
+          ORACLE_USER: ${{ secrets.ORACLE_USER }}
+          ORACLE_SSH_PORT: ${{ secrets.ORACLE_SSH_PORT }}
+          ORACLE_APP_DIR: ${{ vars.ORACLE_APP_DIR }}
+          ORACLE_SERVICE_NAME: ${{ vars.ORACLE_SERVICE_NAME }}
+        run: |
+          set -euo pipefail
+
+          app_dir="${ORACLE_APP_DIR:-/opt/kitchencompliancehub}"
+          service_name="${ORACLE_SERVICE_NAME:-kitchencompliancehub}"
+          ssh_port="${ORACLE_SSH_PORT:-22}"
+          jar_path="$(find target -maxdepth 1 -type f -name '*.jar' ! -name '*original*' | head -n 1)"
+
+          if [[ -z "${jar_path}" ]]; then
+            echo "No deployable jar found in target/" >&2
+            exit 1
+          fi
+
+          release_name="kitchen-compliance-hub-${GITHUB_SHA}.jar"
+
+          ssh -i ~/.ssh/oracle_vm_key -p "${ssh_port}" "${ORACLE_USER}@${ORACLE_HOST}" "mkdir -p '${app_dir}/releases'"
+          scp -i ~/.ssh/oracle_vm_key -P "${ssh_port}" "${jar_path}" "${ORACLE_USER}@${ORACLE_HOST}:${app_dir}/releases/${release_name}"
+          scp -i ~/.ssh/oracle_vm_key -P "${ssh_port}" deploy/oracle/deploy-release.sh "${ORACLE_USER}@${ORACLE_HOST}:/tmp/kch-deploy-release.sh"
+
+          ssh -i ~/.ssh/oracle_vm_key -p "${ssh_port}" "${ORACLE_USER}@${ORACLE_HOST}" \
+            "chmod +x /tmp/kch-deploy-release.sh && /tmp/kch-deploy-release.sh '${app_dir}' '${release_name}' '${service_name}' && rm -f /tmp/kch-deploy-release.sh"

@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-portland-small-business-fire-safety",
+  "scopeType": "hood_rule",
+  "scopeKey": "portland-hood-fire-code",
+  "sourceTier": "tier_1",
+  "agency": "Portland Fire & Rescue",
+  "title": "Small Business Fire Safety",
+  "sourceUrl": "https://www.portland.gov/fire/permits-inspections/small-business-fire-safety",
+  "quoteSummary": "Portland tells restaurants and commercial kitchens that Type I hoods are required for grease-laden vapors, that the hood provides an extinguishing system, and that routine inspections review fire-safety items and records.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

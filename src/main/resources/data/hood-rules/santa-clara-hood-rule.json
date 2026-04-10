@@ -1,0 +1,22 @@
+{
+  "ruleId": "santa-clara-hood-rule",
+  "authorityId": "santa-clara-fire-department",
+  "city": "santa clara",
+  "state": "ca",
+  "hoodType": "commercial cooking hoods and hood extinguishing systems",
+  "cleaningFrequencyBands": [
+    "Santa Clara's fire materials require Type I hoods with automatic fire-extinguishing systems for commercial cooking operations and tie compliance to the adopted International Fire Code.",
+    "Santa Clara's food establishment BMPs separately tell operators to keep exhaust hoods, filters, ducting, and roof fans properly cleaned as part of FOG management."
+  ],
+  "certificateRequirement": "Keep hood extinguishing acceptance test reports, fire-system paperwork, and kitchen exhaust cleaning reports available for Santa Clara inspections.",
+  "serviceTagRequirement": "Santa Clara expects the hood extinguishing system acceptance paperwork to be uploaded at system acceptance and the fire-system servicing to stay inspection-ready on site.",
+  "reportRetentionRule": "Retain the kitchen hood cleaning record, hood-system service paperwork, and any acceptance or fire inspection reports with the site's fire-safety binder.",
+  "suppressionInspectionRequirement": "Santa Clara's commercial cooking operations guidance requires functional testing of the hood extinguishing system, manual release, gas shutoff, makeup-air shutoff, electrical shutdown, and connected alarm notification devices before acceptance.",
+  "sourceRefs": [
+    "src-santa-clara-commercial-cooking-operations",
+    "src-santa-clara-municipal-fire-code",
+    "src-santa-clara-community-risk-reduction",
+    "src-santa-clara-fog-program"
+  ],
+  "lastVerified": "2026-04-07"
+}

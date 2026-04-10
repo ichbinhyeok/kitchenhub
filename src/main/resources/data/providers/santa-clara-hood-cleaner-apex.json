@@ -1,0 +1,15 @@
+{
+  "providerId": "apex-hood-cleaning-santa-clara",
+  "providerName": "APEX Hood Cleaning",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "santa-clara-ca-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.apexhoodcleaning.com/hood-cleaning-in-san-jose-ca/",
+  "email": "info@apexhoodcleaning.com",
+  "phone": "877-866-3473",
+  "officialApprovalSourceUrl": "https://www.santaclaraca.gov/our-city/departments-a-f/fire-department/municipal-fire-and-environmental-code",
+  "internalNote": "APEX publishes San Jose hood cleaning coverage and serves Northern California kitchens with direct contact details that can cover Santa Clara kitchens."
+}

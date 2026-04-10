@@ -1,0 +1,17 @@
+[Unit]
+Description=KitchenComplianceHub Spring Boot application
+After=network.target
+
+[Service]
+Type=simple
+User=kitchencompliancehub
+Group=kitchencompliancehub
+WorkingDirectory=/opt/kitchencompliancehub
+EnvironmentFile=/etc/kitchencompliancehub/kitchencompliancehub.env
+ExecStart=/bin/bash -lc 'exec /usr/bin/java ${JAVA_OPTS:-} -jar /opt/kitchencompliancehub/current.jar'
+SuccessExitStatus=143
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

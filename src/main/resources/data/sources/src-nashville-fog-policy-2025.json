@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-fog-policy-2025",
+  "scopeType": "fog_rule",
+  "scopeKey": "nashville-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Metro Nashville Water Services",
+  "title": "FOG Policy 2025",
+  "sourceUrl": "https://www.nashville.gov/sites/default/files/2025-02/FOG_Policy_2025.pdf?ct=1739375957",
+  "quoteSummary": "Metro Water's 2025 FOG Policy requires annual certification of grease control equipment, corrective action responses after failed certifications, Metro-approved equipment through plan review, and service intervals tied to 90-day, 180-day, 30-day, and 25% accumulation rules depending on device type and program status.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

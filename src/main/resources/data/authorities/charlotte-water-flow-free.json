@@ -1,0 +1,11 @@
+{
+  "authorityId": "charlotte-water-flow-free",
+  "authorityType": "utility",
+  "authorityName": "Charlotte Water Flow Free Program",
+  "city": "charlotte",
+  "state": "nc",
+  "baseUrl": "https://www.charlottenc.gov/water/Customer-Care/Plumbing-Guidance-Compliance/FlowFree",
+  "contactUrl": "https://www.charlottenc.gov/water/Customer-Care/Plumbing-Guidance-Compliance/FlowFree",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

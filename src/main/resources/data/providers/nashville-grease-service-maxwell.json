@@ -1,0 +1,15 @@
+{
+  "providerId": "maxwell-septic-nashville",
+  "providerName": "Maxwell Septic Pumping",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "nashville-tn-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://maxwellseptic.com/grease-service/",
+  "email": "info@maxwellsepticpumping.com",
+  "phone": "615-452-3986",
+  "officialApprovalSourceUrl": "https://www.nashville.gov/sites/default/files/2024-10/Approved_Hauler-Plumber_list-093024.pdf?ct=1728663850",
+  "internalNote": "Maxwell Septic Pumping appears on Metro Water's approved grease waste hauler list and publishes a Nashville-area grease service page for both indoor traps and larger interceptors."
+}

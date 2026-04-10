@@ -1,0 +1,12 @@
+{
+  "path": "/tx/austin/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "tx",
+  "city": "austin",
+  "authorityId": "austin-water-pretreatment",
+  "profileId": "austin-tx-kitchen-compliance",
+  "canonicalPath": "/tx/austin/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Austin Water publishes explicit pretreatment, cleaning, and manifest rules.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

@@ -1,0 +1,15 @@
+{
+  "providerId": "music-city-sanitizing-nashville",
+  "providerName": "Music City Sanitizing Services",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "nashville-tn-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.mcsanitizing.com/",
+  "email": "info@mcsanitizing.com",
+  "phone": "615-430-1015",
+  "officialApprovalSourceUrl": "https://www.nashville.gov/sites/default/files/2025-10/vent_hood_cleaning_procedures_regulations.pdf?ct=1761337530",
+  "internalNote": "Music City Sanitizing publishes certified vent hood cleaning for Middle Tennessee restaurants with direct phone and email contact."
+}

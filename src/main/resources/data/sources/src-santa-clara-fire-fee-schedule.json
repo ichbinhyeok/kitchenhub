@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-santa-clara-fire-fee-schedule",
+  "scopeType": "inspection_prep",
+  "scopeKey": "santa-clara-fire-inspection",
+  "sourceTier": "tier_1",
+  "agency": "City of Santa Clara Fire Department",
+  "title": "City of Santa Clara Municipal Fee Schedule",
+  "sourceUrl": "https://www.santaclaraca.gov/home/showpublisheddocument/64377/638186290193330000",
+  "quoteSummary": "Santa Clara's municipal fee schedule includes Fire Prevention and reinspection fee lines, which anchor the city's fee-backed escalation path for inspections and follow-up fire review.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

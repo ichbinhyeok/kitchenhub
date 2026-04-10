@@ -1,0 +1,12 @@
+{
+  "path": "/tn/nashville/find-grease-service",
+  "template": "find-grease-service",
+  "state": "tn",
+  "city": "nashville",
+  "authorityId": "nashville-water-grease-management",
+  "profileId": "nashville-tn-kitchen-compliance",
+  "canonicalPath": "/tn/nashville/find-grease-service",
+  "indexable": true,
+  "decisionReason": "Public Nashville grease-service coverage is live and can be indexed while staying separate from Metro Water guidance.",
+  "lastGenerated": "2026-04-07T18:00:00+09:00"
+}

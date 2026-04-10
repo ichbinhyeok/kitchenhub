@@ -1,0 +1,22 @@
+{
+  "ruleId": "miami-hood-rule",
+  "authorityId": "miami-dade-building-mechanical",
+  "city": "miami",
+  "state": "fl",
+  "hoodType": "commercial kitchen hoods, grease ducts, and hood-system inspection records",
+  "cleaningFrequencyBands": [
+    "Miami-Dade treats commercial hoods as a mechanical permit item and its inspection guidelines check Type I hoods, grease ducts, make-up air, rooftop exhaust fans, clearances, and permit-card accuracy.",
+    "Miami-Dade requires final building and fire inspection approvals before occupancy or certificate issuance, so hood-system records must stay aligned with permit, inspection, and fire-prevention paperwork."
+  ],
+  "certificateRequirement": "Keep the mechanical permit card, hood-system contractor paperwork, and passed inspection records available on site for permit and inspection follow-up.",
+  "serviceTagRequirement": "Maintain visible service documentation and inspection-ready records that match the installed hood, duct, and suppression-related work under the permit history.",
+  "reportRetentionRule": "Retain hood cleaning or service reports, permit paperwork, inspection approvals, and related final sign-off records with the site's fire-safety and occupancy files.",
+  "suppressionInspectionRequirement": "Miami-Dade requires permit-based fire inspection requests and final approvals for hood-related work, and the permit or municipal number is needed to request, cancel, or track those inspections.",
+  "sourceRefs": [
+    "src-miami-mechanical-permits",
+    "src-miami-mechanical-inspection-guidelines",
+    "src-miami-fire-inspections",
+    "src-miami-certificate-of-use"
+  ],
+  "lastVerified": "2026-04-07"
+}

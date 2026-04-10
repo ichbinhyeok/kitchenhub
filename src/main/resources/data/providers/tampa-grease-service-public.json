@@ -1,0 +1,15 @@
+{
+  "providerId": "rj-green-environmental-tampa",
+  "providerName": "RJ Green Environmental",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "tampa-fl-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://rjgreenenvironmental.com/",
+  "email": "info@rjgreenenvironmental.com",
+  "phone": "813-796-2768",
+  "officialApprovalSourceUrl": "https://www.tampa.gov/sites/default/files/document/2025/grease-hauler-approved-09-02-25.pdf",
+  "internalNote": "RJ Green Environmental appears on Tampa's registered grease hauler list and publishes local grease trap service with F.O.G. reporting and direct contact details."
+}

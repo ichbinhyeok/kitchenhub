@@ -1,0 +1,12 @@
+{
+  "path": "/ne/grand-island/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "ne",
+  "city": "grand island",
+  "authorityId": "grand-island-fire-department",
+  "profileId": "grand-island-ne-kitchen-compliance",
+  "canonicalPath": "/ne/grand-island/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Grand Island's commercial inspection and certificate-of-occupancy workflow can support a local fire inspection checklist.",
+  "lastGenerated": "2026-04-07T20:30:00+09:00"
+}

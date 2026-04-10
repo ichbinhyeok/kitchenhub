@@ -1,0 +1,10 @@
+{
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "city": "santa clara",
+  "state": "ca",
+  "fogAuthorityId": "santa-clara-water-sewer-fog-program",
+  "hoodAuthorityId": "santa-clara-fire-department",
+  "launchTier": 1,
+  "indexable": true,
+  "decisionReason": "Santa Clara has an official FOG program, a city-published hauler list, and fire-code guidance for commercial cooking operations and inspections."
+}

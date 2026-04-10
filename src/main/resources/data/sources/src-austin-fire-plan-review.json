@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-austin-fire-plan-review",
+  "scopeType": "hood_rule",
+  "scopeKey": "austin-hood-system-records",
+  "sourceTier": "tier_2",
+  "agency": "Austin Fire Department",
+  "title": "Austin Fire Plan Review",
+  "sourceUrl": "https://www.austintexas.gov/department/austin-fire-plan-review",
+  "quoteSummary": "Austin Fire says it enforces the 2024 IFC and associated NFPA standards and directs inspection requests through the Fire Marshal's Office process.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

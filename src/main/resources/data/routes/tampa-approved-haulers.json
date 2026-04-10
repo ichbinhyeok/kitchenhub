@@ -1,0 +1,12 @@
+{
+  "path": "/fl/tampa/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "fl",
+  "city": "tampa",
+  "authorityId": "tampa-wastewater-grease-ordinance",
+  "profileId": "tampa-fl-kitchen-compliance",
+  "canonicalPath": "/fl/tampa/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Tampa publishes a current registered grease hauler list through Wastewater.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

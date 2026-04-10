@@ -1,0 +1,15 @@
+{
+  "providerId": "liquid-environmental-solutions-tampa",
+  "providerName": "Liquid Environmental Solutions",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "tampa-fl-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.liquidenviro.com/",
+  "email": "customerservice@liquidenviro.com",
+  "phone": "866-694-7327",
+  "officialApprovalSourceUrl": "https://www.tampa.gov/sites/default/files/document/2025/grease-hauler-approved-09-02-25.pdf",
+  "internalNote": "Liquid Environmental Solutions publishes grease trap and interceptor services and appears on Tampa's registered grease hauler list."
+}

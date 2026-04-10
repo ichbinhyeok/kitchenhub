@@ -1,0 +1,11 @@
+{
+  "authorityId": "santa-clara-fire-department",
+  "authorityType": "fire_ahj",
+  "authorityName": "City of Santa Clara Fire Department",
+  "city": "santa clara",
+  "state": "ca",
+  "baseUrl": "https://www.santaclaraca.gov/our-city/departments-a-f/fire-department/municipal-fire-and-environmental-code",
+  "contactUrl": "https://www.santaclaraca.gov/our-city/departments-a-f/fire-department/faq-s",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

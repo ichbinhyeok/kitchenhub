@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-charlotte-grease-trap-policy",
+  "scopeType": "fog_rule",
+  "scopeKey": "charlotte-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Charlotte Water",
+  "title": "Grease Trap Policy",
+  "sourceUrl": "https://www.charlottenc.gov/files/sharedassets/cltwater/v/1/documents/customer-assistance/flow-free/grease-trap-policy.pdf",
+  "quoteSummary": "Charlotte Water says grease traps or interceptors are required for food service establishments and defines hauler and maintenance expectations in its policy.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-05-07"
+}

@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-grand-island-building-inspections",
+  "scopeType": "inspection_prep",
+  "scopeKey": "grand-island-fire-inspection-prep",
+  "sourceTier": "tier_1",
+  "agency": "City of Grand Island Building Division",
+  "title": "Inspections",
+  "sourceUrl": "https://www.grand-island.com/o/cgi/page/inspections",
+  "quoteSummary": "Grand Island says all commercial projects require a separate Fire Department final inspection, and a certificate of occupancy or completion will not be issued until all required inspections have been completed and passed.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-austin-hauler-list",
+  "scopeType": "fog_rule",
+  "scopeKey": "austin-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Austin Water",
+  "title": "City of Austin - Liquid Waste Haulers",
+  "sourceUrl": "https://services.austintexas.gov/water/weirs/index.cfm?fuseaction=report.publicLWHauler",
+  "quoteSummary": "Austin's WEIRS report lists active liquid waste haulers currently permitted by the city and says the city neither recommends nor endorses providers on the report.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-05-07"
+}

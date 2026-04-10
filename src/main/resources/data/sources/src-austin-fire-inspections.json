@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-austin-fire-inspections",
+  "scopeType": "inspection_prep",
+  "scopeKey": "austin-fire-inspection-prep",
+  "sourceTier": "tier_2",
+  "agency": "Austin Fire Department",
+  "title": "Fire Inspections",
+  "sourceUrl": "https://www.austintexas.gov/department/fire-inspections",
+  "quoteSummary": "Austin Fire says inspection requests can be made online or by phone and confirms reports in the Compliance Engine should be current before scheduling.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

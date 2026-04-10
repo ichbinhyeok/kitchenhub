@@ -1,0 +1,12 @@
+{
+  "path": "/fl/miami/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "fl",
+  "city": "miami",
+  "authorityId": "miami-dade-rer-fog-control",
+  "profileId": "miami-fl-kitchen-compliance",
+  "canonicalPath": "/fl/miami/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Miami-Dade's FOG operating permit and maintenance-log workflow are explicit enough to support a source-backed grease rule page.",
+  "lastGenerated": "2026-04-07T22:00:00+09:00"
+}

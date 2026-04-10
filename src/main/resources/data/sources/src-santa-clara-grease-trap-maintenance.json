@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-santa-clara-grease-trap-maintenance",
+  "scopeType": "fog_rule",
+  "scopeKey": "santa-clara-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "City of Santa Clara Water & Sewer Utilities",
+  "title": "Grease Trap Maintenance",
+  "sourceUrl": "https://www.santaclaraca.gov/home/showpublisheddocument/55976/636513633254800000",
+  "quoteSummary": "Santa Clara's grease trap maintenance sheet recommends professional grease hauling, requires cleaning logs near self-cleaned traps, and ties poor trap maintenance to fines under the local sewer use ordinance.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

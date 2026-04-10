@@ -1,0 +1,12 @@
+{
+  "path": "/tn/nashville/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "tn",
+  "city": "nashville",
+  "authorityId": "nashville-water-grease-management",
+  "profileId": "nashville-tn-kitchen-compliance",
+  "canonicalPath": "/tn/nashville/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Metro Water's FOG policy is explicit enough to support a source-backed Nashville grease rule page.",
+  "lastGenerated": "2026-04-07T18:00:00+09:00"
+}

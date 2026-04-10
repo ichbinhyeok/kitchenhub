@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-santa-clara-grease-interceptor-maintenance",
+  "scopeType": "fog_rule",
+  "scopeKey": "santa-clara-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "City of Santa Clara Water & Sewer Utilities",
+  "title": "Grease Interceptor Maintenance",
+  "sourceUrl": "https://www.santaclaraca.gov/home/showpublisheddocument/55974/636513633248730000",
+  "quoteSummary": "Santa Clara's grease interceptor maintenance sheet tells operators to use professional pumping service, fully pump and scrape the interceptor, and treat missing records as a sewer ordinance risk that can lead to fines.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

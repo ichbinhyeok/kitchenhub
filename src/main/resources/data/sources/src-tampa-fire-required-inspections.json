@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-tampa-fire-required-inspections",
+  "scopeType": "inspection_prep",
+  "scopeKey": "tampa-fire-inspection",
+  "sourceTier": "tier_2",
+  "agency": "Tampa Fire Marshal",
+  "title": "Fire Marshal Required Inspections",
+  "sourceUrl": "https://www.tampa.gov/construction-services/info/inspection-information/fire-marshal-inspections",
+  "quoteSummary": "Tampa says fire suppression inspections require a functional test, final inspections require life-safety features in place, a tagged fire extinguisher, and approved plans on site.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

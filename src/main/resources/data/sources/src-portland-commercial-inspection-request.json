@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-portland-commercial-inspection-request",
+  "scopeType": "inspection_prep",
+  "scopeKey": "portland-fire-inspection",
+  "sourceTier": "tier_1",
+  "agency": "Portland Fire & Rescue",
+  "title": "Portland Fire & Rescue Permit Center",
+  "sourceUrl": "https://www.portland.gov/service-locations/portland-fire-and-rescue-permit-center",
+  "quoteSummary": "Portland's permit center publishes the Fire Marshal's Office Commercial Inspection Request workflow and lists the permit-center contact for inspection coordination.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

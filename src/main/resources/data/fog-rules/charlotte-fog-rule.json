@@ -1,0 +1,18 @@
+{
+  "ruleId": "charlotte-fog-rule",
+  "authorityId": "charlotte-water-flow-free",
+  "city": "charlotte",
+  "state": "nc",
+  "foodServiceApplicability": "Charlotte food service establishments need a grease trap or interceptor for grease-laden wastewater.",
+  "interceptorType": "Charlotte Water treats grease trap and grease interceptor terms interchangeably in its policy.",
+  "pumpOutFrequency": "Charlotte Water says the device must be properly maintained, cleaned by a grease hauler, and kept from causing sewer blockages or overflows.",
+  "manifestRequirement": "Keep service records and hauling receipts with the business file so maintenance can be verified.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Use Charlotte Water's FlowFree process and confirm the hauler against the current approved-vendor list.",
+  "enforcementNote": "Missing maintenance records or blocked sewer lines can trigger follow-up from Charlotte Water.",
+  "sourceRefs": [
+    "src-charlotte-grease-trap-policy",
+    "src-charlotte-approved-grease-haulers"
+  ],
+  "lastVerified": "2026-04-07"
+}

@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-austin-maintenance-checklist",
+  "scopeType": "hood_rule",
+  "scopeKey": "austin-hood-system-records",
+  "sourceTier": "tier_2",
+  "agency": "Austin Fire Department Fire Marshal's Office",
+  "title": "Maintenance Inspection Considerations",
+  "sourceUrl": "https://www.austintexas.gov/sites/default/files/files/Fire/Prevention/Maintenance-Inspection-Considerations.pdf",
+  "quoteSummary": "Austin Fire's maintenance inspection checklist says fire protection systems must be maintained in working order and its schedule lists range hoods and dry chemical systems on a semi-annual cycle.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

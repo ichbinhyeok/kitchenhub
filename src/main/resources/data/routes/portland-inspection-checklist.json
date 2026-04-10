@@ -1,0 +1,12 @@
+{
+  "path": "/or/portland/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "or",
+  "city": "portland",
+  "authorityId": "portland-fire-safety-inspection-program",
+  "profileId": "portland-or-kitchen-compliance",
+  "canonicalPath": "/or/portland/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Portland Fire & Rescue publishes inspection workflow, record expectations, and fee-backed enforcement signals for local fire prep.",
+  "lastGenerated": "2026-04-07T16:30:00+09:00"
+}

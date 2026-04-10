@@ -1,0 +1,15 @@
+{
+  "providerId": "ddan-hood-cleaning-nashville",
+  "providerName": "DDAN Hood Cleaning and Repair",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "nashville-tn-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://ddanhoodcleaning.com/",
+  "email": "service@ddanhoodcleaning.com",
+  "phone": "615-881-6968",
+  "officialApprovalSourceUrl": "https://www.nashville.gov/departments/fire/fire-marshal-office/inspection-reports-online",
+  "internalNote": "DDAN publishes Nashville metro hood cleaning and repair coverage with direct service contact and positions its work around NFPA 96 compliance and report-ready service."
+}

@@ -1,0 +1,11 @@
+{
+  "authorityId": "grand-island-fire-department",
+  "authorityType": "fire_ahj",
+  "authorityName": "Grand Island Fire Department Fire Prevention Division",
+  "city": "grand island",
+  "state": "ne",
+  "baseUrl": "https://www.grand-island.com/fire",
+  "contactUrl": "https://www.grand-island.com/o/gifire/page/fire-prevention-division",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

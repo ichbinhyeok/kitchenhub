@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-mechanical-permits",
+  "scopeType": "hood_rule",
+  "scopeKey": "miami-hood-system-records",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Building Department",
+  "title": "Mechanical Permits",
+  "sourceUrl": "https://www.miamidade.gov/global/economy/building/permits/mechanical.page",
+  "quoteSummary": "Miami-Dade's mechanical permit page says commercial hoods require mechanical permit intake with a fee sheet and directs applicants to the county mechanical inspection guidelines and scheduling workflow.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

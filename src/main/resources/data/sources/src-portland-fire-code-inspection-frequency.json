@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-portland-fire-code-inspection-frequency",
+  "scopeType": "hood_rule",
+  "scopeKey": "portland-hood-fire-code",
+  "sourceTier": "tier_1",
+  "agency": "Portland Fire & Rescue",
+  "title": "Portland Fire Code inspection frequency policy",
+  "sourceUrl": "https://www.portland.gov/sites/default/files/2020-06/fir-1.10-inspection-program-frequency-042918-754436.pdf",
+  "quoteSummary": "Portland's inspection-frequency policy follows the commercial cooking exhaust schedule that ranges from monthly for solid-fuel and high-volume operations to annually for low-volume systems.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

@@ -1,0 +1,11 @@
+{
+  "authorityId": "austin-water-pretreatment",
+  "authorityType": "utility",
+  "authorityName": "Austin Water Pretreatment Program",
+  "city": "austin",
+  "state": "tx",
+  "baseUrl": "https://www.austintexas.gov/my-mm/water/pretreatment-frequently-asked-questions",
+  "contactUrl": "https://www.austintexas.gov/my-mm/water/pretreatment-frequently-asked-questions",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

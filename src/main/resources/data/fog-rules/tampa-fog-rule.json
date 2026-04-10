@@ -1,0 +1,20 @@
+{
+  "ruleId": "tampa-fog-rule",
+  "authorityId": "tampa-wastewater-grease-ordinance",
+  "city": "tampa",
+  "state": "fl",
+  "foodServiceApplicability": "Tampa food service facilities that discharge grease into the City's treatment works fall under the Grease Management Ordinance.",
+  "interceptorType": "Tampa distinguishes indoor grease traps from outdoor grease interceptors and requires approved devices sized for the facility's wastewater load.",
+  "pumpOutFrequency": "Indoor grease traps must be opened, inspected, cleaned, and maintained at least weekly and whenever grease plus solids exceed 25% of trap volume. Grease interceptors must be pumped when solids exceed the outlet invert, grease plus solids exceed 25% of capacity, or the interceptor stops capturing grease.",
+  "manifestRequirement": "Keep pump logs and maintenance records on site for three years and use City of Tampa approved manifest forms for registered grease haulers.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Use Tampa's grease ordinance workflow and confirm the vendor appears on the current registered grease haulers list.",
+  "enforcementNote": "Tampa can require grease trap cleaning within 24 hours, interceptor pumping within 72 hours, and continued noncompliance can escalate to city pump-out charges or code enforcement.",
+  "sourceRefs": [
+    "src-tampa-grease-ordinance",
+    "src-tampa-grease-faq",
+    "src-tampa-approved-grease-haulers",
+    "src-tampa-compliance-deadlines"
+  ],
+  "lastVerified": "2026-04-07"
+}

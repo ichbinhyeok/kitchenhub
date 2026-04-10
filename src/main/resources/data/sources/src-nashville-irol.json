@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-irol",
+  "scopeType": "hood_rule",
+  "scopeKey": "nashville-hood-system-records",
+  "sourceTier": "tier_1",
+  "agency": "Nashville Fire Department Fire Marshal's Office",
+  "title": "Inspection Reports Online (IROL)",
+  "sourceUrl": "https://www.nashville.gov/departments/fire/fire-marshal-office/inspection-reports-online",
+  "quoteSummary": "Nashville requires service providers to submit Annual and Semi-Annual Hood Suppression and Semi-Annual Kitchen Hood Cleaning reports through Inspection Reports Online so owners can access the inspection records from one place.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

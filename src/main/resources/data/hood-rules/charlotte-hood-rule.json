@@ -1,0 +1,20 @@
+{
+  "ruleId": "charlotte-hood-rule",
+  "authorityId": "charlotte-fire-prevention",
+  "city": "charlotte",
+  "state": "nc",
+  "hoodType": "kitchen hood suppression and vent systems",
+  "cleaningFrequencyBands": [
+    "Charlotte Fire's interpretation says high-volume cooking needs hood-system service every 3 months.",
+    "Other cooking operations need hood-system service every 6 months."
+  ],
+  "certificateRequirement": "Keep the latest hood-service report and any certificate or vendor paperwork on site.",
+  "serviceTagRequirement": "Match the visible service tag to the most recent hood-service report.",
+  "reportRetentionRule": "Retain the latest report and any follow-up corrections with the fire-prevention records.",
+  "suppressionInspectionRequirement": "Charlotte Fire asks businesses to send life-safety inspection reports for hood suppression systems to the Prevention Bureau.",
+  "sourceRefs": [
+    "src-charlotte-hood-service-frequency",
+    "src-charlotte-fire-prevention"
+  ],
+  "lastVerified": "2026-04-07"
+}

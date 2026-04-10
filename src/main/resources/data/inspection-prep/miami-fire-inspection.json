@@ -1,0 +1,27 @@
+{
+  "recordId": "miami-fire-inspection",
+  "city": "miami",
+  "state": "fl",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Current Miami-Dade fire permit or fire municipal number and the related inspection-ready permit records.",
+    "Mechanical permit paperwork and passed hood-related building inspection records for the kitchen project.",
+    "Certificate of Occupancy or Certificate of Use support records showing all required final inspections have been approved before opening.",
+    "FOG operating permit records, the grease trap maintenance log, and three years of pump-out or maintenance receipts if the kitchen generates grease-laden wastewater."
+  ],
+  "commonFailureReasons": [
+    "The site cannot produce permit, inspection, or occupancy records for hood-related work during inspection.",
+    "Required final approvals have not been obtained before the operator tries to open or occupy the space.",
+    "Reinspection fees or prior inspection issues block the next inspection request.",
+    "The grease trap or interceptor log and receipts are missing even though the facility holds a FOG permit."
+  ],
+  "rescheduleMethod": "Miami-Dade requires fire inspections to be scheduled the day prior before 4 p.m. through the Fire Inspection Request and Inquiry workflow, and other permit inspections can be scheduled through the county building inspection system.",
+  "penaltyOrEscalation": "Miami-Dade says inspections may be canceled if reinspection fees are due, and CO/CU issuance waits until required final inspections are approved before the business opens.",
+  "sourceRefs": [
+    "src-miami-fire-inspections",
+    "src-miami-fire-prevention-request",
+    "src-miami-certificate-of-use",
+    "src-miami-building-inspections",
+    "src-miami-fog-permit"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "path": "/ca/santa-clara/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "ca",
+  "city": "santa clara",
+  "authorityId": "santa-clara-water-sewer-fog-program",
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "canonicalPath": "/ca/santa-clara/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Santa Clara publishes a source-backed FOG program, recordkeeping rules, and grease hauler list for commercial kitchens.",
+  "lastGenerated": "2026-04-07T17:00:00+09:00"
+}

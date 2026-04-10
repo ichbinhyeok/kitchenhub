@@ -1,0 +1,11 @@
+{
+  "authorityId": "nashville-fire-marshal",
+  "authorityType": "fire_ahj",
+  "authorityName": "Nashville Fire Department Fire Marshal's Office",
+  "city": "nashville",
+  "state": "tn",
+  "baseUrl": "https://www.nashville.gov/departments/fire/fire-marshal-office",
+  "contactUrl": "https://www.nashville.gov/departments/fire/fire-marshal-office/inspections",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

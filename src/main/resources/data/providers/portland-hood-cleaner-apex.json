@@ -1,0 +1,15 @@
+{
+  "providerId": "apex-hood-cleaning-portland",
+  "providerName": "APEX Hood Cleaning",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "portland-or-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.apexhoodcleaning.com/portland-hood-cleaning-service/",
+  "email": "info@apexhoodcleaning.com",
+  "phone": "877-866-3473",
+  "officialApprovalSourceUrl": "https://www.portland.gov/sites/default/files/2020-06/fir-1.10-inspection-program-frequency-042918-754436.pdf",
+  "internalNote": "APEX publishes a Portland hood cleaning service page with direct contact details and inspection-oriented documentation promises."
+}

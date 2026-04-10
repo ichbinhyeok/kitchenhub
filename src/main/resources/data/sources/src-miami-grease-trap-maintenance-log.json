@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-grease-trap-maintenance-log",
+  "scopeType": "fog_rule",
+  "scopeKey": "miami-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Regulatory and Economic Resources DERM",
+  "title": "Grease Trap Maintenance Log",
+  "sourceUrl": "https://www.miamidade.gov/environment/library/forms/grease-trap-maintenance-log.pdf",
+  "quoteSummary": "Miami-Dade's maintenance log says every FOG removal or maintenance action must be recorded near the device and pump-out or maintenance receipts must stay available at the facility for a minimum of three years.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

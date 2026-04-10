@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-vent-hood-procedures",
+  "scopeType": "hood_rule",
+  "scopeKey": "nashville-hood-system-records",
+  "sourceTier": "tier_1",
+  "agency": "Nashville Fire Department Fire Marshal's Office",
+  "title": "Vent Hood Cleaning Procedures & Regulations",
+  "sourceUrl": "https://www.nashville.gov/sites/default/files/2025-10/vent_hood_cleaning_procedures_regulations.pdf?ct=1761337530",
+  "quoteSummary": "Nashville's vent hood procedures require cleaning when the system is contaminated with grease and require the cleaning company to leave a dated certificate or label in the kitchen area after service.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

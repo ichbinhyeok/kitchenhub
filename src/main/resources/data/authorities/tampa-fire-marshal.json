@@ -1,0 +1,11 @@
+{
+  "authorityId": "tampa-fire-marshal",
+  "authorityType": "fire_ahj",
+  "authorityName": "Tampa Fire Marshal's Office - Prevention Division",
+  "city": "tampa",
+  "state": "fl",
+  "baseUrl": "https://www.tampa.gov/fire-rescue/about-us/fire-marshals-office",
+  "contactUrl": "https://www.tampa.gov/fire-rescue/contact-us",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

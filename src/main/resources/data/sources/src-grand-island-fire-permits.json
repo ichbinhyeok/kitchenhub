@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-grand-island-fire-permits",
+  "scopeType": "hood_rule",
+  "scopeKey": "grand-island-hood-system-records",
+  "sourceTier": "tier_1",
+  "agency": "Grand Island Fire Department",
+  "title": "Apply for a Permit",
+  "sourceUrl": "https://www.grand-island.com/o/gifire/page/apply-for-a-permit",
+  "quoteSummary": "Grand Island Fire Department publishes Kitchen Hood System and Suppression System permit applications for commercial fire-safety work and routes those projects through the Fire Prevention Division.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

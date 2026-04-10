@@ -1,0 +1,24 @@
+{
+  "recordId": "austin-fire-inspection-prep",
+  "city": "austin",
+  "state": "tx",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Current hood-system or suppression service report.",
+    "Visible service tags or stickers that match the latest report.",
+    "Portable fire extinguisher service current within the previous 12 months.",
+    "Clear means of egress and proper clearance at electrical panels."
+  ],
+  "commonFailureReasons": [
+    "Expired or missing hood-system report.",
+    "Blocked egress or storage in the exit path.",
+    "Portable extinguishers not current or not mounted correctly.",
+    "Fire protection systems not maintained in working order."
+  ],
+  "rescheduleMethod": "Use Austin Fire's inspection scheduling process by phone or online request rather than waiting for the next visit window.",
+  "penaltyOrEscalation": "If required reports are missing, Austin Fire can treat the site as not inspection-ready and require follow-up before final compliance.",
+  "sourceRefs": [
+    "src-austin-maintenance-checklist",
+    "src-austin-fire-inspections"
+  ]
+}

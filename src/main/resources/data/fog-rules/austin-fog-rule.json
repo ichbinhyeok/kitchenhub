@@ -1,0 +1,18 @@
+{
+  "ruleId": "austin-fog-food-service",
+  "authorityId": "austin-water-pretreatment",
+  "city": "austin",
+  "state": "tx",
+  "foodServiceApplicability": "All commercial and institutional food preparation businesses in Austin must have an Austin Water-approved grease interceptor unless a variance applies.",
+  "interceptorType": "Grease interceptor or grease trap sized and approved through Austin Water plan review.",
+  "pumpOutFrequency": "Austin City Code Section 15-10-197 requires complete cleaning at least once every three months, or sooner when grease and solids reach the 50 percent trigger.",
+  "manifestRequirement": "Trip ticket manifest documentation must be followed and retained for up to three years.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Coordinate inspections and pretreatment paperwork through Austin Water Industrial Waste staff.",
+  "enforcementNote": "Failure to maintain the device or manifest trail can trigger pretreatment notices, escalation, and potential service consequences.",
+  "sourceRefs": [
+    "src-austin-pretreatment",
+    "src-austin-hauler-list"
+  ],
+  "lastVerified": "2026-04-07"
+}

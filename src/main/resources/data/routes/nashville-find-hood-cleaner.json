@@ -1,0 +1,12 @@
+{
+  "path": "/tn/nashville/find-hood-cleaner",
+  "template": "find-hood-cleaner",
+  "state": "tn",
+  "city": "nashville",
+  "authorityId": "nashville-fire-marshal",
+  "profileId": "nashville-tn-kitchen-compliance",
+  "canonicalPath": "/tn/nashville/find-hood-cleaner",
+  "indexable": true,
+  "decisionReason": "Public Nashville hood-cleaner coverage is live and can be indexed while staying separate from Fire Marshal guidance.",
+  "lastGenerated": "2026-04-07T18:00:00+09:00"
+}

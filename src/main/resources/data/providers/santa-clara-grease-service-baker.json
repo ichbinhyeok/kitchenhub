@@ -1,0 +1,15 @@
+{
+  "providerId": "baker-commodities-santa-clara",
+  "providerName": "Baker Commodities",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "santa-clara-ca-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://bakercommodities.com/customer-service/",
+  "email": "info@bakercommodities.com",
+  "phone": "855-422-5370",
+  "officialApprovalSourceUrl": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/sewer-utility/fats-oils-and-grease-fog-program",
+  "internalNote": "Santa Clara's FOG program lists Baker Commodities among city-published pumpers and haulers, and Baker publishes national grease management contact details."
+}

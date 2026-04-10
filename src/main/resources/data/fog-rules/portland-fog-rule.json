@@ -1,0 +1,19 @@
+{
+  "ruleId": "portland-fog-rule",
+  "authorityId": "portland-bes-fog-program",
+  "city": "portland",
+  "state": "or",
+  "foodServiceApplicability": "Portland applies its FOG rules to facilities connected to the city sewer that can generate fats, oils, or grease, including new or redeveloping food service establishments and kitchens that modify FOG-bearing fixtures.",
+  "interceptorType": "Portland requires approved grease interceptors sized under the Plumbing Code, with FOG-bearing fixtures permanently connected and the interceptor location approved by the City before final permit inspections.",
+  "pumpOutFrequency": "Portland requires hydromechanical grease interceptors to be cleaned at least every 30 days and gravity grease interceptors at least every 90 days unless a written variance changes the schedule.",
+  "manifestRequirement": "Submit grease interceptor maintenance reports to BES within 14 days after each cleaning and keep the cleaning date, FOG depth, defects, hauler signature, and disposal-site details available.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Use Portland's Preferred Pumper Program as the first service filter, then keep the maintenance report together with disposal-site paperwork sent to BES.",
+  "enforcementNote": "Portland can inspect without warning, treat missed cleanings or missing maintenance reports as escalating violations, and count each day a violation continues as a separate offense.",
+  "sourceRefs": [
+    "src-portland-fog-admin-rules",
+    "src-portland-grease-interceptors-maintain",
+    "src-portland-preferred-pumper-matrix"
+  ],
+  "lastVerified": "2026-04-07"
+}

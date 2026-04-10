@@ -1,0 +1,12 @@
+{
+  "path": "/ca/santa-clara/find-grease-service",
+  "template": "find-grease-service",
+  "state": "ca",
+  "city": "santa clara",
+  "authorityId": "santa-clara-water-sewer-fog-program",
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "canonicalPath": "/ca/santa-clara/find-grease-service",
+  "indexable": true,
+  "decisionReason": "Santa Clara grease service coverage is public and can be indexed without implying city endorsement.",
+  "lastGenerated": "2026-04-07T17:00:00+09:00"
+}

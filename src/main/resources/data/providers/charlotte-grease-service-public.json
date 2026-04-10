@@ -1,0 +1,15 @@
+{
+  "providerId": "greenway-waste-solutions-charlotte",
+  "providerName": "Greenway Waste Solutions",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "charlotte-nc-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.greenwaywastesolutions.com/services/",
+  "email": "info@greenwaywastesolutions.com",
+  "phone": "704.885.2705",
+  "officialApprovalSourceUrl": "https://www.charlottenc.gov/water/Customer-Care/Plumbing-Guidance-Compliance/FlowFree",
+  "internalNote": "Charlotte Water's FlowFree permitted grease hauler list includes Greenway Waste Solutions, and Greenway's Charlotte services page advertises grease trap pumping and cleaning."
+}

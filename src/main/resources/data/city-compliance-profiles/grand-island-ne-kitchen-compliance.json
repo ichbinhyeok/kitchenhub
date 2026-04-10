@@ -1,0 +1,10 @@
+{
+  "profileId": "grand-island-ne-kitchen-compliance",
+  "city": "grand island",
+  "state": "ne",
+  "fogAuthorityId": "grand-island-utilities-fog-program",
+  "hoodAuthorityId": "grand-island-fire-department",
+  "launchTier": 2,
+  "indexable": true,
+  "decisionReason": "Grand Island publishes a city FOG program, a food-service preferred hauler workflow, and Fire Department hood permit and final-inspection requirements."
+}

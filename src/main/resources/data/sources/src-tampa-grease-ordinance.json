@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-tampa-grease-ordinance",
+  "scopeType": "fog_rule",
+  "scopeKey": "tampa-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "City of Tampa Wastewater Department",
+  "title": "Grease Ordinance",
+  "sourceUrl": "https://www.tampa.gov/wastewater/programs/grease-ordinance",
+  "quoteSummary": "Tampa says the Grease Management Ordinance establishes maintenance and monitoring requirements for food service facilities and regulates grease haulers operating within the city limits.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-10-07"
+}

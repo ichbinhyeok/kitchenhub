@@ -1,0 +1,12 @@
+{
+  "path": "/ca/santa-clara/find-hood-cleaner",
+  "template": "find-hood-cleaner",
+  "state": "ca",
+  "city": "santa clara",
+  "authorityId": "santa-clara-fire-department",
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "canonicalPath": "/ca/santa-clara/find-hood-cleaner",
+  "indexable": true,
+  "decisionReason": "Santa Clara hood-cleaner coverage is public and can be indexed while staying clearly separate from official fire guidance.",
+  "lastGenerated": "2026-04-07T17:00:00+09:00"
+}

@@ -1,0 +1,20 @@
+{
+  "ruleId": "santa-clara-fog-rule",
+  "authorityId": "santa-clara-water-sewer-fog-program",
+  "city": "santa clara",
+  "state": "ca",
+  "foodServiceApplicability": "Santa Clara requires food service establishments discharging grease-laden wastewater to the sanitary sewer to follow the City's FOG Control Program through plan check, inspection, and record review.",
+  "interceptorType": "Santa Clara requires a completed food service checklist and approved grease control design during plan check for commercial cooking, dishwashing, and equipment cleaning that generate grease-laden wastewater.",
+  "pumpOutFrequency": "Santa Clara's FOG materials say grease interceptors need routine professional pumping and grease traps need regular maintenance with logs kept near the device, with service timed to the actual grease load and local ordinance requirements.",
+  "manifestRequirement": "Santa Clara requires grease control device maintenance records to stay on site for at least three years, and interceptor receipts must include pumping company details, service date, device details, waste volume, and disposal location.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Use Santa Clara's city-published grease pumpers and haulers list as the first verification step, then keep the hauler receipt and log with the grease control device recordkeeping file.",
+  "enforcementNote": "Santa Clara says uncorrected, repeated, or serious FOG violations escalate to increased enforcement and fines, and missing three-year records is itself a sewer ordinance violation.",
+  "sourceRefs": [
+    "src-santa-clara-fog-program",
+    "src-santa-clara-grease-recordkeeping",
+    "src-santa-clara-grease-trap-maintenance",
+    "src-santa-clara-grease-interceptor-maintenance"
+  ],
+  "lastVerified": "2026-04-07"
+}

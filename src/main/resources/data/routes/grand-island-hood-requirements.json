@@ -1,0 +1,12 @@
+{
+  "path": "/ne/grand-island/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "ne",
+  "city": "grand island",
+  "authorityId": "grand-island-fire-department",
+  "profileId": "grand-island-ne-kitchen-compliance",
+  "canonicalPath": "/ne/grand-island/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Grand Island's Fire Department permit and final-inspection workflow are explicit enough to support an indexed hood page.",
+  "lastGenerated": "2026-04-07T20:30:00+09:00"
+}

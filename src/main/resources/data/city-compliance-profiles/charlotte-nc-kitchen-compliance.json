@@ -1,0 +1,10 @@
+{
+  "profileId": "charlotte-nc-kitchen-compliance",
+  "city": "charlotte",
+  "state": "nc",
+  "fogAuthorityId": "charlotte-water-flow-free",
+  "hoodAuthorityId": "charlotte-fire-prevention",
+  "launchTier": 2,
+  "indexable": true,
+  "decisionReason": "Charlotte has official grease-trap policy, approved hauler, hood-service, and inspection-prep sources."
+}

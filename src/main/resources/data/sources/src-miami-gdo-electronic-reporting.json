@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-gdo-electronic-reporting",
+  "scopeType": "fog_rule",
+  "scopeKey": "miami-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Regulatory and Economic Resources DERM",
+  "title": "Grease Discharge Operating (GDO) Permit Electronic Report Guide",
+  "sourceUrl": "https://wwwx.miamidade.gov/Apps/RER/GreaseDischargeOperatingReport/General/FSE%20guide%20to%20electronic%20reporting_04-29-2020.pdf",
+  "quoteSummary": "Miami-Dade's electronic reporting guide says paper maintenance logs must be updated and kept on site for at least three years, and self-cleaning or service activity must be reported through the GDO permit workflow.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

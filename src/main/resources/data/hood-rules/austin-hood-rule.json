@@ -1,0 +1,20 @@
+{
+  "ruleId": "austin-hood-system-records",
+  "authorityId": "austin-fire-marshal",
+  "city": "austin",
+  "state": "tx",
+  "hoodType": "commercial cooking exhaust and hood-system records",
+  "cleaningFrequencyBands": [
+    "Austin Fire's published maintenance schedule lists range hoods and dry chemical systems for semi-annual inspection by a licensed fire protection system company.",
+    "Austin's public fire materials are strongest on inspection-ready reports, visible service tags, and keeping hood-system and suppression records distinct when the visits differ."
+  ],
+  "certificateRequirement": "Keep the latest hood-system or suppression service report available on site.",
+  "serviceTagRequirement": "Visible service tags and stickers should match the latest service paperwork when the system requires them.",
+  "reportRetentionRule": "Retain the latest hood-system report on site for inspection prep.",
+  "suppressionInspectionRequirement": "Austin Fire's published equipment schedule treats range hoods and dry chemical systems as semi-annual fire protection inspections.",
+  "sourceRefs": [
+    "src-austin-maintenance-checklist",
+    "src-austin-fire-plan-review"
+  ],
+  "lastVerified": "2026-04-07"
+}

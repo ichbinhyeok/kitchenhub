@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-fire-prevention-request",
+  "scopeType": "inspection_prep",
+  "scopeKey": "miami-fire-inspection-prep",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Fire Rescue",
+  "title": "Fire Prevention Request",
+  "sourceUrl": "https://www.miamidade.gov/fire/fire_prevention_request_form.asp",
+  "quoteSummary": "Miami-Dade Fire Rescue provides a Fire Prevention request form for inspections and complaints and tells applicants to call 786-331-4800 for additional fire prevention information.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

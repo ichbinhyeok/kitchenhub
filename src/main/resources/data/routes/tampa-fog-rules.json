@@ -1,0 +1,12 @@
+{
+  "path": "/fl/tampa/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "fl",
+  "city": "tampa",
+  "authorityId": "tampa-wastewater-grease-ordinance",
+  "profileId": "tampa-fl-kitchen-compliance",
+  "canonicalPath": "/fl/tampa/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Tampa Wastewater publishes a grease ordinance, FAQ, and registered hauler list.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

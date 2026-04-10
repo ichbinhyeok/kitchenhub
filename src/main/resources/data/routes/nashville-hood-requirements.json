@@ -1,0 +1,12 @@
+{
+  "path": "/tn/nashville/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "tn",
+  "city": "nashville",
+  "authorityId": "nashville-fire-marshal",
+  "profileId": "nashville-tn-kitchen-compliance",
+  "canonicalPath": "/tn/nashville/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Nashville's Fire Marshal workflow and hood-reporting rules are explicit enough to support an indexed hood page.",
+  "lastGenerated": "2026-04-07T18:00:00+09:00"
+}

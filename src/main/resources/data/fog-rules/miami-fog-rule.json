@@ -1,0 +1,21 @@
+{
+  "ruleId": "miami-fog-rule",
+  "authorityId": "miami-dade-rer-fog-control",
+  "city": "miami",
+  "state": "fl",
+  "foodServiceApplicability": "Miami food preparation establishments and other non-residential facilities that handle, prepare, or process food and can discharge fats, oils, or grease to the sanitary sewer must obtain and maintain a Miami-Dade FOG Discharge Control operating permit.",
+  "interceptorType": "Miami-Dade regulates grease traps and grease interceptors through permit conditions, installation and maintenance guidance, and DERM-permitted facility recordkeeping for FOG generators.",
+  "pumpOutFrequency": "Miami-Dade's public materials say operators must follow the cleaning and pump-out frequency written into the GDO permit and maintenance guidance, keep the log current for every service event, and react when overflow or near-solid grease conditions show the device is no longer working properly.",
+  "manifestRequirement": "Keep the grease trap or interceptor maintenance log near the device, record every FOG removal or maintenance action, and keep all pump-out and maintenance receipts available at the facility for a minimum of three years.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Start from Miami-Dade's DERM-permitted liquid waste transporter workflow, use the current transporter list or request the current grease-trap hauler list from DERM, and retain the hauler receipts with the on-site maintenance log.",
+  "enforcementNote": "Miami-Dade ties FOG compliance to an annual operating permit, warns that overflows can trigger fines and health risks, and checks the maintenance log and receipts during DERM inspections.",
+  "sourceRefs": [
+    "src-miami-fog-permit",
+    "src-miami-fog-fact-sheet",
+    "src-miami-gdo-electronic-reporting",
+    "src-miami-liquid-waste-transporter-permit",
+    "src-miami-grease-trap-maintenance-log"
+  ],
+  "lastVerified": "2026-04-07"
+}

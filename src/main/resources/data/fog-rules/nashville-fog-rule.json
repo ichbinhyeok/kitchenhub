@@ -1,0 +1,20 @@
+{
+  "ruleId": "nashville-fog-rule",
+  "authorityId": "nashville-water-grease-management",
+  "city": "nashville",
+  "state": "tn",
+  "foodServiceApplicability": "Metro Nashville food service establishments that discharge grease-laden wastewater must submit a FOG plan to Metro Water Services and install approved grease control equipment.",
+  "interceptorType": "Metro Water distinguishes grease interceptors from grease traps and requires Metro-approved equipment through plan review and sizing for the site's kitchen fixtures and wastewater load.",
+  "pumpOutFrequency": "Grease interceptors must be serviced at least every 90 days unless an approved DMD or DMA program supports up to 180 days, and sooner when grease plus solids exceed 25% of the wetted depth. Grease traps must be cleaned at least every 30 days and every two weeks when grease plus solids exceed 25% of trap depth.",
+  "manifestRequirement": "Keep grease cleaning logs, hauler manifests, and annual grease interceptor or grease trap certification forms on site, and submit the passing annual certification to Metro Water Services after completion.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Start from Metro Water's approved hauler and plumber list, then email the passing annual certification to mws.sdc@nashville.gov after the service and inspection are complete.",
+  "enforcementNote": "Metro Water requires a corrective action response when a grease interceptor or grease trap fails annual certification, and pushing the non-water portion of grease control equipment into the public sewer is treated as a sewer-use violation.",
+  "sourceRefs": [
+    "src-nashville-grease-management",
+    "src-nashville-fog-policy-2025",
+    "src-nashville-approved-hauler-plumber-list",
+    "src-nashville-grease-cleaning-log"
+  ],
+  "lastVerified": "2026-04-07"
+}

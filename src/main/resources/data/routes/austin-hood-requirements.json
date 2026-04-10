@@ -1,0 +1,12 @@
+{
+  "path": "/tx/austin/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "tx",
+  "city": "austin",
+  "authorityId": "austin-fire-marshal",
+  "profileId": "austin-tx-kitchen-compliance",
+  "canonicalPath": "/tx/austin/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Austin Fire publishes inspection-ready hood-system schedule and record requirements.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

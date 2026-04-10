@@ -1,0 +1,11 @@
+{
+  "authorityId": "tampa-wastewater-grease-ordinance",
+  "authorityType": "utility",
+  "authorityName": "City of Tampa Wastewater Department Grease Ordinance Program",
+  "city": "tampa",
+  "state": "fl",
+  "baseUrl": "https://www.tampa.gov/wastewater/programs/grease-ordinance",
+  "contactUrl": "https://www.tampa.gov/wastewater/programs/grease-ordinance/contact",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

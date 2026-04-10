@@ -1,0 +1,10 @@
+{
+  "profileId": "austin-tx-kitchen-compliance",
+  "city": "austin",
+  "state": "tx",
+  "fogAuthorityId": "austin-water-pretreatment",
+  "hoodAuthorityId": "austin-fire-marshal",
+  "launchTier": 1,
+  "indexable": true,
+  "decisionReason": "strong official pretreatment and fire-inspection coverage for a first launch slice"
+}

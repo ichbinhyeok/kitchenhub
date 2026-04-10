@@ -1,0 +1,12 @@
+{
+  "path": "/nc/charlotte/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "nc",
+  "city": "charlotte",
+  "authorityId": "charlotte-fire-prevention",
+  "profileId": "charlotte-nc-kitchen-compliance",
+  "canonicalPath": "/nc/charlotte/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Charlotte Fire publishes hood-system service frequency and inspection guidance.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

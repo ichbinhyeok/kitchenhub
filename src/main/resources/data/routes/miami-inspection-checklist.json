@@ -1,0 +1,12 @@
+{
+  "path": "/fl/miami/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "fl",
+  "city": "miami",
+  "authorityId": "miami-dade-fire-rescue",
+  "profileId": "miami-fl-kitchen-compliance",
+  "canonicalPath": "/fl/miami/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Miami-Dade's fire inspection and occupancy workflow is strong enough to support a local inspection-prep checklist.",
+  "lastGenerated": "2026-04-07T22:00:00+09:00"
+}

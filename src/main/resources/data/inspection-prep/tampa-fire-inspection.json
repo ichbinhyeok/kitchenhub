@@ -1,0 +1,26 @@
+{
+  "recordId": "tampa-fire-inspection",
+  "city": "tampa",
+  "state": "fl",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Approved plans and certification papers for fire alarm, fire protection, or fire suppression work when applicable.",
+    "Current tagged fire extinguisher and hood extinguishing system service documentation.",
+    "Monthly extinguisher visual-inspection log and annual extinguisher service proof.",
+    "Grease hauler manifests or pump logs if the site operates a grease trap or interceptor."
+  ],
+  "commonFailureReasons": [
+    "Life-safety features are not in place or not functional at final inspection.",
+    "Approved plans or certification papers are missing on inspection day.",
+    "Fire extinguisher tags are expired or hood extinguishing service documentation is missing.",
+    "Excessive grease accumulation remains in the kitchen exhaust system."
+  ],
+  "rescheduleMethod": "Coordinate requested fire inspections with Tampa Fire Marshal inspectors at 813-274-7000; time-specific tests or walk-throughs must be arranged directly with the inspector.",
+  "penaltyOrEscalation": "Unsatisfactory re-inspections double the initial inspection fee, and a fourth re-inspection is referred to the Code Review Board.",
+  "sourceRefs": [
+    "src-tampa-fire-marshals-office",
+    "src-tampa-fire-required-inspections",
+    "src-tampa-fire-inspection-fees",
+    "src-tampa-restaurant-safety-guide"
+  ]
+}

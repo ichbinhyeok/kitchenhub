@@ -1,0 +1,10 @@
+{
+  "profileId": "nashville-tn-kitchen-compliance",
+  "city": "nashville",
+  "state": "tn",
+  "fogAuthorityId": "nashville-water-grease-management",
+  "hoodAuthorityId": "nashville-fire-marshal",
+  "launchTier": 2,
+  "indexable": true,
+  "decisionReason": "Nashville publishes a current Metro Water FOG policy, approved hauler certification workflow, and Fire Marshal inspection reporting requirements for hood systems."
+}

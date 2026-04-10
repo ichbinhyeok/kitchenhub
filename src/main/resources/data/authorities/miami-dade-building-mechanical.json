@@ -1,0 +1,11 @@
+{
+  "authorityId": "miami-dade-building-mechanical",
+  "authorityType": "city_department",
+  "authorityName": "Miami-Dade Building Department Mechanical",
+  "city": "miami",
+  "state": "fl",
+  "baseUrl": "https://www.miamidade.gov/global/economy/building/permits/mechanical.page",
+  "contactUrl": "https://www.miamidade.gov/global/economy/building/how-to-apply-for-permit.page",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

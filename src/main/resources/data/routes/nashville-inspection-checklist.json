@@ -1,0 +1,12 @@
+{
+  "path": "/tn/nashville/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "tn",
+  "city": "nashville",
+  "authorityId": "nashville-fire-marshal",
+  "profileId": "nashville-tn-kitchen-compliance",
+  "canonicalPath": "/tn/nashville/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Nashville's Fire Marshal inspection and permit materials are strong enough to support a local inspection-prep checklist.",
+  "lastGenerated": "2026-04-07T18:00:00+09:00"
+}

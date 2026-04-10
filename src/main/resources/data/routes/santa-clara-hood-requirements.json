@@ -1,0 +1,12 @@
+{
+  "path": "/ca/santa-clara/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "ca",
+  "city": "santa clara",
+  "authorityId": "santa-clara-fire-department",
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "canonicalPath": "/ca/santa-clara/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Santa Clara's fire materials support a source-backed hood and extinguishing-system paperwork page for commercial kitchens.",
+  "lastGenerated": "2026-04-07T17:00:00+09:00"
+}

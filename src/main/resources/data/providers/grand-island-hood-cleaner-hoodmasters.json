@@ -1,0 +1,15 @@
+{
+  "providerId": "hoodmasters-grand-island",
+  "providerName": "HOODMASTERS",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "grand-island-ne-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://hoodmastersomaha.com/our-services/complete-kitchen-hood-cleaning-service/",
+  "email": "meghan@hoodmastersomaha.com",
+  "phone": "402-333-3208",
+  "officialApprovalSourceUrl": "https://core-docs.s3.us-east-1.amazonaws.com/documents/asset/uploaded_file/5042/CGI/4776827/AppHoodF.pdf",
+  "internalNote": "HoodMasters publishes Grand Island in its Nebraska service area and offers hood cleaning, fire suppression inspections, and direct Omaha contact details for regional dispatch."
+}

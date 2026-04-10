@@ -1,0 +1,15 @@
+{
+  "providerId": "liquid-environmental-solutions-austin",
+  "providerName": "Liquid Environmental Solutions",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "austin-tx-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.liquidenviro.com/locations/austin-texas",
+  "email": "customerservice@liquidenviro.com",
+  "phone": "866.MY.GREASE",
+  "officialApprovalSourceUrl": "https://services.austintexas.gov/water/weirs/index.cfm?fuseaction=report.publicLWHauler",
+  "internalNote": "Austin location page states grease trap and interceptor cleaning, used cooking oil collection, and wastewater disposal services."
+}

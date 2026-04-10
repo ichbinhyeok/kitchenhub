@@ -1,0 +1,26 @@
+{
+  "recordId": "grand-island-fire-inspection",
+  "city": "grand island",
+  "state": "ne",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Kitchen hood or hood suppression permit paperwork with the contractor, owner, and building address information completed.",
+    "Proof that the Fire Department final inspection was scheduled or completed for the commercial kitchen project.",
+    "Building permit and certificate-of-occupancy records showing the project is not being occupied before all required inspections pass.",
+    "Grease trap or grease interceptor cleaning and hauling records if the site operates food service equipment."
+  ],
+  "commonFailureReasons": [
+    "A commercial kitchen project reaches occupancy before the separate Fire Department final inspection is completed.",
+    "The hood or hood suppression installation record is missing, incomplete, or does not match the installed system.",
+    "The project cannot produce permit paperwork or contractor information during inspection.",
+    "Grease control maintenance is undocumented even though the site relies on a commercial kitchen wastewater system."
+  ],
+  "rescheduleMethod": "Grand Island says a separate Fire Department final inspection on commercial projects must be scheduled by calling 308-385-5450.",
+  "penaltyOrEscalation": "Grand Island says a certificate of occupancy or completion will not be issued until all required inspections have been completed and passed, and the hood suppression permit can be revoked or become void if work violates code or stalls for six months.",
+  "sourceRefs": [
+    "src-grand-island-building-inspections",
+    "src-grand-island-fire-permits",
+    "src-grand-island-kitchen-hood-suppression-permit",
+    "src-grand-island-fire-prevention-division"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "recordId": "nashville-fire-inspection",
+  "city": "nashville",
+  "state": "tn",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Current hood cleaning certificate or kitchen label showing the last cleaning date and contractor.",
+    "Current hood suppression and other life-safety inspection reports that were submitted through Inspection Reports Online.",
+    "Operational permit paperwork or application records when the kitchen or event use requires a Fire Marshal permit.",
+    "Grease cleaning logs, manifests, and annual grease control certification records if the site operates grease control equipment."
+  ],
+  "commonFailureReasons": [
+    "The site cannot produce hood cleaning, suppression, or other life-safety reports during inspection.",
+    "Hood or duct systems show excessive grease contamination or the required dated label is missing.",
+    "An operational permit or required uploaded documentation is missing before the inspection date.",
+    "Life-safety deficiencies remain open when the follow-up or recurring inspection occurs."
+  ],
+  "rescheduleMethod": "Request inspections through Nashville's Fire and Life Safety Inspections page and use the Fire Marshal's Office contact workflow when a time-specific follow-up is needed.",
+  "penaltyOrEscalation": "Nashville says operational permits can require one-time, regular, or recurring inspections, permit fees are non-refundable, and permits can be revoked if the permit terms or Fire Code requirements are not followed.",
+  "sourceRefs": [
+    "src-nashville-fire-inspections",
+    "src-nashville-irol",
+    "src-nashville-operational-permits",
+    "src-nashville-vent-hood-procedures"
+  ]
+}

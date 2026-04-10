@@ -1,0 +1,12 @@
+{
+  "path": "/ne/grand-island/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "ne",
+  "city": "grand island",
+  "authorityId": "grand-island-utilities-fog-program",
+  "profileId": "grand-island-ne-kitchen-compliance",
+  "canonicalPath": "/ne/grand-island/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Grand Island's FOG program and food-service workflow are explicit enough to support a source-backed grease rule page.",
+  "lastGenerated": "2026-04-07T20:30:00+09:00"
+}

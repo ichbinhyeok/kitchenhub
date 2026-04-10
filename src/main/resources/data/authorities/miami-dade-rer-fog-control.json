@@ -1,0 +1,11 @@
+{
+  "authorityId": "miami-dade-rer-fog-control",
+  "authorityType": "city_department",
+  "authorityName": "Miami-Dade Regulatory and Economic Resources DERM FOG Control",
+  "city": "miami",
+  "state": "fl",
+  "baseUrl": "https://www.miamidade.gov/global/permit.page?Mduid_permit=per1731510597042250",
+  "contactUrl": "https://www.miamidade.gov/global/economy/building/construction-permitting-procedures.page",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

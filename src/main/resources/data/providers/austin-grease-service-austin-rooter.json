@@ -1,0 +1,15 @@
+{
+  "providerId": "austin-rooter-grease-service",
+  "providerName": "Austin Rooter",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "austin-tx-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.austinrooter.com/our-services",
+  "email": "schedule@austinrooter.com",
+  "phone": "512-844-8577",
+  "officialApprovalSourceUrl": "",
+  "internalNote": "Austin Rooter publishes dedicated grease trap cleaning service details, scheduled maintenance options, and direct Austin scheduling contact information."
+}

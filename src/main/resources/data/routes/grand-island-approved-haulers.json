@@ -1,0 +1,12 @@
+{
+  "path": "/ne/grand-island/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "ne",
+  "city": "grand island",
+  "authorityId": "grand-island-utilities-fog-program",
+  "profileId": "grand-island-ne-kitchen-compliance",
+  "canonicalPath": "/ne/grand-island/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Grand Island publishes an approved preferred hauler list for food service establishments and can support an indexed verification page.",
+  "lastGenerated": "2026-04-07T20:30:00+09:00"
+}

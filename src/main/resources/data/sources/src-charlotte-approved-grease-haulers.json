@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-charlotte-approved-grease-haulers",
+  "scopeType": "fog_rule",
+  "scopeKey": "charlotte-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Charlotte Water",
+  "title": "FlowFree Charlotte Water",
+  "sourceUrl": "https://www.charlottenc.gov/water/Customer-Care/Plumbing-Guidance-Compliance/FlowFree",
+  "quoteSummary": "Charlotte Water's FlowFree page links the current grease trap policy and the permitted grease hauler list for commercial kitchens.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-05-07"
+}

@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-tampa-fire-inspection-fees",
+  "scopeType": "inspection_prep",
+  "scopeKey": "tampa-fire-inspection",
+  "sourceTier": "tier_2",
+  "agency": "Tampa Fire Rescue",
+  "title": "Fire Code Compliance Inspection Fees",
+  "sourceUrl": "https://www.tampa.gov/fire-rescue/info/fee-schedule/inspection-fees",
+  "quoteSummary": "Tampa says existing commercial occupancies require routine fire code compliance inspections, unsatisfactory re-inspections double the initial fee, and a fourth re-inspection is referred to the Code Review Board.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

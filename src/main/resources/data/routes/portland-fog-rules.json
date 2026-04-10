@@ -1,0 +1,12 @@
+{
+  "path": "/or/portland/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "or",
+  "city": "portland",
+  "authorityId": "portland-bes-fog-program",
+  "profileId": "portland-or-kitchen-compliance",
+  "canonicalPath": "/or/portland/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Portland publishes source-backed FOG administrative rules with default cleaning and reporting requirements.",
+  "lastGenerated": "2026-04-07T16:30:00+09:00"
+}

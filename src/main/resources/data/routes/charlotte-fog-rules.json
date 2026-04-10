@@ -1,0 +1,12 @@
+{
+  "path": "/nc/charlotte/restaurant-grease-trap-rules",
+  "template": "fog-rules",
+  "state": "nc",
+  "city": "charlotte",
+  "authorityId": "charlotte-water-flow-free",
+  "profileId": "charlotte-nc-kitchen-compliance",
+  "canonicalPath": "/nc/charlotte/restaurant-grease-trap-rules",
+  "indexable": true,
+  "decisionReason": "Charlotte Water publishes a grease-trap policy and approved hauler list.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

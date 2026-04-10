@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-santa-clara-fog-program",
+  "scopeType": "fog_rule",
+  "scopeKey": "santa-clara-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "City of Santa Clara Water & Sewer Utilities",
+  "title": "Fats, Oils & Grease (FOG) Program",
+  "sourceUrl": "https://www.santaclaraca.gov/our-city/departments-g-z/water-sewer-utilities/sewer-utility/fats-oils-and-grease-fog-program",
+  "quoteSummary": "Santa Clara's FOG Program says commercial food service establishments are regulated through plan check and inspection, must submit the food service checklist for grease-laden wastewater, and can use the city-published grease pumpers and haulers list as a courtesy verification tool.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

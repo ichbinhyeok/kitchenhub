@@ -1,0 +1,11 @@
+{
+  "authorityId": "miami-dade-fire-rescue",
+  "authorityType": "fire_ahj",
+  "authorityName": "Miami-Dade Fire Rescue Fire Prevention",
+  "city": "miami",
+  "state": "fl",
+  "baseUrl": "https://www.miamidade.gov/global/permit.page?Mduid_permit=per1518190923457614",
+  "contactUrl": "https://www.miamidade.gov/global/fire/contact-fire-rescue.page",
+  "lastVerified": "2026-04-07",
+  "verificationStatus": "verified"
+}

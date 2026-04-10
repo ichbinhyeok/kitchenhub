@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-liquid-waste-transporter-permit",
+  "scopeType": "fog_rule",
+  "scopeKey": "miami-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Regulatory and Economic Resources DERM",
+  "title": "Liquid Waste Transporter Permit",
+  "sourceUrl": "https://www.miamidade.gov/global/permit.page?Mduid_permit=per1719600493495599",
+  "quoteSummary": "Miami-Dade says liquid waste transporter permits regulate septic and grease trap waste transport, include eManifest reporting, and provide DERM-permitted liquid waste transporter lists for regulated waste streams including brown grease.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

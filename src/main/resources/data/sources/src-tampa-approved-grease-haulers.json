@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-tampa-approved-grease-haulers",
+  "scopeType": "fog_rule",
+  "scopeKey": "tampa-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "City of Tampa Wastewater Department",
+  "title": "Registered Grease Haulers with City of Tampa",
+  "sourceUrl": "https://www.tampa.gov/sites/default/files/document/2025/grease-hauler-approved-09-02-25.pdf",
+  "quoteSummary": "Tampa publishes a current registered grease hauler list for food service facilities and the list includes RJ Green Environmental among approved haulers.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-05-07"
+}

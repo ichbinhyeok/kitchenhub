@@ -1,0 +1,12 @@
+{
+  "path": "/or/portland/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "or",
+  "city": "portland",
+  "authorityId": "portland-bes-fog-program",
+  "profileId": "portland-or-kitchen-compliance",
+  "canonicalPath": "/or/portland/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Portland has an authority-backed Preferred Pumper workflow for grease service and can support an indexed verification page.",
+  "lastGenerated": "2026-04-07T16:30:00+09:00"
+}

@@ -1,0 +1,15 @@
+{
+  "providerId": "onsite-environmental-nashville",
+  "providerName": "Onsite Environmental",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "nashville-tn-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://onsiteenvironmental.com/",
+  "email": "cparker@onsiteenvironmental.com",
+  "phone": "615-227-2133",
+  "officialApprovalSourceUrl": "https://www.nashville.gov/sites/default/files/2024-10/Approved_Hauler-Plumber_list-093024.pdf?ct=1728663850",
+  "internalNote": "Onsite Environmental operates a Nashville grease-waste facility, appears on Metro Water's approved grease waste hauler list, and publishes grease trap waste compliance services from its Nashville address."
+}

@@ -1,0 +1,12 @@
+{
+  "path": "/tx/austin/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "tx",
+  "city": "austin",
+  "authorityId": "austin-water-pretreatment",
+  "profileId": "austin-tx-kitchen-compliance",
+  "canonicalPath": "/tx/austin/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Austin publishes a live hauler report with clear non-endorsement language.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

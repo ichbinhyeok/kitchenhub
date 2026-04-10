@@ -1,0 +1,12 @@
+{
+  "path": "/fl/miami/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "fl",
+  "city": "miami",
+  "authorityId": "miami-dade-rer-fog-control",
+  "profileId": "miami-fl-kitchen-compliance",
+  "canonicalPath": "/fl/miami/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Miami-Dade publishes a permitted liquid waste transporter workflow for grease waste and can support an indexed verification page.",
+  "lastGenerated": "2026-04-07T22:00:00+09:00"
+}

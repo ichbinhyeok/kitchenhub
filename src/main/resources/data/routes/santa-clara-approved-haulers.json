@@ -1,0 +1,12 @@
+{
+  "path": "/ca/santa-clara/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "ca",
+  "city": "santa clara",
+  "authorityId": "santa-clara-water-sewer-fog-program",
+  "profileId": "santa-clara-ca-kitchen-compliance",
+  "canonicalPath": "/ca/santa-clara/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Santa Clara publishes a city-backed grease pumpers and haulers list with a non-endorsement disclaimer.",
+  "lastGenerated": "2026-04-07T17:00:00+09:00"
+}

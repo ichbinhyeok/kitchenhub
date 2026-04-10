@@ -1,0 +1,12 @@
+{
+  "path": "/or/portland/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "or",
+  "city": "portland",
+  "authorityId": "portland-fire-safety-inspection-program",
+  "profileId": "portland-or-kitchen-compliance",
+  "canonicalPath": "/or/portland/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Portland publishes fire-code and inspection materials that support local hood-cleaning and suppression paperwork guidance.",
+  "lastGenerated": "2026-04-07T16:30:00+09:00"
+}

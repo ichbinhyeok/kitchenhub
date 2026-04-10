@@ -1,0 +1,21 @@
+{
+  "ruleId": "tampa-hood-rule",
+  "authorityId": "tampa-fire-marshal",
+  "city": "tampa",
+  "state": "fl",
+  "hoodType": "kitchen hood extinguishing and exhaust systems",
+  "cleaningFrequencyBands": [
+    "Tampa's restaurant safety guide says kitchen hood extinguishing systems require servicing by an extinguisher company every six months.",
+    "Tampa says kitchen exhaust systems must be maintained free of excessive grease accumulation."
+  ],
+  "certificateRequirement": "Keep service documentation, approved plans, and certification papers on site when fire marshal inspections apply.",
+  "serviceTagRequirement": "Fire extinguishers and related life-safety equipment must be serviced and tagged current, and approved plans with certification papers must be available for inspections.",
+  "reportRetentionRule": "Retain hood service records, extinguisher tags, and related fire inspection paperwork with the site's fire-safety records.",
+  "suppressionInspectionRequirement": "Fire suppression inspections require a functional test for final approval, with utilities turned on and coordination with the fire alarm contractor when alarms are part of the project or occupancy.",
+  "sourceRefs": [
+    "src-tampa-fire-marshals-office",
+    "src-tampa-restaurant-safety-guide",
+    "src-tampa-fire-required-inspections"
+  ],
+  "lastVerified": "2026-04-07"
+}

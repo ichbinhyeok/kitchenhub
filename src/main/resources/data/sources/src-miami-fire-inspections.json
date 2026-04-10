@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-fire-inspections",
+  "scopeType": "hood_rule",
+  "scopeKey": "miami-hood-system-records",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Fire Rescue",
+  "title": "Fire Inspections",
+  "sourceUrl": "https://www.miamidade.gov/global/permit.page?Mduid_permit=per1518190923457614",
+  "quoteSummary": "Miami-Dade says fire inspections must be requested with the county permit or fire municipal number, inspections should be scheduled the day prior before 4 p.m., and requests may be cancelled if reinspection fees are due.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

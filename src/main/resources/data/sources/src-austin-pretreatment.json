@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-austin-pretreatment",
+  "scopeType": "fog_rule",
+  "scopeKey": "austin-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Austin Water",
+  "title": "Grease Interceptors - Customer Responsibilities",
+  "sourceUrl": "https://www.austintexas.gov/sites/default/files/files/Water/Discharge_Permits/Customer%20Responsibilities_Grease%20Interceptors_Aug_2024.pdf",
+  "quoteSummary": "Austin Water's current grease interceptor brochure says food-preparation businesses need an approved grease interceptor, service is due at least every 90 days or sooner at the 50 percent trigger, and disposal records must be retained and made available for inspection.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-06-07"
+}

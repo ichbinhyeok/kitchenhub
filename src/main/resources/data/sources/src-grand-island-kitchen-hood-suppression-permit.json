@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-grand-island-kitchen-hood-suppression-permit",
+  "scopeType": "hood_rule",
+  "scopeKey": "grand-island-hood-system-records",
+  "sourceTier": "tier_1",
+  "agency": "Grand Island Fire Department Fire Prevention Division",
+  "title": "Kitchen Hood Suppression System Application/Permit",
+  "sourceUrl": "https://core-docs.s3.us-east-1.amazonaws.com/documents/asset/uploaded_file/5042/CGI/4776827/AppHoodF.pdf",
+  "quoteSummary": "Grand Island's hood suppression permit says installations must conform to city ordinances, the International Fire Code, and Nebraska-adopted NFPA 96, and a final inspection must be requested and conducted by the Fire Prevention Division.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-08-07"
+}

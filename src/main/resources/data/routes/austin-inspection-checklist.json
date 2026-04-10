@@ -1,0 +1,12 @@
+{
+  "path": "/tx/austin/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "tx",
+  "city": "austin",
+  "authorityId": "austin-fire-marshal",
+  "profileId": "austin-tx-kitchen-compliance",
+  "canonicalPath": "/tx/austin/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Austin Fire publishes maintenance inspection checks and inspection request workflow.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

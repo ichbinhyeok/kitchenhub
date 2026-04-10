@@ -1,0 +1,21 @@
+{
+  "ruleId": "portland-hood-rule",
+  "authorityId": "portland-fire-safety-inspection-program",
+  "city": "portland",
+  "state": "or",
+  "hoodType": "commercial kitchen exhaust and hood suppression systems",
+  "cleaningFrequencyBands": [
+    "Portland's fire code follows the commercial cooking exhaust inspection table that ranges from monthly for solid-fuel and high-volume cooking to annually for low-volume systems.",
+    "Portland Fire & Rescue treats hood cleaning as part of the kitchen exhaust fire-safety record burden, not a generic janitorial task."
+  ],
+  "certificateRequirement": "Keep kitchen exhaust cleaning reports and any fire-system inspection paperwork available for Portland Fire & Rescue.",
+  "serviceTagRequirement": "Type I hoods in Portland need an automatic fire-extinguishing system with current inspection tagging and service documentation.",
+  "reportRetentionRule": "Retain the kitchen exhaust report sheet, hood cleaning records, and suppression inspection paperwork with the site's fire-safety records.",
+  "suppressionInspectionRequirement": "Portland expects fixed kitchen hood extinguishing systems to be inspected every six months and tagged current when inspectors review the site.",
+  "sourceRefs": [
+    "src-portland-fire-code-inspection-frequency",
+    "src-portland-small-business-fire-safety",
+    "src-portland-itm-program"
+  ],
+  "lastVerified": "2026-04-07"
+}

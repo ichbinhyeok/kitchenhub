@@ -1,0 +1,10 @@
+{
+  "profileId": "portland-or-kitchen-compliance",
+  "city": "portland",
+  "state": "or",
+  "fogAuthorityId": "portland-bes-fog-program",
+  "hoodAuthorityId": "portland-fire-safety-inspection-program",
+  "launchTier": 1,
+  "indexable": true,
+  "decisionReason": "Portland has source-backed FOG administrative rules, preferred pumper guidance, kitchen exhaust policies, and fire inspection workflow."
+}

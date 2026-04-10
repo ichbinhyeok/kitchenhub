@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-approved-hauler-plumber-list",
+  "scopeType": "fog_rule",
+  "scopeKey": "nashville-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Metro Nashville Water Services",
+  "title": "Approved Hauler and Plumber List",
+  "sourceUrl": "https://www.nashville.gov/sites/default/files/2024-10/Approved_Hauler-Plumber_list-093024.pdf?ct=1728663850",
+  "quoteSummary": "Metro Water publishes an approved grease waste hauler and plumber list and says a passing annual grease interceptor or grease trap certification must be submitted to mws.sdc@nashville.gov after completion.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-06-07"
+}

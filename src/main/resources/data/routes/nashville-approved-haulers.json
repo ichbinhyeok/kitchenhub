@@ -1,0 +1,12 @@
+{
+  "path": "/tn/nashville/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "tn",
+  "city": "nashville",
+  "authorityId": "nashville-water-grease-management",
+  "profileId": "nashville-tn-kitchen-compliance",
+  "canonicalPath": "/tn/nashville/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Metro Nashville Water Services publishes an approved grease waste hauler and plumber list that can support an indexed verification page.",
+  "lastGenerated": "2026-04-07T18:00:00+09:00"
+}

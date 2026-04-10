@@ -1,0 +1,12 @@
+{
+  "path": "/fl/tampa/restaurant-fire-inspection-checklist",
+  "template": "inspection-checklist",
+  "state": "fl",
+  "city": "tampa",
+  "authorityId": "tampa-fire-marshal",
+  "profileId": "tampa-fl-kitchen-compliance",
+  "canonicalPath": "/fl/tampa/restaurant-fire-inspection-checklist",
+  "indexable": true,
+  "decisionReason": "Tampa Fire publishes required inspection, fee, and restaurant safety guidance that supports inspection-prep pages.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}

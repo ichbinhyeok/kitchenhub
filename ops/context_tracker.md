@@ -1,0 +1,86 @@
+# Context Tracker
+
+## Current status
+- Product docs are merged and agent-readable.
+- A Spring Boot MVC implementation now exists and runs from Maven Wrapper.
+- The sharp wedge is local FOG plus hood plus inspection-prep, not broad restaurant compliance.
+- The strongest monetization path is direct sponsor routing for hood cleaning, grease hauling, and grease service vendors.
+- The strongest product moat is city and authority rule normalization plus recurring operator workflows.
+- Code bootstrap package roots are now scaffolded under `src/main/java` and `src/test/java`.
+- Implementation-prep specs now include entity schema, route inventory, sample data contracts, and acceptance tests.
+- Austin, TX, Charlotte, NC, Tampa, FL, Portland, OR, Santa Clara, CA, Nashville, TN, Grand Island, NE, and Miami, FL are implemented as live seed slices with SSR local pages and three guides.
+- Contract, routing, decision, freshness, attribution, admin, and SSR integration tests pass with `.\mvnw.cmd test` across the five-city Tier 1 cohort plus the full three-city Tier 2 set.
+
+## Latest decisions
+- Package root is `owner.kitchencompliance`.
+- Canonical entities are local enforcement authorities and cities, not generic restaurant categories.
+- Launch scope is fixed to FOG control, hood cleaning cadence, suppression and recordkeeping, and inspection-prep.
+- Vendor pages are secondary. Rule and verdict pages are the primary entry surfaces.
+- Approved-list pages require official list evidence. Otherwise the product must fall back to self-verification guidance.
+- This product should be treated as a direct sponsor and retention candidate, not a pure affiliate bet.
+- Spring Boot `3.4.4` is the implementation baseline because it cleanly supports the expected `com.fasterxml.jackson` MVC stack.
+- Provider finder pages stay live but `noindex` until real public or active sponsor inventory exists.
+- Indexed routes now have an explicit freshness gate: if any source is past `nextReviewOn`, the route is treated as stale and the build-level verification test fails.
+- Local CTA links and provider outbound links now flow through a server-side attribution redirect that logs city, page family, issue type, and sponsored status.
+- Attribution storage now defaults outside the app working directory and can be pinned with `APP_ATTRIBUTION_LOG_DIR` for deploy-safe persistence.
+- Deploy readiness is now a first-class gate: freshness, source depth, and minimum finder coverage are assessed together before an indexed route is treated as deploy-safe.
+- Operator utilities now exist as noindex SSR surfaces for grease logs, hood binders, and inspection reminder planning.
+- Server-side analytics now track visitor ids, verdict states, and operator-tool revisits in addition to click events.
+- Lead capture now stays file-backed and deploy-safe by default via `${user.home}/.kitchencompliancehub/leads`, with `/admin` exposing raw and summary lead exports.
+- Home should be issue-first for anxious operators, while canonical indexed pages must stay city-first and authority-aware.
+- Every local verdict page should follow the same operator order: authority requirement, proof on site, fail conditions, then next action.
+- Finder trust now depends on visible provider evidence quality and explicit separation from official guidance.
+
+## What changed this session
+- Created a standardized design packet under `C:\Development\Owner\KitchenComplianceHub`.
+- Converted the sharp v1-v3 source note into the shared `README + AGENT_START_HERE + ops + spec/00-08` format.
+- Locked the project around local rule clarity, operator workflow states, source freshness, and direct vendor routing.
+- Added bootstrap package roots for implementation.
+- Added `spec/09` through `spec/12` for implementation handoff.
+- Added Maven Wrapper, Spring Boot MVC app structure, JSON seed loading, route resolution, jte templates, and Austin launch data.
+- Added sitemap, robots, canonical metadata, structured data, and source-stack rendering.
+- Added test coverage for seed contracts, decision logic, rendered launch pages, and freshness verification.
+- Added real Austin provider inventory and a second city slice for Charlotte, NC.
+- Added public Charlotte provider inventory and moved Charlotte finder routes from held `noindex` to indexable.
+- Added Tampa, FL as the third live city slice with official grease ordinance, fire inspection, and public provider inventory.
+- Added Portland, OR as the fourth live city slice with BES FOG rules, Preferred Pumper guidance, fire inspection workflow, and public provider inventory.
+- Added Santa Clara, CA as the fifth live city slice with city FOG program materials, fire inspection guidance, and public provider inventory.
+- Added server-side click attribution for next-action CTAs and provider outbound links, with CSV logging under the configured external attribution directory.
+- Added a read-only `/admin` dashboard for attribution totals, breakdowns, and recent events.
+- Added a freshness watch section to `/admin` so indexed-route review timing is visible without running tests locally.
+- Added third public provider listings across the five-city cohort so each finder category now has at least three public options.
+- Added evidence-quality ordering for provider cards so authority-cited listings sort ahead of contact-only listings.
+- Added `/admin/exports/*` CSV exports for raw attribution, attribution summaries, and freshness watch data.
+- Added scheduled ops snapshots that write freshness and attribution summary CSVs to the configured ops directory.
+- Moved default attribution storage to `${user.home}/.kitchencompliancehub/attribution` and added env override support for mounted persistent storage.
+- Added Nashville, TN as the first Tier 2 expansion city with Metro Water FOG policy coverage, approved hauler workflow, Fire Marshal hood reporting, inspection-prep records, and public finder inventory.
+- Added Grand Island, NE as the second Tier 2 expansion city with city FOG guidance, approved preferred hauler workflow, Fire Department hood permit records, inspection-prep records, and public finder inventory.
+- Added Miami, FL as the third Tier 2 expansion city with Miami-Dade FOG permit guidance, liquid waste transporter workflow, county building and fire inspection requirements, and public finder inventory.
+- Ran a current-source audit across the live Tier 1 and Tier 2 cohort and corrected Santa Clara's FOG canonical URL to the newer sewer-utility path.
+- Captured the live-cohort audit results in `ops/source_audit_2026-04-07.md`.
+- Added a deploy-readiness dashboard, export, ops snapshot, and build gate so the pre-deploy surface now has a single blocker view across freshness, source quality, and finder inventory.
+- Added noindex operator tools with CSV worksheet downloads for grease logs, hood record binders, and inspection reminder planning.
+- Expanded analytics to include local page views, operator tool views, visitor ids, verdict states, and operator utility revisit summaries.
+- Added source evidence snapshots and ops alert Markdown outputs to the scheduled audit bundle.
+- Added short operator lead forms on provider finder pages and sponsor inquiry forms on local verdict pages, with persistent CSV capture and `/admin` lead reporting.
+- Added an Oracle VM deployment skeleton with a GitHub Actions workflow, `systemd` service example, and persistent-path env example so redeploys do not wipe attribution or lead CSV files.
+- Reworked the visual and content hierarchy on home, hood, inspection, and provider pages so the product reads as an operator compliance workflow instead of a vendor-led directory.
+- Validated the current Austin operator flow against official Austin fire inspection and liquid waste hauler guidance, then tightened provider evidence visibility and inspection taxonomy accordingly.
+- Added `spec/13_product_principles_and_page_checklists.md` so future work can be judged against page-family ship and no-ship criteria instead of ad hoc taste calls.
+
+## Next recommended tasks
+- Improve provider ranking beyond evidence presence alone by weighting city-specific coverage, direct local numbers, and freshness of the cited authority source.
+- Encode the new page-family checklist from `spec/13` into acceptance tests and recurring product QA so trust regressions are caught before deploy.
+- Decide whether alert delivery should stay file-and-log based or escalate to email, Slack, or issue creation.
+- Keep source dates and provider depth current; deploy readiness now fails closed when indexed routes fall out of bounds.
+- Decide whether the next build milestone is sponsor sales workflow polish or external alert delivery.
+
+## Open questions
+- Which launch cluster is best: Hampton Roads, Northern California, Florida Gulf, or Texas?
+- Should utility-level pages outrank city pages in mixed-governance markets?
+- How much of the reminder and log workflow should exist in v1 versus v2?
+- Should inspection-prep templates be gated lead magnets or fully public utilities?
+- What is the minimum provider-count and vetting bar for keeping a finder route indexed over time?
+
+## Source notes
+- Original ideation source: `C:\Users\tlsgu\OneDrive\문서\카카오톡 받은 파일\KitchenComplianceHub_Sharp_v1-v3.md`

@@ -1,0 +1,18 @@
+{
+  "ruleId": "grand-island-fog-rule",
+  "authorityId": "grand-island-utilities-fog-program",
+  "city": "grand island",
+  "state": "ne",
+  "foodServiceApplicability": "Grand Island treats food service establishments as a key FOG source and directs restaurants and other food handlers to follow internal best management practices and the city food-establishment workflow.",
+  "interceptorType": "Grand Island's food-establishment workflow centers on commercial grease interceptors and grease traps, with exceptions for smaller self-maintained units determined by the city.",
+  "pumpOutFrequency": "Grand Island's city pages focus on documented cleaning and maintenance through the preferred hauler workflow rather than publishing a fixed citywide pump-out interval, so operators need a written service cadence tied to the interceptor size and kitchen load.",
+  "manifestRequirement": "Keep grease cleaning records, hauling documentation, and the city's cleaning guidance together on site so staff can show how interceptor maintenance and disposal are being documented.",
+  "approvedHaulerMode": "official_list",
+  "submissionMethod": "Start from Grand Island's Approved Preferred Haulers list and confirm the provider can clean, document, haul, and dispose of commercial grease interceptor waste under the city's program.",
+  "enforcementNote": "Grand Island says FOG buildup can lead to sewer backups, potential health violations, costly plumbing repairs, fines from non-compliance, and closure pressure when commercial kitchens let grease controls fail.",
+  "sourceRefs": [
+    "src-grand-island-fog-program",
+    "src-grand-island-food-service-establishments"
+  ],
+  "lastVerified": "2026-04-07"
+}

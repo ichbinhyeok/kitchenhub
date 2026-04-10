@@ -1,0 +1,26 @@
+{
+  "recordId": "santa-clara-fire-inspection",
+  "city": "santa clara",
+  "state": "ca",
+  "inspectionType": "fire",
+  "whatMustBeOnSite": [
+    "Current hood extinguishing acceptance or service paperwork for the commercial cooking system.",
+    "Current hood cleaning records and any grease control device maintenance logs kept for at least three years.",
+    "Any correction notices, plan-check approvals, or permit records tied to the kitchen build-out.",
+    "Fire-system fee or reinspection records if the site is already in a correction cycle."
+  ],
+  "commonFailureReasons": [
+    "The business cannot produce hood-system or grease-control records during inspection.",
+    "The commercial cooking hood extinguishing system acceptance or service paperwork is missing.",
+    "Corrective items remain open when the follow-up inspection occurs.",
+    "FOG or hood housekeeping issues found during inspection remain uncorrected."
+  ],
+  "rescheduleMethod": "Santa Clara says most new businesses are inspected within 30 days of the business license application; if not, operators should call 408-615-4970 to schedule the inspection.",
+  "penaltyOrEscalation": "Santa Clara's fire materials tie inspections and one-time fire fees to the municipal fee schedule, and repeated or unresolved issues can move into reinspection or code enforcement handling.",
+  "sourceRefs": [
+    "src-santa-clara-fire-faq",
+    "src-santa-clara-community-risk-reduction",
+    "src-santa-clara-fire-fee-schedule",
+    "src-santa-clara-municipal-fire-code"
+  ]
+}

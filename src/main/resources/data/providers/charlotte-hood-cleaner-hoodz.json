@@ -1,0 +1,15 @@
+{
+  "providerId": "hoodz-charlotte-hood-cleaning",
+  "providerName": "HOODZ of Upstate SC and Greater Charlotte",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "charlotte-nc-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://www.hoodzinternational.com/the-upstate-south-carolina/request-service/",
+  "email": "upstatesc@hoodz.us.com",
+  "phone": "864-469-0879",
+  "officialApprovalSourceUrl": "https://www.charlottenc.gov/files/sharedassets/city/v/1/public-safety/fire/documents/cfd_interpretation-frequency_of_kitchen_hood_system_service.pdf",
+  "internalNote": "HOODZ of Upstate SC and Greater Charlotte publishes direct request-service contact details and Charlotte-area commercial kitchen service coverage."
+}

@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-miami-building-inspections",
+  "scopeType": "inspection_prep",
+  "scopeKey": "miami-fire-inspection-prep",
+  "sourceTier": "tier_1",
+  "agency": "Miami-Dade Building Department",
+  "title": "Building Inspections",
+  "sourceUrl": "https://www.miamidade.gov/global/economy/building/inspections.page",
+  "quoteSummary": "Miami-Dade says the Building Official must be notified of the final inspection, and inspection requests can be scheduled one business day in advance through the county inspection system.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

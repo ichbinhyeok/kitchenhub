@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-grand-island-food-service-establishments",
+  "scopeType": "fog_rule",
+  "scopeKey": "grand-island-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "City of Grand Island Utilities",
+  "title": "Food Service Establishments",
+  "sourceUrl": "https://www.grand-island.com/o/cgi/page/food-service-establishments",
+  "quoteSummary": "Grand Island's food-service page says the Preferred Hauler Program standardizes cleaning, documenting, hauling, and disposal of commercial grease interceptor waste and lists Eberl Plumbing, Herman Plumbing, Logue Plumbing, and Sewer Rooter & Plumbing as approved preferred haulers.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

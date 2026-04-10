@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-operational-permits",
+  "scopeType": "inspection_prep",
+  "scopeKey": "nashville-fire-inspection-prep",
+  "sourceTier": "tier_1",
+  "agency": "Nashville Fire Department Fire Marshal's Office",
+  "title": "Nashville Fire Marshal's Office Operational Permits",
+  "sourceUrl": "https://www.nashville.gov/departments/fire/permits/operational-permits",
+  "quoteSummary": "Nashville says business owners must obtain required operational permits before regulated fire-code activities, upload required documentation during application, and understand that permits can require inspections and can be revoked if permit terms are not followed.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

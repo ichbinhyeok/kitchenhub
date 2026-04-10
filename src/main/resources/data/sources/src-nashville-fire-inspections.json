@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-fire-inspections",
+  "scopeType": "inspection_prep",
+  "scopeKey": "nashville-fire-inspection-prep",
+  "sourceTier": "tier_1",
+  "agency": "Nashville Fire Department Fire Marshal's Office",
+  "title": "Fire and Life Safety Inspections",
+  "sourceUrl": "https://www.nashville.gov/departments/fire/fire-marshal-office/inspections",
+  "quoteSummary": "Nashville says the Fire Marshal's Office coordinates fire and life safety inspections for U&O permits, operational permits, fire suppression systems, alarms, annual inspections, and other code-driven approvals throughout Metro Nashville and Davidson County.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

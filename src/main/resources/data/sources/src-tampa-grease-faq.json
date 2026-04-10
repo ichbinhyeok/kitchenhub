@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-tampa-grease-faq",
+  "scopeType": "fog_rule",
+  "scopeKey": "tampa-fog-food-service",
+  "sourceTier": "tier_2",
+  "agency": "City of Tampa Wastewater Department",
+  "title": "Grease Ordinance FAQ",
+  "sourceUrl": "https://www.tampa.gov/wastewater/programs/grease-ordinance/education/frequently-asked-questions",
+  "quoteSummary": "Tampa says indoor grease traps must be inspected, cleaned, and maintained at least weekly and all grease traps or interceptors must be cleaned when grease plus solids exceed 25% of capacity.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

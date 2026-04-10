@@ -1,0 +1,15 @@
+{
+  "providerId": "mahoney-environmental-austin",
+  "providerName": "Mahoney Environmental",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "austin-tx-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://mahoneyes.com/contact-us/",
+  "email": "customerservice@mahoneyes.com",
+  "phone": "800-892-9392",
+  "officialApprovalSourceUrl": "",
+  "internalNote": "Mahoney's contact page lists Austin, TX service coverage and grease trap services with direct customer service contact."
+}

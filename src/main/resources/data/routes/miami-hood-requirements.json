@@ -1,0 +1,12 @@
+{
+  "path": "/fl/miami/hood-cleaning-requirements",
+  "template": "hood-requirements",
+  "state": "fl",
+  "city": "miami",
+  "authorityId": "miami-dade-building-mechanical",
+  "profileId": "miami-fl-kitchen-compliance",
+  "canonicalPath": "/fl/miami/hood-cleaning-requirements",
+  "indexable": true,
+  "decisionReason": "Miami-Dade mechanical and fire inspection guidance is explicit enough to support an indexed hood page.",
+  "lastGenerated": "2026-04-07T22:00:00+09:00"
+}

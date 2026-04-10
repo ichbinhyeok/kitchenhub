@@ -1,0 +1,12 @@
+{
+  "sourceId": "src-nashville-grease-management",
+  "scopeType": "fog_rule",
+  "scopeKey": "nashville-fog-food-service",
+  "sourceTier": "tier_1",
+  "agency": "Metro Nashville Water Services",
+  "title": "Grease Management",
+  "sourceUrl": "https://www.nashville.gov/departments/water/environmental-compliance/grease-management",
+  "quoteSummary": "Metro Water's grease management page ties Nashville food service operators to the current FOG policy, approved hauler certification list, grease cleaning log, and annual certification workflow for grease control equipment.",
+  "verifiedOn": "2026-04-07",
+  "nextReviewOn": "2026-07-07"
+}

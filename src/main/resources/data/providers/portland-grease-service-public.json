@@ -1,0 +1,15 @@
+{
+  "providerId": "nw-biofuel-portland",
+  "providerName": "NW Biofuel",
+  "providerType": "grease_hauler",
+  "coverageTargets": [
+    "portland-or-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://nwbiofuel.com/grease-trap-cleaning/",
+  "email": "info@nwbiofuel.com",
+  "phone": "503-954-6173",
+  "officialApprovalSourceUrl": "https://static1.squarespace.com/static/58c02df503596ee56b2eee03/t/68278731d3231448c94c45d5/1747420977838/Preferred%2BPumper%2BMatrix%2BMay2025.pdf",
+  "internalNote": "NW Biofuel publishes Portland-area grease trap cleaning and states it is a Preferred Pumper with FOG report submission for local compliance."
+}

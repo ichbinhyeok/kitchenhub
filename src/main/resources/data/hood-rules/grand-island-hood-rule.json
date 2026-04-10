@@ -1,0 +1,21 @@
+{
+  "ruleId": "grand-island-hood-rule",
+  "authorityId": "grand-island-fire-department",
+  "city": "grand island",
+  "state": "ne",
+  "hoodType": "kitchen hood and hood suppression systems",
+  "cleaningFrequencyBands": [
+    "Grand Island requires a Fire Department permit workflow for kitchen hood and suppression system work, including a Kitchen Hood System Application and a Hood Suppression System application or permit record.",
+    "Grand Island requires a separate Fire Department final inspection on commercial projects before occupancy, and the hood suppression permit says installation must conform to city ordinances, the International Fire Code, and Nebraska-adopted NFPA 96."
+  ],
+  "certificateRequirement": "Keep the kitchen hood or hood suppression permit paperwork, contractor details, and any final sign-off records available on site.",
+  "serviceTagRequirement": "Maintain visible service documentation and contractor records that match the permitted hood or suppression work when the Fire Department inspects the project.",
+  "reportRetentionRule": "Retain permit records, contractor information, and final inspection proof with the kitchen's fire-safety paperwork before the certificate of occupancy or completion is requested.",
+  "suppressionInspectionRequirement": "The hood suppression permit says a final inspection must be requested and completed by the Fire Prevention Division after the system is installed or repaired.",
+  "sourceRefs": [
+    "src-grand-island-fire-permits",
+    "src-grand-island-kitchen-hood-suppression-permit",
+    "src-grand-island-building-inspections"
+  ],
+  "lastVerified": "2026-04-07"
+}

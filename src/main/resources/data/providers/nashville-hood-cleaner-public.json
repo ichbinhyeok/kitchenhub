@@ -1,0 +1,15 @@
+{
+  "providerId": "nashville-hood-cleaning-pros",
+  "providerName": "Nashville Hood Cleaning Pros",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "nashville-tn-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://nashvillehoodcleaningpros.com/",
+  "email": "office@nashvillehoodcleaningpros.com",
+  "phone": "615-235-5373",
+  "officialApprovalSourceUrl": "https://www.nashville.gov/departments/fire/fire-marshal-office/inspection-reports-online",
+  "internalNote": "Nashville Hood Cleaning Pros publishes direct Nashville hood cleaning coverage with inspection-ready photo reports, service stickers, and direct local contact details."
+}

@@ -1,0 +1,15 @@
+{
+  "providerId": "hood-tek-tampa",
+  "providerName": "Hood-Tek",
+  "providerType": "hood_cleaner",
+  "coverageTargets": [
+    "tampa-fl-kitchen-compliance"
+  ],
+  "listingMode": "public",
+  "sponsorStatus": "active",
+  "siteUrl": "https://tampahoodcleaning.com/contact-us.html",
+  "email": "info@Tampahoodcleaning.com",
+  "phone": "813-390-4396",
+  "officialApprovalSourceUrl": "https://www.tampa.gov/sites/default/files/content/files/migrated/fire_safety_guide.pdf",
+  "internalNote": "Hood-Tek publishes Tampa Bay commercial hood cleaning coverage with direct Hillsborough contact details and inspection-support positioning."
+}

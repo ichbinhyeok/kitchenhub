@@ -1,0 +1,12 @@
+{
+  "path": "/nc/charlotte/approved-grease-haulers",
+  "template": "approved-haulers",
+  "state": "nc",
+  "city": "charlotte",
+  "authorityId": "charlotte-water-flow-free",
+  "profileId": "charlotte-nc-kitchen-compliance",
+  "canonicalPath": "/nc/charlotte/approved-grease-haulers",
+  "indexable": true,
+  "decisionReason": "Charlotte Water links a current approved hauler list from FlowFree.",
+  "lastGenerated": "2026-04-07T15:00:00+09:00"
+}
