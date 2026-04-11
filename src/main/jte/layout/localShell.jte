@@ -63,19 +63,21 @@
                 </div>
             @endif
 
-            <section class="panel governance-note">
-                <div class="panel__eyebrow">${page.governanceHeading()}</div>
-                <h2>Rule holder: ${page.authorityName()}</h2>
-                <p class="panel__note" style="margin-top: 10px;">${page.governanceBody()}</p>
-                <div class="action-row governance-note__actions">
-                    @if(!page.sourcePath().equals(page.canonicalPath()))
-                        <a class="button button--secondary" href="${page.canonicalPath()}">Open authority page</a>
-                    @endif
-                    @if(!page.sourcePath().equals(page.cityEntryPath()))
-                        <a class="button button--ghost" href="${page.cityEntryPath()}">Open city entry</a>
-                    @endif
-                </div>
-            </section>
+            @if(page.template() != RouteTemplate.FIND_GREASE_SERVICE && page.template() != RouteTemplate.FIND_HOOD_CLEANER)
+                <section class="panel governance-note">
+                    <div class="panel__eyebrow">${page.governanceHeading()}</div>
+                    <h2>Rule holder: ${page.authorityName()}</h2>
+                    <p class="panel__note" style="margin-top: 10px;">${page.governanceBody()}</p>
+                    <div class="action-row governance-note__actions">
+                        @if(!page.sourcePath().equals(page.canonicalPath()))
+                            <a class="button button--secondary" href="${page.canonicalPath()}">Open authority page</a>
+                        @endif
+                        @if(!page.sourcePath().equals(page.cityEntryPath()))
+                            <a class="button button--ghost" href="${page.cityEntryPath()}">Open city entry</a>
+                        @endif
+                    </div>
+                </section>
+            @endif
 
             @if(page.template() == RouteTemplate.FOG_RULES || page.template() == RouteTemplate.APPROVED_HAULERS)
                 <section class="local-hero">
@@ -557,8 +559,22 @@
             @if(page.template() == RouteTemplate.FIND_GREASE_SERVICE || page.template() == RouteTemplate.FIND_HOOD_CLEANER)
                 <section class="provider-hero">
                     <article class="provider-summary">
+                        <div class="provider-governance-rail">
+                            <div>
+                                <div class="panel__eyebrow">${page.governanceHeading()}</div>
+                                <p>${page.governanceBody()}</p>
+                            </div>
+                            <div class="provider-governance-rail__actions">
+                                @if(!page.sourcePath().equals(page.canonicalPath()))
+                                    <a class="button button--secondary" href="${page.canonicalPath()}">Authority path</a>
+                                @endif
+                                @if(!page.sourcePath().equals(page.cityEntryPath()))
+                                    <a class="button button--ghost" href="${page.cityEntryPath()}">City entry</a>
+                                @endif
+                            </div>
+                        </div>
                         <div class="local-hero__eyebrow">${page.kicker()}</div>
-                        <h1 style="font-size: clamp(2.6rem, 5vw, 4rem); line-height: 0.94; margin-top: 8px;">${page.title()}</h1>
+                        <h1 style="font-size: clamp(2.3rem, 4.6vw, 3.5rem); line-height: 0.95; margin-top: 8px;">${page.title()}</h1>
                         <p class="local-hero__summary">${page.summary()}</p>
                         <div class="local-hero__meta">
                             <span>${page.authorityName()}</span>
