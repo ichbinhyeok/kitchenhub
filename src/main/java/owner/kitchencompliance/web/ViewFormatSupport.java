@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import owner.kitchencompliance.model.InspectionChecklistSection;
+import owner.kitchencompliance.model.ProviderCard;
 import owner.kitchencompliance.model.SourceAttribution;
 
 public final class ViewFormatSupport {
@@ -117,6 +118,35 @@ public final class ViewFormatSupport {
 
     public static boolean hasOfficialEvidence(String url) {
         return url != null && !url.isBlank();
+    }
+
+    public static String firstOrFallback(List<String> values, String fallback) {
+        if (values == null || values.isEmpty()) {
+            return fallback;
+        }
+        String first = values.getFirst();
+        if (first == null || first.isBlank()) {
+            return fallback;
+        }
+        return first;
+    }
+
+    public static int authorityBackedProviderCount(List<ProviderCard> providers) {
+        if (providers == null || providers.isEmpty()) {
+            return 0;
+        }
+        return (int) providers.stream()
+                .filter(provider -> hasOfficialEvidence(provider.officialApprovalSourceUrl()))
+                .count();
+    }
+
+    public static int verificationRequiredProviderCount(List<ProviderCard> providers) {
+        if (providers == null || providers.isEmpty()) {
+            return 0;
+        }
+        return (int) providers.stream()
+                .filter(provider -> !hasOfficialEvidence(provider.officialApprovalSourceUrl()))
+                .count();
     }
 
     private static String categoryFor(String value) {

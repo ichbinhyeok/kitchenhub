@@ -6,7 +6,14 @@
   "authorityId": "austin-water-pretreatment",
   "profileId": "austin-tx-kitchen-compliance",
   "canonicalPath": "/tx/austin/find-grease-service",
-  "indexable": true,
-  "decisionReason": "Public Austin grease-service coverage is live and can be indexed while staying separate from official guidance.",
+  "indexable": false,
+  "decisionReason": "Austin grease-service routing stays useful as an operator workflow, but it should not be indexed until provider evidence catches up with the city's official hauler logic.",
+  "noindexReason": "Austin Water publishes an official hauler workflow, but no current grease-service provider card carries authority-backed evidence, so this finder stays noindex-monitored.",
+  "promotionChecklist": [
+    "Attach at least one authority-backed hauler or transporter evidence link to a renderable provider card.",
+    "Keep three renderable providers with direct Austin contact details and visible service scope.",
+    "Re-check the route after the authority-backed evidence is added and only then promote it into search."
+  ],
+  "promotionReviewOn": "2026-04-21",
   "lastGenerated": "2026-04-07T15:00:00+09:00"
 }

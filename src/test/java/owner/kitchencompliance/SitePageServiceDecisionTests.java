@@ -44,6 +44,7 @@ import owner.kitchencompliance.rules.ProviderRoutingDecisionService;
 import owner.kitchencompliance.web.AttributionProperties;
 import owner.kitchencompliance.web.AttributionService;
 import owner.kitchencompliance.web.GuideCatalog;
+import owner.kitchencompliance.web.InfoPageCatalog;
 import owner.kitchencompliance.web.OperatorToolCatalog;
 import owner.kitchencompliance.web.OperatorToolService;
 import owner.kitchencompliance.web.SitePageService;
@@ -60,6 +61,8 @@ class SitePageServiceDecisionTests {
 
         assertThat(page.officialListStatement()).contains("authority-backed hauler or preferred-pumper list");
         assertThat(page.meta().robots()).isEqualTo("index,follow");
+        assertThat(page.canonicalPath()).isEqualTo("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules");
+        assertThat(page.governanceHeading()).contains("Utility-owned");
     }
 
     @Test
@@ -176,7 +179,7 @@ class SitePageServiceDecisionTests {
 
         assertThat(page.providers()).extracting(provider -> provider.providerName())
                 .containsExactly("Public With Official", "Public No Official");
-        assertThat(page.providers().getFirst().evidenceLabel()).contains("Authority list");
+        assertThat(page.providers().getFirst().evidenceLabel()).isEqualTo("Authority-backed public contact");
     }
 
     @Test
@@ -187,6 +190,7 @@ class SitePageServiceDecisionTests {
         LocalPageViewModel page = (LocalPageViewModel) resolvedPage.page();
 
         assertThat(page.operatorLeadPanel()).isNotNull();
+        assertThat(page.prioritizeOperatorLeadPanel()).isFalse();
         assertThat(page.sponsorPanel()).isNotNull();
         assertThat(page.submissionNotice().title()).contains("saved");
     }
@@ -202,13 +206,31 @@ class SitePageServiceDecisionTests {
         assertThat(page.sponsorPanel()).isNotNull();
     }
 
+    @Test
+    void localRulePagesBuildSearchFocusedTitlesDescriptionsAndSummaries() {
+        SitePageService service = createService(fogRule(ApprovedHaulerMode.OFFICIAL_LIST), List.of(), RouteTemplate.FOG_RULES);
+
+        LocalPageViewModel fogPage = (LocalPageViewModel) service.localPage("/tx/austin/restaurant-grease-trap-rules", null).page();
+        LocalPageViewModel hoodPage = (LocalPageViewModel) service.localPage("/authority/tx/austin-fire-marshal/hood-cleaning-requirements", null).page();
+
+        assertThat(fogPage.meta().title()).isEqualTo("Austin, TX Grease Trap Rules for Restaurants | Pump-Outs & Manifests");
+        assertThat(fogPage.meta().description()).contains("interceptor approval, pump-out timing, manifests to keep on site");
+        assertThat(fogPage.summary()).contains("grease trap rules for restaurants");
+
+        assertThat(hoodPage.meta().title()).isEqualTo("Austin, TX Hood Cleaning Requirements | Reports & Inspection Prep");
+        assertThat(hoodPage.meta().description()).contains("service reports, tags, and inspection-ready paperwork");
+        assertThat(hoodPage.summary()).contains("hood cleaning requirements for restaurants");
+    }
+
     private SitePageService createService(FogRuleRecord fogRule, List<ProviderRecord> providers, RouteTemplate primaryTemplate) {
         SeedRegistry seedRegistry = mock(SeedRegistry.class);
         GuideCatalog guideCatalog = mock(GuideCatalog.class);
+        InfoPageCatalog infoPageCatalog = new InfoPageCatalog();
         SiteProperties siteProperties = new SiteProperties("http://localhost:8080", "KitchenComplianceHub", "tx");
         IndexingPolicyService indexingPolicyService = new IndexingPolicyService(
                 new SourceFreshnessService(Clock.fixed(Instant.parse("2026-04-07T00:00:00Z"), java.time.ZoneOffset.UTC)),
-                new SourceQualityAssessmentService(seedRegistry)
+                new SourceQualityAssessmentService(seedRegistry),
+                seedRegistry
         );
         ProviderEvidenceService providerEvidenceService = new ProviderEvidenceService();
         ProviderRoutingDecisionService providerRoutingDecisionService = new ProviderRoutingDecisionService(indexingPolicyService, providerEvidenceService);
@@ -335,8 +357,14 @@ class SitePageServiceDecisionTests {
             };
         });
         when(seedRegistry.route("/tx/austin/restaurant-grease-trap-rules")).thenReturn(fogRoute);
+        when(seedRegistry.route("/authority/tx/austin-fire-marshal/hood-cleaning-requirements")).thenReturn(hoodRoute);
         when(seedRegistry.route("/tx/austin/find-grease-service")).thenReturn(greaseFinderRoute);
         when(seedRegistry.route("/tx/austin/find-hood-cleaner")).thenReturn(hoodFinderRoute);
+        when(seedRegistry.canonicalPath(any(RouteRecord.class))).thenAnswer(invocation -> {
+            RouteRecord route = invocation.getArgument(0);
+            return "/authority/" + route.state() + "/" + route.authorityId() + "/" + route.path().substring(route.path().lastIndexOf('/') + 1);
+        });
+        when(seedRegistry.usesAuthorityCanonical(any(RouteRecord.class))).thenReturn(true);
 
         return new SitePageService(
                 seedRegistry,
@@ -345,6 +373,7 @@ class SitePageServiceDecisionTests {
                 indexingPolicyService,
                 siteProperties,
                 guideCatalog,
+                infoPageCatalog,
                 objectMapper,
                 attributionService,
                 providerEvidenceService,
@@ -363,6 +392,9 @@ class SitePageServiceDecisionTests {
                 path,
                 indexable,
                 "test route",
+                null,
+                List.of(),
+                null,
                 OffsetDateTime.parse("2026-04-07T15:00:00+09:00")
         );
     }

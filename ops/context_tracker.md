@@ -30,6 +30,13 @@
 - Home should be issue-first for anxious operators, while canonical indexed pages must stay city-first and authority-aware.
 - Every local verdict page should follow the same operator order: authority requirement, proof on site, fail conditions, then next action.
 - Finder trust now depends on visible provider evidence quality and explicit separation from official guidance.
+- Weak routes should move into a monitored noindex promotion queue, not disappear into an unowned backlog.
+- Organic acquisition is allowed, but canonical local rule pages remain the SEO core and weak pages stay monitored instead of forced into indexation.
+- `/admin` is a protected surface and should never rely on `noindex` as its only guardrail.
+- Public trust pages should exist before launch so the product can explain independence, methodology, sponsor boundaries, privacy, and corrections in its own voice.
+- City-first entry can stay, but mixed-governance markets need an authority-first canonical design rule.
+- Authority-first canonical logic is now implemented for utility- and fire-owned routes, with city URLs acting as entry surfaces and `/authority/...` aliases acting as canonical paths.
+- Search-demand snapshots should be treated as an explicit ops input, not tribal knowledge, when deciding promotion, CTR fixes, or discoverability work.
 
 ## What changed this session
 - Created a standardized design packet under `C:\Development\Owner\KitchenComplianceHub`.
@@ -67,13 +74,30 @@
 - Reworked the visual and content hierarchy on home, hood, inspection, and provider pages so the product reads as an operator compliance workflow instead of a vendor-led directory.
 - Validated the current Austin operator flow against official Austin fire inspection and liquid waste hauler guidance, then tightened provider evidence visibility and inspection taxonomy accordingly.
 - Added `spec/13_product_principles_and_page_checklists.md` so future work can be judged against page-family ship and no-ship criteria instead of ad hoc taste calls.
+- Added a noindex promotion queue in `/admin`, export snapshots, and route metadata support so intentionally held routes keep a visible reason, checklist, and next review date.
+- Added `spec/14_seo_indexing_strategy.md` to codify canonical local SEO, guide linking, indexing states, finder thresholds, freshness discipline, and a 90-day organic priority model.
+- Added Spring Security protection for `/admin` and `/admin/exports/*` with env-overridable credentials.
+- Added public trust and legal pages for about, methodology, contact, privacy, terms, sponsor policy, independence, and corrections.
+- Removed quasi-official UI copy and hardcoded seal usage from public surfaces so the product reads as an independent source-backed workflow rather than a municipal portal.
+- Forced all finder pages into evidence-first ordering so source and provider context appear before operator lead capture.
+- Added `spec/15_authority_first_route_design.md` to document how city-first entry and authority-first canonical logic should coexist in mixed-governance markets.
+- Implemented authority-first canonical routing, authority alias URLs, governance messaging on local pages, authority-aware sitemap output, and path-preserving attribution and lead logging.
+- Extended authority-first exposure into home and evergreen guides so city entry surfaces now show the actual rule holder and guides can drop directly into authority-backed local routes.
+- Added a public authority browse directory plus authority detail pages so mixed-governance markets have a first-class browse surface, not just hidden canonical aliases.
+- Added imported search-demand snapshots, `/admin` demand reporting, CSV exports, and ops audit snapshots so noindex promotion and CTR work can be reviewed on a standing loop.
+- Upgraded provider finder cards with coverage-confidence, why-listed, and route-evidence-review labels so evidence quality stays visible at the card level.
+- Upgraded structured data on local and browse pages to include breadcrumb trails plus item-list markup only where the page truly behaves like a directory or collection.
 
 ## Next recommended tasks
 - Improve provider ranking beyond evidence presence alone by weighting city-specific coverage, direct local numbers, and freshness of the cited authority source.
 - Encode the new page-family checklist from `spec/13` into acceptance tests and recurring product QA so trust regressions are caught before deploy.
+- Decide which future city or finder slices should enter the noindex promotion queue first instead of being built directly as indexed pages.
+- Encode the SEO strategy into future page titles, guide links, and route promotion review cadence.
 - Decide whether alert delivery should stay file-and-log based or escalate to email, Slack, or issue creation.
 - Keep source dates and provider depth current; deploy readiness now fails closed when indexed routes fall out of bounds.
 - Decide whether the next build milestone is sponsor sales workflow polish or external alert delivery.
+- Decide whether authority alias routes should stay secondary navigation inside home/guides or become first-class browse surfaces elsewhere in the product.
+- Decide how imported Search Console snapshots should be refreshed operationally: manual JSON seed commit, admin upload flow, or external pull job.
 
 ## Open questions
 - Which launch cluster is best: Hampton Roads, Northern California, Florida Gulf, or Texas?

@@ -12,7 +12,9 @@ import org.springframework.stereotype.Service;
 import owner.kitchencompliance.web.AttributionReportService;
 import owner.kitchencompliance.web.DeployReadinessReportService;
 import owner.kitchencompliance.web.FreshnessReportService;
+import owner.kitchencompliance.web.NoindexPromotionReportService;
 import owner.kitchencompliance.web.OpsAlertService;
+import owner.kitchencompliance.web.SearchDemandReportService;
 import owner.kitchencompliance.web.SourceQualityReportService;
 import owner.kitchencompliance.web.SourceEvidenceSnapshotService;
 
@@ -26,6 +28,8 @@ public class OpsAuditService {
     private final AttributionReportService attributionReportService;
     private final SourceQualityReportService sourceQualityReportService;
     private final DeployReadinessReportService deployReadinessReportService;
+    private final NoindexPromotionReportService noindexPromotionReportService;
+    private final SearchDemandReportService searchDemandReportService;
     private final SourceEvidenceSnapshotService sourceEvidenceSnapshotService;
     private final OpsAlertService opsAlertService;
     private final Clock clock;
@@ -36,6 +40,8 @@ public class OpsAuditService {
             AttributionReportService attributionReportService,
             SourceQualityReportService sourceQualityReportService,
             DeployReadinessReportService deployReadinessReportService,
+            NoindexPromotionReportService noindexPromotionReportService,
+            SearchDemandReportService searchDemandReportService,
             SourceEvidenceSnapshotService sourceEvidenceSnapshotService,
             OpsAlertService opsAlertService,
             Clock clock
@@ -45,6 +51,8 @@ public class OpsAuditService {
         this.attributionReportService = attributionReportService;
         this.sourceQualityReportService = sourceQualityReportService;
         this.deployReadinessReportService = deployReadinessReportService;
+        this.noindexPromotionReportService = noindexPromotionReportService;
+        this.searchDemandReportService = searchDemandReportService;
         this.sourceEvidenceSnapshotService = sourceEvidenceSnapshotService;
         this.opsAlertService = opsAlertService;
         this.clock = clock;
@@ -59,6 +67,10 @@ public class OpsAuditService {
         Path sourceQualityDated = baseDir.resolve("source-quality-watch-" + today + ".csv");
         Path deployReadinessLatest = baseDir.resolve("deploy-readiness-latest.csv");
         Path deployReadinessDated = baseDir.resolve("deploy-readiness-" + today + ".csv");
+        Path noindexPromotionLatest = baseDir.resolve("noindex-promotion-queue-latest.csv");
+        Path noindexPromotionDated = baseDir.resolve("noindex-promotion-queue-" + today + ".csv");
+        Path searchDemandLatest = baseDir.resolve("search-demand-watch-latest.csv");
+        Path searchDemandDated = baseDir.resolve("search-demand-watch-" + today + ".csv");
         Path evidenceIndexLatest = baseDir.resolve("evidence-index-latest.csv");
         Path evidenceIndexDated = baseDir.resolve("evidence-index-" + today + ".csv");
         Path alertLatest = baseDir.resolve("ops-alerts-latest.md");
@@ -72,6 +84,10 @@ public class OpsAuditService {
         writeCsv(sourceQualityDated, sourceQualityReportService.exportWatchCsv());
         writeCsv(deployReadinessLatest, deployReadinessReportService.exportWatchCsv());
         writeCsv(deployReadinessDated, deployReadinessReportService.exportWatchCsv());
+        writeCsv(noindexPromotionLatest, noindexPromotionReportService.exportQueueCsv());
+        writeCsv(noindexPromotionDated, noindexPromotionReportService.exportQueueCsv());
+        writeCsv(searchDemandLatest, searchDemandReportService.exportWatchCsv());
+        writeCsv(searchDemandDated, searchDemandReportService.exportWatchCsv());
         writeCsv(evidenceIndexLatest, sourceEvidenceSnapshotService.exportIndexCsv());
         writeCsv(evidenceIndexDated, sourceEvidenceSnapshotService.exportIndexCsv());
         writeMarkdown(alertLatest, opsAlertService.latestAlertMarkdown());

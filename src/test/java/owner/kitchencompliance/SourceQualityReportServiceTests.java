@@ -17,11 +17,11 @@ class SourceQualityReportServiceTests {
     void dashboardSummarizesIndexedRouteSourceDepth() {
         var dashboard = sourceQualityReportService.readDashboard();
 
-        assertThat(dashboard.indexedRoutes()).isEqualTo(48);
+        assertThat(dashboard.indexedRoutes()).isEqualTo(45);
         assertThat(dashboard.criticalRoutes()).isZero();
         assertThat(dashboard.strongRoutes()).isPositive();
         assertThat(dashboard.strongRoutes() + dashboard.adequateRoutes() + dashboard.thinRoutes() + dashboard.criticalRoutes())
-                .isEqualTo(48);
+                .isEqualTo(45);
         assertThat(dashboard.watchRows()).isNotEmpty();
         assertThat(dashboard.watchRows()).allSatisfy(row -> {
             assertThat(row.statusLabel()).isIn("Critical", "Thin", "Adequate", "Strong");

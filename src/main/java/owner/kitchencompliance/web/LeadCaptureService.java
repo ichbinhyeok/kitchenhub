@@ -47,6 +47,7 @@ public class LeadCaptureService {
 
     public CaptureResult captureOperatorLead(
             RouteRecord route,
+            String sourcePath,
             HttpServletRequest request,
             HttpServletResponse response,
             String contactName,
@@ -73,7 +74,7 @@ public class LeadCaptureService {
                 pageFamilyValue(route.template().pageFamily()),
                 issueTypeValue(issueTypeFor(route.template())),
                 route.authorityId(),
-                route.path(),
+                sourcePath,
                 attributionService.verdictStateForRoute(route),
                 operatorIntent(route.template()),
                 contactName.trim(),
@@ -89,6 +90,7 @@ public class LeadCaptureService {
 
     public CaptureResult captureSponsorInquiry(
             RouteRecord route,
+            String sourcePath,
             HttpServletRequest request,
             HttpServletResponse response,
             String contactName,
@@ -113,7 +115,7 @@ public class LeadCaptureService {
                 pageFamilyValue(route.template().pageFamily()),
                 issueTypeValue(issueTypeFor(route.template())),
                 route.authorityId(),
-                route.path(),
+                sourcePath,
                 attributionService.verdictStateForRoute(route),
                 sponsorIntent(route.template()),
                 contactName.trim(),

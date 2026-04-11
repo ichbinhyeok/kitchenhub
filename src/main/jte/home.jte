@@ -1,3 +1,4 @@
+@import owner.kitchencompliance.model.AuthorityRouteLink
 @import owner.kitchencompliance.model.CityCard
 @import owner.kitchencompliance.model.HomePanelLink
 @import owner.kitchencompliance.model.HomePageViewModel
@@ -12,12 +13,12 @@
             <div class="home-hero__copy">
                 <div class="eyebrow-pill">
                     <span class="material-symbols-outlined">verified</span>
-                    Verified municipal data for kitchen operators
+                    Verified local authority summaries
                 </div>
 
-                <h1>Choose your city. Check the rule. Keep the proof on site.</h1>
+                <h1>Local compliance + operator action for commercial kitchens</h1>
                 <p class="home-hero__summary">
-                    Start from the local authority that governs grease, hood, or fire inspection work. Verify the rule, stage the records, and only then route service if the site still needs help.
+                    Stop guessing local code. Check the real rule holder, stage the proof inspectors ask for, and only then route service if the site still needs help.
                 </p>
 
                 <div class="action-row">
@@ -25,7 +26,8 @@
                         Choose Your City
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
-                    <a class="button button--secondary" href="#operator-start">How It Works</a>
+                    <a class="button button--secondary" href="/guides/fog-vs-grease-trap-cleaning">View Guides</a>
+                    <a class="button button--ghost" href="/authorities">Browse Authorities</a>
                 </div>
             </div>
 
@@ -33,11 +35,50 @@
                 <div class="home-hero__frame">
                     <img alt="Commercial kitchen" class="home-hero__image" src="/assets/home-kitchen.png">
                 </div>
-                <div class="status-card">
-                    <div class="status-card__eyebrow">Operator start</div>
-                    <div class="status-card__title">City -> Rule -> Proof -> Service</div>
-                    <p class="status-card__body">Use vendor routing only after the local requirement and on-site paperwork burden are clear.</p>
+                <div class="home-hero__rail">
+                    <div class="status-card__eyebrow">Austin, TX example</div>
+                    <div class="status-card__title">City -> Authority -> Proof -> Service</div>
+                    <p class="status-card__body">Start at the city page, but switch to the actual utility, fire AHJ, or department before you act.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="home-section home-section--band" id="active-cities">
+            <div class="section-heading">
+                <div>
+                    <div class="section-heading__eyebrow">Verified local code for commercial operators</div>
+                    <h2 class="section-heading__title">Active City Jurisdictions</h2>
+                    <div class="section-heading__summary">Choose the city first, then verify which utility, fire AHJ, or department actually holds the rule before you act.</div>
+                </div>
+                <a class="section-heading__tag" href="/authorities">Rule Holders</a>
+            </div>
+
+            <div class="city-grid city-grid--home">
+                @for(CityCard city : page.cityCards())
+                    <article class="city-card city-card--home">
+                        <div class="city-card__state">${city.state()}</div>
+                        <div class="city-card__title">${city.city()}</div>
+                        <p class="city-card__summary">${city.summary()}</p>
+
+                        <div class="city-card__authorities">
+                            @for(AuthorityRouteLink authorityRoute : city.authorityRoutes())
+                                <a class="city-card__authority" href="${authorityRoute.canonicalPath()}">
+                                    <span class="city-card__authority-label">${authorityRoute.authorityTypeLabel()}</span>
+                                    <strong>${authorityRoute.authorityName()}</strong>
+                                </a>
+                            @endfor
+                        </div>
+
+                        <div class="city-card__links">
+                            @for(RelatedPageLink link : city.primaryLinks())
+                                <a href="${link.path()}">
+                                    <span>${link.label()}</span>
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </a>
+                            @endfor
+                        </div>
+                    </article>
+                @endfor
             </div>
         </section>
 
@@ -71,40 +112,10 @@
             </div>
         </section>
 
-        <section class="home-section home-section--band" id="active-cities">
-            <div class="section-heading">
-                <div>
-                    <div class="section-heading__eyebrow">Verified local code for commercial operators</div>
-                    <h2 class="section-heading__title">Active City Jurisdictions</h2>
-                    <div class="section-heading__summary">Choose the city first, then open the exact local route you need for grease, hood, or inspection prep.</div>
-                </div>
-                <div class="section-heading__tag">Live Database</div>
-            </div>
-
-            <div class="city-grid city-grid--home">
-                @for(CityCard city : page.cityCards())
-                    <article class="city-card city-card--home">
-                        <div class="city-card__state">${city.state()}</div>
-                        <div class="city-card__title">${city.city()}</div>
-                        <p class="city-card__summary">${city.summary()}</p>
-
-                        <div class="city-card__links">
-                            @for(RelatedPageLink link : city.primaryLinks())
-                                <a href="${link.path()}">
-                                    <span>${link.label()}</span>
-                                    <span class="material-symbols-outlined">chevron_right</span>
-                                </a>
-                            @endfor
-                        </div>
-                    </article>
-                @endfor
-            </div>
-        </section>
-
         <section class="home-section">
             <div class="section-heading">
                 <div>
-                    <h2 class="section-heading__title">Why operators use it</h2>
+                    <h2 class="section-heading__title">What we solve</h2>
                 </div>
             </div>
 

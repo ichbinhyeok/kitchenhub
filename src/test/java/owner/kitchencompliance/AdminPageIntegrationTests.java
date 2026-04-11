@@ -2,6 +2,7 @@ package owner.kitchencompliance;
 
 import static org.hamcrest.Matchers.containsString;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.httpBasic;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -38,8 +39,14 @@ class AdminPageIntegrationTests {
     }
 
     @Test
-    void adminPageShowsEmptyStateAndResolvedStoragePath() throws Exception {
+    void adminRequiresAuthentication() throws Exception {
         mockMvc.perform(get("/admin"))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void adminPageShowsEmptyStateAndResolvedStoragePath() throws Exception {
+        mockMvc.perform(get("/admin").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Attribution admin")))
                 .andExpect(content().string(containsString("Freshness watch")))
@@ -48,6 +55,14 @@ class AdminPageIntegrationTests {
                 .andExpect(content().string(containsString("Indexed route source depth")))
                 .andExpect(content().string(containsString("Deploy readiness")))
                 .andExpect(content().string(containsString("Pre-deploy route gate")))
+                .andExpect(content().string(containsString("Noindex promotion queue")))
+                .andExpect(content().string(containsString("Search Console demand")))
+                .andExpect(content().string(containsString("Imported route demand snapshot")))
+                .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/find-grease-service")))
+                .andExpect(content().string(containsString("/fl/miami/find-grease-service")))
+                .andExpect(content().string(containsString("Austin, TX")))
+                .andExpect(content().string(containsString("Miami, FL")))
+                .andExpect(content().string(containsString("austin grease hauler service")))
                 .andExpect(content().string(containsString("Utility revisit rate")))
                 .andExpect(content().string(containsString("No leads recorded yet")))
                 .andExpect(content().string(containsString("No attribution events yet")))
@@ -58,6 +73,8 @@ class AdminPageIntegrationTests {
                 .andExpect(content().string(containsString("/admin/exports/freshness-watch.csv")))
                 .andExpect(content().string(containsString("/admin/exports/source-quality-watch.csv")))
                 .andExpect(content().string(containsString("/admin/exports/deploy-readiness.csv")))
+                .andExpect(content().string(containsString("/admin/exports/noindex-promotion-queue.csv")))
+                .andExpect(content().string(containsString("/admin/exports/search-demand-watch.csv")))
                 .andExpect(content().string(containsString("/admin/exports/operator-utility-summary.csv")))
                 .andExpect(content().string(containsString("/admin/exports/evidence-index.csv")))
                 .andExpect(content().string(containsString("/admin/exports/ops-alerts.md")))
@@ -85,11 +102,13 @@ class AdminPageIntegrationTests {
         Files.writeString(logFile, csv, StandardCharsets.UTF_8);
         Files.writeString(leadLogFile, leadCsv, StandardCharsets.UTF_8);
 
-        mockMvc.perform(get("/admin"))
+        mockMvc.perform(get("/admin").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Freshness watch")))
                 .andExpect(content().string(containsString("Source quality")))
                 .andExpect(content().string(containsString("Deploy readiness")))
+                .andExpect(content().string(containsString("Noindex promotion queue")))
+                .andExpect(content().string(containsString("Search Console demand")))
                 .andExpect(content().string(containsString("Utility revisit rate")))
                 .andExpect(content().string(containsString("1 of 1 visitors (100%)")))
                 .andExpect(content().string(containsString("Verdict states")))
@@ -116,39 +135,47 @@ class AdminPageIntegrationTests {
 
     @Test
     void adminCsvExportsReturnExpectedHeaders() throws Exception {
-        mockMvc.perform(get("/admin/exports/attribution-summary.csv"))
+        mockMvc.perform(get("/admin/exports/attribution-summary.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("city,state,page_family,event_type,verdict_state,destination,sponsored,count")));
 
-        mockMvc.perform(get("/admin/exports/lead-intake.csv"))
+        mockMvc.perform(get("/admin/exports/lead-intake.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("captured_at,lead_type,visitor_id,city,state,page_family,issue_type,authority_id,source_path")));
 
-        mockMvc.perform(get("/admin/exports/lead-summary.csv"))
+        mockMvc.perform(get("/admin/exports/lead-summary.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("city,state,lead_type,page_family,provider_intent,routing_consent,count")));
 
-        mockMvc.perform(get("/admin/exports/freshness-watch.csv"))
+        mockMvc.perform(get("/admin/exports/freshness-watch.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("city,page,path,status,next_review_on,note")));
 
-        mockMvc.perform(get("/admin/exports/source-quality-watch.csv"))
+        mockMvc.perform(get("/admin/exports/source-quality-watch.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("city,page,path,status,total_sources,strong_sources,note")));
 
-        mockMvc.perform(get("/admin/exports/deploy-readiness.csv"))
+        mockMvc.perform(get("/admin/exports/deploy-readiness.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("city,page,path,status,indexable_now,next_review_on,total_sources,strong_sources,renderable_providers,authority_backed_providers,note")));
 
-        mockMvc.perform(get("/admin/exports/operator-utility-summary.csv"))
+        mockMvc.perform(get("/admin/exports/noindex-promotion-queue.csv").with(httpBasic("admin", "tlsgur3108")))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("city,page,path,status,ready_to_promote,next_review_on,reason,total_sources,strong_sources,renderable_providers,authority_backed_providers,promotion_checklist")));
+
+        mockMvc.perform(get("/admin/exports/search-demand-watch.csv").with(httpBasic("admin", "tlsgur3108")))
+                .andExpect(status().isOk())
+                .andExpect(content().string(containsString("city,page,path,route_state,status,top_query,impressions_28d,clicks_28d,ctr,average_position,captured_on,note")));
+
+        mockMvc.perform(get("/admin/exports/operator-utility-summary.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("tool_slug,page_views,unique_visitors,returning_visitors,revisit_rate")));
 
-        mockMvc.perform(get("/admin/exports/evidence-index.csv"))
+        mockMvc.perform(get("/admin/exports/evidence-index.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("city,page,path,status,indexable_now,next_review_on,snapshot_file")));
 
-        mockMvc.perform(get("/admin/exports/ops-alerts.md"))
+        mockMvc.perform(get("/admin/exports/ops-alerts.md").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("# Ops Alert Snapshot")));
     }

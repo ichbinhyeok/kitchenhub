@@ -6,7 +6,14 @@
   "authorityId": "miami-dade-rer-fog-control",
   "profileId": "miami-fl-kitchen-compliance",
   "canonicalPath": "/fl/miami/find-grease-service",
-  "indexable": true,
-  "decisionReason": "Public Miami grease-service coverage is live and can be indexed while staying separate from county FOG guidance.",
+  "indexable": false,
+  "decisionReason": "Miami grease-service routing stays live for operators, but the finder should remain held from search until provider evidence gets stronger.",
+  "noindexReason": "Miami-Dade's transporter workflow is published, but the current grease-service cards are still public-contact only, so this route stays noindex-monitored.",
+  "promotionChecklist": [
+    "Attach at least one authority-backed Miami-Dade transporter or permitted-hauler evidence link to a renderable provider card.",
+    "Keep three renderable providers with direct Miami coverage details and receipt or manifest handling clarity.",
+    "Promote only after the route shows stronger provider evidence than public contact pages alone."
+  ],
+  "promotionReviewOn": "2026-04-21",
   "lastGenerated": "2026-04-07T22:00:00+09:00"
 }

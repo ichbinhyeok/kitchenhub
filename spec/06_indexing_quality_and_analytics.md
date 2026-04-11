@@ -2,6 +2,9 @@
 
 ## Indexing rules
 - Index only pages with authority-backed local rule coverage.
+- Keep weak routes in a monitored `noindex` promotion queue instead of forgetting them.
+- Every `noindex` route should carry a reason, a promotion checklist, and a next review date.
+- See `spec/14_seo_indexing_strategy.md` for the canonical local SEO model, internal linking policy, and organic priority plan.
 - Noindex cities that only have weak vendor inventory and no real rule clarity.
 - Noindex transactional pages if rule context and sponsor quality are too thin.
 - Do not publish broad city swaps that do not materially change the answer.
@@ -18,6 +21,12 @@
 - Fire or utility page turns stale beyond the configured review window
 - Vendor inventory exists but cannot be safely described
 - Rule page loses its core applicability block
+
+## Promotion rules
+- `noindex` does not mean abandoned; it means the route is held in a monitored promotion queue.
+- A route can be promoted only after it clears source quality, freshness, and route-type-specific trust gates.
+- Finder routes should not graduate from `noindex` until provider evidence quality is visible and public coverage is genuinely useful.
+- `/admin` and scheduled ops snapshots should make the promotion queue visible so agents can revisit it without relying on memory.
 
 ## Analytics plan
 - Track page family

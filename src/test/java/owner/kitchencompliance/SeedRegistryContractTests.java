@@ -81,12 +81,21 @@ class SeedRegistryContractTests {
                 .filter(RouteRecord::indexable)
                 .toList();
 
-        assertThat(indexedRoutes).hasSize(48);
+        assertThat(indexedRoutes).hasSize(45);
         assertThat(indexedRoutes)
                 .allSatisfy(route -> {
                     assertThat(seedRegistry.sourcesFor(route)).isNotEmpty();
                     assertThat(seedRegistry.lastVerifiedFor(route)).isNotNull();
                 });
+    }
+
+    @Test
+    void authorityCanonicalAliasesResolveForMixedGovernanceRoutes() {
+        RouteRecord route = seedRegistry.route("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules");
+
+        assertThat(route.path()).isEqualTo("/tx/austin/restaurant-grease-trap-rules");
+        assertThat(seedRegistry.canonicalPath(route)).isEqualTo("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules");
+        assertThat(seedRegistry.usesAuthorityCanonical(route)).isTrue();
     }
 
     @Test

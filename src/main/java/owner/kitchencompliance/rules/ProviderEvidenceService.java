@@ -12,49 +12,130 @@ public class ProviderEvidenceService {
     public List<ProviderRecord> sortByEvidenceQuality(List<ProviderRecord> providers) {
         return providers.stream()
                 .sorted(Comparator
-                        .comparingInt(this::evidenceScore).reversed()
+                        .comparingInt(this::rankingScore).reversed()
                         .thenComparing(ProviderRecord::providerName))
                 .toList();
     }
 
     public String evidenceLabel(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
-            return "Authority list + public contact";
+            return provider.listingMode() == ListingMode.PUBLIC
+                    ? "Authority-backed public contact"
+                    : "Authority-backed sponsor contact";
         }
         if (provider.listingMode() == ListingMode.PUBLIC) {
-            return "Public contact only";
+            return hasCompleteContact(provider)
+                    ? "Public contact"
+                    : "Public contact (partial)";
         }
-        return "Sponsor contact only";
+        return hasCompleteContact(provider)
+                ? "Sponsor contact"
+                : "Sponsor contact (partial)";
     }
 
     public String providerNote(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
-            return "Ranked first when an authority, preferred-pumper, or official approval source is cited alongside a public service contact.";
+            return provider.listingMode() == ListingMode.PUBLIC
+                    ? "Ranked first when authority-backed evidence is paired with a public service listing."
+                    : "Ranked ahead of weaker listings when authority-backed evidence is paired with a sponsor placement.";
         }
         if (provider.listingMode() == ListingMode.PUBLIC) {
-            return "Shown from a public service page with direct contact details, but the operator should still verify current local coverage.";
+            return hasCompleteContact(provider)
+                    ? "Shown from a public service page with complete contact details, but the operator should still verify current local coverage."
+                    : "Shown from a public service page with partial contact details, so the operator should verify current local coverage before booking.";
         }
-        return "Shown as a sponsor placement with direct contact details; operator verification still applies.";
+        return hasCompleteContact(provider)
+                ? "Shown as a sponsor placement with direct contact details; operator verification still applies."
+                : "Shown as a sponsor placement with partial contact details; operator verification still applies.";
     }
 
-    private int evidenceScore(ProviderRecord provider) {
-        int score = 0;
+    public String coverageConfidenceLabel(ProviderRecord provider) {
+        if (hasOfficialEvidence(provider) && provider.coverageTargets().size() <= 2) {
+            return "High";
+        }
+        if (hasOfficialEvidence(provider) || hasCompleteContact(provider)) {
+            return "Medium";
+        }
+        return "Needs operator verification";
+    }
+
+    public String whyListed(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
-            score += 4;
+            return provider.listingMode() == ListingMode.PUBLIC
+                    ? "Authority-backed evidence plus a public service contact."
+                    : "Authority-backed evidence is visible even though placement is sponsored.";
         }
         if (provider.listingMode() == ListingMode.PUBLIC) {
-            score += 2;
+            return hasCompleteContact(provider)
+                    ? "Public listing with direct contact details and declared local coverage."
+                    : "Public listing with partial contact details that still needs a direct coverage check.";
         }
-        if (!provider.email().isBlank()) {
+        return hasCompleteContact(provider)
+                ? "Sponsor placement with direct contact details, kept separate from authority guidance."
+                : "Sponsor placement is visible, but the operator should verify coverage before booking.";
+    }
+
+    private int rankingScore(ProviderRecord provider) {
+        int score = 0;
+        if (hasOfficialEvidence(provider)) {
+            score += 10_000;
+        }
+        if (provider.listingMode() == ListingMode.PUBLIC) {
+            score += 3_000;
+        } else {
+            score += 1_500;
+        }
+        score += contactQualityScore(provider) * 120;
+        score += scopeFocusScore(provider) * 25;
+        score += sponsorStatusScore(provider) * 10;
+        return score;
+    }
+
+    private int contactQualityScore(ProviderRecord provider) {
+        int score = 0;
+        if (!isBlank(provider.email())) {
             score += 1;
         }
-        if (!provider.phone().isBlank()) {
+        if (!isBlank(provider.phone())) {
             score += 1;
         }
         return score;
     }
 
+    private int scopeFocusScore(ProviderRecord provider) {
+        int coverageTargets = provider.coverageTargets().size();
+        if (coverageTargets <= 1) {
+            return 4;
+        }
+        if (coverageTargets == 2) {
+            return 3;
+        }
+        if (coverageTargets == 3) {
+            return 2;
+        }
+        if (coverageTargets == 4) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private int sponsorStatusScore(ProviderRecord provider) {
+        return switch (provider.sponsorStatus()) {
+            case ACTIVE -> 2;
+            case PROSPECT -> 1;
+            case HOLD -> 0;
+        };
+    }
+
     private boolean hasOfficialEvidence(ProviderRecord provider) {
-        return provider.officialApprovalSourceUrl() != null && !provider.officialApprovalSourceUrl().isBlank();
+        return !isBlank(provider.officialApprovalSourceUrl());
+    }
+
+    private boolean hasCompleteContact(ProviderRecord provider) {
+        return !isBlank(provider.email()) && !isBlank(provider.phone());
+    }
+
+    private boolean isBlank(String value) {
+        return value == null || value.isBlank();
     }
 }

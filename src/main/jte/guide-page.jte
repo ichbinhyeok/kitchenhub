@@ -1,3 +1,4 @@
+@import owner.kitchencompliance.model.AuthorityRouteLink
 @import owner.kitchencompliance.model.GuidePageViewModel
 @import owner.kitchencompliance.model.GuideSection
 @import owner.kitchencompliance.model.RelatedPageLink
@@ -26,8 +27,29 @@
             @endfor
         </section>
 
+        @if(page.authorityRoutes() != null && !page.authorityRoutes().isEmpty())
+            <section class="panel guide-authority-panel" style="margin-top: 18px;">
+                <div class="panel__eyebrow">Authority-first route map</div>
+                <h2>City search is the entry. The rule holder is the truth.</h2>
+                <p class="panel__note" style="margin-top: 10px;">Use these live local routes when the guide needs to drop into an actual utility, fire AHJ, or department workflow.</p>
+                <div class="guide-authority-grid">
+                    @for(AuthorityRouteLink authorityRoute : page.authorityRoutes())
+                        <article class="guide-authority-card">
+                            <div class="panel__eyebrow">${authorityRoute.title()}</div>
+                            <h3>${authorityRoute.cityLabel()}</h3>
+                            <p class="guide-authority-card__authority">${authorityRoute.authorityName()} | ${authorityRoute.authorityTypeLabel()}</p>
+                            <div class="guide-authority-card__actions">
+                                <a class="button button--dark" href="${authorityRoute.canonicalPath()}">Open authority page</a>
+                                <a class="button button--secondary" href="${authorityRoute.cityPath()}">Open city entry</a>
+                            </div>
+                        </article>
+                    @endfor
+                </div>
+            </section>
+        @endif
+
         <section class="panel" style="margin-top: 18px;">
-            <div class="panel__eyebrow">Related links</div>
+            <div class="panel__eyebrow">City entry links</div>
             <h2>Continue through the workflow</h2>
             <ul class="link-list" style="margin-top: 16px;">
                 @for(RelatedPageLink link : page.relatedLinks())

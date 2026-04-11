@@ -7,13 +7,16 @@
         <a class="brand" href="/">
             <span>
                 <span class="brand__wordmark">KitchenComplianceHub</span>
-                <span class="brand__sub">Official municipal data</span>
+                <span class="brand__sub">Source-backed local rule summaries</span>
             </span>
         </a>
 
         <nav class="top-nav" aria-label="Primary">
-            <a class="top-nav__link${!meta.canonicalUrl().contains("/guides/") && !meta.canonicalUrl().contains("/tools/") && !meta.canonicalUrl().contains("/admin") ? " is-active" : ""}" href="/">
+            <a class="top-nav__link${!meta.canonicalUrl().contains("/guides/") && !meta.canonicalUrl().contains("/tools/") && !meta.canonicalUrl().contains("/admin") && !meta.canonicalUrl().contains("/authorities") ? " is-active" : ""}" href="/">
                 Find Your City
+            </a>
+            <a class="top-nav__link${meta.canonicalUrl().contains("/authorities") ? " is-active" : ""}" href="/authorities">
+                Browse Authorities
             </a>
             <a class="top-nav__link${meta.canonicalUrl().contains("/guides/") ? " is-active" : ""}" href="/guides/fog-vs-grease-trap-cleaning">
                 Evergreen Guides
@@ -21,7 +24,7 @@
             <a class="top-nav__link${meta.canonicalUrl().contains("/tools/") ? " is-active" : ""}" href="/tools/grease-log">
                 Operator Tools
             </a>
-            <a class="button button--dark" href="/admin">Sign In</a>
+            <a class="button button--dark" href="/admin">Admin Login</a>
         </nav>
     </div>
 </header>

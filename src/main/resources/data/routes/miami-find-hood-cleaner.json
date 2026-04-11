@@ -6,7 +6,14 @@
   "authorityId": "miami-dade-building-mechanical",
   "profileId": "miami-fl-kitchen-compliance",
   "canonicalPath": "/fl/miami/find-hood-cleaner",
-  "indexable": true,
-  "decisionReason": "Public Miami hood-cleaner coverage is live and can be indexed while staying separate from county permit and inspection guidance.",
+  "indexable": false,
+  "decisionReason": "Miami hood-cleaner routing should stay live for local operators but remain out of search until the provider evidence layer is stronger.",
+  "noindexReason": "Miami hood-cleaner coverage is still public-contact routing only, so the route stays noindex-monitored until at least one provider card carries stronger local evidence.",
+  "promotionChecklist": [
+    "Add stronger local evidence to at least one renderable hood-cleaner card, not just a generic public contact page.",
+    "Keep three renderable providers with direct Miami coverage details and inspection-ready paperwork expectations.",
+    "Re-review the route only after evidence quality is visible enough to keep the finder trust-safe in search."
+  ],
+  "promotionReviewOn": "2026-04-21",
   "lastGenerated": "2026-04-07T22:00:00+09:00"
 }

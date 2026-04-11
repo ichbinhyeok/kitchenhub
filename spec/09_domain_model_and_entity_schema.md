@@ -120,6 +120,9 @@ Why it exists:
 - `canonicalPath`
 - `indexable`
 - `decisionReason`
+- `noindexReason`
+- `promotionChecklist[]`
+- `promotionReviewOn`
 - `lastGenerated`
 
 ### `SourceRecord`

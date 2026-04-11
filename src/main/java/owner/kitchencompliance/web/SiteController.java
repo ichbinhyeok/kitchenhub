@@ -64,6 +64,46 @@ public class SiteController {
         }
     }
 
+    @GetMapping("/authorities")
+    public String authorityIndex(@RequestParam(required = false) String type, Model model) {
+        try {
+            model.addAttribute("page", sitePageService.authorityIndexPage(type));
+            return "authority-browse";
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, ex.getMessage(), ex);
+        }
+    }
+
+    @GetMapping("/authorities/{state}/{authorityId}")
+    public String authorityDetail(@PathVariable String state, @PathVariable String authorityId, Model model) {
+        try {
+            model.addAttribute("page", sitePageService.authorityDetailPage(state, authorityId));
+            return "authority-browse";
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        }
+    }
+
+    @GetMapping({
+            "/about",
+            "/methodology",
+            "/contact",
+            "/privacy",
+            "/terms",
+            "/sponsor-policy",
+            "/not-government-affiliated",
+            "/corrections"
+    })
+    public String infoPage(HttpServletRequest request, Model model) {
+        String slug = request.getRequestURI().replaceFirst("^/", "");
+        try {
+            model.addAttribute("page", sitePageService.infoPage(slug));
+            return "info-page";
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        }
+    }
+
     @GetMapping("/{state}/{city}/{slug}")
     public String localPage(
             @PathVariable String state,
@@ -75,12 +115,36 @@ public class SiteController {
             @RequestParam(required = false) String lead
     ) {
         String path = "/" + state + "/" + city + "/" + slug;
+        return renderLocalPage(path, model, request, response, lead);
+    }
+
+    @GetMapping("/authority/{state}/{authoritySlug}/{slug}")
+    public String authorityLocalPage(
+            @PathVariable String state,
+            @PathVariable String authoritySlug,
+            @PathVariable String slug,
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            @RequestParam(required = false) String lead
+    ) {
+        String path = "/authority/" + state + "/" + authoritySlug + "/" + slug;
+        return renderLocalPage(path, model, request, response, lead);
+    }
+
+    private String renderLocalPage(
+            String path,
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            String lead
+    ) {
         try {
             ResolvedPage page = sitePageService.localPage(path, lead);
             model.addAttribute("page", page.page());
             RouteRecord route = seedRegistry.route(path);
             String visitorId = attributionService.ensureVisitorId(request, response);
-            attributionService.recordLocalPageView(route, visitorId);
+            attributionService.recordLocalPageView(route, path, visitorId);
             return page.viewName();
         } catch (IllegalStateException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -162,6 +226,18 @@ public class SiteController {
         return adminPageService.exportDeployReadinessCsv();
     }
 
+    @GetMapping(value = "/admin/exports/noindex-promotion-queue.csv", produces = "text/csv")
+    @ResponseBody
+    public String noindexPromotionQueueExport() {
+        return adminPageService.exportNoindexPromotionQueueCsv();
+    }
+
+    @GetMapping(value = "/admin/exports/search-demand-watch.csv", produces = "text/csv")
+    @ResponseBody
+    public String searchDemandWatchExport() {
+        return adminPageService.exportSearchDemandWatchCsv();
+    }
+
     @GetMapping(value = "/admin/exports/operator-utility-summary.csv", produces = "text/csv")
     @ResponseBody
     public String operatorUtilitySummaryExport() {
@@ -215,7 +291,7 @@ public class SiteController {
             RouteRecord route = seedRegistry.route(source);
             ProviderRecord provider = seedRegistry.provider(providerId);
             String visitorId = attributionService.ensureVisitorId(request, response);
-            attributionService.recordProviderClick(route, provider, visitorId);
+            attributionService.recordProviderClick(route, provider, source, visitorId);
             return "redirect:" + provider.siteUrl();
         } catch (IllegalStateException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -236,7 +312,7 @@ public class SiteController {
         try {
             RouteRecord route = seedRegistry.route(source);
             String visitorId = attributionService.ensureVisitorId(request, response);
-            attributionService.recordCtaClick(route, target, sponsored, visitorId);
+            attributionService.recordCtaClick(route, source, target, sponsored, visitorId);
             return "redirect:" + target;
         } catch (IllegalStateException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -259,6 +335,7 @@ public class SiteController {
             RouteRecord route = seedRegistry.route(source);
             LeadCaptureService.CaptureResult result = leadCaptureService.captureOperatorLead(
                     route,
+                    source,
                     request,
                     response,
                     contactName,
@@ -291,6 +368,7 @@ public class SiteController {
             RouteRecord route = seedRegistry.route(source);
             LeadCaptureService.CaptureResult result = leadCaptureService.captureSponsorInquiry(
                     route,
+                    source,
                     request,
                     response,
                     contactName,

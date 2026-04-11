@@ -31,8 +31,10 @@ public class SeedRegistry {
     private final Map<String, HoodRuleRecord> hoodRulesByProfileId;
     private final Map<String, InspectionPrepRecord> inspectionRecordsByProfileId;
     private final Map<String, RouteRecord> routesByPath;
+    private final Map<String, RouteRecord> routesByAuthorityPath;
     private final Map<String, SourceRecord> sourcesById;
     private final Map<String, ProviderRecord> providersById;
+    private final Map<String, SearchDemandSnapshotRecord> searchDemandByPath;
     private final List<ProviderRecord> providers;
 
     public SeedRegistry(ResourcePatternResolver resolver, ObjectMapper objectMapper, Validator validator) {
@@ -52,6 +54,8 @@ public class SeedRegistry {
                 resolver, objectMapper, validator, "data/routes/*.json", RouteRecord.class);
         List<SourceRecord> sourceRecords = loadDirectory(
                 resolver, objectMapper, validator, "data/sources/*.json", SourceRecord.class);
+        List<SearchDemandSnapshotRecord> searchDemandSnapshots = loadDirectory(
+                resolver, objectMapper, validator, "data/search-demand/*.json", SearchDemandSnapshotRecord.class);
 
         this.authoritiesById = indexBy(authorities, AuthorityRecord::authorityId);
         this.profilesById = indexBy(profiles, CityComplianceProfile::profileId);
@@ -63,8 +67,10 @@ public class SeedRegistry {
                 .collect(Collectors.toUnmodifiableMap(this::profileKey, Function.identity()));
         this.routesByPath = routeRecords.stream()
                 .collect(Collectors.toUnmodifiableMap(RouteRecord::path, Function.identity()));
+        this.routesByAuthorityPath = authorityAliasIndex(routeRecords);
         this.sourcesById = indexBy(sourceRecords, SourceRecord::sourceId);
         this.providersById = indexBy(providerRecords, ProviderRecord::providerId);
+        this.searchDemandByPath = indexBy(searchDemandSnapshots, SearchDemandSnapshotRecord::routePath);
         this.providers = List.copyOf(providerRecords);
 
         validateCrossReferences();
@@ -99,11 +105,31 @@ public class SeedRegistry {
     }
 
     public RouteRecord route(String path) {
-        return required(routesByPath, path, "route");
+        RouteRecord direct = routesByPath.get(path);
+        if (direct != null) {
+            return direct;
+        }
+        return required(routesByAuthorityPath, path, "route");
     }
 
     public List<RouteRecord> routes() {
         return routesByPath.values().stream().toList();
+    }
+
+    public String canonicalPath(RouteRecord route) {
+        return usesAuthorityCanonical(route) ? authorityPath(route) : route.path();
+    }
+
+    public String authorityPath(RouteRecord route) {
+        String slug = route.path().substring(route.path().lastIndexOf('/') + 1);
+        return "/authority/" + route.state() + "/" + route.authorityId() + "/" + slug;
+    }
+
+    public boolean usesAuthorityCanonical(RouteRecord route) {
+        return switch (authority(route.authorityId()).authorityType()) {
+            case UTILITY, FIRE_AHJ -> true;
+            case CITY_DEPARTMENT -> false;
+        };
     }
 
     public RouteRecord routeFor(String profileId, RouteTemplate template) {
@@ -124,6 +150,14 @@ public class SeedRegistry {
 
     public ProviderRecord provider(String providerId) {
         return required(providersById, providerId, "provider");
+    }
+
+    public List<SearchDemandSnapshotRecord> searchDemandSnapshots() {
+        return searchDemandByPath.values().stream().toList();
+    }
+
+    public java.util.Optional<SearchDemandSnapshotRecord> searchDemandSnapshot(RouteRecord route) {
+        return java.util.Optional.ofNullable(searchDemandByPath.get(canonicalPath(route)));
     }
 
     public List<SourceRecord> sourcesFor(RouteRecord route) {
@@ -181,8 +215,12 @@ public class SeedRegistry {
         routesByPath.values().forEach(route -> {
             profile(route.profileId());
             authority(route.authorityId());
-            if (!route.path().equals(route.canonicalPath())) {
-                throw new IllegalStateException("Route canonical path must match path for v1: " + route.path());
+            String canonicalPath = canonicalPath(route);
+            if (canonicalPath.isBlank()) {
+                throw new IllegalStateException("Route canonical path cannot be blank: " + route.path());
+            }
+            if (!canonicalPath.equals(route.path()) && routesByPath.containsKey(canonicalPath)) {
+                throw new IllegalStateException("Authority canonical path collides with a route path: " + canonicalPath);
             }
             if (route.indexable()) {
                 if (sourcesFor(route).isEmpty()) {
@@ -191,10 +229,32 @@ public class SeedRegistry {
                 Objects.requireNonNull(lastVerifiedFor(route), "Indexed route is missing last verified date.");
             }
         });
+
+        searchDemandByPath.values().forEach(snapshot -> {
+            RouteRecord route = route(snapshot.routePath());
+            String canonicalPath = canonicalPath(route);
+            if (!canonicalPath.equals(snapshot.routePath())) {
+                throw new IllegalStateException("Search demand snapshot must use canonical path: " + snapshot.routePath());
+            }
+        });
     }
 
     private void validateSourceRefs(List<String> sourceRefs) {
         sourceRefs.forEach(sourceId -> required(sourcesById, sourceId, "source"));
+    }
+
+    private Map<String, RouteRecord> authorityAliasIndex(List<RouteRecord> routeRecords) {
+        Map<String, RouteRecord> indexed = new LinkedHashMap<>();
+        for (RouteRecord route : routeRecords) {
+            String aliasPath = canonicalPath(route);
+            if (aliasPath.equals(route.path())) {
+                continue;
+            }
+            if (indexed.putIfAbsent(aliasPath, route) != null) {
+                throw new IllegalStateException("Duplicate authority alias detected: " + aliasPath);
+            }
+        }
+        return Map.copyOf(indexed);
     }
 
     private String profileKey(FogRuleRecord rule) {

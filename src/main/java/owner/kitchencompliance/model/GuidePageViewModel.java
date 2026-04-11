@@ -7,6 +7,7 @@ public record GuidePageViewModel(
         String title,
         String summary,
         List<GuideSection> sections,
+        List<AuthorityRouteLink> authorityRoutes,
         List<RelatedPageLink> relatedLinks
 ) {
 }

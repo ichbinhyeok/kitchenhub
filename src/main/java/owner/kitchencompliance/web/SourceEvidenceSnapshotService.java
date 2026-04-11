@@ -49,7 +49,7 @@ public class SourceEvidenceSnapshotService {
         return seedRegistry.routes().stream()
                 .filter(RouteRecord::indexable)
                 .map(route -> new SnapshotFile(
-                        snapshotFilename(route.path()),
+                        snapshotFilename(seedRegistry.canonicalPath(route)),
                         snapshotMarkdown(route, today)))
                 .toList();
     }
@@ -64,7 +64,7 @@ public class SourceEvidenceSnapshotService {
         builder.append("- Captured on: ").append(today).append(System.lineSeparator());
         builder.append("- City: ").append(titleCase(profile.city())).append(", ").append(profile.state().toUpperCase(Locale.ROOT)).append(System.lineSeparator());
         builder.append("- Page: ").append(pageLabel(route.template())).append(System.lineSeparator());
-        builder.append("- Path: ").append(route.path()).append(System.lineSeparator());
+        builder.append("- Path: ").append(seedRegistry.canonicalPath(route)).append(System.lineSeparator());
         builder.append("- Deploy status: ").append(assessment.status().label()).append(System.lineSeparator());
         builder.append("- Indexable now: ").append(assessment.indexableNow()).append(System.lineSeparator());
         builder.append("- Next review on: ").append(assessment.nextReviewOn()).append(System.lineSeparator());

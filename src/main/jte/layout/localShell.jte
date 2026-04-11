@@ -13,10 +13,10 @@
         <aside class="local-sidebar">
             <div class="local-sidebar__panel">
                 <div class="local-sidebar__eyebrow">
-                    ${page.template() == RouteTemplate.HOOD_REQUIREMENTS || page.template() == RouteTemplate.INSPECTION_CHECKLIST ? "Official portal" : "Local compliance hub"}
+                    ${page.template() == RouteTemplate.HOOD_REQUIREMENTS || page.template() == RouteTemplate.INSPECTION_CHECKLIST ? "Authority-backed route" : "Local rule summary"}
                 </div>
                 <div class="local-sidebar__city">
-                    <img alt="Austin seal" class="local-sidebar__city-mark" src="/assets/austin-seal.png">
+                    <span aria-hidden="true" class="local-sidebar__city-mark">${page.state()}</span>
                     <div>
                         <div class="local-sidebar__city-title">${page.city()}, ${page.state()}</div>
                         <div class="local-sidebar__city-subtitle">${page.authorityName()}</div>
@@ -37,6 +37,20 @@
                 @endfor
             </nav>
 
+            @if(page.operatorToolLinks() != null && !page.operatorToolLinks().isEmpty())
+                <div class="local-sidebar__panel">
+                    <div class="local-sidebar__eyebrow">Repeat-use tools</div>
+                    <nav aria-label="Operator tools" class="local-sidebar__nav">
+                        @for(RelatedPageLink link : page.operatorToolLinks())
+                            <a href="${link.path()}">
+                                <span class="material-symbols-outlined">construction</span>
+                                <span>${link.label()}</span>
+                            </a>
+                        @endfor
+                    </nav>
+                </div>
+            @endif
+
             <a class="button button--dark button--block" href="#official-sources">Print Paperwork</a>
         </aside>
 
@@ -45,9 +59,23 @@
                 <div class="context-tabs" aria-label="Local portal tabs">
                     <span class="context-tab${page.template() == RouteTemplate.HOOD_REQUIREMENTS ? " is-active" : ""}">Hood Cleaning</span>
                     <span class="context-tab${page.template() == RouteTemplate.INSPECTION_CHECKLIST ? " is-active" : ""}">Fire Inspection</span>
-                    <span class="context-tab">Official Guidance</span>
+                    <span class="context-tab">Authority Guidance</span>
                 </div>
             @endif
+
+            <section class="panel governance-note">
+                <div class="panel__eyebrow">${page.governanceHeading()}</div>
+                <h2>Rule holder: ${page.authorityName()}</h2>
+                <p class="panel__note" style="margin-top: 10px;">${page.governanceBody()}</p>
+                <div class="action-row governance-note__actions">
+                    @if(!page.sourcePath().equals(page.canonicalPath()))
+                        <a class="button button--secondary" href="${page.canonicalPath()}">Open authority page</a>
+                    @endif
+                    @if(!page.sourcePath().equals(page.cityEntryPath()))
+                        <a class="button button--ghost" href="${page.cityEntryPath()}">Open city entry</a>
+                    @endif
+                </div>
+            </section>
 
             @if(page.template() == RouteTemplate.FOG_RULES || page.template() == RouteTemplate.APPROVED_HAULERS)
                 <section class="local-hero">
@@ -57,7 +85,27 @@
                     <div class="local-hero__meta">
                         <span>${page.authorityName()}</span>
                         <span>${page.authorityTypeLabel()}</span>
+                        <span>Last verified ${page.meta().lastVerified().toString()}</span>
                     </div>
+                </section>
+
+                <section class="metric-strip trust-strip">
+                    <article class="metric-card">
+                        <div class="metric-card__label">Authority</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.officialRequirements(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Proof on site</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.onSiteRecords(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Likely fail trigger</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.failureReasons(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Next action</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.nextActions(), page.summary())}</div>
+                    </article>
                 </section>
 
                 <section class="fog-overview">
@@ -137,7 +185,7 @@
                             <p>${page.callToAction().description()}</p>
                         </div>
                         <div class="action-row" style="margin-top: 0;">
-                            <a class="button button--accent" href="${"/out/cta?source=" + page.sourcePath() + "&target=" + (page.template() == RouteTemplate.FOG_RULES ? page.relatedLinks().get(0).path() : page.template() == RouteTemplate.APPROVED_HAULERS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.HOOD_REQUIREMENTS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.INSPECTION_CHECKLIST ? page.relatedLinks().get(1).path() : page.relatedLinks().get(0).path()) + "&sponsored=" + page.callToAction().sponsored()}">${page.callToAction().label()}</a>
+                            <a class="button button--accent" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
                             <a class="button button--secondary" href="#official-sources">Download Log Tool</a>
                         </div>
                     </section>
@@ -182,7 +230,17 @@
                                                     ${provider.listingLabel()}
                                                 </div>
                                             </div>
-                                            <div class="provider-card__meta">${provider.providerTypeLabel()} | Evidence: ${provider.evidenceLabel()}</div>
+                                            <div class="provider-card__meta">${provider.providerTypeLabel()} | Evidence: ${provider.evidenceLabel()} | Coverage confidence: ${provider.coverageConfidenceLabel()}</div>
+                                        </div>
+                                    </div>
+                                    <div class="provider-card__signals">
+                                        <div class="provider-card__signal">
+                                            <span class="provider-card__signal-label">Why listed</span>
+                                            <span>${provider.whyListed()}</span>
+                                        </div>
+                                        <div class="provider-card__signal provider-card__signal--muted">
+                                            <span class="provider-card__signal-label">Evidence review</span>
+                                            <span>${provider.evidenceReviewLabel()}</span>
                                         </div>
                                     </div>
                                     <p class="provider-card__note">${provider.note()}</p>
@@ -202,6 +260,25 @@
                     <div class="hero-banner__tag">Fire Safety Directive</div>
                     <h1>${page.title()}</h1>
                     <p>${page.summary()}</p>
+                </section>
+
+                <section class="metric-strip trust-strip">
+                    <article class="metric-card">
+                        <div class="metric-card__label">Authority</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.officialRequirements(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Proof on site</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.onSiteRecords(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Likely fail trigger</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.failureReasons(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Next action</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.nextActions(), page.summary())}</div>
+                    </article>
                 </section>
 
                 <section class="hood-portal">
@@ -302,10 +379,10 @@
                     <div class="hood-rail">
                         @if(page.callToAction() != null)
                             <article class="panel">
-                                <div class="panel__eyebrow">Find a certified hood cleaner</div>
+                                <div class="panel__eyebrow">Cleaner routing</div>
                                 <h2>${page.callToAction().title()}</h2>
                                 <p class="panel__note" style="margin-top: 8px;">${page.callToAction().description()}</p>
-                                <a class="button button--dark button--block" href="${"/out/cta?source=" + page.sourcePath() + "&target=" + (page.template() == RouteTemplate.FOG_RULES ? page.relatedLinks().get(0).path() : page.template() == RouteTemplate.APPROVED_HAULERS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.HOOD_REQUIREMENTS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.INSPECTION_CHECKLIST ? page.relatedLinks().get(1).path() : page.relatedLinks().get(0).path()) + "&sponsored=" + page.callToAction().sponsored()}" style="margin-top: 16px;">
+                                <a class="button button--dark button--block" href="${page.callToAction().path()}" style="margin-top: 16px;">
                                     ${page.callToAction().label()}
                                 </a>
                             </article>
@@ -349,19 +426,43 @@
                         <div class="local-hero__eyebrow">${page.kicker()}</div>
                         <h1>${page.title()}</h1>
                         <p class="local-hero__summary">${page.summary()}</p>
+                        <div class="local-hero__meta">
+                            <span>${page.authorityName()}</span>
+                            <span>${page.authorityTypeLabel()}</span>
+                            <span>Last verified ${page.meta().lastVerified().toString()}</span>
+                        </div>
                     </article>
 
                     <div class="inspection-hero__actions">
                         <a class="button button--dark button--block" href="#official-sources">Download PDF Checklist</a>
                         @if(page.callToAction() != null)
-                            <a class="button button--secondary button--block" href="${"/out/cta?source=" + page.sourcePath() + "&target=" + (page.template() == RouteTemplate.FOG_RULES ? page.relatedLinks().get(0).path() : page.template() == RouteTemplate.APPROVED_HAULERS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.HOOD_REQUIREMENTS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.INSPECTION_CHECKLIST ? page.relatedLinks().get(1).path() : page.relatedLinks().get(0).path()) + "&sponsored=" + page.callToAction().sponsored()}">${page.callToAction().label()}</a>
+                            <a class="button button--secondary button--block" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
                         @endif
                         <article class="inspection-hero__window">
                             <div class="panel__eyebrow">Next inspection window</div>
-                            <h2>Q3 Window Open</h2>
+                            <h2>Prep the next inspection window</h2>
                             <p class="panel__note" style="margin-top: 8px;">Local inspectors can confirm preferred staging order before an access check.</p>
                         </article>
                     </div>
+                </section>
+
+                <section class="metric-strip trust-strip">
+                    <article class="metric-card">
+                        <div class="metric-card__label">Authority</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.officialRequirements(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Proof on site</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.onSiteRecords(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Likely fail trigger</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.failureReasons(), page.summary())}</div>
+                    </article>
+                    <article class="metric-card">
+                        <div class="metric-card__label">Next action</div>
+                        <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.nextActions(), page.summary())}</div>
+                    </article>
                 </section>
 
                 <section class="inspection-callout">
@@ -448,7 +549,7 @@
                             <h2>${page.callToAction().title()}</h2>
                             <p>${page.callToAction().description()}</p>
                         </div>
-                        <a class="button button--accent" href="${"/out/cta?source=" + page.sourcePath() + "&target=" + (page.template() == RouteTemplate.FOG_RULES ? page.relatedLinks().get(0).path() : page.template() == RouteTemplate.APPROVED_HAULERS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.HOOD_REQUIREMENTS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.INSPECTION_CHECKLIST ? page.relatedLinks().get(1).path() : page.relatedLinks().get(0).path()) + "&sponsored=" + page.callToAction().sponsored()}">${page.callToAction().label()}</a>
+                        <a class="button button--accent" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
                     </section>
                 @endif
             @endif
@@ -459,6 +560,11 @@
                         <div class="local-hero__eyebrow">${page.kicker()}</div>
                         <h1 style="font-size: clamp(2.6rem, 5vw, 4rem); line-height: 0.94; margin-top: 8px;">${page.title()}</h1>
                         <p class="local-hero__summary">${page.summary()}</p>
+                        <div class="local-hero__meta">
+                            <span>${page.authorityName()}</span>
+                            <span>${page.authorityTypeLabel()}</span>
+                            <span>Last verified ${page.meta().lastVerified().toString()}</span>
+                        </div>
                         <article class="authority-snippet">
                             <h3>${page.noteTitle()}</h3>
                             <p>${page.noteBody()}</p>
@@ -466,17 +572,25 @@
                     </article>
 
                     <article class="provider-form">
-                        @if(page.operatorLeadPanel() != null)
+                        @if(page.operatorLeadPanel() != null && page.prioritizeOperatorLeadPanel())
+                            <div class="provider-form__rail">Verification stays separate from vendor routing.</div>
                             <div class="panel__eyebrow">${page.operatorLeadPanel().eyebrow()}</div>
                             <h2>${page.operatorLeadPanel().title()}</h2>
                             <p class="panel__note" style="margin-top: 8px;">${page.operatorLeadPanel().description()}</p>
                             @template.layout.leadForm(page.sourcePath(), page.operatorLeadPanel())
                         @else
+                            <div class="panel__eyebrow">Verification first</div>
+                            <h2>${page.trustBannerTitle()}</h2>
+                            <p class="panel__note" style="margin-top: 8px;">${page.trustBannerBody()}</p>
+                            @if(page.verificationChecklist() != null && !page.verificationChecklist().isEmpty())
+                                <ul class="bullet-list" style="margin-top: 16px;">
+                                    @for(String item : page.verificationChecklist())
+                                        <li>${item}</li>
+                                    @endfor
+                                </ul>
+                            @endif
                             @if(page.callToAction() != null)
-                                <div class="panel__eyebrow">Next action</div>
-                                <h2>${page.callToAction().title()}</h2>
-                                <p class="panel__note" style="margin-top: 8px;">${page.callToAction().description()}</p>
-                                <a class="button button--dark button--block" href="${"/out/cta?source=" + page.sourcePath() + "&target=" + (page.template() == RouteTemplate.FOG_RULES ? page.relatedLinks().get(0).path() : page.template() == RouteTemplate.APPROVED_HAULERS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.HOOD_REQUIREMENTS ? page.relatedLinks().get(1).path() : page.template() == RouteTemplate.INSPECTION_CHECKLIST ? page.relatedLinks().get(1).path() : page.relatedLinks().get(0).path()) + "&sponsored=" + page.callToAction().sponsored()}" style="margin-top: 16px;">
+                                <a class="button button--dark button--block" href="${page.callToAction().path()}" style="margin-top: 16px;">
                                     ${page.callToAction().label()}
                                 </a>
                             @endif
@@ -487,9 +601,13 @@
                 <section class="provider-method-grid">
                     <article class="source-inline-card">
                         <div class="panel__eyebrow">How listings are qualified</div>
-                        <h3>Evidence-first routing</h3>
+                        <h3>${page.trustBannerTitle() != null ? page.trustBannerTitle() : "Evidence-first routing"}</h3>
                         <p>${page.providerModeSummary() != null ? page.providerModeSummary() : page.summary()}</p>
-                        <div class="source-inline-card__meta">Public listing, direct contact, and authority evidence are separated deliberately.</div>
+                        <div class="source-inline-card__meta">
+                            Authority-backed ${ViewFormatSupport.authorityBackedProviderCount(page.providers())} |
+                            Verification required ${ViewFormatSupport.verificationRequiredProviderCount(page.providers())} |
+                            Last verified ${page.meta().lastVerified().toString()}
+                        </div>
                     </article>
 
                     @if(!page.sources().isEmpty())
@@ -504,13 +622,25 @@
                     @endif
                 </section>
 
+                @if(page.verificationChecklist() != null && !page.verificationChecklist().isEmpty())
+                    <article class="support-note support-note--provider">
+                        <div class="panel__eyebrow">Before you book</div>
+                        <strong>Verification checklist</strong>
+                        <ul class="bullet-list" style="margin-top: 12px;">
+                            @for(String item : page.verificationChecklist())
+                                <li>${item}</li>
+                            @endfor
+                        </ul>
+                    </article>
+                @endif
+
                 <section class="panel">
                     <div class="section-heading">
                         <div>
-                            <div class="section-heading__eyebrow">Certified active listings in ${page.city()}</div>
-                            <h2 class="section-heading__title">Commercial Listings</h2>
+                            <div class="section-heading__eyebrow">Active routing coverage in ${page.city()}</div>
+                            <h2 class="section-heading__title">Provider Listings</h2>
                         </div>
-                        <div class="section-heading__tag">Verified + Sponsored</div>
+                        <div class="section-heading__tag">Evidence and sponsor status</div>
                     </div>
 
                     <div class="provider-list">
@@ -525,7 +655,17 @@
                                                 ${provider.listingLabel()}
                                             </div>
                                         </div>
-                                        <div class="provider-card__meta">${provider.providerTypeLabel()} | Evidence: ${provider.evidenceLabel()}</div>
+                                        <div class="provider-card__meta">${provider.providerTypeLabel()} | Evidence: ${provider.evidenceLabel()} | Coverage confidence: ${provider.coverageConfidenceLabel()}</div>
+                                    </div>
+                                </div>
+                                <div class="provider-card__signals">
+                                    <div class="provider-card__signal">
+                                        <span class="provider-card__signal-label">Why listed</span>
+                                        <span>${provider.whyListed()}</span>
+                                    </div>
+                                    <div class="provider-card__signal provider-card__signal--muted">
+                                        <span class="provider-card__signal-label">Evidence review</span>
+                                        <span>${provider.evidenceReviewLabel()}</span>
                                     </div>
                                 </div>
                                 <p>${provider.note()}</p>
@@ -552,6 +692,15 @@
                 <article class="support-note support-note--provider">
                     Listings are routing support only. They are not municipal endorsement, and operators should confirm current manifest, service scope, and coverage before booking.
                 </article>
+
+                @if(page.operatorLeadPanel() != null && !page.prioritizeOperatorLeadPanel())
+                    <section class="panel">
+                        <div class="panel__eyebrow">${page.operatorLeadPanel().eyebrow()}</div>
+                        <h2>${page.operatorLeadPanel().title()}</h2>
+                        <p class="panel__note" style="margin-top: 8px;">${page.operatorLeadPanel().description()}</p>
+                        @template.layout.leadForm(page.sourcePath(), page.operatorLeadPanel())
+                    </section>
+                @endif
 
                 @if(page.sponsorPanel() != null)
                     <section class="panel panel--accent">

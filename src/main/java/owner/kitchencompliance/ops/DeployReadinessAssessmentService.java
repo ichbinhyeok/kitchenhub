@@ -109,7 +109,7 @@ public class DeployReadinessAssessmentService {
         return new RouteDeployReadinessAssessment(
                 cityLabel(route.profileId()),
                 pageLabel(route.template()),
-                route.path(),
+                seedRegistry.canonicalPath(route),
                 status,
                 indexableNow,
                 nextReviewOn,

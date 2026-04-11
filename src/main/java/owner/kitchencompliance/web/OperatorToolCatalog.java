@@ -22,14 +22,14 @@ public class OperatorToolCatalog {
                         "Grease log",
                         "Operator tool",
                         "Grease service log template",
-                        "A noindex operator worksheet for tracking pump-outs, manifests, and on-site proof before a utility or health inspection.",
+                        "A noindex operator worksheet for tracking pump-outs, manifests, and the binder location of proof before a utility or health inspection.",
                         List.of(
-                                "Record every pump-out or maintenance action with the service date, vendor, and receipt reference.",
-                                "Keep the current log with the latest manifests or haul tickets in the same binder.",
-                                "Use this worksheet to reconcile what the city expects against what is physically on site."
+                                "Record every pump-out or maintenance action with the service date, vendor, gallons removed, and receipt or manifest reference.",
+                                "Write down the authority that governs the site and the binder location where the current proof lives.",
+                                "Reconcile the log against the latest haul ticket or manifest before the next inspection window."
                         ),
                         List.of(
-                                new DownloadLink("Download grease log CSV", "/tools/grease-log.csv", "Simple worksheet for date, vendor, gallons, receipt, and note tracking.")
+                                new DownloadLink("Download grease log CSV", "/tools/grease-log.csv", "Binder-first worksheet for date, authority, vendor, gallons, manifest, receipt, and next-review tracking.")
                         ),
                         List.of(
                                 new RelatedPageLink("Austin grease trap rules", "/tx/austin/restaurant-grease-trap-rules"),
@@ -45,16 +45,36 @@ public class OperatorToolCatalog {
                         "A noindex operator checklist for keeping hood cleaning, suppression, tags, and inspection-ready paperwork in one place without collapsing them into the same obligation.",
                         List.of(
                                 "Separate hood cleaning reports from suppression inspection records when the authority treats them differently.",
-                                "Keep the most recent tag, certificate, and service report in the same binder or folder.",
-                                "Use the checklist before the next fire inspection so the proof burden is explicit."
+                                "Keep the most recent tag, certificate, and service report in the same binder or folder with the authority name written on the tab.",
+                                "Use the checklist before the next fire inspection so the proof burden is explicit and the missing item is obvious."
                         ),
                         List.of(
-                                new DownloadLink("Download hood binder CSV", "/tools/hood-record-binder.csv", "Checklist for report, tag, certificate, and deficiency follow-up.")
+                                new DownloadLink("Download hood binder CSV", "/tools/hood-record-binder.csv", "Checklist for report, tag, certificate, binder location, and deficiency follow-up.")
                         ),
                         List.of(
                                 new RelatedPageLink("Tampa hood requirements", "/fl/tampa/hood-cleaning-requirements"),
                                 new RelatedPageLink("Portland hood requirements", "/or/portland/hood-cleaning-requirements"),
                                 new RelatedPageLink("How often to clean a commercial hood", "/guides/how-often-clean-commercial-hood")
+                        )
+                ),
+                new ToolDefinition(
+                        "missing-proof-tracker",
+                        "Missing proof tracker",
+                        "Operator tool",
+                        "Missing proof tracker",
+                        "A noindex operator worksheet for logging what proof is missing, which route or authority created the requirement, who owns the follow-up, and when the gap must be closed before inspection pressure hits.",
+                        List.of(
+                                "Write down the missing document, tag, manifest, or report the moment the gap is discovered.",
+                                "Tie the gap to the source route or authority page so staff can reopen the right local rule without guessing.",
+                                "Assign an owner and next review date so the proof gap closes before the next inspection or service visit."
+                        ),
+                        List.of(
+                                new DownloadLink("Download missing proof tracker CSV", "/tools/missing-proof-tracker.csv", "Queue for missing proof item, source route, owner, next review date, and closure status.")
+                        ),
+                        List.of(
+                                new RelatedPageLink("Austin approved haulers", "/tx/austin/approved-grease-haulers"),
+                                new RelatedPageLink("Miami hood requirements", "/fl/miami/hood-cleaning-requirements"),
+                                new RelatedPageLink("What records inspections check", "/guides/what-records-restaurant-inspections-check")
                         )
                 ),
                 new ToolDefinition(
@@ -69,7 +89,7 @@ public class OperatorToolCatalog {
                                 "Use this as an operator queue, not as a substitute for the local rule page."
                         ),
                         List.of(
-                                new DownloadLink("Download reminder plan CSV", "/tools/inspection-reminder-plan.csv", "Reminder queue for authority, due date, issue type, and action owner.")
+                                new DownloadLink("Download reminder plan CSV", "/tools/inspection-reminder-plan.csv", "Reminder queue for authority, due date, issue type, source route, and action owner.")
                         ),
                         List.of(
                                 new RelatedPageLink("Austin fire inspection checklist", "/tx/austin/restaurant-fire-inspection-checklist"),

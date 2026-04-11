@@ -60,4 +60,17 @@ class AttributionRedirectIntegrationTests {
         assertThat(csv).contains("official_list,tampa,fl,fog_rules,fog_cleaning,tampa-wastewater-grease-ordinance,/fl/tampa/restaurant-grease-trap-rules,/fl/tampa/approved-grease-haulers");
         assertThat(csv).contains("next_action_cta,false");
     }
+
+    @Test
+    void authorityAliasSourcePathIsPreservedInRedirectLogs() throws Exception {
+        mockMvc.perform(get("/out/cta")
+                        .queryParam("source", "/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")
+                        .queryParam("target", "/authority/tx/austin-water-pretreatment/approved-grease-haulers")
+                        .queryParam("sponsored", "false"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/authority/tx/austin-water-pretreatment/approved-grease-haulers"));
+
+        String csv = Files.readString(logFile);
+        assertThat(csv).contains("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules,/authority/tx/austin-water-pretreatment/approved-grease-haulers");
+    }
 }

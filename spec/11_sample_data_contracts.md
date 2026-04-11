@@ -77,15 +77,22 @@ Give builders concrete seed shapes so they do not invent ad hoc JSON structures 
 ## `route-record.json`
 ```json
 {
-  "path": "/tx/austin/restaurant-grease-trap-rules",
-  "template": "fog-rules",
+  "path": "/tx/austin/find-grease-service",
+  "template": "find-grease-service",
   "state": "tx",
   "city": "Austin",
   "authorityId": "austin-water-pretreatment",
   "profileId": "austin-tx-kitchen-compliance",
-  "canonicalPath": "/tx/austin/restaurant-grease-trap-rules",
-  "indexable": true,
-  "decisionReason": "local rule and next-step workflow are explicit",
+  "canonicalPath": "/tx/austin/find-grease-service",
+  "indexable": false,
+  "decisionReason": "route exists because operators still need a city-aware next step even before the finder is safe to index",
+  "noindexReason": "public provider coverage is still too thin for an indexed finder",
+  "promotionChecklist": [
+    "add at least three renderable providers",
+    "show visible evidence quality on provider cards",
+    "recheck source freshness before promotion"
+  ],
+  "promotionReviewOn": "2026-05-01",
   "lastGenerated": "2026-04-07T15:00:00+09:00"
 }
 ```

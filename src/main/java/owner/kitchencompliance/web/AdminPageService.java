@@ -14,6 +14,8 @@ public class AdminPageService {
     private final FreshnessReportService freshnessReportService;
     private final SourceQualityReportService sourceQualityReportService;
     private final DeployReadinessReportService deployReadinessReportService;
+    private final NoindexPromotionReportService noindexPromotionReportService;
+    private final SearchDemandReportService searchDemandReportService;
     private final SourceEvidenceSnapshotService sourceEvidenceSnapshotService;
     private final OpsAlertService opsAlertService;
 
@@ -24,6 +26,8 @@ public class AdminPageService {
             FreshnessReportService freshnessReportService,
             SourceQualityReportService sourceQualityReportService,
             DeployReadinessReportService deployReadinessReportService,
+            NoindexPromotionReportService noindexPromotionReportService,
+            SearchDemandReportService searchDemandReportService,
             SourceEvidenceSnapshotService sourceEvidenceSnapshotService,
             OpsAlertService opsAlertService
     ) {
@@ -33,6 +37,8 @@ public class AdminPageService {
         this.freshnessReportService = freshnessReportService;
         this.sourceQualityReportService = sourceQualityReportService;
         this.deployReadinessReportService = deployReadinessReportService;
+        this.noindexPromotionReportService = noindexPromotionReportService;
+        this.searchDemandReportService = searchDemandReportService;
         this.sourceEvidenceSnapshotService = sourceEvidenceSnapshotService;
         this.opsAlertService = opsAlertService;
     }
@@ -43,6 +49,8 @@ public class AdminPageService {
         var freshness = freshnessReportService.readDashboard();
         var sourceQuality = sourceQualityReportService.readDashboard();
         var deployReadiness = deployReadinessReportService.readDashboard();
+        var noindexPromotionQueue = noindexPromotionReportService.readDashboard();
+        var searchDemand = searchDemandReportService.readDashboard();
         PageMeta meta = new PageMeta(
                 "Attribution admin | " + siteProperties.title(),
                 "Read-only attribution dashboard for provider outbound clicks and next-action CTAs.",
@@ -60,7 +68,9 @@ public class AdminPageService {
                 leads,
                 freshness,
                 sourceQuality,
-                deployReadiness
+                deployReadiness,
+                noindexPromotionQueue,
+                searchDemand
         );
     }
 
@@ -90,6 +100,14 @@ public class AdminPageService {
 
     public String exportDeployReadinessCsv() {
         return deployReadinessReportService.exportWatchCsv();
+    }
+
+    public String exportNoindexPromotionQueueCsv() {
+        return noindexPromotionReportService.exportQueueCsv();
+    }
+
+    public String exportSearchDemandWatchCsv() {
+        return searchDemandReportService.exportWatchCsv();
     }
 
     public String exportOperatorUtilitySummaryCsv() {

@@ -8,6 +8,8 @@ public record AdminPageViewModel(
         LeadDashboardSnapshot leads,
         FreshnessDashboardSnapshot freshness,
         SourceQualityDashboardSnapshot sourceQuality,
-        DeployReadinessDashboardSnapshot deployReadiness
+        DeployReadinessDashboardSnapshot deployReadiness,
+        NoindexPromotionQueueSnapshot noindexPromotionQueue,
+        SearchDemandDashboardSnapshot searchDemand
 ) {
 }

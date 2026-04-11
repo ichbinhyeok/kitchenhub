@@ -6,6 +6,7 @@ public record CityCard(
         String city,
         String state,
         String summary,
+        List<AuthorityRouteLink> authorityRoutes,
         List<RelatedPageLink> primaryLinks
 ) {
 }

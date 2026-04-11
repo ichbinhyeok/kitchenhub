@@ -72,7 +72,7 @@ public class SourceQualityAssessmentService {
         return new RouteSourceQualityAssessment(
                 cityLabel(route.profileId()),
                 pageLabel(route.template()),
-                route.path(),
+                seedRegistry.canonicalPath(route),
                 status,
                 totalSources,
                 strongSources,

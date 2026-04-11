@@ -9,6 +9,9 @@ public record ProviderCard(
         String listingLabel,
         String sponsorStatusLabel,
         String evidenceLabel,
+        String coverageConfidenceLabel,
+        String whyListed,
+        String evidenceReviewLabel,
         String note,
         String officialApprovalSourceUrl
 ) {

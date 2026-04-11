@@ -36,6 +36,7 @@ public class OperatorToolService {
                         switch (tool.slug()) {
                             case "grease-log" -> "download";
                             case "hood-record-binder" -> "upload_file";
+                            case "missing-proof-tracker" -> "rule";
                             case "inspection-reminder-plan" -> "calculate";
                             default -> "construction";
                         }
@@ -68,17 +69,21 @@ public class OperatorToolService {
     public String csvTemplate(String slug) {
         return switch (slug) {
             case "grease-log" -> """
-                    service_date,vendor_name,service_type,gallons_removed,receipt_reference,log_location,notes
-                    2026-04-07,Example Hauler,pump_out,240,INV-1001,FOG binder,"Pulled before inspection week"
+                    service_date,city,authority,vendor_name,service_type,gallons_removed,manifest_reference,receipt_reference,binder_location,next_review_on,notes
+                    2026-04-07,Austin,Austin Water,Example Hauler,pump_out,240,MAN-1001,INV-1001,FOG binder shelf A,2026-04-21,"Pulled before inspection week"
                     """;
             case "hood-record-binder" -> """
-                    document_type,last_service_date,authority_or_vendor,location_in_binder,next_due_date,follow_up
-                    hood_cleaning_report,2026-04-07,Example Hood Cleaner,Section A,2026-07-07,Confirm next cleaning
-                    suppression_tag,2026-04-07,Example Fire Vendor,Section B,2027-04-07,Keep visible on site
+                    document_type,city,authority,last_service_date,location_in_binder,next_due_date,proof_status,follow_up
+                    hood_cleaning_report,Austin,Austin Fire Department,2026-04-07,Section A,2026-07-07,complete,Confirm next cleaning
+                    suppression_tag,Austin,Austin Fire Department,2026-04-07,Section B,2027-04-07,visible,Keep visible on site
+                    """;
+            case "missing-proof-tracker" -> """
+                    detected_on,city,authority,issue_type,missing_proof,source_route,owner,next_review_on,status,closure_note
+                    2026-04-10,Austin,Austin Water,manifest_or_log,Current pump-out manifest,/tx/austin/approved-grease-haulers,Kitchen manager,2026-04-14,open,"Confirm hauler receipt and file in binder"
                     """;
             case "inspection-reminder-plan" -> """
-                    reminder_date,city,authority,issue_type,missing_proof,next_action,owner,status
-                    2026-04-21,Austin,Austin Fire Department,inspection_prep,Current hood report,Book service and file report,Kitchen manager,open
+                    reminder_date,city,authority,issue_type,source_route,missing_proof,next_action,owner,status
+                    2026-04-21,Austin,Austin Fire Department,inspection_prep,/tx/austin/restaurant-fire-inspection-checklist,Current hood report,Book service and file report,Kitchen manager,open
                     """;
             default -> throw new IllegalArgumentException("Unknown tool slug: " + slug);
         };
@@ -92,6 +97,7 @@ public class OperatorToolService {
         return switch (slug) {
             case "grease-log" -> IssueType.MANIFEST_OR_LOG;
             case "hood-record-binder" -> IssueType.HOOD_CLEANING;
+            case "missing-proof-tracker" -> IssueType.OPERATOR_UTILITY;
             case "inspection-reminder-plan" -> IssueType.INSPECTION_PREP;
             default -> IssueType.OPERATOR_UTILITY;
         };

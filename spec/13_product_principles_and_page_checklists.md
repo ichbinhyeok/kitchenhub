@@ -22,6 +22,7 @@
 - Official guidance, sponsor layers, and public provider inventory must stay visually and structurally separate.
 - Finder trust depends on visible evidence quality, not on card count alone.
 - If local source quality or provider coverage is weak, the route should fall back to noindex or to a verification workflow instead of pretending certainty.
+- `noindex` routes should remain in a monitored promotion queue with a clear reason, a concrete checklist, and a next review date.
 - Repeat utility matters more than content breadth. Pages should help an operator come back with a binder, manifest, due date, or inspection problem.
 - Freshness is a trust feature. `verifiedOn`, `nextReviewOn`, and evidence recency are part of the product, not metadata trivia.
 
@@ -194,6 +195,7 @@
 - Show service geography and service scope clearly enough to prevent bad leads.
 - Keep sponsor treatment clearly separate from public or authority-backed evidence blocks.
 - Stay indexable only when source quality and provider depth are strong enough to help an operator.
+- When the local workflow depends on an official hauler or transporter list, at least one provider card should carry authority-backed evidence before the finder is allowed into search.
 
 #### Must not do
 - Behave like a thin lead-gen directory.
@@ -210,6 +212,11 @@
   - coverage is thin
   - evidence is mostly contact-only
   - sponsor pressure would outrun trust
+  - the local workflow requires stronger authority-backed provider evidence than the current cards can show
+- `noindex` routes must stay on a promotion queue:
+  - why the route is held
+  - what must be true before promotion
+  - when the route must be reviewed again
 
 ### Evergreen guides
 
@@ -236,6 +243,7 @@
 - Be usable for real tasks:
   - grease logs
   - hood record binders
+  - missing proof trackers
   - inspection reminder planning
 - Preserve local context where possible.
 - Reinforce proof-on-site behavior, not generic content consumption.
@@ -245,6 +253,21 @@
 - Become thin SEO pages with download buttons.
 - Replace authority guidance with internal templates alone.
 - Hide the real operator task behind unnecessary friction.
+
+### Noindex governance
+
+#### States
+- `index` means the route is fit for search and trust-safe right now.
+- `noindex-monitored` means the route is intentionally held back but still belongs in the active product roadmap.
+- `blocked` means the route is too weak or too stale to work on until the underlying source problem is fixed.
+
+#### Must do
+- Keep every `noindex-monitored` route visible in `/admin` and scheduled ops snapshots.
+- Store or infer:
+  - why the route is still noindex
+  - what checklist must be completed for promotion
+  - when the route must be reviewed again
+- Treat promotion as a deliberate decision, not as a memory-based cleanup task.
 
 ## Sponsor and vendor separation rules
 - Official requirement blocks must render before sponsor blocks on local rule pages.
@@ -289,3 +312,4 @@
 - Favor local authority logic over generic advice.
 - Favor repeat utility over one-off SEO traffic.
 - Favor trust preservation over short-term sponsor surface expansion.
+- Favor organic acquisition only when it reinforces the canonical local page hierarchy in `spec/14_seo_indexing_strategy.md`.

@@ -36,6 +36,9 @@ class FreshnessVerificationServiceTests {
                 "/nc/charlotte/restaurant-grease-trap-rules",
                 true,
                 "Charlotte Water publishes a grease-trap policy and approved hauler list.",
+                null,
+                List.of(),
+                null,
                 OffsetDateTime.parse("2026-04-07T15:00:00+09:00")
         );
         SourceRecord staleSource = new SourceRecord(

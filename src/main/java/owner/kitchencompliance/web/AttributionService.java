@@ -60,15 +60,23 @@ public class AttributionService {
     }
 
     public String providerClickPath(RouteRecord route, ProviderRecord provider) {
+        return providerClickPath(route.path(), provider);
+    }
+
+    public String providerClickPath(String sourcePath, ProviderRecord provider) {
         return UriComponentsBuilder.fromPath("/out/providers/{providerId}")
-                .queryParam("source", route.path())
+                .queryParam("source", sourcePath)
                 .buildAndExpand(provider.providerId())
                 .toUriString();
     }
 
     public String ctaClickPath(RouteRecord route, String targetPath, boolean sponsored) {
+        return ctaClickPath(route.path(), targetPath, sponsored);
+    }
+
+    public String ctaClickPath(String sourcePath, String targetPath, boolean sponsored) {
         return UriComponentsBuilder.fromPath("/out/cta")
-                .queryParam("source", route.path())
+                .queryParam("source", sourcePath)
                 .queryParam("target", targetPath)
                 .queryParam("sponsored", sponsored)
                 .toUriString();
@@ -93,6 +101,10 @@ public class AttributionService {
     }
 
     public void recordLocalPageView(RouteRecord route, String visitorId) {
+        recordLocalPageView(route, route.path(), visitorId);
+    }
+
+    public void recordLocalPageView(RouteRecord route, String sourcePath, String visitorId) {
         appendRow(List.of(
                 OffsetDateTime.now(clock).toString(),
                 "page_view",
@@ -103,7 +115,7 @@ public class AttributionService {
                 pageFamilyValue(route.template().pageFamily()),
                 issueTypeValue(issueTypeFor(route.template())),
                 route.authorityId(),
-                route.path(),
+                sourcePath,
                 "",
                 "",
                 "",
@@ -137,6 +149,10 @@ public class AttributionService {
     }
 
     public void recordProviderClick(RouteRecord route, ProviderRecord provider, String visitorId) {
+        recordProviderClick(route, provider, route.path(), visitorId);
+    }
+
+    public void recordProviderClick(RouteRecord route, ProviderRecord provider, String sourcePath, String visitorId) {
         appendRow(List.of(
                 OffsetDateTime.now(clock).toString(),
                 "provider_click",
@@ -147,7 +163,7 @@ public class AttributionService {
                 pageFamilyValue(route.template().pageFamily()),
                 issueTypeValue(issueTypeFor(route.template())),
                 route.authorityId(),
-                route.path(),
+                sourcePath,
                 "",
                 provider.siteUrl(),
                 provider.providerId(),
@@ -159,6 +175,16 @@ public class AttributionService {
     }
 
     public void recordCtaClick(RouteRecord route, String targetPath, boolean sponsored, String visitorId) {
+        recordCtaClick(route, route.path(), targetPath, sponsored, visitorId);
+    }
+
+    public void recordCtaClick(
+            RouteRecord route,
+            String sourcePath,
+            String targetPath,
+            boolean sponsored,
+            String visitorId
+    ) {
         appendRow(List.of(
                 OffsetDateTime.now(clock).toString(),
                 "cta_click",
@@ -169,7 +195,7 @@ public class AttributionService {
                 pageFamilyValue(route.template().pageFamily()),
                 issueTypeValue(issueTypeFor(route.template())),
                 route.authorityId(),
-                route.path(),
+                sourcePath,
                 targetPath,
                 "",
                 "",

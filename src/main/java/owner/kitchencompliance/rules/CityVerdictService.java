@@ -192,7 +192,7 @@ public class CityVerdictService {
         return List.of(
                 cityName + " does not publish a safe approved-hauler list for this workflow.",
                 "Operators need a self-verification workflow for grease-waste coverage and paper-trail requirements.",
-                "Vendor routing must stay separate from official guidance until verification is complete."
+                "Vendor routing must stay separate from authority guidance until verification is complete."
         );
     }
 

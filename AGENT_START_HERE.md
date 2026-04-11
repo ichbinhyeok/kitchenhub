@@ -27,6 +27,8 @@ KitchenComplianceHub
 14. `spec/11_sample_data_contracts.md`
 15. `spec/12_acceptance_test_matrix.md`
 16. `spec/13_product_principles_and_page_checklists.md`
+17. `spec/14_seo_indexing_strategy.md`
+18. `spec/15_authority_first_route_design.md`
 
 ## Rules
 - Launch scope is FOG plus hood cleaning plus inspection prep only.
@@ -36,6 +38,7 @@ KitchenComplianceHub
 - Never imply a vendor is officially approved unless the authority publishes that list.
 - Where no approved list exists, show self-verification steps instead of inventing certainty.
 - Every local page must carry a source stack and a last-verified date.
+- Noindex routes must stay visible in the promotion queue with a reason, checklist, and next review date.
 - Update `ops/context_tracker.md` after meaningful changes.
 
 ## Minimum handoff standard

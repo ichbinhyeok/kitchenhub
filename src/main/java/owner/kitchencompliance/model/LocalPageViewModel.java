@@ -7,6 +7,8 @@ public record LocalPageViewModel(
         PageMeta meta,
         RouteTemplate template,
         String sourcePath,
+        String cityEntryPath,
+        String canonicalPath,
         String kicker,
         String title,
         String summary,
@@ -34,6 +36,13 @@ public record LocalPageViewModel(
         ProviderRoutingDecision routingDecision,
         List<ProviderCard> providers,
         List<RelatedPageLink> relatedLinks,
-        List<SourceAttribution> sources
+        List<RelatedPageLink> operatorToolLinks,
+        List<SourceAttribution> sources,
+        String governanceHeading,
+        String governanceBody,
+        String trustBannerTitle,
+        String trustBannerBody,
+        List<String> verificationChecklist,
+        boolean prioritizeOperatorLeadPanel
 ) {
 }

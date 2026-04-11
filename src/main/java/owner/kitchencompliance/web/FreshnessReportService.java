@@ -125,7 +125,7 @@ public class FreshnessReportService {
         return new RouteFreshnessSnapshot(
                 cityLabel(route.profileId()),
                 pageLabel(route.template()),
-                route.path(),
+                seedRegistry.canonicalPath(route),
                 nextReviewDate,
                 statusLabel,
                 note,

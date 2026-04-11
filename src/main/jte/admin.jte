@@ -4,6 +4,8 @@
 @import owner.kitchencompliance.model.AdminRecentLead
 @import owner.kitchencompliance.model.DeployReadinessWatchRow
 @import owner.kitchencompliance.model.FreshnessWatchRow
+@import owner.kitchencompliance.model.NoindexPromotionRow
+@import owner.kitchencompliance.model.SearchDemandWatchRow
 @import owner.kitchencompliance.model.SourceQualityWatchRow
 
 @param AdminPageViewModel page
@@ -31,6 +33,8 @@
                 <li><a href="/admin/exports/freshness-watch.csv">Download freshness watch CSV</a></li>
                 <li><a href="/admin/exports/source-quality-watch.csv">Download source quality watch CSV</a></li>
                 <li><a href="/admin/exports/deploy-readiness.csv">Download deploy readiness CSV</a></li>
+                <li><a href="/admin/exports/noindex-promotion-queue.csv">Download noindex promotion queue CSV</a></li>
+                <li><a href="/admin/exports/search-demand-watch.csv">Download search demand watch CSV</a></li>
                 <li><a href="/admin/exports/operator-utility-summary.csv">Download operator utility summary CSV</a></li>
                 <li><a href="/admin/exports/evidence-index.csv">Download evidence index CSV</a></li>
                 <li><a href="/admin/exports/ops-alerts.md">Download ops alerts Markdown</a></li>
@@ -139,6 +143,100 @@
                     </article>
                 @endfor
             </div>
+        </section>
+
+        <section class="panel">
+            <div class="panel__eyebrow">Noindex promotion queue</div>
+            <h2>Queued routes that should not be forgotten</h2>
+            <div class="metric-grid">
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Queued routes</div>
+                    <div class="metric-card__value">${page.noindexPromotionQueue().queuedRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Ready now</div>
+                    <div class="metric-card__value">${page.noindexPromotionQueue().readyToPromoteRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Due soon</div>
+                    <div class="metric-card__value">${page.noindexPromotionQueue().dueSoonRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Overdue</div>
+                    <div class="metric-card__value">${page.noindexPromotionQueue().overdueRoutes()}</div>
+                </article>
+            </div>
+            <p class="panel__note">Noindex routes should stay visible here until they are promoted, intentionally held, or removed from scope.</p>
+            @if(page.noindexPromotionQueue().rows().isEmpty())
+                <p class="panel__note">No noindex routes are currently queued for promotion.</p>
+            @else
+                <div class="admin-events">
+                    @for(NoindexPromotionRow row : page.noindexPromotionQueue().rows())
+                        <article class="admin-event">
+                            <p class="admin-event__meta">${row.cityLabel()} | ${row.pageLabel()} | ${row.statusLabel()} | ${row.readinessLabel()}</p>
+                            <p><strong>${row.path()}</strong></p>
+                            <p class="admin-event__path">Next review: ${row.nextReviewOn()}</p>
+                            <p class="admin-event__path">Reason: ${row.reason()}</p>
+                            <p class="admin-event__path">Sources: ${row.totalSources()} total / ${row.strongSources()} strong</p>
+                            @if(row.renderableProviders() > 0 || row.authorityBackedProviders() > 0)
+                                <p class="admin-event__path">Providers: ${row.renderableProviders()} renderable / ${row.authorityBackedProviders()} authority-backed</p>
+                            @endif
+                            @if(row.topQuery() != null && !row.topQuery().isBlank())
+                                <p class="admin-event__path">Search demand: ${row.searchDemandStatusLabel()} | ${row.topQuery()} | ${row.impressions28d()} impressions / ${row.clicks28d()} clicks / ${row.ctrLabel()} CTR / avg pos ${row.averagePositionLabel()}</p>
+                            @endif
+                            <ul class="admin-checklist">
+                                @for(String step : row.checklist())
+                                    <li>${step}</li>
+                                @endfor
+                            </ul>
+                        </article>
+                    @endfor
+                </div>
+            @endif
+        </section>
+
+        <section class="panel">
+            <div class="panel__eyebrow">Search Console demand</div>
+            <h2>Imported route demand snapshot</h2>
+            <div class="metric-grid">
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Tracked routes</div>
+                    <div class="metric-card__value">${page.searchDemand().trackedRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Promotion demand</div>
+                    <div class="metric-card__value">${page.searchDemand().promotionDemandRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">CTR work</div>
+                    <div class="metric-card__value">${page.searchDemand().ctrWorkRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Discoverability work</div>
+                    <div class="metric-card__value">${page.searchDemand().discoverabilityWorkRoutes()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Monitor</div>
+                    <div class="metric-card__value">${page.searchDemand().monitorRoutes()}</div>
+                </article>
+            </div>
+            <p class="panel__note">This is an imported GSC-style snapshot, not a live API call. Keep it current so promotion and CTR work do not depend on memory.</p>
+            @if(page.searchDemand().rows().isEmpty())
+                <p class="panel__note">No imported demand snapshots are loaded yet.</p>
+            @else
+                <div class="admin-events">
+                    @for(SearchDemandWatchRow row : page.searchDemand().rows())
+                        <article class="admin-event">
+                            <p class="admin-event__meta">${row.cityLabel()} | ${row.pageLabel()} | ${row.statusLabel()} | ${row.routeStateLabel()}</p>
+                            <p><strong>${row.path()}</strong></p>
+                            <p class="admin-event__path">Top query: ${row.topQuery()}</p>
+                            <p class="admin-event__path">Metrics: ${row.impressions28d()} impressions / ${row.clicks28d()} clicks / ${row.ctrLabel()} CTR / avg pos ${row.averagePositionLabel()}</p>
+                            <p class="admin-event__path">Captured: ${row.capturedOn()}</p>
+                            <p class="admin-event__path">${row.note()}</p>
+                        </article>
+                    @endfor
+                </div>
+            @endif
         </section>
 
         <section class="metric-grid">

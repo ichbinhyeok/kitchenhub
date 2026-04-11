@@ -29,10 +29,10 @@ class FreshnessReportServiceTests {
 
         var dashboard = reportService.readDashboard();
 
-        assertThat(dashboard.indexedRoutes()).isEqualTo(48);
+        assertThat(dashboard.indexedRoutes()).isEqualTo(45);
         assertThat(dashboard.staleRoutes()).isZero();
         assertThat(dashboard.dueSoonRoutes()).isPositive();
-        assertThat(dashboard.freshRoutes() + dashboard.dueSoonRoutes()).isEqualTo(48);
+        assertThat(dashboard.freshRoutes() + dashboard.dueSoonRoutes()).isEqualTo(45);
         assertThat(dashboard.nextReviewDue()).isNotBlank();
         assertThat(dashboard.watchRows()).isNotEmpty();
         assertThat(dashboard.watchRows())

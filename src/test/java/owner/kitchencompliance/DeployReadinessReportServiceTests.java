@@ -17,9 +17,9 @@ class DeployReadinessReportServiceTests {
     void dashboardSummarizesIndexedRouteDeployReadiness() {
         var dashboard = deployReadinessReportService.readDashboard();
 
-        assertThat(dashboard.indexedRoutes()).isEqualTo(48);
+        assertThat(dashboard.indexedRoutes()).isEqualTo(45);
         assertThat(dashboard.blockedRoutes()).isZero();
-        assertThat(dashboard.readyRoutes() + dashboard.watchRoutes() + dashboard.blockedRoutes()).isEqualTo(48);
+        assertThat(dashboard.readyRoutes() + dashboard.watchRoutes() + dashboard.blockedRoutes()).isEqualTo(45);
         assertThat(dashboard.watchRows()).isNotEmpty();
         assertThat(dashboard.watchRows()).allSatisfy(row -> {
             assertThat(row.statusLabel()).isIn("Blocked", "Watch", "Ready");

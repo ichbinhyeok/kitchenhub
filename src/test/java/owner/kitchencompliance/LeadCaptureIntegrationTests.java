@@ -88,4 +88,19 @@ class LeadCaptureIntegrationTests {
 
         assertThat(Files.exists(leadLogFile)).isFalse();
     }
+
+    @Test
+    void authorityAliasSourcePathIsPreservedInLeadStorageAndRedirect() throws Exception {
+        mockMvc.perform(post("/lead-intake/sponsor")
+                        .param("source", "/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")
+                        .param("contactName", "Jamie Lee")
+                        .param("businessName", "Grease Vendor Co")
+                        .param("email", "jamie@vendor.example")
+                        .param("routingConsent", "true"))
+                .andExpect(status().is3xxRedirection())
+                .andExpect(redirectedUrl("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules?lead=sponsor-submitted#sponsor-slot"));
+
+        String csv = Files.readString(leadLogFile);
+        assertThat(csv).contains("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules");
+    }
 }
