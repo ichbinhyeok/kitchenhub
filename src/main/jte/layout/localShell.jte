@@ -11,6 +11,12 @@
 <main class="page-shell page-shell--local${page.template() == RouteTemplate.FIND_GREASE_SERVICE || page.template() == RouteTemplate.FIND_HOOD_CLEANER ? " local-page--provider" : ""}">
     <div class="local-layout">
         <aside class="local-sidebar">
+            @if(page.template() == RouteTemplate.FIND_GREASE_SERVICE || page.template() == RouteTemplate.FIND_HOOD_CLEANER)
+                <details class="local-sidebar-drawer">
+                    <summary>Open local route map</summary>
+                    <div class="local-sidebar__content">
+            @endif
+
             <div class="local-sidebar__panel">
                 <div class="local-sidebar__eyebrow">
                     ${page.template() == RouteTemplate.HOOD_REQUIREMENTS || page.template() == RouteTemplate.INSPECTION_CHECKLIST ? "Authority-backed route" : "Local rule summary"}
@@ -52,6 +58,11 @@
             @endif
 
             <a class="button button--dark button--block" href="#official-sources">Print Paperwork</a>
+
+            @if(page.template() == RouteTemplate.FIND_GREASE_SERVICE || page.template() == RouteTemplate.FIND_HOOD_CLEANER)
+                    </div>
+                </details>
+            @endif
         </aside>
 
         <div class="local-main">

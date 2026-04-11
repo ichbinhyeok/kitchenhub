@@ -255,6 +255,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/mahoney-environmental-austin")))
                 .andExpect(content().string(containsString("Search visibility is intentionally held")))
                 .andExpect(content().string(containsString("Verification checklist")))
+                .andExpect(content().string(containsString("Open local route map")))
                 .andExpect(content().string(containsString("action=\"/lead-intake/operator\"")))
                 .andExpect(content().string(containsString("Send service request")))
                 .andExpect(content().string(containsString("Visit provider site")))

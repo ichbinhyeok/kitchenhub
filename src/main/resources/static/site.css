@@ -1051,6 +1051,23 @@ h4 {
     gap: 14px;
 }
 
+.local-sidebar__content {
+    display: grid;
+    gap: 14px;
+}
+
+.local-sidebar-drawer > .local-sidebar__content {
+    display: grid;
+}
+
+.local-sidebar-drawer {
+    display: block;
+}
+
+.local-sidebar-drawer summary {
+    display: none;
+}
+
 .local-sidebar__panel {
     background: rgba(235, 238, 240, 0.92);
     border-radius: var(--radius-sm);
@@ -1752,6 +1769,10 @@ h4 {
     gap: 10px;
 }
 
+.local-page--provider .local-sidebar__content {
+    gap: 10px;
+}
+
 .local-page--provider .local-sidebar__panel {
     background: rgba(235, 238, 240, 0.78);
     padding: 12px 10px;
@@ -2282,10 +2303,18 @@ h4 {
         grid-template-columns: 1fr;
     }
 
+    .local-page--provider .local-layout {
+        grid-template-columns: 1fr;
+    }
+
     .local-sidebar {
         position: static;
         grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: start;
+    }
+
+    .local-page--provider .local-sidebar {
+        grid-template-columns: 1fr;
     }
 
     .hood-frequency__grid,
@@ -2334,6 +2363,48 @@ h4 {
     .guide-authority-grid,
     .authority-directory-grid {
         grid-template-columns: 1fr;
+    }
+
+    .local-page--provider .local-sidebar {
+        display: block;
+    }
+
+    .local-page--provider .local-sidebar__content {
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .local-sidebar-drawer summary {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 12px 14px;
+        background: rgba(235, 238, 240, 0.92);
+        border-radius: var(--radius-sm);
+        list-style: none;
+        cursor: pointer;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .local-sidebar-drawer summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .local-sidebar-drawer summary::after {
+        content: "Expand";
+        color: var(--ink-muted);
+    }
+
+    .local-sidebar-drawer[open] summary::after {
+        content: "Hide";
+    }
+
+    .local-sidebar-drawer:not([open]) > :not(summary) {
+        display: none;
     }
 
     .authority-filter-chips,
