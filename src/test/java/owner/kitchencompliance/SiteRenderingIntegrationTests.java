@@ -46,6 +46,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/tools/inspection-reminder-plan")))
                 .andExpect(content().string(containsString("/methodology")))
                 .andExpect(content().string(containsString("/not-government-affiliated")))
+                .andExpect(content().string(not(containsString("Admin Login"))))
                 .andExpect(content().string(containsString("application/ld+json")));
     }
 
@@ -55,6 +56,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("An operator-first local compliance workflow")))
                 .andExpect(content().string(containsString("Not a government site or municipal portal.")))
+                .andExpect(content().string(not(containsString("Admin Login"))))
                 .andExpect(content().string(containsString("content=\"index,follow\"")));
 
         mockMvc.perform(get("/privacy"))
@@ -225,7 +227,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/express-jet-services-charlotte")))
                 .andExpect(content().string(containsString("/out/providers/greasecycle-charlotte")))
                 .andExpect(content().string(containsString("Visit provider site")))
-                .andExpect(content().string(containsString("Coverage confidence:")))
+                .andExpect(content().string(containsString("Coverage ")))
                 .andExpect(content().string(containsString("Route evidence reviewed")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
 
@@ -271,7 +273,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/pro-hood-cleaning-austin")))
                 .andExpect(content().string(containsString("/out/providers/hoodz-austin-hood-cleaning")))
                 .andExpect(content().string(containsString("Evidence and sponsor status")))
-                .andExpect(content().string(containsString("Coverage confidence:")))
+                .andExpect(content().string(containsString("Coverage ")))
                 .andExpect(content().string(containsString("Route evidence reviewed")))
                 .andExpect(content().string(containsString("BreadcrumbList")))
                 .andExpect(content().string(containsString("ItemList")))
@@ -412,7 +414,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/hoodz-santa-clara-hood-cleaning")))
                 .andExpect(content().string(containsString("/out/providers/bay-area-hood-cleaning-santa-clara")))
                 .andExpect(content().string(containsString("/out/providers/apex-hood-cleaning-santa-clara")))
-                .andExpect(content().string(containsString("Evidence: ")))
+                .andExpect(content().string(containsString("Evidence ")))
                 .andExpect(content().string(containsString("Visit provider site")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
     }

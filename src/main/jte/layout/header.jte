@@ -24,7 +24,6 @@
             <a class="top-nav__link${meta.canonicalUrl().contains("/tools/") ? " is-active" : ""}" href="/tools/grease-log">
                 Operator Tools
             </a>
-            <a class="button button--dark" href="/admin">Admin Login</a>
         </nav>
     </div>
 </header>

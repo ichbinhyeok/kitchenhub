@@ -235,7 +235,6 @@
                             @for(ProviderCard provider : page.providers())
                                 <article class="provider-card${provider.listingLabel().toLowerCase().contains("sponsor") || provider.sponsorStatusLabel().toLowerCase().contains("sponsor") ? " provider-card--featured" : ""}">
                                     <div class="provider-card__identity">
-                                        <div class="provider-card__mark">${ViewFormatSupport.initials(provider.providerName())}</div>
                                         <div class="provider-card__heading">
                                             <div class="provider-card__topline">
                                                 <div class="provider-card__title">${provider.providerName()}</div>
@@ -243,7 +242,11 @@
                                                     ${provider.listingLabel()}
                                                 </div>
                                             </div>
-                                            <div class="provider-card__meta">${provider.providerTypeLabel()} | Evidence: ${provider.evidenceLabel()} | Coverage confidence: ${provider.coverageConfidenceLabel()}</div>
+                                            <div class="provider-card__meta">
+                                                <span>${provider.providerTypeLabel()}</span>
+                                                <span>Evidence ${provider.evidenceLabel()}</span>
+                                                <span>Coverage ${provider.coverageConfidenceLabel()}</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="provider-card__signals">
@@ -674,7 +677,6 @@
                         @for(ProviderCard provider : page.providers())
                             <article class="provider-card${provider.listingLabel().toLowerCase().contains("sponsor") || provider.sponsorStatusLabel().toLowerCase().contains("sponsor") ? " provider-card--featured" : ""}">
                                 <div class="provider-card__identity">
-                                    <div class="provider-card__mark">${ViewFormatSupport.initials(provider.providerName())}</div>
                                     <div class="provider-card__heading">
                                         <div class="provider-card__topline">
                                             <div class="provider-card__title">${provider.providerName()}</div>
@@ -682,7 +684,11 @@
                                                 ${provider.listingLabel()}
                                             </div>
                                         </div>
-                                        <div class="provider-card__meta">${provider.providerTypeLabel()} | Evidence: ${provider.evidenceLabel()} | Coverage confidence: ${provider.coverageConfidenceLabel()}</div>
+                                        <div class="provider-card__meta">
+                                            <span>${provider.providerTypeLabel()}</span>
+                                            <span>Evidence ${provider.evidenceLabel()}</span>
+                                            <span>Coverage ${provider.coverageConfidenceLabel()}</span>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="provider-card__signals">
