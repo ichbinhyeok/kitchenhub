@@ -39,6 +39,7 @@
 - Search-demand snapshots should be treated as an explicit ops input, not tribal knowledge, when deciding promotion, CTR fixes, or discoverability work.
 - Public brand and launch domain are now `KitchenRuleHub` and `kitchenrulehub.com`, while the internal Java package root stays `owner.kitchencompliance`.
 - Production deploy now targets Docker Hub plus OCI over SSH using `shinhyeok22/kitchenhub`, with the legacy jar-copy Oracle workflow removed from `main` pushes.
+- Site surface can stay broad, but the active operating wedge for the next 4 to 6 weeks is now fixed to Austin, Charlotte, and Miami local rule pages first, with grease-service and hood-service proof routes treated as secondary commercial evidence surfaces.
 
 ## What changed this session
 - Created a standardized design packet under `C:\Development\Owner\KitchenComplianceHub`.
@@ -97,6 +98,7 @@
 - Added `ops/route_promotion_triggers_2026-04-12.md` and `ops/route_trigger_tracker_2026-04-12.csv` so promotion, hold states, and next review dates are tracked at the route level instead of living in memory.
 - Rebranded the public product surface, deploy assets, and runtime metadata from `KitchenComplianceHub` to `KitchenRuleHub`, updated deploy defaults to `kitchenrulehub.com`, and renamed the Spring Boot entrypoint plus Oracle service examples accordingly.
 - Added `Dockerfile`, `docker-compose.yml`, and `.github/workflows/deploy.yml` so `main` can build an ARM64 image, push to Docker Hub, ship `docker-compose.yml` to OCI, and restart the live container behind nginx.
+- Added `ops/wedge_focus_2026-04-12.md` and wired it into the read path so future weekly review, Search Console analysis, and sponsor-proof work defaults to the narrow wedge instead of all live routes equally.
 
 ## Next recommended tasks
 - Improve provider ranking beyond evidence presence alone by weighting city-specific coverage, direct local numbers, and freshness of the cited authority source.
@@ -107,6 +109,7 @@
 - Keep source dates and provider depth current; deploy readiness now fails closed when indexed routes fall out of bounds.
 - Run the sponsor beta plan in `ops/sponsor_beta_plan_2026-04-12.md` before adding more cities or guide inventory.
 - Use `ops/route_trigger_tracker_2026-04-12.csv` as the weekly route-review source of truth and only promote held routes when the trigger doc and route checklist both pass.
+- Use `ops/wedge_focus_2026-04-12.md` as the first filter for Search Console review, internal-link work, and weekly route interpretation before looking at the wider 48-route surface.
 - Set the real production env file to `APP_SITE_BASE_URL=https://kitchenrulehub.com` before the first deploy and submit the live sitemap to Search Console after launch.
 - Add GitHub secrets `APP_ADMIN_USERNAME` and `APP_ADMIN_PASSWORD` before the first OCI deploy; the new container workflow treats them as required and the production profile will not boot without them.
 - Decide whether authority alias routes should stay secondary navigation inside home/guides or become first-class browse surfaces elsewhere in the product.

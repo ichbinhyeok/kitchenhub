@@ -15,6 +15,7 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 ## File map
 - `AGENT_START_HERE.md` - read order and handoff rules for any future agent
 - `ops/context_tracker.md` - current status, decisions, and next tasks
+- `ops/wedge_focus_2026-04-12.md` - current primary wedge, route tiers, and the narrow operating loop for the next 4 to 6 weeks
 - `ops/source_audit_2026-04-07.md` - latest web-backed source verification pass across the live city cohort
 - `spec/00_strategy.md` - market thesis, positioning, core wedge, and rollout philosophy
 - `spec/01_query_and_user_map.md` - jobs-to-be-done, user states, query families, and priority pages
@@ -141,4 +142,5 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - Launch scope is fixed to FOG, Type I hood cleaning, suppression and inspection-prep, and the records needed to survive inspection.
 - Do not sprawl into full restaurant licensing, HACCP, labor posters, or opening-a-restaurant content.
 - Build for direct sponsor sales and repeat operator utility, not display ad traffic.
+- Keep the site surface broad if useful, but keep weekly learning and SEO interpretation narrow around the active wedge.
 - Keep source `verifiedOn` and `nextReviewOn` dates current for any route that remains indexable.
