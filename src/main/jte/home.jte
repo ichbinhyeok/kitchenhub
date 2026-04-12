@@ -1,5 +1,6 @@
 @import owner.kitchencompliance.model.AuthorityRouteLink
 @import owner.kitchencompliance.model.CityCard
+@import owner.kitchencompliance.model.HomeIssueCard
 @import owner.kitchencompliance.model.HomePanelLink
 @import owner.kitchencompliance.model.HomePageViewModel
 @import owner.kitchencompliance.model.RelatedPageLink
@@ -18,15 +19,15 @@
 
                 <h1>Local compliance + operator action for commercial kitchens</h1>
                 <p class="home-hero__summary">
-                    Stop guessing local code. Check the real rule holder, stage the proof inspectors ask for, and only then route service if the site still needs help.
+                    Start with grease, hood, or inspection work. Open the local page, stage the proof inspectors ask for, and only then route service if the site still needs help.
                 </p>
 
                 <div class="action-row">
-                    <a class="button button--primary" href="#active-cities">
-                        Choose Your City
+                    <a class="button button--primary" href="#operator-start">
+                        Start With The Issue
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
-                    <a class="button button--secondary" href="/guides/fog-vs-grease-trap-cleaning">View Guides</a>
+                    <a class="button button--secondary" href="#active-cities">Browse City Directory</a>
                     <a class="button button--ghost" href="/authorities">Browse Authorities</a>
                 </div>
             </div>
@@ -37,9 +38,37 @@
                 </div>
                 <div class="home-hero__rail">
                     <div class="status-card__eyebrow">Austin, TX example</div>
-                    <div class="status-card__title">City -> Authority -> Proof -> Service</div>
-                    <p class="status-card__body">Start at the city page, but switch to the actual utility, fire AHJ, or department before you act.</p>
+                    <div class="status-card__title">Issue -> local page -> city directory</div>
+                    <p class="status-card__body">Start with the issue, open the local page, and keep the city directory for the cases where you need the broader jurisdiction view.</p>
                 </div>
+            </div>
+        </section>
+
+        <section class="home-section" id="operator-start">
+            <div class="section-heading">
+                <div>
+                    <div class="section-heading__eyebrow">First-visit operator flow</div>
+                    <h2 class="section-heading__title">Start With The Issue On Your Desk</h2>
+                </div>
+                <div class="section-heading__summary">Open the local page for the issue first. The guide stays available, but it no longer takes the first click.</div>
+            </div>
+
+            <div class="home-start-grid">
+                @for(HomeIssueCard issue : page.issueCards())
+                    <article class="home-start-card">
+                        <span class="material-symbols-outlined">${issue.iconName()}</span>
+                        <h3>${issue.title()}</h3>
+                        <p>${issue.summary()}</p>
+
+                        <div class="action-row">
+                            <a class="button button--primary" href="${issue.destinationPath()}">
+                                ${issue.destinationLabel()}
+                                <span class="material-symbols-outlined">arrow_forward</span>
+                            </a>
+                            <a class="button button--ghost" href="${issue.supportPath()}">${issue.supportLabel()}</a>
+                        </div>
+                    </article>
+                @endfor
             </div>
         </section>
 
@@ -48,11 +77,10 @@
                 <div>
                     <div class="section-heading__eyebrow">Verified local code for commercial operators</div>
                     <h2 class="section-heading__title">Active City Jurisdictions</h2>
-                    <div class="section-heading__summary">Choose the city first, then verify which utility, fire AHJ, or department actually holds the rule before you act.</div>
+                    <div class="section-heading__summary">Use the city directory after the issue is clear or when you need the broader jurisdiction view.</div>
                 </div>
                 <a class="section-heading__tag" href="/authorities">Rule Holders</a>
             </div>
-
             <div class="city-grid city-grid--home">
                 @for(CityCard city : page.cityCards())
                     <article class="city-card city-card--home">
@@ -79,36 +107,6 @@
                         </div>
                     </article>
                 @endfor
-            </div>
-        </section>
-
-        <section class="home-section" id="operator-start">
-            <div class="section-heading">
-                <div>
-                    <div class="section-heading__eyebrow">First-visit operator flow</div>
-                    <h2 class="section-heading__title">Start With The Issue On Your Desk</h2>
-                </div>
-                <div class="section-heading__summary">Most operators arrive with one urgent problem: grease routing, hood paperwork, or inspection prep. Start there before picking a vendor.</div>
-            </div>
-
-            <div class="home-start-grid">
-                <a class="home-start-card" href="/guides/fog-vs-grease-trap-cleaning">
-                    <span class="material-symbols-outlined">delete_outline</span>
-                    <h3>Grease, hauling, and manifests</h3>
-                    <p>Use this when the question is grease traps, pump-outs, Austin Water hauler rules, or liquid waste manifests.</p>
-                </a>
-
-                <a class="home-start-card" href="/guides/how-often-clean-commercial-hood">
-                    <span class="material-symbols-outlined">local_fire_department</span>
-                    <h3>Hood, suppression, and tags</h3>
-                    <p>Use this when the site needs hood-cleaning paperwork, visible tags, or fire-system inspection context.</p>
-                </a>
-
-                <a class="home-start-card" href="/guides/what-records-restaurant-inspections-check">
-                    <span class="material-symbols-outlined">fact_check</span>
-                    <h3>Inspection-ready records</h3>
-                    <p>Use this when an inspector is coming soon and the team needs to know exactly what must be staged on site.</p>
-                </a>
             </div>
         </section>
 

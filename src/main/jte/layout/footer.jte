@@ -1,9 +1,9 @@
 <footer class="site-footer">
     <div class="site-footer__inner">
         <div class="footer-column">
-            <div class="site-footer__brand">KitchenComplianceHub</div>
+            <div class="site-footer__brand">KitchenRuleHub</div>
             <p class="site-footer__small">Authority-backed rule summaries, operator proof checklists, and verified next actions for commercial kitchens.</p>
-            <p class="site-footer__small">&copy; 2026 KitchenComplianceHub. Independent operator workflow, not a government portal.</p>
+            <p class="site-footer__small">&copy; 2026 KitchenRuleHub. Independent operator workflow, not a government portal.</p>
         </div>
 
         <div class="footer-column">

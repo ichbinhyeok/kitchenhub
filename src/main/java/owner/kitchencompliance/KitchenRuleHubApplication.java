@@ -6,10 +6,10 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-public class KitchenComplianceHubApplication {
+public class KitchenRuleHubApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(KitchenComplianceHubApplication.class, args);
+        SpringApplication.run(KitchenRuleHubApplication.class, args);
 	}
 
 }

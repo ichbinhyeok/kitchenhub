@@ -57,7 +57,7 @@
                 </div>
             @endif
 
-            <a class="button button--dark button--block" href="#official-sources">Print Paperwork</a>
+            <a class="button button--dark button--block" href="#official-sources">Review sources</a>
 
             @if(page.template() == RouteTemplate.FIND_GREASE_SERVICE || page.template() == RouteTemplate.FIND_HOOD_CLEANER)
                     </div>
@@ -142,7 +142,7 @@
 
                 <section class="panel">
                     <div class="panel__eyebrow">${page.officialHeading()}</div>
-                    <h2>Sizing &amp; Frequency Mandates</h2>
+                    <h2>Local Interceptor Requirements</h2>
                     <div class="metric-strip" style="margin-top: 18px;">
                         @for(String item : page.officialRequirements())
                             <article class="metric-card">
@@ -199,7 +199,7 @@
                         </div>
                         <div class="action-row" style="margin-top: 0;">
                             <a class="button button--accent" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
-                            <a class="button button--secondary" href="#official-sources">Download Log Tool</a>
+                            <a class="button button--secondary" href="/tools/grease-log">Open grease log tool</a>
                         </div>
                     </section>
                 @endif
@@ -262,7 +262,7 @@
                                     <p class="provider-card__note">${provider.note()}</p>
                                     <div class="provider-card__footer">
                                         <span class="panel__note">${provider.sponsorStatusLabel()}</span>
-                                        <a class="text-link" href="${provider.siteUrl()}" rel="noopener noreferrer" target="_blank">Visit provider site</a>
+                                        <a class="text-link" href="${provider.siteUrl()}" rel="${ViewFormatSupport.providerOutboundRel(provider)}" target="_blank">Visit provider site</a>
                                     </div>
                                 </article>
                             @endfor
@@ -325,7 +325,7 @@
 
                         <section class="hood-frequency">
                             <div class="panel__eyebrow">${page.officialHeading()}</div>
-                            <h2>Cleaning Frequency Requirements</h2>
+                            <h2>Local Hood-System Requirements</h2>
                             <div class="hood-frequency__grid">
                                 @for(int i = 0; i < page.officialRequirements().size(); i++)
                                     <article class="hood-frequency__card${i == 0 ? " hood-frequency__card--featured" : ""}">
@@ -450,7 +450,7 @@
                     </article>
 
                     <div class="inspection-hero__actions">
-                        <a class="button button--dark button--block" href="#official-sources">Download PDF Checklist</a>
+                        <a class="button button--dark button--block" href="/tools/inspection-reminder-plan">Open reminder plan</a>
                         @if(page.callToAction() != null)
                             <a class="button button--secondary button--block" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
                         @endif
@@ -715,7 +715,7 @@
                                 </div>
                                 <div class="provider-card__footer">
                                     <span class="panel__note">${provider.sponsorStatusLabel()}</span>
-                                    <a class="text-link" href="${provider.siteUrl()}" rel="noopener noreferrer" target="_blank">Visit provider site</a>
+                                    <a class="text-link" href="${provider.siteUrl()}" rel="${ViewFormatSupport.providerOutboundRel(provider)}" target="_blank">Visit provider site</a>
                                 </div>
                             </article>
                         @endfor

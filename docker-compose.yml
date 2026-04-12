@@ -1,0 +1,29 @@
+name: kitchenrulehub
+
+services:
+  app:
+    image: ${IMAGE_NAME:-shinhyeok22/kitchenhub:latest}
+    container_name: kitchenrulehub
+    restart: unless-stopped
+    ports:
+      - "${HOST_PORT:-8096}:8080"
+    mem_limit: 768m
+    environment:
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILES_ACTIVE:-prod}
+      SERVER_PORT: 8080
+      APP_SITE_BASE_URL: ${APP_SITE_BASE_URL:-https://kitchenrulehub.com}
+      APP_ADMIN_USERNAME: ${APP_ADMIN_USERNAME:?APP_ADMIN_USERNAME is required}
+      APP_ADMIN_PASSWORD: ${APP_ADMIN_PASSWORD:?APP_ADMIN_PASSWORD is required}
+      APP_ATTRIBUTION_LOG_DIR: /app/var/attribution
+      APP_LEAD_LOG_DIR: /app/var/leads
+      APP_OPS_AUDIT_DIR: /app/var/ops
+      APP_FRESHNESS_AUDIT_ENABLED: ${APP_FRESHNESS_AUDIT_ENABLED:-true}
+      APP_FRESHNESS_AUDIT_CRON: ${APP_FRESHNESS_AUDIT_CRON:-0 15 6 * * *}
+      APP_FRESHNESS_AUDIT_ZONE: ${APP_FRESHNESS_AUDIT_ZONE:-UTC}
+      GG_JTE_DEVELOPMENT_MODE: "false"
+      GG_JTE_USE_PRECOMPILED_TEMPLATES: "true"
+      JAVA_OPTS: ${JAVA_OPTS:--XX:+UseG1GC -Xms256m -Xmx512m -Djava.security.egd=file:/dev/./urandom}
+    volumes:
+      - ./var/attribution:/app/var/attribution
+      - ./var/leads:/app/var/leads
+      - ./var/ops:/app/var/ops

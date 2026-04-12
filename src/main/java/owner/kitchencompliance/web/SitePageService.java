@@ -34,6 +34,7 @@ import owner.kitchencompliance.model.AuthorityBrowsePageViewModel;
 import owner.kitchencompliance.model.AuthorityBrowseRouteLink;
 import owner.kitchencompliance.model.AuthorityBrowseSection;
 import owner.kitchencompliance.model.AuthorityBrowseStateJump;
+import owner.kitchencompliance.model.HomeIssueCard;
 import owner.kitchencompliance.model.HomePanelLink;
 import owner.kitchencompliance.model.HomePageViewModel;
 import owner.kitchencompliance.model.InfoPageViewModel;
@@ -124,6 +125,36 @@ public class SitePageService {
                 ))
                 .toList();
 
+        List<HomeIssueCard> issueCards = List.of(
+                issueCard(
+                        "Grease, hauling, and manifests",
+                        "Use the Austin grease page for pump-outs, manifests, and who can haul the waste.",
+                        "Open Austin page",
+                        localRoutePath("austin-tx-kitchen-compliance", RouteTemplate.FOG_RULES),
+                        "Read grease guide",
+                        "/guides/fog-vs-grease-trap-cleaning",
+                        "delete_outline"
+                ),
+                issueCard(
+                        "Hood, suppression, and tags",
+                        "Use the Tampa hood page for service paperwork, visible tags, and fire-system context.",
+                        "Open Tampa page",
+                        localRoutePath("tampa-fl-kitchen-compliance", RouteTemplate.HOOD_REQUIREMENTS),
+                        "Read hood guide",
+                        "/guides/how-often-clean-commercial-hood",
+                        "local_fire_department"
+                ),
+                issueCard(
+                        "Inspection-ready records",
+                        "Use the Charlotte inspection page when the next visit is close and the proof needs staging.",
+                        "Open Charlotte page",
+                        localRoutePath("charlotte-nc-kitchen-compliance", RouteTemplate.INSPECTION_CHECKLIST),
+                        "Read inspection guide",
+                        "/guides/what-records-restaurant-inspections-check",
+                        "fact_check"
+                )
+        );
+
         List<HomePanelLink> guideLinks = guideCatalog.allGuides().stream()
                 .map(guide -> new HomePanelLink(
                         guide.title(),
@@ -138,19 +169,20 @@ public class SitePageService {
                 "Local restaurant grease trap rules, hood cleaning requirements, fire inspection checklists, and next steps by actual rule holder.",
                 canonicalUrl("/"),
                 "index,follow",
-                LocalDate.now(),
+                siteLatestVerifiedDate(),
                 structuredDataJson(websiteStructuredData(siteProperties.title(), canonicalUrl("/")))
         );
 
         return new HomePageViewModel(
                 meta,
                 "Kitchen compliance with a local next action",
-                "KitchenComplianceHub helps commercial kitchen operators start with the local authority, confirm what must stay on site, and then move into the next action without mixing vendor copy into authority guidance.",
+                "KitchenRuleHub helps commercial kitchen operators start with grease, hood, or inspection work, confirm the local rule holder, and then move into the next action without mixing vendor copy into authority guidance.",
                 List.of(
-                        "Start from the city or authority that governs the site.",
-                        "See exactly what proof should stay on site.",
+                        "Start from the issue on the desk instead of the city catalog.",
+                        "See exactly what proof should stay on site for that local rule.",
                         "Move from rule clarity to the next service action without blending sponsor copy into authority guidance."
                 ),
+                issueCards,
                 cityCards,
                 guideLinks,
                 operatorToolService.homeToolLinks()
@@ -197,7 +229,7 @@ public class SitePageService {
                 guide.summary(),
                 canonicalUrl("/guides/" + guide.slug()),
                 "index,follow",
-                LocalDate.now(),
+                guideLastVerifiedDate(guide),
                 structuredDataJson(List.of(
                         articleStructuredData(guide.title(), canonicalUrl("/guides/" + guide.slug()), guide.summary()),
                         breadcrumbStructuredData(List.of(
@@ -225,7 +257,7 @@ public class SitePageService {
                 page.summary(),
                 canonicalUrl("/" + page.slug()),
                 page.robots(),
-                LocalDate.now(),
+                null,
                 structuredDataJson(List.of(
                         schemaObject(page.schemaType(), page.title(), canonicalUrl("/" + page.slug()), page.summary()),
                         breadcrumbStructuredData(List.of(
@@ -253,11 +285,7 @@ public class SitePageService {
                 "Browse the actual utility, fire AHJ, or local department that owns each rule before you trust a city-level summary.",
                 canonicalUrl("/authorities"),
                 activeType == null ? "index,follow" : "noindex,follow",
-                authorityCards.stream()
-                        .map(AuthorityBrowseCard::lastVerified)
-                        .map(LocalDate::parse)
-                        .max(LocalDate::compareTo)
-                        .orElse(LocalDate.now()),
+                authorityDirectoryLastVerifiedDate(authorityCards),
                 structuredDataJson(List.of(
                         collectionPageStructuredData(
                                 "Authority-first browse",
@@ -337,14 +365,15 @@ public class SitePageService {
 
     public List<SitemapEntry> sitemapEntries() {
         List<SitemapEntry> entries = new ArrayList<>();
-        entries.add(new SitemapEntry(canonicalUrl("/"), "weekly", "1.0"));
-        entries.add(new SitemapEntry(canonicalUrl("/authorities"), "weekly", "0.7"));
+        entries.add(new SitemapEntry(canonicalUrl("/"), siteLatestVerifiedDate(), "weekly", "1.0"));
+        entries.add(new SitemapEntry(canonicalUrl("/authorities"), authorityDirectoryLastVerifiedDate(), "weekly", "0.7"));
 
         seedRegistry.authoritiesById().values().stream()
                 .sorted(Comparator.comparing(AuthorityRecord::state)
                         .thenComparing(AuthorityRecord::authorityId))
                 .forEach(authority -> entries.add(new SitemapEntry(
                         canonicalUrl("/authorities/" + authority.state() + "/" + authority.authorityId()),
+                        authority.lastVerified(),
                         "monthly",
                         "0.5"
                 )));
@@ -352,17 +381,27 @@ public class SitePageService {
         for (RouteRecord route : seedRegistry.routes()) {
             boolean indexable = indexingPolicyService.isIndexable(route, seedRegistry.sourcesFor(route), providersFor(route, route.profileId()));
             if (indexable) {
-                entries.add(new SitemapEntry(canonicalUrl(seedRegistry.canonicalPath(route)), "weekly", "0.8"));
+                entries.add(new SitemapEntry(
+                        canonicalUrl(seedRegistry.canonicalPath(route)),
+                        seedRegistry.lastVerifiedFor(route),
+                        "weekly",
+                        "0.8"
+                ));
             }
         }
 
         for (GuideCatalog.GuideDefinition guide : guideCatalog.allGuides()) {
-            entries.add(new SitemapEntry(canonicalUrl("/guides/" + guide.slug()), "monthly", "0.6"));
+            entries.add(new SitemapEntry(
+                    canonicalUrl("/guides/" + guide.slug()),
+                    guideLastVerifiedDate(guide),
+                    "monthly",
+                    "0.6"
+            ));
         }
 
         for (InfoPageCatalog.InfoPageDefinition infoPage : infoPageCatalog.allPages()) {
             if (infoPage.robots().startsWith("index")) {
-                entries.add(new SitemapEntry(canonicalUrl("/" + infoPage.slug()), "monthly", "0.4"));
+                entries.add(new SitemapEntry(canonicalUrl("/" + infoPage.slug()), null, "monthly", "0.4"));
             }
         }
 
@@ -660,21 +699,21 @@ public class SitePageService {
 
         String providerModeSummary;
         if (routingDecision.routingMode() == owner.kitchencompliance.model.RoutingMode.MANUAL_ONLY) {
-            providerModeSummary = "Coverage is still weak, so this page stays noindex and gives operator verification steps instead of a public vendor ranking.";
+            providerModeSummary = "Operator review is still required, so this page stays noindex until current coverage and paperwork are confirmed.";
         } else if (!indexable && route.noindexReason() != null && !route.noindexReason().isBlank()) {
             providerModeSummary = route.noindexReason();
         } else if (!indexable && indexingPolicyService.requiresAuthorityBackedProvider(route) && authorityBackedProviderCount == 0) {
-            providerModeSummary = "The local grease workflow depends on authority-backed hauler evidence, and no provider card clears that bar yet, so this route stays noindex-monitored.";
+            providerModeSummary = "The local grease workflow still needs a current authority-backed hauler signal, so this route stays noindex until that evidence is in place.";
         } else if (!indexable && renderableProviderCount < indexingPolicyService.minimumFinderProviderCount()) {
-            providerModeSummary = "Coverage is below the launch threshold of "
+            providerModeSummary = "Coverage is below the booking threshold of "
                     + indexingPolicyService.minimumFinderProviderCount()
                     + " public or active options, so this page stays noindex and guidance-first.";
         } else if (!indexable) {
-            providerModeSummary = "The provider cards are visible, but the route is temporarily noindex until freshness and source-quality gates are back in bounds.";
+            providerModeSummary = "The provider cards are visible, but the route is temporarily noindex until current paperwork and source checks are back in bounds.";
         } else if (authorityBackedProviderCount == 0) {
-            providerModeSummary = "Listings are still public-contact routing only, so operators should verify service scope, manifest handling, and current city coverage before booking.";
+            providerModeSummary = "Listings are available for contact routing only, so operators should verify service scope, manifest handling, and current city coverage before booking.";
         } else {
-            providerModeSummary = "Only public listings or clearly separated sponsor placements appear here.";
+            providerModeSummary = "Public listings and sponsor placements are separated, and the route is ready for operator use.";
         }
 
         String noteTitle;
@@ -879,8 +918,8 @@ public class SitePageService {
             return null;
         }
         String description = route.template() == RouteTemplate.FIND_GREASE_SERVICE
-                ? "Send a short service request for " + cityName + " grease help. This stays separate from the authority summary and goes into the KitchenComplianceHub operations queue."
-                : "Send a short service request for " + cityName + " hood cleaning help. This stays separate from the authority summary and goes into the KitchenComplianceHub operations queue.";
+                ? "Send a short service request for " + cityName + " grease help. This stays separate from the authority summary and goes into the KitchenRuleHub operations queue."
+                : "Send a short service request for " + cityName + " hood cleaning help. This stays separate from the authority summary and goes into the KitchenRuleHub operations queue.";
         return new LeadCapturePanel(
                 "service-request",
                 "Short lead form",
@@ -937,12 +976,12 @@ public class SitePageService {
 
     private String providerTrustTitle(boolean indexable, boolean verificationRequired) {
         if (!indexable) {
-            return "Search visibility is intentionally held";
+            return "Operator review needed before booking";
         }
         if (verificationRequired) {
-            return "Verification is still required before booking";
+            return "Verify coverage before booking";
         }
-        return "Evidence-backed routing is live";
+        return "Operator-ready routing is live";
     }
 
     private String providerTrustBody(
@@ -955,17 +994,15 @@ public class SitePageService {
             boolean verificationRequired
     ) {
         if (!indexable) {
-            return cityName + " stays in monitored finder mode until the route clears evidence and freshness gates. "
-                    + renderableProviderCount + " renderable providers are visible, "
-                    + authorityBackedProviderCount + " are tied to authority-backed evidence, and "
-                    + directContactProviderCount + " have direct contact details ready for operator follow-up.";
+            return "This finder is paused for operator review until current coverage, paperwork, and source checks are confirmed. "
+                    + "Use the checklist below before booking.";
         }
         if (verificationRequired) {
-            return "The route can still help with public contact routing, but operators should confirm current "
+            return "The route can still help with contact routing, but operators should confirm current "
                     + (route.template() == RouteTemplate.FIND_GREASE_SERVICE ? "manifest and hauler" : "cleaning-report and coverage")
-                    + " details before booking because authority-backed provider evidence is still thin.";
+                    + " details before booking because current evidence is still thin.";
         }
-        return "This route clears the current trust gate with visible local coverage, direct contact details, and at least one authority-backed provider signal where the workflow requires it.";
+        return "This route has current local coverage, direct contact details, and source-backed provider signals for booking and follow-up.";
     }
 
     private List<String> providerVerificationChecklist(RouteRecord route, String cityName, boolean verificationRequired) {
@@ -1086,6 +1123,49 @@ public class SitePageService {
 
     private RelatedPageLink link(String label, String path) {
         return new RelatedPageLink(label, path);
+    }
+
+    private LocalDate siteLatestVerifiedDate() {
+        return seedRegistry.routes().stream()
+                .map(seedRegistry::lastVerifiedFor)
+                .filter(date -> date != null)
+                .max(LocalDate::compareTo)
+                .orElse(null);
+    }
+
+    private LocalDate guideLastVerifiedDate(GuideCatalog.GuideDefinition guide) {
+        return guide.authorityReferences().stream()
+                .map(reference -> seedRegistry.routeFor(reference.profileId(), reference.template()))
+                .map(seedRegistry::lastVerifiedFor)
+                .filter(date -> date != null)
+                .max(LocalDate::compareTo)
+                .orElse(null);
+    }
+
+    private LocalDate authorityDirectoryLastVerifiedDate() {
+        return authorityDirectoryLastVerifiedDate(seedRegistry.authoritiesById().values().stream()
+                .map(this::authorityBrowseCard)
+                .toList());
+    }
+
+    private LocalDate authorityDirectoryLastVerifiedDate(List<AuthorityBrowseCard> authorityCards) {
+        return authorityCards.stream()
+                .map(AuthorityBrowseCard::lastVerified)
+                .map(LocalDate::parse)
+                .max(LocalDate::compareTo)
+                .orElse(null);
+    }
+
+    private HomeIssueCard issueCard(
+            String title,
+            String summary,
+            String destinationLabel,
+            String destinationPath,
+            String supportLabel,
+            String supportPath,
+            String iconName
+    ) {
+        return new HomeIssueCard(title, summary, destinationLabel, destinationPath, supportLabel, supportPath, iconName);
     }
 
     private String displayCity(String city) {

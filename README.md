@@ -1,4 +1,4 @@
-# KitchenComplianceHub
+# KitchenRuleHub
 
 **Date:** 2026-04-07 (Asia/Seoul)  
 **Purpose:** This folder is a self-contained design packet for building a US-focused **commercial kitchen compliance and next-action site** centered on FOG control, hood cleaning, and inspection-prep workflows.
@@ -84,9 +84,9 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - Local pages now emit more precise structured data, including breadcrumb trails and provider/authority item lists where the page is actually a browse surface
 - `/admin/exports/*` exposes raw attribution CSV, attribution summary CSV, raw lead CSV, lead summary CSV, freshness watch CSV, source quality CSV, deploy readiness CSV, operator utility summary CSV, evidence index CSV, and ops alert Markdown
 - `/admin/exports/*` also exposes search demand watch CSV for imported route-demand review
-- Attribution events append to `${APP_ATTRIBUTION_LOG_DIR}` when set, or default to `${user.home}/.kitchencompliancehub/attribution/click-attribution.csv`
-- Lead events append to `${APP_LEAD_LOG_DIR}` when set, or default to `${user.home}/.kitchencompliancehub/leads/lead-intake.csv`
-- Scheduled ops audits now write freshness, source quality, deploy readiness, attribution, evidence index, source evidence snapshots, and alert outputs under `${APP_OPS_AUDIT_DIR}` or `${user.home}/.kitchencompliancehub/ops`
+- Attribution events append to `${APP_ATTRIBUTION_LOG_DIR}` when set, or default to `${user.home}/.kitchenrulehub/attribution/click-attribution.csv`
+- Lead events append to `${APP_LEAD_LOG_DIR}` when set, or default to `${user.home}/.kitchenrulehub/leads/lead-intake.csv`
+- Scheduled ops audits now write freshness, source quality, deploy readiness, attribution, evidence index, source evidence snapshots, and alert outputs under `${APP_OPS_AUDIT_DIR}` or `${user.home}/.kitchenrulehub/ops`
 - Scheduled ops audits now also write a noindex promotion queue snapshot so held routes are not forgotten between sessions
 - Indexed pages are guarded by a freshness verification test that fails the build if any required source is past `nextReviewOn`
 - Indexed pages are also guarded by a deploy-readiness gate that collapses freshness, source depth, and minimum finder inventory into a single blocker test
@@ -105,15 +105,24 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - Override scheduled audit behavior with `APP_OPS_AUDIT_DIR`, `APP_FRESHNESS_AUDIT_ENABLED`, `APP_FRESHNESS_AUDIT_CRON`, and `APP_FRESHNESS_AUDIT_ZONE`
 - Current launch-surface progress: 5 of 5 Tier 1 cities are live from `spec/10`, and Nashville, TN, Grand Island, NE, and Miami, FL complete the planned Tier 2 expansion set
 
-## Oracle VM deploy
-- GitHub Actions deploy example: `.github/workflows/deploy-oracle-vm.yml`
-- Systemd service example: `deploy/oracle/systemd/kitchencompliancehub.service`
-- Environment file example: `deploy/oracle/systemd/kitchencompliancehub.env.example`
-- Deployment notes: `deploy/oracle/README.md`
-- Recommended persistent directories on the VM:
-- `/var/lib/kitchencompliancehub/attribution`
-- `/var/lib/kitchencompliancehub/leads`
-- `/var/lib/kitchencompliancehub/ops`
+## OCI Docker deploy
+- GitHub Actions deploy workflow: `.github/workflows/deploy.yml`
+- Runtime container definition: `docker-compose.yml`
+- Build image definition: `Dockerfile`
+- Required GitHub secrets:
+  - `DOCKERHUB_USERNAME`
+  - `DOCKERHUB_TOKEN`
+  - `OCI_HOST`
+  - `OCI_USERNAME`
+  - `OCI_KEY`
+  - `APP_ADMIN_USERNAME`
+  - `APP_ADMIN_PASSWORD`
+- Optional GitHub variable:
+  - `OCI_APP_PORT` - host port that nginx should proxy to; defaults to `8096` if unset
+- Runtime persistent directories on the OCI host:
+  - `~/deploy/kitchenrulehub/var/attribution`
+  - `~/deploy/kitchenrulehub/var/leads`
+  - `~/deploy/kitchenrulehub/var/ops`
 
 ## Agent read order
 1. `AGENT_START_HERE.md`

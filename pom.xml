@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>owner</groupId>
-	<artifactId>kitchen-compliance-hub</artifactId>
+	<artifactId>kitchen-rule-hub</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>KitchenComplianceHub</name>
-	<description>KitchenComplianceHub</description>
+	<name>KitchenRuleHub</name>
+	<description>KitchenRuleHub</description>
 	<url/>
 	<licenses>
 		<license/>

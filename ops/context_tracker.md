@@ -26,7 +26,7 @@
 - Deploy readiness is now a first-class gate: freshness, source depth, and minimum finder coverage are assessed together before an indexed route is treated as deploy-safe.
 - Operator utilities now exist as noindex SSR surfaces for grease logs, hood binders, and inspection reminder planning.
 - Server-side analytics now track visitor ids, verdict states, and operator-tool revisits in addition to click events.
-- Lead capture now stays file-backed and deploy-safe by default via `${user.home}/.kitchencompliancehub/leads`, with `/admin` exposing raw and summary lead exports.
+- Lead capture now stays file-backed and deploy-safe by default via `${user.home}/.kitchenrulehub/leads`, with `/admin` exposing raw and summary lead exports.
 - Home should be issue-first for anxious operators, while canonical indexed pages must stay city-first and authority-aware.
 - Every local verdict page should follow the same operator order: authority requirement, proof on site, fail conditions, then next action.
 - Finder trust now depends on visible provider evidence quality and explicit separation from official guidance.
@@ -37,6 +37,8 @@
 - City-first entry can stay, but mixed-governance markets need an authority-first canonical design rule.
 - Authority-first canonical logic is now implemented for utility- and fire-owned routes, with city URLs acting as entry surfaces and `/authority/...` aliases acting as canonical paths.
 - Search-demand snapshots should be treated as an explicit ops input, not tribal knowledge, when deciding promotion, CTR fixes, or discoverability work.
+- Public brand and launch domain are now `KitchenRuleHub` and `kitchenrulehub.com`, while the internal Java package root stays `owner.kitchencompliance`.
+- Production deploy now targets Docker Hub plus OCI over SSH using `shinhyeok22/kitchenhub`, with the legacy jar-copy Oracle workflow removed from `main` pushes.
 
 ## What changed this session
 - Created a standardized design packet under `C:\Development\Owner\KitchenComplianceHub`.
@@ -59,7 +61,7 @@
 - Added evidence-quality ordering for provider cards so authority-cited listings sort ahead of contact-only listings.
 - Added `/admin/exports/*` CSV exports for raw attribution, attribution summaries, and freshness watch data.
 - Added scheduled ops snapshots that write freshness and attribution summary CSVs to the configured ops directory.
-- Moved default attribution storage to `${user.home}/.kitchencompliancehub/attribution` and added env override support for mounted persistent storage.
+- Moved default attribution storage to `${user.home}/.kitchenrulehub/attribution` and added env override support for mounted persistent storage.
 - Added Nashville, TN as the first Tier 2 expansion city with Metro Water FOG policy coverage, approved hauler workflow, Fire Marshal hood reporting, inspection-prep records, and public finder inventory.
 - Added Grand Island, NE as the second Tier 2 expansion city with city FOG guidance, approved preferred hauler workflow, Fire Department hood permit records, inspection-prep records, and public finder inventory.
 - Added Miami, FL as the third Tier 2 expansion city with Miami-Dade FOG permit guidance, liquid waste transporter workflow, county building and fire inspection requirements, and public finder inventory.
@@ -87,6 +89,14 @@
 - Added imported search-demand snapshots, `/admin` demand reporting, CSV exports, and ops audit snapshots so noindex promotion and CTR work can be reviewed on a standing loop.
 - Upgraded provider finder cards with coverage-confidence, why-listed, and route-evidence-review labels so evidence quality stays visible at the card level.
 - Upgraded structured data on local and browse pages to include breadcrumb trails plus item-list markup only where the page truly behaves like a directory or collection.
+- Reworked the home front door so issue-first cards now send the first click directly into local grease, hood, and inspection pages, with guides moved to support status.
+- Hardened sponsor and operator lead intake with a honeypot field, form-age guard, stronger validation, and normalization while preserving the existing redirect flow.
+- Added a sponsor-beta focus section to `/admin` so Austin, Miami, and Charlotte are visible as the primary launch-market sales slice.
+- Hardened launch config by requiring production env values for base URL and admin credentials, updated deploy docs, and blocked `/admin` plus `/login` in `robots.txt`.
+- Added `ops/sponsor_beta_plan_2026-04-12.md` and `ops/sponsor_beta_targets_2026-04-12.csv` so the next operator can run sponsor outreach from the strongest live demand routes instead of inventing a GTM plan from scratch.
+- Added `ops/route_promotion_triggers_2026-04-12.md` and `ops/route_trigger_tracker_2026-04-12.csv` so promotion, hold states, and next review dates are tracked at the route level instead of living in memory.
+- Rebranded the public product surface, deploy assets, and runtime metadata from `KitchenComplianceHub` to `KitchenRuleHub`, updated deploy defaults to `kitchenrulehub.com`, and renamed the Spring Boot entrypoint plus Oracle service examples accordingly.
+- Added `Dockerfile`, `docker-compose.yml`, and `.github/workflows/deploy.yml` so `main` can build an ARM64 image, push to Docker Hub, ship `docker-compose.yml` to OCI, and restart the live container behind nginx.
 
 ## Next recommended tasks
 - Improve provider ranking beyond evidence presence alone by weighting city-specific coverage, direct local numbers, and freshness of the cited authority source.
@@ -95,7 +105,10 @@
 - Encode the SEO strategy into future page titles, guide links, and route promotion review cadence.
 - Decide whether alert delivery should stay file-and-log based or escalate to email, Slack, or issue creation.
 - Keep source dates and provider depth current; deploy readiness now fails closed when indexed routes fall out of bounds.
-- Decide whether the next build milestone is sponsor sales workflow polish or external alert delivery.
+- Run the sponsor beta plan in `ops/sponsor_beta_plan_2026-04-12.md` before adding more cities or guide inventory.
+- Use `ops/route_trigger_tracker_2026-04-12.csv` as the weekly route-review source of truth and only promote held routes when the trigger doc and route checklist both pass.
+- Set the real production env file to `APP_SITE_BASE_URL=https://kitchenrulehub.com` before the first deploy and submit the live sitemap to Search Console after launch.
+- Add GitHub secrets `APP_ADMIN_USERNAME` and `APP_ADMIN_PASSWORD` before the first OCI deploy; the new container workflow treats them as required and the production profile will not boot without them.
 - Decide whether authority alias routes should stay secondary navigation inside home/guides or become first-class browse surfaces elsewhere in the product.
 - Decide how imported Search Console snapshots should be refreshed operationally: manual JSON seed commit, admin upload flow, or external pull job.
 

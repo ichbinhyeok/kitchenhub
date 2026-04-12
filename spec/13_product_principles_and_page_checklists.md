@@ -6,7 +6,7 @@
 - Make authority logic, proof requirements, and next action clearer than vendor routing.
 
 ## Product identity
-- KitchenComplianceHub is a local compliance and next-action product for commercial kitchen operators.
+- KitchenRuleHub is a local compliance and next-action product for commercial kitchen operators.
 - It is not a generic restaurant operations blog.
 - It is not a national compliance explainer that smooths over local differences.
 - It is not a vendor directory with compliance copy wrapped around it.
@@ -136,7 +136,7 @@
 
 #### Must not do
 - Flatten official approval and public directory inclusion into the same visual status.
-- Imply city endorsement because a provider is listed on KitchenComplianceHub.
+- Imply city endorsement because a provider is listed on KitchenRuleHub.
 - Hide the verification workflow behind lead capture.
 
 #### No-ship signals

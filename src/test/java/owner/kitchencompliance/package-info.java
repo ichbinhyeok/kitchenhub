@@ -1,4 +1,4 @@
 /**
- * Test package root for KitchenComplianceHub.
+ * Test package root for KitchenRuleHub.
  */
 package owner.kitchencompliance;

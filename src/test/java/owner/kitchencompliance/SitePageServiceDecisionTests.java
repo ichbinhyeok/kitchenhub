@@ -85,7 +85,7 @@ class SitePageServiceDecisionTests {
                 ListingMode.SPONSOR_ONLY,
                 SponsorStatus.HOLD,
                 "https://not-yet-vetted.invalid/provider",
-                "coverage-review@kitchencompliancehub.local",
+                "coverage-review@kitchenrulehub.local",
                 "000-000-0000",
                 "",
                 "Hold until vetted"
@@ -98,7 +98,7 @@ class SitePageServiceDecisionTests {
         assertThat(page.meta().robots()).isEqualTo("noindex,follow");
         assertThat(page.routingDecision().routingMode()).isEqualTo(RoutingMode.MANUAL_ONLY);
         assertThat(page.providers()).isEmpty();
-        assertThat(page.providerModeSummary()).contains("Coverage is still weak");
+        assertThat(page.providerModeSummary()).contains("Operator review is still required");
     }
 
     @Test
@@ -136,7 +136,7 @@ class SitePageServiceDecisionTests {
 
         assertThat(page.meta().robots()).isEqualTo("noindex,follow");
         assertThat(page.providers()).hasSize(2);
-        assertThat(page.providerModeSummary()).contains("launch threshold of 3");
+        assertThat(page.providerModeSummary()).contains("booking threshold of 3");
     }
 
     @Test
@@ -226,7 +226,7 @@ class SitePageServiceDecisionTests {
         SeedRegistry seedRegistry = mock(SeedRegistry.class);
         GuideCatalog guideCatalog = mock(GuideCatalog.class);
         InfoPageCatalog infoPageCatalog = new InfoPageCatalog();
-        SiteProperties siteProperties = new SiteProperties("http://localhost:8080", "KitchenComplianceHub", "tx");
+        SiteProperties siteProperties = new SiteProperties("http://localhost:8080", "KitchenRuleHub", "tx");
         IndexingPolicyService indexingPolicyService = new IndexingPolicyService(
                 new SourceFreshnessService(Clock.fixed(Instant.parse("2026-04-07T00:00:00Z"), java.time.ZoneOffset.UTC)),
                 new SourceQualityAssessmentService(seedRegistry),

@@ -1,0 +1,18 @@
+[Unit]
+Description=KitchenRuleHub Spring Boot application
+After=network.target
+
+[Service]
+Type=simple
+User=kitchenrulehub
+Group=kitchenrulehub
+WorkingDirectory=/opt/kitchenrulehub
+EnvironmentFile=/etc/kitchenrulehub/kitchenrulehub.env
+Environment=SPRING_PROFILES_ACTIVE=prod
+ExecStart=/bin/bash -lc 'exec /usr/bin/java ${JAVA_OPTS:-} -jar /opt/kitchenrulehub/current.jar'
+SuccessExitStatus=143
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

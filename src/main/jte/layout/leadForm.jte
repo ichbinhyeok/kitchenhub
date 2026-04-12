@@ -5,6 +5,14 @@
 
 <form class="lead-form" action="${panel.submitPath()}" method="post">
     <input type="hidden" name="source" value="${sourcePath}">
+    <input type="hidden" name="formLoadedAt" value="${System.currentTimeMillis()}">
+
+    <div aria-hidden="true" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">
+        <label>
+            <span>Website</span>
+            <input type="text" name="website" tabindex="-1" autocomplete="off" value="">
+        </label>
+    </div>
 
     <label class="lead-form__field">
         <span>Contact name</span>

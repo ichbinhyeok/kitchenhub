@@ -1,0 +1,49 @@
+route_path,city,route_family,index_state,stage,commercial_priority,move_trigger,next_action,next_review_on,notes
+/tx/austin/approved-grease-haulers,Austin,approved_haulers,indexable,S1_WATCH,P2,authority list change or grease cluster demand signal,watch demand and keep authority-backed hauler evidence fresh,2026-04-26,Support route for Austin grease cluster
+/tx/austin/find-grease-service,Austin,find_grease_service,noindex-monitored,HOLD,P1,authority-backed provider evidence added,upgrade one provider card with authority evidence and then re-evaluate index state,2026-04-21,188 impressions / 16 clicks / avg position 9.4; sponsor-proof route even while search promotion is held
+/tx/austin/find-hood-cleaner,Austin,find_hood_cleaner,indexable,S1_WATCH,P2,outbound clicks or demand signal on Austin hood queries,watch demand and avoid extra work until signal is visible,2026-04-26,Commercial route but not a primary beta wedge yet
+/tx/austin/restaurant-grease-trap-rules,Austin,fog_rules,indexable,S2_OPTIMIZE,P1,CTR weakness or position 8-20 on Austin grease cluster,tighten title intro and internal links around Austin grease workflow,2026-04-19,Primary rule-led proof route for Austin grease sponsor packet
+/tx/austin/hood-cleaning-requirements,Austin,hood_requirements,indexable,S1_WATCH,P3,hood demand signal or outbound clicks,watch demand and keep paperwork copy precise,2026-04-26,
+/tx/austin/restaurant-fire-inspection-checklist,Austin,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch demand and only optimize if operator action appears,2026-04-26,
+/nc/charlotte/approved-grease-haulers,Charlotte,approved_haulers,indexable,S1_WATCH,P2,authority list refresh or grease demand signal,watch authority-backed list quality and keep local details current,2026-04-26,Supports Charlotte grease sponsor cluster
+/nc/charlotte/find-grease-service,Charlotte,find_grease_service,indexable,S4_MONETIZE,P1,maintain demand and sponsor proof quality,prepare sponsor proof and improve CTR without changing route intent,2026-04-19,640 impressions / 23 clicks / avg position 6.2; strongest current commercial route
+/nc/charlotte/find-hood-cleaner,Charlotte,find_hood_cleaner,indexable,S1_WATCH,P2,outbound clicks or hood demand signal,watch hood demand before heavier optimization,2026-04-26,
+/nc/charlotte/restaurant-grease-trap-rules,Charlotte,fog_rules,indexable,S2_OPTIMIZE,P1,grease cluster signal or CTR softness,improve cross-links into Charlotte grease service route,2026-04-19,Rule-led support route for Charlotte grease sponsor proof
+/nc/charlotte/hood-cleaning-requirements,Charlotte,hood_requirements,indexable,S1_WATCH,P2,hood demand signal or CTA clicks,watch and only optimize if hood cluster becomes active,2026-04-26,
+/nc/charlotte/restaurant-fire-inspection-checklist,Charlotte,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch demand and avoid broad rewrite work,2026-04-26,
+/ne/grand-island/approved-grease-haulers,Grand Island,approved_haulers,indexable,S1_WATCH,P4,authority list change or local demand signal,keep live and source-safe but do not spend sponsor time here,2026-04-26,Not a first sales city
+/ne/grand-island/find-grease-service,Grand Island,find_grease_service,indexable,S1_WATCH,P4,outbound clicks or local demand signal,watch only and avoid sponsor focus,2026-04-26,Not a beta sales priority
+/ne/grand-island/find-hood-cleaner,Grand Island,find_hood_cleaner,indexable,S1_WATCH,P4,provider click signal or local hood demand,watch only and avoid commercial push,2026-04-26,Weak hood slice relative to other cities
+/ne/grand-island/restaurant-grease-trap-rules,Grand Island,fog_rules,indexable,S1_WATCH,P4,local demand signal only,keep source-safe and avoid unnecessary SEO work,2026-04-26,
+/ne/grand-island/hood-cleaning-requirements,Grand Island,hood_requirements,indexable,S1_WATCH,P4,local hood demand signal only,keep permit and final-inspection tone and avoid cadence-heavy edits,2026-04-26,Do not overstate cleaning frequency here
+/ne/grand-island/restaurant-fire-inspection-checklist,Grand Island,inspection_checklist,indexable,S1_WATCH,P4,seasonal inspection demand only,watch only and keep source-safe,2026-04-26,
+/fl/miami/approved-grease-haulers,Miami,approved_haulers,indexable,S1_WATCH,P2,authority list refresh or grease cluster demand,watch transporter workflow evidence and keep local details current,2026-04-26,Support route for Miami grease cluster
+/fl/miami/find-grease-service,Miami,find_grease_service,noindex-monitored,HOLD,P1,authority-backed transporter evidence added,upgrade one provider card and then re-check promotion checklist,2026-04-21,133 impressions / 10 clicks / avg position 10.8; sponsor-proof route but still held from index
+/fl/miami/find-hood-cleaner,Miami,find_hood_cleaner,noindex-monitored,HOLD,P2,stronger local provider evidence added,add inspection-ready paperwork evidence to one provider card and then re-review,2026-04-21,121 impressions / 9 clicks / avg position 11.3; secondary commercial route
+/fl/miami/restaurant-grease-trap-rules,Miami,fog_rules,indexable,S2_OPTIMIZE,P1,CTR weakness or position 8-20 on Miami grease cluster,tighten intro and internal links around Miami grease workflow,2026-04-19,Primary rule-led proof route for Miami grease sponsor packet
+/fl/miami/hood-cleaning-requirements,Miami,hood_requirements,indexable,S2_OPTIMIZE,P2,hood cluster signal or CTA clicks,improve link path into Miami hood cluster without broadening claims,2026-04-19,Support route for Miami hood sponsor packet
+/fl/miami/restaurant-fire-inspection-checklist,Miami,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch demand and avoid broad rewrite work,2026-04-26,
+/tn/nashville/approved-grease-haulers,Nashville,approved_haulers,indexable,S1_WATCH,P3,authority list change or grease demand signal,watch and keep local list evidence current,2026-04-26,
+/tn/nashville/find-grease-service,Nashville,find_grease_service,indexable,S1_WATCH,P3,outbound clicks or grease demand signal,watch until demand justifies route-specific optimization,2026-04-26,
+/tn/nashville/find-hood-cleaner,Nashville,find_hood_cleaner,indexable,S1_WATCH,P3,outbound clicks or hood demand signal,watch until signal appears,2026-04-26,
+/tn/nashville/restaurant-grease-trap-rules,Nashville,fog_rules,indexable,S1_WATCH,P3,impressions or clicks signal,watch and keep source-safe,2026-04-26,
+/tn/nashville/hood-cleaning-requirements,Nashville,hood_requirements,indexable,S1_WATCH,P3,hood demand signal or CTA clicks,watch and keep paperwork copy tight,2026-04-26,
+/tn/nashville/restaurant-fire-inspection-checklist,Nashville,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch and keep source-safe,2026-04-26,
+/or/portland/approved-grease-haulers,Portland,approved_haulers,indexable,S1_WATCH,P3,authority list change or grease demand signal,watch and keep preferred-pumper evidence current,2026-04-26,
+/or/portland/find-grease-service,Portland,find_grease_service,indexable,S1_WATCH,P3,outbound clicks or grease demand signal,watch until demand justifies route-specific SEO work,2026-04-26,
+/or/portland/find-hood-cleaner,Portland,find_hood_cleaner,indexable,S1_WATCH,P3,outbound clicks or hood demand signal,watch until signal appears,2026-04-26,
+/or/portland/restaurant-grease-trap-rules,Portland,fog_rules,indexable,S1_WATCH,P3,impressions or clicks signal,watch and keep source-safe,2026-04-26,
+/or/portland/hood-cleaning-requirements,Portland,hood_requirements,indexable,S1_WATCH,P3,hood demand signal or CTA clicks,watch and keep paperwork copy tight,2026-04-26,
+/or/portland/restaurant-fire-inspection-checklist,Portland,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch and keep source-safe,2026-04-26,
+/ca/santa-clara/approved-grease-haulers,Santa Clara,approved_haulers,indexable,S1_WATCH,P3,authority list change or grease demand signal,watch and keep local hauler evidence current,2026-04-26,
+/ca/santa-clara/find-grease-service,Santa Clara,find_grease_service,indexable,S1_WATCH,P3,outbound clicks or grease demand signal,watch until demand justifies route-specific optimization,2026-04-26,
+/ca/santa-clara/find-hood-cleaner,Santa Clara,find_hood_cleaner,indexable,S1_WATCH,P3,outbound clicks or hood demand signal,watch until signal appears,2026-04-26,
+/ca/santa-clara/restaurant-grease-trap-rules,Santa Clara,fog_rules,indexable,S1_WATCH,P3,impressions or clicks signal,watch and keep source-safe,2026-04-26,
+/ca/santa-clara/hood-cleaning-requirements,Santa Clara,hood_requirements,indexable,S1_WATCH,P3,hood demand signal or CTA clicks,watch and keep paperwork copy tight,2026-04-26,
+/ca/santa-clara/restaurant-fire-inspection-checklist,Santa Clara,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch and keep source-safe,2026-04-26,
+/fl/tampa/approved-grease-haulers,Tampa,approved_haulers,indexable,S1_WATCH,P3,authority list change or grease demand signal,watch and keep local hauler evidence current,2026-04-26,
+/fl/tampa/find-grease-service,Tampa,find_grease_service,indexable,S1_WATCH,P3,outbound clicks or grease demand signal,watch until demand justifies route-specific optimization,2026-04-26,
+/fl/tampa/find-hood-cleaner,Tampa,find_hood_cleaner,indexable,S1_WATCH,P3,outbound clicks or hood demand signal,watch until signal appears,2026-04-26,
+/fl/tampa/restaurant-grease-trap-rules,Tampa,fog_rules,indexable,S1_WATCH,P3,impressions or clicks signal,watch and keep source-safe,2026-04-26,
+/fl/tampa/hood-cleaning-requirements,Tampa,hood_requirements,indexable,S1_WATCH,P3,hood demand signal or CTA clicks,watch and keep paperwork copy tight,2026-04-26,
+/fl/tampa/restaurant-fire-inspection-checklist,Tampa,inspection_checklist,indexable,S1_WATCH,P3,seasonal inspection demand or CTA clicks,watch and keep source-safe,2026-04-26,

@@ -255,7 +255,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/liquid-environmental-solutions-austin")))
                 .andExpect(content().string(containsString("/out/providers/austin-rooter-grease-service")))
                 .andExpect(content().string(containsString("/out/providers/mahoney-environmental-austin")))
-                .andExpect(content().string(containsString("Search visibility is intentionally held")))
+                .andExpect(content().string(containsString("Operator review needed before booking")))
                 .andExpect(content().string(containsString("Verification checklist")))
                 .andExpect(content().string(containsString("Open local route map")))
                 .andExpect(content().string(containsString("action=\"/lead-intake/operator\"")))
@@ -319,7 +319,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/ameri-clean-pumping-miami")))
                 .andExpect(content().string(containsString("/out/providers/grease-trap-fl-miami")))
                 .andExpect(content().string(containsString("/out/providers/united-septic-grease-miami")))
-                .andExpect(content().string(containsString("Search visibility is intentionally held")))
+                .andExpect(content().string(containsString("Operator review needed before booking")))
                 .andExpect(content().string(containsString("Visit provider site")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
 
@@ -332,7 +332,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/hood-cleaning-experts-miami")))
                 .andExpect(content().string(containsString("/out/providers/kitchen-guard-miami")))
                 .andExpect(content().string(containsString("/out/providers/miami-hood-cleaning-llc")))
-                .andExpect(content().string(containsString("Search visibility is intentionally held")))
+                .andExpect(content().string(containsString("Operator review needed before booking")))
                 .andExpect(content().string(containsString("Visit provider site")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
     }

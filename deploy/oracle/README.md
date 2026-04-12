@@ -1,19 +1,19 @@
 # Oracle VM Deploy
 
-This directory contains a minimal `systemd + GitHub Actions + scp/ssh` deployment path for KitchenComplianceHub on an Oracle Linux or Ubuntu VM.
+This directory contains a minimal `systemd + GitHub Actions + scp/ssh` deployment path for KitchenRuleHub on an Oracle Linux or Ubuntu VM.
 
 ## Server layout
 
 Use a stable application directory for releases and separate stable data directories for CSV persistence.
 
 ```text
-/opt/kitchencompliancehub
+/opt/kitchenrulehub
   /releases
-  current.jar -> /opt/kitchencompliancehub/releases/kitchen-compliance-hub-<sha>.jar
+  current.jar -> /opt/kitchenrulehub/releases/kitchen-rule-hub-<sha>.jar
 
-/etc/kitchencompliancehub/kitchencompliancehub.env
+/etc/kitchenrulehub/kitchenrulehub.env
 
-/var/lib/kitchencompliancehub
+/var/lib/kitchenrulehub
   /attribution
   /leads
   /ops
@@ -24,40 +24,45 @@ Use a stable application directory for releases and separate stable data directo
 Create the service user and directories:
 
 ```bash
-sudo useradd --system --home /opt/kitchencompliancehub --shell /usr/sbin/nologin kitchencompliancehub
-sudo mkdir -p /opt/kitchencompliancehub/releases
-sudo mkdir -p /etc/kitchencompliancehub
-sudo mkdir -p /var/lib/kitchencompliancehub/attribution
-sudo mkdir -p /var/lib/kitchencompliancehub/leads
-sudo mkdir -p /var/lib/kitchencompliancehub/ops
-sudo chown -R kitchencompliancehub:kitchencompliancehub /opt/kitchencompliancehub
-sudo chown -R kitchencompliancehub:kitchencompliancehub /var/lib/kitchencompliancehub
+sudo useradd --system --home /opt/kitchenrulehub --shell /usr/sbin/nologin kitchenrulehub
+sudo mkdir -p /opt/kitchenrulehub/releases
+sudo mkdir -p /etc/kitchenrulehub
+sudo mkdir -p /var/lib/kitchenrulehub/attribution
+sudo mkdir -p /var/lib/kitchenrulehub/leads
+sudo mkdir -p /var/lib/kitchenrulehub/ops
+sudo chown -R kitchenrulehub:kitchenrulehub /opt/kitchenrulehub
+sudo chown -R kitchenrulehub:kitchenrulehub /var/lib/kitchenrulehub
 ```
 
 Install the environment file:
 
 ```bash
-sudo cp deploy/oracle/systemd/kitchencompliancehub.env.example /etc/kitchencompliancehub/kitchencompliancehub.env
-sudo chown root:root /etc/kitchencompliancehub/kitchencompliancehub.env
-sudo chmod 640 /etc/kitchencompliancehub/kitchencompliancehub.env
+sudo cp deploy/oracle/systemd/kitchenrulehub.env.example /etc/kitchenrulehub/kitchenrulehub.env
+sudo chown root:root /etc/kitchenrulehub/kitchenrulehub.env
+sudo chmod 640 /etc/kitchenrulehub/kitchenrulehub.env
 ```
 
 Install the service:
 
 ```bash
-sudo cp deploy/oracle/systemd/kitchencompliancehub.service /etc/systemd/system/kitchencompliancehub.service
+sudo cp deploy/oracle/systemd/kitchenrulehub.service /etc/systemd/system/kitchenrulehub.service
 sudo systemctl daemon-reload
-sudo systemctl enable kitchencompliancehub
+sudo systemctl enable kitchenrulehub
 ```
 
-Edit `/etc/kitchencompliancehub/kitchencompliancehub.env` before first start:
+Edit `/etc/kitchenrulehub/kitchenrulehub.env` before first start:
 
+- `SPRING_PROFILES_ACTIVE` should stay `prod`
 - `APP_SITE_BASE_URL`
+- `APP_ADMIN_USERNAME`
+- `APP_ADMIN_PASSWORD`
 - `APP_ATTRIBUTION_LOG_DIR`
 - `APP_LEAD_LOG_DIR`
 - `APP_OPS_AUDIT_DIR`
 
-If you want to use custom JVM flags, change `JAVA_OPTS` and then update `ExecStart` to `ExecStart=/usr/bin/java $JAVA_OPTS -jar /opt/kitchencompliancehub/current.jar`.
+The systemd unit also pins `SPRING_PROFILES_ACTIVE=prod` so the app boots with the production profile even if the env file is edited later.
+
+If you want to use custom JVM flags, change `JAVA_OPTS` and then update `ExecStart` to `ExecStart=/usr/bin/java $JAVA_OPTS -jar /opt/kitchenrulehub/current.jar`.
 
 ## GitHub Actions secrets and variables
 
@@ -70,9 +75,9 @@ Secrets:
 
 Variables:
 
-- `ORACLE_APP_DIR` (optional, defaults to `/opt/kitchencompliancehub`)
-- `ORACLE_SERVICE_NAME` (optional, defaults to `kitchencompliancehub`)
+- `ORACLE_APP_DIR` (optional, defaults to `/opt/kitchenrulehub`)
+- `ORACLE_SERVICE_NAME` (optional, defaults to `kitchenrulehub`)
 
 ## Why CSV survives redeploys
 
-The JAR is deployed under `/opt/kitchencompliancehub`, but attribution, leads, and ops snapshots live under `/var/lib/kitchencompliancehub`. A new release only changes `current.jar`, so the CSV files persist across restarts and redeploys.
+The JAR is deployed under `/opt/kitchenrulehub`, but attribution, leads, and ops snapshots live under `/var/lib/kitchenrulehub`. A new release only changes `current.jar`, so the CSV files persist across restarts and redeploys.

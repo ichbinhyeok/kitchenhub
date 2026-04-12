@@ -7,6 +7,7 @@ public record HomePageViewModel(
         String title,
         String summary,
         List<String> scopeBullets,
+        List<HomeIssueCard> issueCards,
         List<CityCard> cityCards,
         List<HomePanelLink> guideLinks,
         List<HomePanelLink> operatorToolLinks

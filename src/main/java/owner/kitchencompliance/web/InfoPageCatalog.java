@@ -19,9 +19,9 @@ public class InfoPageCatalog {
         return List.of(
                 new InfoPageDefinition(
                         "about",
-                        "About KitchenComplianceHub",
+                        "About KitchenRuleHub",
                         "An operator-first local compliance workflow",
-                        "KitchenComplianceHub is an independent product for commercial kitchen operators. It summarizes local authority guidance, keeps proof-on-site requirements visible, and keeps vendor routing secondary to rule clarity.",
+                        "KitchenRuleHub is an independent product for commercial kitchen operators. It summarizes local authority guidance, keeps proof-on-site requirements visible, and keeps vendor routing secondary to rule clarity.",
                         "AboutPage",
                         "index,follow",
                         List.of(
@@ -44,7 +44,7 @@ public class InfoPageCatalog {
                 new InfoPageDefinition(
                         "methodology",
                         "Methodology",
-                        "How KitchenComplianceHub decides what to publish",
+                        "How KitchenRuleHub decides what to publish",
                         "Each indexed local route is built from source-backed authority logic first. City display helps operators orient themselves, but the governing rule holder may be a utility, fire marshal, county, or other local authority.",
                         "WebPage",
                         "index,follow",
@@ -72,7 +72,7 @@ public class InfoPageCatalog {
                         "contact",
                         "Contact",
                         "Current contact paths",
-                        "KitchenComplianceHub currently supports page-level contact workflows. Operator routing requests and sponsor inquiries should use the forms shown on the relevant local page so the request stays attached to the correct city and authority context.",
+                        "KitchenRuleHub currently supports page-level contact workflows. Operator routing requests and sponsor inquiries should use the forms shown on the relevant local page so the request stays attached to the correct city and authority context.",
                         "ContactPage",
                         "index,follow",
                         List.of(
@@ -99,7 +99,7 @@ public class InfoPageCatalog {
                         "privacy",
                         "Privacy",
                         "Privacy policy",
-                        "KitchenComplianceHub stores operator and sponsor contact data only when a user submits a page-level form. The stored data is used for routing, follow-up, attribution review, and operational auditing inside the product.",
+                        "KitchenRuleHub stores operator and sponsor contact data only when a user submits a page-level form. The stored data is used for routing, follow-up, attribution review, and operational auditing inside the product.",
                         "WebPage",
                         "noindex,follow",
                         List.of(
@@ -126,7 +126,7 @@ public class InfoPageCatalog {
                         "terms",
                         "Terms",
                         "Terms of use",
-                        "KitchenComplianceHub is an independent information and routing product. Operators are responsible for confirming the current authority requirement for their specific site before relying on any service decision or inspection-prep action.",
+                        "KitchenRuleHub is an independent information and routing product. Operators are responsible for confirming the current authority requirement for their specific site before relying on any service decision or inspection-prep action.",
                         "WebPage",
                         "noindex,follow",
                         List.of(
@@ -171,8 +171,8 @@ public class InfoPageCatalog {
                 new InfoPageDefinition(
                         "not-government-affiliated",
                         "Independence",
-                        "KitchenComplianceHub is not government affiliated",
-                        "KitchenComplianceHub is an independent product. It is not operated by a city, county, utility, fire department, or other public authority, and it should not present itself as an official portal or municipal system.",
+                        "KitchenRuleHub is not government affiliated",
+                        "KitchenRuleHub is an independent product. It is not operated by a city, county, utility, fire department, or other public authority, and it should not present itself as an official portal or municipal system.",
                         "WebPage",
                         "index,follow",
                         List.of(
@@ -195,7 +195,7 @@ public class InfoPageCatalog {
                         "corrections",
                         "Corrections",
                         "Corrections and source dispute policy",
-                        "KitchenComplianceHub should surface uncertainty early and correct public mistakes quickly. When a route, source summary, or provider-evidence label looks wrong, the product should prefer explicit correction over quiet copy drift.",
+                        "KitchenRuleHub should surface uncertainty early and correct public mistakes quickly. When a route, source summary, or provider-evidence label looks wrong, the product should prefer explicit correction over quiet copy drift.",
                         "WebPage",
                         "index,follow",
                         List.of(

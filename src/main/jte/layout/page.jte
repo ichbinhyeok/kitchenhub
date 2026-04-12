@@ -13,6 +13,15 @@
     <title>${meta.title()}</title>
     <meta name="description" content="${meta.description()}">
     <meta name="robots" content="${meta.robots()}">
+    <meta name="application-name" content="KitchenRuleHub">
+    <meta property="og:title" content="${meta.title()}">
+    <meta property="og:description" content="${meta.description()}">
+    <meta property="og:url" content="${meta.canonicalUrl()}">
+    <meta property="og:site_name" content="KitchenRuleHub">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="${meta.title()}">
+    <meta name="twitter:description" content="${meta.description()}">
     @if(meta.lastVerified() != null)
         <meta name="last-modified" content="${DateTimeFormatter.ISO_LOCAL_DATE.format(meta.lastVerified())}">
     @endif

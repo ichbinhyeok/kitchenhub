@@ -1,9 +1,12 @@
 package owner.kitchencompliance.web;
 
 import org.springframework.stereotype.Service;
+import owner.kitchencompliance.model.AdminBreakdownRow;
 import owner.kitchencompliance.model.AdminPageViewModel;
 import owner.kitchencompliance.model.AttributionDashboardSnapshot;
 import owner.kitchencompliance.model.PageMeta;
+import owner.kitchencompliance.model.SearchDemandWatchRow;
+import owner.kitchencompliance.model.SponsorBetaFocusSnapshot;
 
 @Service
 public class AdminPageService {
@@ -51,9 +54,10 @@ public class AdminPageService {
         var deployReadiness = deployReadinessReportService.readDashboard();
         var noindexPromotionQueue = noindexPromotionReportService.readDashboard();
         var searchDemand = searchDemandReportService.readDashboard();
+        var sponsorBetaFocus = sponsorBetaFocus(dashboard, leads, searchDemand);
         PageMeta meta = new PageMeta(
-                "Attribution admin | " + siteProperties.title(),
-                "Read-only attribution dashboard for provider outbound clicks and next-action CTAs.",
+                "Sponsor beta admin | " + siteProperties.title(),
+                "Read-only admin dashboard for sponsor beta traction, attribution, and next-action CTAs.",
                 canonicalUrl("/admin"),
                 "noindex,nofollow",
                 null,
@@ -62,8 +66,9 @@ public class AdminPageService {
 
         return new AdminPageViewModel(
                 meta,
-                "Attribution admin",
-                "Read-only summary of attribution, lead intake, and deploy-readiness signals.",
+                "Sponsor beta admin",
+                "Read-only summary of sponsor beta traction, attribution, and deploy-readiness signals.",
+                sponsorBetaFocus,
                 dashboard,
                 leads,
                 freshness,
@@ -120,6 +125,41 @@ public class AdminPageService {
 
     public String exportOpsAlertsMarkdown() {
         return opsAlertService.latestAlertMarkdown();
+    }
+
+    private SponsorBetaFocusSnapshot sponsorBetaFocus(
+            AttributionDashboardSnapshot dashboard,
+            owner.kitchencompliance.model.LeadDashboardSnapshot leads,
+            owner.kitchencompliance.model.SearchDemandDashboardSnapshot searchDemand
+    ) {
+        return new SponsorBetaFocusSnapshot(
+                dashboard.sponsoredClicks(),
+                leads.sponsorInquiries(),
+                focusBreakdown(searchDemand.rows(), SearchDemandWatchRow::cityLabel, "Austin, TX", "Miami, FL", "Charlotte, NC"),
+                focusBreakdown(searchDemand.rows(), SearchDemandWatchRow::pageLabel, "FOG rules", "Hood requirements", "Inspection checklist"),
+                "Pinned to Austin, Miami, and Charlotte so ops can read sponsor beta traction without scanning all-city output."
+        );
+    }
+
+    private java.util.List<AdminBreakdownRow> focusBreakdown(
+            java.util.List<SearchDemandWatchRow> rows,
+            java.util.function.Function<SearchDemandWatchRow, String> labelExtractor,
+            String... focusLabels
+    ) {
+        java.util.Map<String, Long> counts = new java.util.LinkedHashMap<>();
+        for (String focusLabel : focusLabels) {
+            counts.put(focusLabel, 0L);
+        }
+        for (SearchDemandWatchRow row : rows) {
+            String label = labelExtractor.apply(row);
+            if (counts.containsKey(label)) {
+                counts.put(label, counts.get(label) + 1);
+            }
+        }
+        return counts.entrySet().stream()
+                .sorted(java.util.Map.Entry.<String, Long>comparingByValue().reversed().thenComparing(java.util.Map.Entry::getKey))
+                .map(entry -> new AdminBreakdownRow(entry.getKey(), entry.getValue()))
+                .toList();
     }
 
     private String canonicalUrl(String path) {

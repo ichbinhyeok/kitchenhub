@@ -15,7 +15,7 @@ class OperatorToolServiceTests {
 
     private final OperatorToolCatalog catalog = new OperatorToolCatalog();
     private final OperatorToolService service = new OperatorToolService(
-            new SiteProperties("http://localhost:8080", "KitchenComplianceHub", "tx"),
+            new SiteProperties("http://localhost:8080", "KitchenRuleHub", "tx"),
             catalog
     );
 

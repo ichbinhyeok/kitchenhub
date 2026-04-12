@@ -1,0 +1,14 @@
+.git
+.github
+.idea
+.vscode
+target
+jte-classes
+node_modules
+deploy
+ops
+spec
+*.log
+*.csv
+*.md
+

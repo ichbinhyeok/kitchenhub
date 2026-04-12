@@ -9,7 +9,9 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.Clock;
 import java.time.OffsetDateTime;
+import java.util.Locale;
 import java.util.List;
+import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import owner.kitchencompliance.data.IssueType;
@@ -19,6 +21,17 @@ import owner.kitchencompliance.data.RouteTemplate;
 
 @Service
 public class LeadCaptureService {
+
+    private static final long MIN_FORM_AGE_MILLIS = 3_000L;
+    private static final int MAX_CONTACT_NAME_LENGTH = 120;
+    private static final int MAX_BUSINESS_NAME_LENGTH = 160;
+    private static final int MAX_EMAIL_LENGTH = 254;
+    private static final int MAX_PHONE_LENGTH = 40;
+    private static final int MAX_NOTES_LENGTH = 1_000;
+    private static final int MAX_COVERAGE_NOTE_LENGTH = 500;
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,63}$", Pattern.CASE_INSENSITIVE);
+    private static final String FORM_LOADED_AT_PARAM = "formLoadedAt";
+    private static final String HONEYPOT_PARAM = "website";
 
     private static final String HEADER =
             "captured_at,lead_type,visitor_id,city,state,page_family,issue_type,authority_id,source_path,verdict_state,provider_intent,contact_name,business_name,email,phone,coverage_note,notes,routing_consent\n";
@@ -60,11 +73,17 @@ public class LeadCaptureService {
         if (route.template() != RouteTemplate.FIND_GREASE_SERVICE && route.template() != RouteTemplate.FIND_HOOD_CLEANER) {
             return CaptureResult.invalid("operator-invalid");
         }
-        if (!isValidContact(contactName, businessName, email) || !routingConsent) {
-            return CaptureResult.invalid(routingConsent ? "operator-invalid" : "consent-required");
+        if (!routingConsent) {
+            return CaptureResult.invalid("consent-required");
+        }
+        if (isSpamSubmission(request) || !isValidSubmission(request, contactName, businessName, email, phone, notes, null)) {
+            return CaptureResult.invalid("operator-invalid");
         }
 
         String visitorId = attributionService.ensureVisitorId(request, response);
+        String normalizedContactName = normalizeText(contactName);
+        String normalizedBusinessName = normalizeText(businessName);
+        String normalizedEmail = normalizeEmail(email);
         appendRow(List.of(
                 OffsetDateTime.now(clock).toString(),
                 "operator_request",
@@ -77,9 +96,9 @@ public class LeadCaptureService {
                 sourcePath,
                 attributionService.verdictStateForRoute(route),
                 operatorIntent(route.template()),
-                contactName.trim(),
-                businessName.trim(),
-                email.trim(),
+                normalizedContactName,
+                normalizedBusinessName,
+                normalizedEmail,
                 safe(phone),
                 "",
                 safe(notes),
@@ -101,11 +120,17 @@ public class LeadCaptureService {
             String notes,
             boolean routingConsent
     ) {
-        if (!isValidContact(contactName, businessName, email) || !routingConsent) {
-            return CaptureResult.invalid(routingConsent ? "sponsor-invalid" : "consent-required");
+        if (!routingConsent) {
+            return CaptureResult.invalid("consent-required");
+        }
+        if (isSpamSubmission(request) || !isValidSubmission(request, contactName, businessName, email, phone, notes, coverageNote)) {
+            return CaptureResult.invalid("sponsor-invalid");
         }
 
         String visitorId = attributionService.ensureVisitorId(request, response);
+        String normalizedContactName = normalizeText(contactName);
+        String normalizedBusinessName = normalizeText(businessName);
+        String normalizedEmail = normalizeEmail(email);
         appendRow(List.of(
                 OffsetDateTime.now(clock).toString(),
                 "sponsor_inquiry",
@@ -118,9 +143,9 @@ public class LeadCaptureService {
                 sourcePath,
                 attributionService.verdictStateForRoute(route),
                 sponsorIntent(route.template()),
-                contactName.trim(),
-                businessName.trim(),
-                email.trim(),
+                normalizedContactName,
+                normalizedBusinessName,
+                normalizedEmail,
                 safe(phone),
                 safe(coverageNote),
                 safe(notes),
@@ -129,8 +154,70 @@ public class LeadCaptureService {
         return CaptureResult.success("sponsor-submitted");
     }
 
-    private boolean isValidContact(String contactName, String businessName, String email) {
-        return !isBlank(contactName) && !isBlank(businessName) && !isBlank(email);
+    private boolean isValidSubmission(
+            HttpServletRequest request,
+            String contactName,
+            String businessName,
+            String email,
+            String phone,
+            String notes,
+            String coverageNote
+    ) {
+        String normalizedContactName = normalizeText(contactName);
+        String normalizedBusinessName = normalizeText(businessName);
+        String normalizedEmail = normalizeEmail(email);
+        String normalizedPhone = safe(phone);
+        String normalizedNotes = safe(notes);
+        String normalizedCoverageNote = safe(coverageNote);
+
+        return isPresentAndWithinLimit(normalizedContactName, MAX_CONTACT_NAME_LENGTH)
+                && isPresentAndWithinLimit(normalizedBusinessName, MAX_BUSINESS_NAME_LENGTH)
+                && isPresentAndWithinLimit(normalizedEmail, MAX_EMAIL_LENGTH)
+                && isEmailValid(normalizedEmail)
+                && isWithinLimit(normalizedPhone, MAX_PHONE_LENGTH)
+                && isWithinLimit(normalizedNotes, MAX_NOTES_LENGTH)
+                && isWithinLimit(normalizedCoverageNote, MAX_COVERAGE_NOTE_LENGTH)
+                && isFormAgeValid(request);
+    }
+
+    private boolean isSpamSubmission(HttpServletRequest request) {
+        return !isBlank(request.getParameter(HONEYPOT_PARAM));
+    }
+
+    private boolean isFormAgeValid(HttpServletRequest request) {
+        String submittedAt = request.getParameter(FORM_LOADED_AT_PARAM);
+        if (isBlank(submittedAt)) {
+            return false;
+        }
+        try {
+            long loadedAt = Long.parseLong(submittedAt.trim());
+            return clock.millis() - loadedAt >= MIN_FORM_AGE_MILLIS;
+        } catch (NumberFormatException ex) {
+            return false;
+        }
+    }
+
+    private boolean isEmailValid(String email) {
+        return !isBlank(email) && EMAIL_PATTERN.matcher(email).matches();
+    }
+
+    private boolean isPresentAndWithinLimit(String value, int maxLength) {
+        return !isBlank(value) && isWithinLimit(value, maxLength);
+    }
+
+    private boolean isWithinLimit(String value, int maxLength) {
+        return value != null && value.length() <= maxLength;
+    }
+
+    private String normalizeText(String value) {
+        if (value == null) {
+            return "";
+        }
+        return value.trim().replaceAll("\\s+", " ");
+    }
+
+    private String normalizeEmail(String value) {
+        return normalizeText(value).toLowerCase(Locale.ROOT);
     }
 
     private void appendRow(List<String> columns) {

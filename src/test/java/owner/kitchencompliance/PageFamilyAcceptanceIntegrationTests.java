@@ -37,8 +37,8 @@ class PageFamilyAcceptanceIntegrationTests {
         String html = body(get("/tx/austin/restaurant-grease-trap-rules"));
 
         assertThat(indexOf(html, "Authority Summary"))
-                .isLessThan(indexOf(html, "Sizing &amp; Frequency Mandates"));
-        assertThat(indexOf(html, "Sizing &amp; Frequency Mandates"))
+                .isLessThan(indexOf(html, "Local Interceptor Requirements"));
+        assertThat(indexOf(html, "Local Interceptor Requirements"))
                 .isLessThan(indexOf(html, "Inspection-Ready Proof"));
         assertThat(indexOf(html, "Inspection-Ready Proof"))
                 .isLessThan(indexOf(html, "Common Inspection Failures"));
@@ -53,8 +53,8 @@ class PageFamilyAcceptanceIntegrationTests {
         String html = body(get("/tx/austin/hood-cleaning-requirements"));
 
         assertThat(indexOf(html, "Authority Summary"))
-                .isLessThan(indexOf(html, "Cleaning Frequency Requirements"));
-        assertThat(indexOf(html, "Cleaning Frequency Requirements"))
+                .isLessThan(indexOf(html, "Local Hood-System Requirements"));
+        assertThat(indexOf(html, "Local Hood-System Requirements"))
                 .isLessThan(indexOf(html, "Required Cleaning Tags"));
         assertThat(indexOf(html, "Required Cleaning Tags"))
                 .isLessThan(indexOf(html, "Common Inspection Fails"));
@@ -78,10 +78,10 @@ class PageFamilyAcceptanceIntegrationTests {
     void providerFinderShowsQualificationAndSourceBeforeListings() throws Exception {
         String html = body(get("/nc/charlotte/find-grease-service"));
 
-        assertThat(html).contains("Evidence-backed routing is live");
+        assertThat(html).contains("Operator-ready routing is live");
         assertThat(html).contains("Primary source");
         assertThat(html).contains("Provider Listings");
-        assertThat(indexOf(html, "Evidence-backed routing is live"))
+        assertThat(indexOf(html, "Operator-ready routing is live"))
                 .isLessThan(indexOf(html, "Provider Listings"));
         assertThat(indexOf(html, "Primary source"))
                 .isLessThan(indexOf(html, "Provider Listings"));

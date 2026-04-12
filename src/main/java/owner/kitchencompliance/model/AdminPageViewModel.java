@@ -4,6 +4,7 @@ public record AdminPageViewModel(
         PageMeta meta,
         String title,
         String summary,
+        SponsorBetaFocusSnapshot sponsorBetaFocus,
         AttributionDashboardSnapshot dashboard,
         LeadDashboardSnapshot leads,
         FreshnessDashboardSnapshot freshness,

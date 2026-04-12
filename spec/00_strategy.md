@@ -1,7 +1,7 @@
 # 00 Strategy And Product Architecture
 
 ## One-line thesis
-KitchenComplianceHub should be a city-by-city operations-compliance site for commercial kitchens that helps an operator decide what applies locally, what proof must be on site, what is overdue or missing, and which vendor action comes next.
+KitchenRuleHub should be a city-by-city operations-compliance site for commercial kitchens that helps an operator decide what applies locally, what proof must be on site, what is overdue or missing, and which vendor action comes next.
 
 ## Why this vertical works
 - FOG, grease interceptors, hood cleaning, suppression, decals, manifests, and inspection-prep are all real recurring obligations.

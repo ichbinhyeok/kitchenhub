@@ -1,7 +1,7 @@
 # Agent Start Here
 
 ## Project
-KitchenComplianceHub
+KitchenRuleHub
 
 ## Package root
 `owner.kitchencompliance`

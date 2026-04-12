@@ -3,6 +3,7 @@ package owner.kitchencompliance.web;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.time.format.DateTimeFormatter;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -266,6 +267,11 @@ public class SiteController {
         for (SitemapEntry entry : entries) {
             builder.append("<url>");
             builder.append("<loc>").append(entry.location()).append("</loc>");
+            if (entry.lastModified() != null) {
+                builder.append("<lastmod>")
+                        .append(DateTimeFormatter.ISO_LOCAL_DATE.format(entry.lastModified()))
+                        .append("</lastmod>");
+            }
             builder.append("<changefreq>").append(entry.changeFrequency()).append("</changefreq>");
             builder.append("<priority>").append(entry.priority()).append("</priority>");
             builder.append("</url>");
@@ -277,7 +283,12 @@ public class SiteController {
     @GetMapping(value = "/robots.txt", produces = MediaType.TEXT_PLAIN_VALUE)
     @ResponseBody
     public String robots() {
-        return "User-agent: *\nAllow: /\nSitemap: " + siteProperties.baseUrl() + "/sitemap.xml\n";
+        return "User-agent: *\n"
+                + "Allow: /\n"
+                + "Disallow: /admin\n"
+                + "Disallow: /admin/\n"
+                + "Disallow: /login\n"
+                + "Sitemap: " + siteProperties.baseUrl() + "/sitemap.xml\n";
     }
 
     @GetMapping("/out/providers/{providerId}")

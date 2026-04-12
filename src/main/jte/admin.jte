@@ -19,6 +19,48 @@
         </section>
 
         <section class="panel">
+            <div class="panel__eyebrow">Sponsor beta focus</div>
+            <h2>Direct sponsor traction by launch market</h2>
+            <p class="panel__note">${page.sponsorBetaFocus().note()}</p>
+            <div class="metric-grid">
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Sponsored clicks</div>
+                    <div class="metric-card__value">${page.sponsorBetaFocus().sponsoredClicks()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Sponsor inquiries</div>
+                    <div class="metric-card__value">${page.sponsorBetaFocus().sponsorInquiries()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Launch markets</div>
+                    <div class="metric-card__value">${page.sponsorBetaFocus().launchCities().size()}</div>
+                </article>
+                <article class="metric-card">
+                    <div class="panel__eyebrow">Sponsor categories</div>
+                    <div class="metric-card__value">${page.sponsorBetaFocus().launchCategories().size()}</div>
+                </article>
+            </div>
+            <div class="admin-events">
+                <article class="admin-event">
+                    <p class="admin-event__meta">Launch markets | Austin, Miami, Charlotte</p>
+                    <ul class="admin-breakdown">
+                        @for(AdminBreakdownRow row : page.sponsorBetaFocus().launchCities())
+                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
+                        @endfor
+                    </ul>
+                </article>
+                <article class="admin-event">
+                    <p class="admin-event__meta">Sponsor categories | FOG, hood, inspection</p>
+                    <ul class="admin-breakdown">
+                        @for(AdminBreakdownRow row : page.sponsorBetaFocus().launchCategories())
+                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
+                        @endfor
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel">
             <div class="panel__eyebrow">Storage</div>
             <h2>Persistent ops files</h2>
             <p><strong>${page.dashboard().storagePath()}</strong></p>
