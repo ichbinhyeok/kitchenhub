@@ -14,6 +14,7 @@
     <meta name="description" content="${meta.description()}">
     <meta name="robots" content="${meta.robots()}">
     <meta name="application-name" content="KitchenRuleHub">
+    <meta name="theme-color" content="#030813">
     <meta property="og:title" content="${meta.title()}">
     <meta property="og:description" content="${meta.description()}">
     <meta property="og:url" content="${meta.canonicalUrl()}">
@@ -26,6 +27,11 @@
         <meta name="last-modified" content="${DateTimeFormatter.ISO_LOCAL_DATE.format(meta.lastVerified())}">
     @endif
     <link rel="canonical" href="${meta.canonicalUrl()}">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
