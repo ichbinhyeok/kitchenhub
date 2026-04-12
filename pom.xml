@@ -83,14 +83,13 @@
 				<version>${jte.version}</version>
 				<configuration>
 					<sourceDirectory>${project.basedir}/src/main/jte</sourceDirectory>
-					<targetDirectory>${project.build.directory}/jte-classes</targetDirectory>
 					<contentType>Html</contentType>
 				</configuration>
 				<executions>
 					<execution>
-						<phase>process-classes</phase>
+						<phase>generate-sources</phase>
 						<goals>
-							<goal>precompile</goal>
+							<goal>generate</goal>
 						</goals>
 					</execution>
 				</executions>
