@@ -6,6 +6,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 public record SiteProperties(
         String baseUrl,
         String title,
-        String defaultState
+        String defaultState,
+        String ga4MeasurementId
 ) {
 }

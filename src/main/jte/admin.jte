@@ -9,8 +9,9 @@
 @import owner.kitchencompliance.model.SourceQualityWatchRow
 
 @param AdminPageViewModel page
+@param String ga4MeasurementId
 
-@template.layout.page(meta = page.meta(), content = @`
+@template.layout.page(meta = page.meta(), ga4MeasurementId = ga4MeasurementId, content = @`
     <main class="page-shell">
         <section class="hero">
             <p class="eyebrow">Internal ops</p>

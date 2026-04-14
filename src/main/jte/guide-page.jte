@@ -4,8 +4,9 @@
 @import owner.kitchencompliance.model.RelatedPageLink
 
 @param GuidePageViewModel page
+@param String ga4MeasurementId
 
-@template.layout.page(meta = page.meta(), content = @`
+@template.layout.page(meta = page.meta(), ga4MeasurementId = ga4MeasurementId, content = @`
     <main class="page-shell">
         <section class="hero hero--guide">
             <p class="eyebrow">Evergreen guide</p>

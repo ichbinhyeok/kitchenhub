@@ -6,8 +6,9 @@
 @import owner.kitchencompliance.model.RelatedPageLink
 
 @param HomePageViewModel page
+@param String ga4MeasurementId
 
-@template.layout.page(meta = page.meta(), content = @`
+@template.layout.page(meta = page.meta(), ga4MeasurementId = ga4MeasurementId, content = @`
     <main class="page-shell page-shell--home">
         <p class="visually-hidden">${page.title()}</p>
         <section class="home-hero">

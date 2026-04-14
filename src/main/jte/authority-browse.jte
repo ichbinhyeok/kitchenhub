@@ -6,8 +6,9 @@
 @import owner.kitchencompliance.model.AuthorityBrowseStateJump
 
 @param AuthorityBrowsePageViewModel page
+@param String ga4MeasurementId
 
-@template.layout.page(meta = page.meta(), content = @`
+@template.layout.page(meta = page.meta(), ga4MeasurementId = ga4MeasurementId, content = @`
     <main class="page-shell">
         <section class="hero hero--authority-directory">
             <p class="eyebrow">${page.eyebrow()}</p>

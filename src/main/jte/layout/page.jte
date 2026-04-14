@@ -3,6 +3,7 @@
 @import java.time.format.DateTimeFormatter
 
 @param PageMeta meta
+@param String ga4MeasurementId
 @param Content content
 
 <!DOCTYPE html>
@@ -36,6 +37,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/site.css">
+    @if(ga4MeasurementId != null && !ga4MeasurementId.isBlank())
+        <script async src="https://www.googletagmanager.com/gtag/js?id=$unsafe{ga4MeasurementId}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', '$unsafe{ga4MeasurementId}');
+        </script>
+    @endif
     @if(meta.structuredDataJson() != null)
         <script type="application/ld+json">$unsafe{meta.structuredDataJson()}</script>
     @endif

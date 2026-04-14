@@ -46,6 +46,8 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/tools/inspection-reminder-plan")))
                 .andExpect(content().string(containsString("/methodology")))
                 .andExpect(content().string(containsString("/not-government-affiliated")))
+                .andExpect(content().string(containsString("https://www.googletagmanager.com/gtag/js?id=G-K0NZM8LCFF")))
+                .andExpect(content().string(containsString("gtag('config', 'G-K0NZM8LCFF');")))
                 .andExpect(content().string(not(containsString("Admin Login"))))
                 .andExpect(content().string(containsString("application/ld+json")));
     }

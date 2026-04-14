@@ -226,7 +226,7 @@ class SitePageServiceDecisionTests {
         SeedRegistry seedRegistry = mock(SeedRegistry.class);
         GuideCatalog guideCatalog = mock(GuideCatalog.class);
         InfoPageCatalog infoPageCatalog = new InfoPageCatalog();
-        SiteProperties siteProperties = new SiteProperties("http://localhost:8080", "KitchenRuleHub", "tx");
+        SiteProperties siteProperties = new SiteProperties("http://localhost:8080", "KitchenRuleHub", "tx", "G-K0NZM8LCFF");
         IndexingPolicyService indexingPolicyService = new IndexingPolicyService(
                 new SourceFreshnessService(Clock.fixed(Instant.parse("2026-04-07T00:00:00Z"), java.time.ZoneOffset.UTC)),
                 new SourceQualityAssessmentService(seedRegistry),

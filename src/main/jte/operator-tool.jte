@@ -3,8 +3,9 @@
 @import owner.kitchencompliance.model.RelatedPageLink
 
 @param OperatorToolPageViewModel page
+@param String ga4MeasurementId
 
-@template.layout.page(meta = page.meta(), content = @`
+@template.layout.page(meta = page.meta(), ga4MeasurementId = ga4MeasurementId, content = @`
     <main class="page-shell">
         <section class="hero hero--tool">
             <p class="eyebrow">${page.eyebrow()}</p>
