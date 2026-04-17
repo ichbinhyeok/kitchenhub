@@ -100,21 +100,21 @@ class ProviderEvidenceServiceTests {
         );
 
         assertThat(providerEvidenceService.evidenceLabel(officialPublic))
-                .isEqualTo("Authority-backed public contact");
+                .isEqualTo("Official source + public contact");
         assertThat(providerEvidenceService.providerNote(officialPublic))
-                .contains("authority-backed");
+                .contains("official source link");
         assertThat(providerEvidenceService.coverageConfidenceLabel(officialPublic))
                 .isEqualTo("High");
         assertThat(providerEvidenceService.whyListed(officialPublic))
-                .contains("Authority-backed evidence");
+                .contains("Official source link");
         assertThat(providerEvidenceService.evidenceLabel(sponsorPartial))
-                .isEqualTo("Sponsor contact (partial)");
+                .isEqualTo("Paid placement only");
         assertThat(providerEvidenceService.providerNote(sponsorPartial))
                 .contains("partial contact details");
         assertThat(providerEvidenceService.coverageConfidenceLabel(sponsorPartial))
                 .isEqualTo("Needs operator verification");
         assertThat(providerEvidenceService.whyListed(sponsorPartial))
-                .contains("Sponsor placement");
+                .contains("Paid placement");
     }
 
     private ProviderRecord provider(

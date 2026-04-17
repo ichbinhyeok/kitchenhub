@@ -6,5 +6,6 @@
   "hoodAuthorityId": "austin-fire-marshal",
   "launchTier": 1,
   "indexable": true,
+  "homeSummary": "Austin kitchens can check grease rules, haul tickets, hood records, and fire inspection prep in one local workflow.",
   "decisionReason": "strong official pretreatment and fire-inspection coverage for a first launch slice"
 }

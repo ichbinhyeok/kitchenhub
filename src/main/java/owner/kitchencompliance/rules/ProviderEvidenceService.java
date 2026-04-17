@@ -20,24 +20,24 @@ public class ProviderEvidenceService {
     public String evidenceLabel(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
             return provider.listingMode() == ListingMode.PUBLIC
-                    ? "Authority-backed public contact"
-                    : "Authority-backed sponsor contact";
+                    ? "Official source + public contact"
+                    : "Official source + paid placement";
         }
         if (provider.listingMode() == ListingMode.PUBLIC) {
             return hasCompleteContact(provider)
                     ? "Public contact"
-                    : "Public contact (partial)";
+                    : "Public contact only";
         }
         return hasCompleteContact(provider)
-                ? "Sponsor contact"
-                : "Sponsor contact (partial)";
+                ? "Paid placement"
+                : "Paid placement only";
     }
 
     public String providerNote(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
             return provider.listingMode() == ListingMode.PUBLIC
-                    ? "Ranked first when authority-backed evidence is paired with a public service listing."
-                    : "Ranked ahead of weaker listings when authority-backed evidence is paired with a sponsor placement.";
+                    ? "Ranked first when an official source link is paired with a public service listing."
+                    : "Ranked ahead of weaker listings when an official source link is paired with a paid placement.";
         }
         if (provider.listingMode() == ListingMode.PUBLIC) {
             return hasCompleteContact(provider)
@@ -45,8 +45,8 @@ public class ProviderEvidenceService {
                     : "Shown from a public service page with partial contact details, so the operator should verify current local coverage before booking.";
         }
         return hasCompleteContact(provider)
-                ? "Shown as a sponsor placement with direct contact details; operator verification still applies."
-                : "Shown as a sponsor placement with partial contact details; operator verification still applies.";
+                ? "Shown as a paid placement with direct contact details; operator verification still applies."
+                : "Shown as a paid placement with partial contact details; operator verification still applies.";
     }
 
     public String coverageConfidenceLabel(ProviderRecord provider) {
@@ -62,8 +62,8 @@ public class ProviderEvidenceService {
     public String whyListed(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
             return provider.listingMode() == ListingMode.PUBLIC
-                    ? "Authority-backed evidence plus a public service contact."
-                    : "Authority-backed evidence is visible even though placement is sponsored.";
+                    ? "Official source link plus a public service contact."
+                    : "Official source link is visible even though placement is paid.";
         }
         if (provider.listingMode() == ListingMode.PUBLIC) {
             return hasCompleteContact(provider)
@@ -71,8 +71,8 @@ public class ProviderEvidenceService {
                     : "Public listing with partial contact details that still needs a direct coverage check.";
         }
         return hasCompleteContact(provider)
-                ? "Sponsor placement with direct contact details, kept separate from authority guidance."
-                : "Sponsor placement is visible, but the operator should verify coverage before booking.";
+                ? "Paid placement with direct contact details, kept separate from the rule summary."
+                : "Paid placement is visible, but the operator should verify coverage before booking.";
     }
 
     private int rankingScore(ProviderRecord provider) {

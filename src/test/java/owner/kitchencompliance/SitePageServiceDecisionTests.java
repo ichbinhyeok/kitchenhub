@@ -59,10 +59,10 @@ class SitePageServiceDecisionTests {
         ResolvedPage resolvedPage = service.localPage("/tx/austin/restaurant-grease-trap-rules", null);
         LocalPageViewModel page = (LocalPageViewModel) resolvedPage.page();
 
-        assertThat(page.officialListStatement()).contains("authority-backed hauler or preferred-pumper list");
+        assertThat(page.officialListStatement()).contains("official hauler or preferred-pumper list");
         assertThat(page.meta().robots()).isEqualTo("index,follow");
         assertThat(page.canonicalPath()).isEqualTo("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules");
-        assertThat(page.governanceHeading()).contains("Utility-owned");
+        assertThat(page.governanceHeading()).contains("utility office");
     }
 
     @Test
@@ -98,7 +98,7 @@ class SitePageServiceDecisionTests {
         assertThat(page.meta().robots()).isEqualTo("noindex,follow");
         assertThat(page.routingDecision().routingMode()).isEqualTo(RoutingMode.MANUAL_ONLY);
         assertThat(page.providers()).isEmpty();
-        assertThat(page.providerModeSummary()).contains("Operator review is still required");
+        assertThat(page.providerModeSummary()).contains("starting points only");
     }
 
     @Test
@@ -136,7 +136,7 @@ class SitePageServiceDecisionTests {
 
         assertThat(page.meta().robots()).isEqualTo("noindex,follow");
         assertThat(page.providers()).hasSize(2);
-        assertThat(page.providerModeSummary()).contains("booking threshold of 3");
+        assertThat(page.providerModeSummary()).contains("fewer than 3");
     }
 
     @Test
@@ -179,7 +179,7 @@ class SitePageServiceDecisionTests {
 
         assertThat(page.providers()).extracting(provider -> provider.providerName())
                 .containsExactly("Public With Official", "Public No Official");
-        assertThat(page.providers().getFirst().evidenceLabel()).isEqualTo("Authority-backed public contact");
+        assertThat(page.providers().getFirst().evidenceLabel()).isEqualTo("Official source + public contact");
     }
 
     @Test
@@ -252,6 +252,7 @@ class SitePageServiceDecisionTests {
                 "austin-fire-marshal",
                 1,
                 true,
+                "Austin kitchens can verify grease, hood, and inspection paperwork from one home surface.",
                 "strong official coverage"
         );
         AuthorityRecord waterAuthority = new AuthorityRecord(

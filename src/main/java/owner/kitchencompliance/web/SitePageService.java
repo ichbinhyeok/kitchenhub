@@ -98,57 +98,56 @@ public class SitePageService {
         Map<String, Integer> cityOrder = Map.of(
                 "Austin", 0,
                 "Charlotte", 1,
-                "Tampa", 2,
-                "Portland", 3,
-                "Santa Clara", 4,
-                "Nashville", 5,
-                "Grand Island", 6,
-                "Miami", 7
+                "Miami", 2,
+                "Tampa", 3,
+                "Portland", 4,
+                "Santa Clara", 5,
+                "Nashville", 6,
+                "Grand Island", 7
         );
-
         List<CityCard> cityCards = seedRegistry.profiles().stream()
                 .map(profile -> new CityCard(
                         displayCity(profile.city()),
                         profile.state().toUpperCase(),
-                        profile.decisionReason(),
+                        profile.homeSummary(),
                         List.of(
                                 authorityRouteLink(profile.profileId(), RouteTemplate.FOG_RULES, "Grease rule holder"),
                                 authorityRouteLink(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS, "Hood and fire rule holder")
                         ),
                         List.of(
-                                link("City grease entry", seedRegistry.routeFor(profile.profileId(), RouteTemplate.FOG_RULES).path()),
-                                link("City hood entry", seedRegistry.routeFor(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS).path())
+                                link("Grease rules", seedRegistry.routeFor(profile.profileId(), RouteTemplate.FOG_RULES).path()),
+                                link("Hood requirements", seedRegistry.routeFor(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS).path()),
+                                link("Inspection checklist", seedRegistry.routeFor(profile.profileId(), RouteTemplate.INSPECTION_CHECKLIST).path())
                         )))
                 .sorted((left, right) -> Integer.compare(
                         cityOrder.getOrDefault(left.city(), Integer.MAX_VALUE),
                         cityOrder.getOrDefault(right.city(), Integer.MAX_VALUE)
                 ))
                 .toList();
-
         List<HomeIssueCard> issueCards = List.of(
                 issueCard(
                         "Grease, hauling, and manifests",
-                        "Use the Austin grease page for pump-outs, manifests, and who can haul the waste.",
-                        "Open Austin page",
-                        localRoutePath("austin-tx-kitchen-compliance", RouteTemplate.FOG_RULES),
+                        "Start from the city that matches the kitchen, then open the local grease rule page before you call for service.",
+                        "Choose grease city",
+                        "#active-cities",
                         "Read grease guide",
                         "/guides/fog-vs-grease-trap-cleaning",
                         "delete_outline"
                 ),
                 issueCard(
                         "Hood, suppression, and tags",
-                        "Use the Tampa hood page for service paperwork, visible tags, and fire-system context.",
-                        "Open Tampa page",
-                        localRoutePath("tampa-fl-kitchen-compliance", RouteTemplate.HOOD_REQUIREMENTS),
+                        "Pick the city first, then use the hood requirement page to confirm reports, tags, and inspection timing.",
+                        "Choose hood city",
+                        "#active-cities",
                         "Read hood guide",
                         "/guides/how-often-clean-commercial-hood",
                         "local_fire_department"
                 ),
                 issueCard(
                         "Inspection-ready records",
-                        "Use the Charlotte inspection page when the next visit is close and the proof needs staging.",
-                        "Open Charlotte page",
-                        localRoutePath("charlotte-nc-kitchen-compliance", RouteTemplate.INSPECTION_CHECKLIST),
+                        "Choose the city first so the inspection checklist matches the local authority, paperwork, and common failures.",
+                        "Choose inspection city",
+                        "#active-cities",
                         "Read inspection guide",
                         "/guides/what-records-restaurant-inspections-check",
                         "fact_check"
@@ -166,7 +165,7 @@ public class SitePageService {
 
         PageMeta meta = new PageMeta(
                 "Commercial Kitchen Compliance by City | Grease, Hood, Inspections",
-                "Local restaurant grease trap rules, hood cleaning requirements, fire inspection checklists, and next steps by actual rule holder.",
+                "Local restaurant grease trap rules, hood cleaning requirements, fire inspection checklists, and next steps from official city sources.",
                 canonicalUrl("/"),
                 "index,follow",
                 siteLatestVerifiedDate(),
@@ -176,11 +175,11 @@ public class SitePageService {
         return new HomePageViewModel(
                 meta,
                 "Kitchen compliance with a local next action",
-                "KitchenRuleHub helps commercial kitchen operators start with grease, hood, or inspection work, confirm the local rule holder, and then move into the next action without mixing vendor copy into authority guidance.",
+                "KitchenRuleHub helps commercial kitchen operators start with grease, hood, or inspection work, confirm the local rule holder, and then move into the next action without mixing vendor copy into rule guidance.",
                 List.of(
-                        "Start from the issue on the desk instead of the city catalog.",
-                        "See exactly what proof should stay on site for that local rule.",
-                        "Move from rule clarity to the next service action without blending sponsor copy into authority guidance."
+                        "Choose the local rule holder before you rely on a city summary or provider page.",
+                        "Stage the records, tags, manifests, and checklists inspectors usually ask for on site.",
+                        "Use guides and provider pages only after the local rule page tells you what work actually applies."
                 ),
                 issueCards,
                 cityCards,
@@ -281,14 +280,14 @@ public class SitePageService {
         List<AuthorityBrowseSection> sections = authoritySections(authorityCards);
 
         PageMeta meta = new PageMeta(
-                (activeType == null ? "Authority-first browse" : activeType.label() + " browse") + " | " + siteProperties.title(),
-                "Browse the actual utility, fire AHJ, or local department that owns each rule before you trust a city-level summary.",
+                (activeType == null ? "Rule holder directory" : activeType.label() + " offices") + " | " + siteProperties.title(),
+                "Browse the utility, fire office, or local department that actually sets each rule before you rely on a city summary.",
                 canonicalUrl("/authorities"),
                 activeType == null ? "index,follow" : "noindex,follow",
                 authorityDirectoryLastVerifiedDate(authorityCards),
                 structuredDataJson(List.of(
                         collectionPageStructuredData(
-                                "Authority-first browse",
+                                "Rule holder directory",
                                 canonicalUrl("/authorities"),
                                 "Browse the actual local rule holder before acting on city-level kitchen compliance summaries."
                         ),
@@ -302,11 +301,11 @@ public class SitePageService {
 
         return new AuthorityBrowsePageViewModel(
                 meta,
-                "Authority-first browse",
-                activeType == null ? "Browse by actual rule holder" : activeType.label() + " browse",
+                "Rule holder directory",
+                activeType == null ? "Browse by actual rule holder" : activeType.label() + " offices",
                 activeType == null
-                        ? "Cities are the operator entry. Utilities, fire AHJs, and local departments are often the truth. Use this surface when mixed governance makes the city page too coarse."
-                        : "Filtered authority browse for " + activeType.label() + " routes. Use this to cut the mobile scroll down to the actual rule holder class you need.",
+                        ? "Use this directory when you need to see which utility, fire office, or department actually owns the rule behind a city page."
+                        : "Filtered to " + activeType.label() + " offices so you can go straight to the rule holder you need.",
                 false,
                 authorityCards,
                 authorityFilterOptions(activeType),
@@ -324,8 +323,8 @@ public class SitePageService {
         AuthorityBrowseCard authorityCard = authorityBrowseCard(authority);
         String path = "/authorities/" + authority.state() + "/" + authority.authorityId();
         PageMeta meta = new PageMeta(
-                authority.authorityName() + " | Authority routes | " + siteProperties.title(),
-                "Authority-owned kitchen compliance routes and city entry paths for " + authority.authorityName() + ".",
+                authority.authorityName() + " | Rule holder routes | " + siteProperties.title(),
+                "Kitchen compliance routes and city links for " + authority.authorityName() + ".",
                 canonicalUrl(path),
                 "index,follow",
                 authority.lastVerified(),
@@ -348,8 +347,8 @@ public class SitePageService {
                 meta,
                 authority.authorityType().label(),
                 authority.authorityName(),
-                "Canonical authority-owned routes for " + displayCity(authority.city()) + ", " + authority.state().toUpperCase()
-                        + ". Use these when the utility or fire authority, not the city shell, is the real rule holder.",
+                "Routes from " + authority.authorityName() + " for " + displayCity(authority.city()) + ", " + authority.state().toUpperCase()
+                        + ". Use these when you need the office that actually sets the rule.",
                 true,
                 List.of(authorityCard),
                 List.of(),
@@ -452,9 +451,9 @@ public class SitePageService {
                 "Next action",
                 verdict.nextActions(),
                 "Authority note",
-                cityName + " publishes a source-backed service cadence and verification workflow, so the page can stay explicit without inventing a generic national default.",
+                cityName + " publishes a clear local service cadence and verification workflow, so this page can stay specific without falling back to generic national advice.",
                 fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                        ? cityName + " publishes an authority-backed hauler or preferred-pumper list, but it does not recommend or endorse any provider on that list."
+                        ? cityName + " publishes an official hauler or preferred-pumper list, but it does not recommend or endorse any provider on that list."
                         : cityName + " does not publish a safe approved list for this workflow, so the operator must verify the vendor directly.",
                 null,
                 new CallToAction(
@@ -685,7 +684,7 @@ public class SitePageService {
                         provider.listingMode() == ListingMode.PUBLIC
                                 ? "Public listing"
                                 : "Sponsor placement",
-                        provider.sponsorStatus().name().toLowerCase(),
+                        provider.listingMode() == ListingMode.PUBLIC ? "" : "Sponsored placement",
                         providerEvidenceService.evidenceLabel(provider),
                         providerEvidenceService.coverageConfidenceLabel(provider),
                         providerEvidenceService.whyListed(provider),
@@ -699,29 +698,27 @@ public class SitePageService {
 
         String providerModeSummary;
         if (routingDecision.routingMode() == owner.kitchencompliance.model.RoutingMode.MANUAL_ONLY) {
-            providerModeSummary = "Operator review is still required, so this page stays noindex until current coverage and paperwork are confirmed.";
-        } else if (!indexable && route.noindexReason() != null && !route.noindexReason().isBlank()) {
-            providerModeSummary = route.noindexReason();
+            providerModeSummary = "Use these listings as starting points only. Confirm current coverage and paperwork before you book anyone.";
         } else if (!indexable && indexingPolicyService.requiresAuthorityBackedProvider(route) && authorityBackedProviderCount == 0) {
-            providerModeSummary = "The local grease workflow still needs a current authority-backed hauler signal, so this route stays noindex until that evidence is in place.";
+            providerModeSummary = "The city publishes a formal grease workflow, but the listings below still need stronger official proof before you should rely on them alone.";
         } else if (!indexable && renderableProviderCount < indexingPolicyService.minimumFinderProviderCount()) {
-            providerModeSummary = "Coverage is below the booking threshold of "
+            providerModeSummary = "There are fewer than "
                     + indexingPolicyService.minimumFinderProviderCount()
-                    + " public or active options, so this page stays noindex and guidance-first.";
+                    + " solid local options on this page right now, so start with the rule page and checklist before you call anyone.";
         } else if (!indexable) {
-            providerModeSummary = "The provider cards are visible, but the route is temporarily noindex until current paperwork and source checks are back in bounds.";
+            providerModeSummary = "This page can still help you compare options, but some local details are being rechecked. Treat the cards below as a starting point.";
         } else if (authorityBackedProviderCount == 0) {
-            providerModeSummary = "Listings are available for contact routing only, so operators should verify service scope, manifest handling, and current city coverage before booking.";
+            providerModeSummary = "These listings can help you make first contact, but you should still verify service scope, manifest handling, and current city coverage before booking.";
         } else {
-            providerModeSummary = "Public listings and sponsor placements are separated, and the route is ready for operator use.";
+            providerModeSummary = "The cards below separate public listings from paid placements and show the paperwork signals that matter before booking.";
         }
 
         String noteTitle;
         String noteBody;
         CallToAction callToAction;
         if (route.template() == RouteTemplate.FIND_GREASE_SERVICE) {
-            noteTitle = "Grease service rule";
-            noteBody = "This page should follow the city's hauler and manifest rules, not pretend the provider list is the authority source.";
+            noteTitle = "Before you call a grease hauler";
+            noteBody = "Use the local rule page to confirm who can haul, what paperwork must stay on site, and whether the city publishes an approved list.";
             callToAction = new CallToAction(
                     "Need the rule summary first?",
                     "Go back to the grease rule page if staff still needs the actual city requirement before calling anyone.",
@@ -730,11 +727,11 @@ public class SitePageService {
                     false
             );
         } else {
-            noteTitle = "Hood cleaner rule";
-            noteBody = "This page should route operators only after the hood-system paperwork burden is already clear.";
+            noteTitle = "Before you call a hood cleaner";
+            noteBody = "Use the local rule page to confirm the report, tag, and inspection paperwork your site needs after the cleaning visit.";
             callToAction = new CallToAction(
                     "Need the hood paperwork rule first?",
-                    "Go back to the hood requirement page if the team still needs the source-backed inspection-ready record list.",
+                    "Go back to the hood requirement page if the team still needs the local inspection-ready record list.",
                     "Return to " + cityName + " hood requirements",
                     localRoutePath(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS),
                     false
@@ -918,8 +915,8 @@ public class SitePageService {
             return null;
         }
         String description = route.template() == RouteTemplate.FIND_GREASE_SERVICE
-                ? "Send a short service request for " + cityName + " grease help. This stays separate from the authority summary and goes into the KitchenRuleHub operations queue."
-                : "Send a short service request for " + cityName + " hood cleaning help. This stays separate from the authority summary and goes into the KitchenRuleHub operations queue.";
+                ? "Send a short request for " + cityName + " grease help. We use the city and issue details from this page when we follow up."
+                : "Send a short request for " + cityName + " hood cleaning help. We use the city and issue details from this page when we follow up.";
         return new LeadCapturePanel(
                 "service-request",
                 "Short lead form",
@@ -937,7 +934,7 @@ public class SitePageService {
                 "sponsor-slot",
                 "Sponsor slot",
                 "Want sponsor placement on " + cityName + " coverage?",
-                "This inquiry is for direct local sponsor visibility only. It does not change the authority summary or source-backed rule content on the page.",
+                "This inquiry is only about sponsor placement. It does not change the rule summary, source list, or inspection guidance on the page.",
                 "/lead-intake/sponsor",
                 "Request sponsor details",
                 "I consent to follow-up about sponsor placement for this route family.",
@@ -952,15 +949,15 @@ public class SitePageService {
         return switch (noticeCode) {
             case "operator-submitted" -> new SubmissionNotice(
                     "Service request saved",
-                    "The operator request is stored in the operations queue for route follow-up."
+                    "We received your request and will use the city and issue details from this page when we follow up."
             );
             case "sponsor-submitted" -> new SubmissionNotice(
                     "Sponsor inquiry saved",
-                    "The sponsor inquiry is stored in the operations queue for route follow-up."
+                    "We received your inquiry and will follow up about sponsor placement for this route."
             );
             case "consent-required" -> new SubmissionNotice(
                     "Consent required",
-                    "Check the consent box before sending the request so the route can be tracked safely."
+                    "Check the consent box before sending the request."
             );
             case "operator-invalid" -> new SubmissionNotice(
                     "Service request incomplete",
@@ -976,12 +973,12 @@ public class SitePageService {
 
     private String providerTrustTitle(boolean indexable, boolean verificationRequired) {
         if (!indexable) {
-            return "Operator review needed before booking";
+            return "Check before you book";
         }
         if (verificationRequired) {
-            return "Verify coverage before booking";
+            return "Verify the paperwork";
         }
-        return "Operator-ready routing is live";
+        return "Ready to compare providers";
     }
 
     private String providerTrustBody(
@@ -994,15 +991,14 @@ public class SitePageService {
             boolean verificationRequired
     ) {
         if (!indexable) {
-            return "This finder is paused for operator review until current coverage, paperwork, and source checks are confirmed. "
-                    + "Use the checklist below before booking.";
+            return "Use this page to compare names and contacts, then confirm local coverage and paperwork with the checklist below before you book.";
         }
         if (verificationRequired) {
-            return "The route can still help with contact routing, but operators should confirm current "
+            return "This page can still help with first contact, but you should confirm current "
                     + (route.template() == RouteTemplate.FIND_GREASE_SERVICE ? "manifest and hauler" : "cleaning-report and coverage")
-                    + " details before booking because current evidence is still thin.";
+                    + " details before booking because the public proof is still limited.";
         }
-        return "This route has current local coverage, direct contact details, and source-backed provider signals for booking and follow-up.";
+        return "This page has current local coverage, direct contact details, and official source signals to help you compare providers before booking.";
     }
 
     private List<String> providerVerificationChecklist(RouteRecord route, String cityName, boolean verificationRequired) {
@@ -1031,29 +1027,29 @@ public class SitePageService {
         String cityName = displayCity(seedRegistry.profile(profileId).city());
         return switch (currentTemplate) {
             case FOG_RULES -> List.of(
-                    link(cityName + " approved haulers", localRoutePath(profileId, RouteTemplate.APPROVED_HAULERS)),
+                    link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST)),
                     link(cityName + " hood requirements", localRoutePath(profileId, RouteTemplate.HOOD_REQUIREMENTS)),
-                    link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST))
+                    link(cityName + " approved haulers", localRoutePath(profileId, RouteTemplate.APPROVED_HAULERS))
             );
             case APPROVED_HAULERS -> List.of(
                     link(cityName + " grease trap rules", localRoutePath(profileId, RouteTemplate.FOG_RULES)),
-                    link(cityName + " grease service finder", localRoutePath(profileId, RouteTemplate.FIND_GREASE_SERVICE)),
-                    link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST))
+                    link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST)),
+                    link(cityName + " grease service finder", localRoutePath(profileId, RouteTemplate.FIND_GREASE_SERVICE))
             );
             case HOOD_REQUIREMENTS -> List.of(
                     link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST)),
-                    link(cityName + " hood cleaner finder", localRoutePath(profileId, RouteTemplate.FIND_HOOD_CLEANER)),
-                    link(cityName + " grease trap rules", localRoutePath(profileId, RouteTemplate.FOG_RULES))
+                    link(cityName + " grease trap rules", localRoutePath(profileId, RouteTemplate.FOG_RULES)),
+                    link(cityName + " hood cleaner finder", localRoutePath(profileId, RouteTemplate.FIND_HOOD_CLEANER))
             );
             case INSPECTION_CHECKLIST -> List.of(
-                    link(cityName + " grease trap rules", localRoutePath(profileId, RouteTemplate.FOG_RULES)),
                     link(cityName + " hood requirements", localRoutePath(profileId, RouteTemplate.HOOD_REQUIREMENTS)),
+                    link(cityName + " grease trap rules", localRoutePath(profileId, RouteTemplate.FOG_RULES)),
                     link(cityName + " hood cleaner finder", localRoutePath(profileId, RouteTemplate.FIND_HOOD_CLEANER))
             );
             case FIND_GREASE_SERVICE -> List.of(
                     link(cityName + " grease trap rules", localRoutePath(profileId, RouteTemplate.FOG_RULES)),
-                    link(cityName + " approved haulers", localRoutePath(profileId, RouteTemplate.APPROVED_HAULERS)),
-                    link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST))
+                    link(cityName + " fire inspection checklist", localRoutePath(profileId, RouteTemplate.INSPECTION_CHECKLIST)),
+                    link(cityName + " approved haulers", localRoutePath(profileId, RouteTemplate.APPROVED_HAULERS))
             );
             case FIND_HOOD_CLEANER -> List.of(
                     link(cityName + " hood requirements", localRoutePath(profileId, RouteTemplate.HOOD_REQUIREMENTS)),
@@ -1065,24 +1061,23 @@ public class SitePageService {
 
     private String governanceHeading(RouteRecord route, AuthorityRecord authority) {
         return switch (authority.authorityType()) {
-            case UTILITY -> "Utility-owned compliance workflow";
-            case FIRE_AHJ -> "Fire AHJ-owned compliance workflow";
-            case CITY_DEPARTMENT -> "Local department workflow";
+            case UTILITY -> "Local utility office";
+            case FIRE_AHJ -> "Local fire office";
+            case CITY_DEPARTMENT -> "Local department";
         };
     }
 
     private String governanceBody(RouteRecord route, AuthorityRecord authority, String cityName) {
         if (!seedRegistry.usesAuthorityCanonical(route)) {
-            return cityName + " is the main operator entry point for this route, and the local department named above is the direct rule holder.";
+            return "For " + cityName + ", the department above is the office that sets and enforces the rule on this page.";
         }
         String workflow = switch (route.template()) {
-            case FOG_RULES, APPROVED_HAULERS, FIND_GREASE_SERVICE -> "grease and manifest";
-            case HOOD_REQUIREMENTS, FIND_HOOD_CLEANER -> "hood-system";
-            case INSPECTION_CHECKLIST -> "inspection-prep";
+            case FOG_RULES, APPROVED_HAULERS, FIND_GREASE_SERVICE -> "grease, hauling, and paperwork";
+            case HOOD_REQUIREMENTS, FIND_HOOD_CLEANER -> "hood cleaning and fire paperwork";
+            case INSPECTION_CHECKLIST -> "inspection preparation";
         };
-        return "This page serves " + cityName + " operators, but the actual " + workflow + " workflow is governed by "
-                + authority.authorityName()
-                + ". The city URL is an entry surface; the authority route is the canonical source-backed path.";
+        return cityName + " operators often search by city name, but " + authority.authorityName()
+                + " is the office that sets the local " + workflow + " rules on this page.";
     }
 
     private String localRoutePath(String profileId, RouteTemplate template) {

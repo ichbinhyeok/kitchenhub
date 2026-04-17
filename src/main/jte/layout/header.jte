@@ -7,7 +7,7 @@
         <a class="brand" href="/">
             <span>
                 <span class="brand__wordmark">KitchenRuleHub</span>
-                <span class="brand__sub">Source-backed local rule summaries</span>
+                <span class="brand__sub">Local rules from official sources</span>
             </span>
         </a>
 
@@ -19,7 +19,7 @@
                 Browse Authorities
             </a>
             <a class="top-nav__link${meta.canonicalUrl().contains("/guides/") ? " is-active" : ""}" href="/guides/fog-vs-grease-trap-cleaning">
-                Evergreen Guides
+                Practical Guides
             </a>
             <a class="top-nav__link${meta.canonicalUrl().contains("/tools/") ? " is-active" : ""}" href="/tools/grease-log">
                 Operator Tools

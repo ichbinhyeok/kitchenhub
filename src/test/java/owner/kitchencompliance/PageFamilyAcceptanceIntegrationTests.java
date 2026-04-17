@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest(properties = {
+        "app.site.base-url=http://localhost:8080",
         "app.attribution.log-dir=target/test-page-family-attribution",
         "app.leads.log-dir=target/test-page-family-leads"
 })
@@ -25,11 +26,17 @@ class PageFamilyAcceptanceIntegrationTests {
     void homePageStaysIssueFirstBeforeCityBrowseAndTools() throws Exception {
         String html = body(get("/"));
 
-        assertThat(html).contains("Local compliance + operator action for commercial kitchens");
+        assertThat(html).contains("Kitchen compliance with a local next action");
         assertThat(html).contains("Start With The Issue On Your Desk");
-        assertThat(html).contains("Active City Jurisdictions");
+        assertThat(html).contains("Choose A City");
+        assertThat(html).contains("Current city coverage");
+        assertThat(html).contains("What we solve");
         assertThat(html).contains("Operator Tools");
-        assertThat(html).contains("Verified local authority summaries");
+        assertThat(html).contains("Official sources reviewed locally");
+        assertThat(indexOf(html, "Start With The Issue On Your Desk"))
+                .isLessThan(indexOf(html, "Choose A City"));
+        assertThat(indexOf(html, "Choose A City"))
+                .isLessThan(indexOf(html, "What we solve"));
     }
 
     @Test
@@ -78,10 +85,10 @@ class PageFamilyAcceptanceIntegrationTests {
     void providerFinderShowsQualificationAndSourceBeforeListings() throws Exception {
         String html = body(get("/nc/charlotte/find-grease-service"));
 
-        assertThat(html).contains("Operator-ready routing is live");
+        assertThat(html).contains("Ready to compare providers");
         assertThat(html).contains("Primary source");
         assertThat(html).contains("Provider Listings");
-        assertThat(indexOf(html, "Operator-ready routing is live"))
+        assertThat(indexOf(html, "Ready to compare providers"))
                 .isLessThan(indexOf(html, "Provider Listings"));
         assertThat(indexOf(html, "Primary source"))
                 .isLessThan(indexOf(html, "Provider Listings"));

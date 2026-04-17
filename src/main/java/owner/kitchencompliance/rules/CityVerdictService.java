@@ -57,13 +57,13 @@ public class CityVerdictService {
                     List.of(
                             "Recent manifests or trip tickets.",
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                                    ? "The vendor's current listing or program status in the authority-backed registry."
+                                    ? "The vendor's current listing or program status in the city's published registry."
                                     : "The vendor's current self-verification proof for grease-waste coverage.",
                             "Receiving-station or disposal paperwork when applicable."
                     ),
                     List.of(
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                                    ? "Using a vendor outside the authority-backed registry can break the paper trail " + cityName + " expects."
+                                    ? "Using a vendor outside the published registry can break the paper trail " + cityName + " expects."
                                     : "Using an unverified vendor can break the paper trail " + cityName + " expects.",
                             "An outdated provider check can leave the operator without defensible records."
                     ),
@@ -117,7 +117,7 @@ public class CityVerdictService {
                     List.of(
                             fogRule.pumpOutFrequency(),
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                                    ? "Your vendor must align with the authority-backed hauler or preferred-pumper program."
+                                    ? "Your vendor must align with the city's published hauler or preferred-pumper program."
                                     : "Your vendor must align with the city's grease-hauling verification workflow.",
                             "Manifest retention is part of the operating requirement, not just a vendor detail."
                     ),
@@ -184,8 +184,8 @@ public class CityVerdictService {
     private List<String> approvedHaulerRequirements(String cityName, ApprovedHaulerMode mode) {
         if (mode == ApprovedHaulerMode.OFFICIAL_LIST) {
             return List.of(
-                    cityName + " publishes an authority-backed hauler or preferred-pumper registry for grease service.",
-                    "The authority-backed registry is a verification tool, not a recommendation or endorsement.",
+                    cityName + " publishes an official hauler or preferred-pumper registry for grease service.",
+                    "The published registry is a verification tool, not a recommendation or endorsement.",
                     "Operators still need to confirm waste-type coverage and current standing before booking."
             );
         }
@@ -199,8 +199,8 @@ public class CityVerdictService {
     private List<String> approvedHaulerActions(String cityName, ApprovedHaulerMode mode) {
         if (mode == ApprovedHaulerMode.OFFICIAL_LIST) {
             return List.of(
-                    "Start from the authority-backed registry, then confirm the vendor still covers grease waste.",
-                    "Keep the registry check together with your manifests.",
+                    "Start from the city's published registry, then confirm the vendor still covers grease waste.",
+                    "Keep the registry check with your manifests.",
                     "If a vendor cannot verify coverage, switch before the next pump-out."
             );
         }
@@ -214,7 +214,7 @@ public class CityVerdictService {
     private List<String> greaseFinderActions(ApprovedHaulerMode mode) {
         if (mode == ApprovedHaulerMode.OFFICIAL_LIST) {
             return List.of(
-                    "Use the authority-backed hauler or preferred-pumper registry as the first filter.",
+                    "Use the published hauler or preferred-pumper registry as the first filter.",
                     "Ask the vendor to confirm grease-waste coverage and manifest handling.",
                     "Store the registry check with your next trip ticket."
             );

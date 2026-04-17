@@ -2,7 +2,7 @@
     <div class="site-footer__inner">
         <div class="footer-column">
             <div class="site-footer__brand">KitchenRuleHub</div>
-            <p class="site-footer__small">Authority-backed rule summaries, operator proof checklists, and verified next actions for commercial kitchens.</p>
+            <p class="site-footer__small">Local rule summaries, records checklists, and next steps for commercial kitchens.</p>
             <p class="site-footer__small">&copy; 2026 KitchenRuleHub. Independent operator workflow, not a government portal.</p>
         </div>
 
@@ -25,7 +25,7 @@
         <div class="footer-column">
             <div class="footer-column__label">Status</div>
             <p>Each route shows its own last verified date.</p>
-            <p>Coverage: local launch slice</p>
+            <p>Coverage: 8 city workflows live</p>
         </div>
     </div>
 </footer>

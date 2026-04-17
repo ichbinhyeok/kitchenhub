@@ -22,7 +22,7 @@ public class OperatorToolCatalog {
                         "Grease log",
                         "Operator tool",
                         "Grease service log template",
-                        "A noindex operator worksheet for tracking pump-outs, manifests, and the binder location of proof before a utility or health inspection.",
+                        "A worksheet for tracking pump-outs, manifests, and the binder location of proof before a utility or health inspection.",
                         List.of(
                                 "Record every pump-out or maintenance action with the service date, vendor, gallons removed, and receipt or manifest reference.",
                                 "Write down the authority that governs the site and the binder location where the current proof lives.",
@@ -32,9 +32,9 @@ public class OperatorToolCatalog {
                                 new DownloadLink("Download grease log CSV", "/tools/grease-log.csv", "Binder-first worksheet for date, authority, vendor, gallons, manifest, receipt, and next-review tracking.")
                         ),
                         List.of(
-                                new RelatedPageLink("Austin grease trap rules", "/tx/austin/restaurant-grease-trap-rules"),
-                                new RelatedPageLink("Miami grease trap rules", "/fl/miami/restaurant-grease-trap-rules"),
-                                new RelatedPageLink("FOG vs. grease trap cleaning", "/guides/fog-vs-grease-trap-cleaning")
+                                new RelatedPageLink("Austin grease trap rules", "/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules"),
+                                new RelatedPageLink("Charlotte grease trap rules", "/authority/nc/charlotte-water-flow-free/restaurant-grease-trap-rules"),
+                                new RelatedPageLink("Miami grease trap rules", "/fl/miami/restaurant-grease-trap-rules")
                         )
                 ),
                 new ToolDefinition(
@@ -42,7 +42,7 @@ public class OperatorToolCatalog {
                         "Hood binder",
                         "Operator tool",
                         "Hood record binder checklist",
-                        "A noindex operator checklist for keeping hood cleaning, suppression, tags, and inspection-ready paperwork in one place without collapsing them into the same obligation.",
+                        "A checklist for keeping hood cleaning, suppression, tags, and inspection-ready paperwork in one place without collapsing them into the same obligation.",
                         List.of(
                                 "Separate hood cleaning reports from suppression inspection records when the authority treats them differently.",
                                 "Keep the most recent tag, certificate, and service report in the same binder or folder with the authority name written on the tab.",
@@ -52,9 +52,9 @@ public class OperatorToolCatalog {
                                 new DownloadLink("Download hood binder CSV", "/tools/hood-record-binder.csv", "Checklist for report, tag, certificate, binder location, and deficiency follow-up.")
                         ),
                         List.of(
-                                new RelatedPageLink("Tampa hood requirements", "/fl/tampa/hood-cleaning-requirements"),
-                                new RelatedPageLink("Portland hood requirements", "/or/portland/hood-cleaning-requirements"),
-                                new RelatedPageLink("How often to clean a commercial hood", "/guides/how-often-clean-commercial-hood")
+                                new RelatedPageLink("Austin hood requirements", "/authority/tx/austin-fire-marshal/hood-cleaning-requirements"),
+                                new RelatedPageLink("Charlotte hood requirements", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"),
+                                new RelatedPageLink("Miami hood requirements", "/fl/miami/hood-cleaning-requirements")
                         )
                 ),
                 new ToolDefinition(
@@ -62,7 +62,7 @@ public class OperatorToolCatalog {
                         "Missing proof tracker",
                         "Operator tool",
                         "Missing proof tracker",
-                        "A noindex operator worksheet for logging what proof is missing, which route or authority created the requirement, who owns the follow-up, and when the gap must be closed before inspection pressure hits.",
+                        "A worksheet for logging what proof is missing, which route or authority created the requirement, who owns the follow-up, and when the gap must be closed before inspection pressure hits.",
                         List.of(
                                 "Write down the missing document, tag, manifest, or report the moment the gap is discovered.",
                                 "Tie the gap to the source route or authority page so staff can reopen the right local rule without guessing.",
@@ -72,9 +72,9 @@ public class OperatorToolCatalog {
                                 new DownloadLink("Download missing proof tracker CSV", "/tools/missing-proof-tracker.csv", "Queue for missing proof item, source route, owner, next review date, and closure status.")
                         ),
                         List.of(
-                                new RelatedPageLink("Austin approved haulers", "/tx/austin/approved-grease-haulers"),
-                                new RelatedPageLink("Miami hood requirements", "/fl/miami/hood-cleaning-requirements"),
-                                new RelatedPageLink("What records inspections check", "/guides/what-records-restaurant-inspections-check")
+                                new RelatedPageLink("Austin grease trap rules", "/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules"),
+                                new RelatedPageLink("Charlotte hood requirements", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"),
+                                new RelatedPageLink("Miami fire inspection checklist", "/authority/fl/miami-dade-fire-rescue/restaurant-fire-inspection-checklist")
                         )
                 ),
                 new ToolDefinition(
@@ -82,7 +82,7 @@ public class OperatorToolCatalog {
                         "Inspection reminders",
                         "Operator tool",
                         "Inspection reminder plan",
-                        "A noindex reminder worksheet for mapping due dates, missing proof, and service follow-up before an inspection window closes.",
+                        "A reminder worksheet for mapping due dates, missing proof, and service follow-up before an inspection window closes.",
                         List.of(
                                 "Capture the next inspection window, the responsible authority, and the missing proof item.",
                                 "Assign the repair or paperwork follow-up before the reminder becomes a last-minute scramble.",
@@ -92,9 +92,9 @@ public class OperatorToolCatalog {
                                 new DownloadLink("Download reminder plan CSV", "/tools/inspection-reminder-plan.csv", "Reminder queue for authority, due date, issue type, source route, and action owner.")
                         ),
                         List.of(
-                                new RelatedPageLink("Austin fire inspection checklist", "/tx/austin/restaurant-fire-inspection-checklist"),
-                                new RelatedPageLink("Santa Clara fire inspection checklist", "/ca/santa-clara/restaurant-fire-inspection-checklist"),
-                                new RelatedPageLink("What records inspections check", "/guides/what-records-restaurant-inspections-check")
+                                new RelatedPageLink("Austin fire inspection checklist", "/authority/tx/austin-fire-marshal/restaurant-fire-inspection-checklist"),
+                                new RelatedPageLink("Charlotte fire inspection checklist", "/authority/nc/charlotte-fire-prevention/restaurant-fire-inspection-checklist"),
+                                new RelatedPageLink("Miami fire inspection checklist", "/authority/fl/miami-dade-fire-rescue/restaurant-fire-inspection-checklist")
                         )
                 )
         );

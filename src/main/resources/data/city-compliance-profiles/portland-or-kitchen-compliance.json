@@ -6,5 +6,6 @@
   "hoodAuthorityId": "portland-fire-safety-inspection-program",
   "launchTier": 1,
   "indexable": true,
+  "homeSummary": "Portland kitchens can use BES grease rules, preferred pumper guidance, and fire inspection prep from the same local coverage set.",
   "decisionReason": "Portland has source-backed FOG administrative rules, preferred pumper guidance, kitchen exhaust policies, and fire inspection workflow."
 }

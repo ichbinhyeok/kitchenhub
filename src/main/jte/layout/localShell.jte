@@ -19,7 +19,7 @@
 
             <div class="local-sidebar__panel">
                 <div class="local-sidebar__eyebrow">
-                    ${page.template() == RouteTemplate.HOOD_REQUIREMENTS || page.template() == RouteTemplate.INSPECTION_CHECKLIST ? "Authority-backed route" : "Local rule summary"}
+                    ${page.template() == RouteTemplate.HOOD_REQUIREMENTS || page.template() == RouteTemplate.INSPECTION_CHECKLIST ? "Official rule page" : "Local rule page"}
                 </div>
                 <div class="local-sidebar__city">
                     <span aria-hidden="true" class="local-sidebar__city-mark">${page.state()}</span>
@@ -81,10 +81,10 @@
                     <p class="panel__note" style="margin-top: 10px;">${page.governanceBody()}</p>
                     <div class="action-row governance-note__actions">
                         @if(!page.sourcePath().equals(page.canonicalPath()))
-                            <a class="button button--secondary" href="${page.canonicalPath()}">Open authority page</a>
+                            <a class="button button--secondary" href="${page.canonicalPath()}">Open rule page</a>
                         @endif
                         @if(!page.sourcePath().equals(page.cityEntryPath()))
-                            <a class="button button--ghost" href="${page.cityEntryPath()}">Open city entry</a>
+                            <a class="button button--ghost" href="${page.cityEntryPath()}">Open city page</a>
                         @endif
                     </div>
                 </section>
@@ -163,7 +163,7 @@
                                     <span class="material-symbols-outlined">fact_check</span>
                                 </div>
                                 <h3>${item}</h3>
-                                <p>Keep this accessible before the inspector has to ask twice.</p>
+                                <p>Store this where staff can reach it quickly during an inspection.</p>
                             </article>
                         @endfor
                     </div>
@@ -182,7 +182,7 @@
                                 <div class="failure-item">
                                     <div>
                                         <strong>${item}</strong>
-                                        <p>Failure to resolve this condition can trigger corrective action or delayed approval.</p>
+                                        <p>Inspectors commonly flag this when records are missing, overdue, or incomplete.</p>
                                     </div>
                                     <div class="failure-item__cost">High risk</div>
                                 </div>
@@ -524,7 +524,7 @@
                                     <div class="checkmark-box"></div>
                                     <div>
                                         <strong>${requirement}</strong>
-                                        <p>Current evidence should be staged before the inspector asks for it.</p>
+                                        <p>Stage this with the rest of the binder before inspection day.</p>
                                     </div>
                                 </div>
                             @endfor
@@ -580,10 +580,10 @@
                             </div>
                             <div class="provider-governance-rail__actions">
                                 @if(!page.sourcePath().equals(page.canonicalPath()))
-                                    <a class="button button--secondary" href="${page.canonicalPath()}">Authority path</a>
+                                    <a class="button button--secondary" href="${page.canonicalPath()}">Open rule page</a>
                                 @endif
                                 @if(!page.sourcePath().equals(page.cityEntryPath()))
-                                    <a class="button button--ghost" href="${page.cityEntryPath()}">City entry</a>
+                                    <a class="button button--ghost" href="${page.cityEntryPath()}">Open city page</a>
                                 @endif
                             </div>
                         </div>
@@ -603,13 +603,13 @@
 
                     <article class="provider-form">
                         @if(page.operatorLeadPanel() != null && page.prioritizeOperatorLeadPanel())
-                            <div class="provider-form__rail">Verification stays separate from vendor routing.</div>
+                            <div class="provider-form__rail">Rule summary stays separate from provider contact.</div>
                             <div class="panel__eyebrow">${page.operatorLeadPanel().eyebrow()}</div>
                             <h2>${page.operatorLeadPanel().title()}</h2>
                             <p class="panel__note" style="margin-top: 8px;">${page.operatorLeadPanel().description()}</p>
                             @template.layout.leadForm(page.sourcePath(), page.operatorLeadPanel())
                         @else
-                            <div class="panel__eyebrow">Verification first</div>
+                            <div class="panel__eyebrow">Start with the paperwork</div>
                             <h2>${page.trustBannerTitle()}</h2>
                             <p class="panel__note" style="margin-top: 8px;">${page.trustBannerBody()}</p>
                             @if(page.verificationChecklist() != null && !page.verificationChecklist().isEmpty())
@@ -631,12 +631,12 @@
                 <section class="provider-method-grid">
                     <article class="source-inline-card">
                         <div class="panel__eyebrow">How listings are qualified</div>
-                        <h3>${page.trustBannerTitle() != null ? page.trustBannerTitle() : "Evidence-first routing"}</h3>
+                        <h3>${page.trustBannerTitle() != null ? page.trustBannerTitle() : "How to compare providers"}</h3>
                         <p>${page.providerModeSummary() != null ? page.providerModeSummary() : page.summary()}</p>
                         <div class="source-inline-card__meta">
-                            Authority-backed ${ViewFormatSupport.authorityBackedProviderCount(page.providers())} |
-                            Verification required ${ViewFormatSupport.verificationRequiredProviderCount(page.providers())} |
-                            Last verified ${page.meta().lastVerified().toString()}
+                            Official source links ${ViewFormatSupport.authorityBackedProviderCount(page.providers())} |
+                            Needs confirmation ${ViewFormatSupport.verificationRequiredProviderCount(page.providers())} |
+                            Last checked ${page.meta().lastVerified().toString()}
                         </div>
                     </article>
 
@@ -670,7 +670,7 @@
                             <div class="section-heading__eyebrow">Active routing coverage in ${page.city()}</div>
                             <h2 class="section-heading__title">Provider Listings</h2>
                         </div>
-                        <div class="section-heading__tag">Evidence and sponsor status</div>
+                        <div class="section-heading__tag">Evidence and contact details</div>
                     </div>
 
                     <div class="provider-list">
@@ -708,13 +708,15 @@
                                 </div>
                                 <div class="provider-card__proof${ViewFormatSupport.hasOfficialEvidence(provider.officialApprovalSourceUrl()) ? "" : " provider-card__proof--muted"}">
                                     @if(ViewFormatSupport.hasOfficialEvidence(provider.officialApprovalSourceUrl()))
-                                        <a href="${provider.officialApprovalSourceUrl()}" rel="noopener noreferrer" target="_blank">View authority-backed evidence</a>
+                                        <a href="${provider.officialApprovalSourceUrl()}" rel="noopener noreferrer" target="_blank">View official source</a>
                                     @else
-                                        Public service page only; operator should confirm current city coverage.
+                                        Public service page only. Confirm current city coverage before booking.
                                     @endif
                                 </div>
                                 <div class="provider-card__footer">
-                                    <span class="panel__note">${provider.sponsorStatusLabel()}</span>
+                                    @if(provider.sponsorStatusLabel() != null && !provider.sponsorStatusLabel().isBlank())
+                                        <span class="panel__note">${provider.sponsorStatusLabel()}</span>
+                                    @endif
                                     <a class="text-link" href="${provider.siteUrl()}" rel="${ViewFormatSupport.providerOutboundRel(provider)}" target="_blank">Visit provider site</a>
                                 </div>
                             </article>
@@ -723,7 +725,8 @@
                 </section>
 
                 <article class="support-note support-note--provider">
-                    Listings are routing support only. They are not municipal endorsement, and operators should confirm current manifest, service scope, and coverage before booking.
+                    <strong>Listings are routing support only.</strong>
+                    <p>Operator review needed before booking. Listings help you compare options. They are not municipal endorsement, and operators should confirm current paperwork, service scope, and coverage before booking.</p>
                 </article>
 
                 @if(page.operatorLeadPanel() != null && !page.prioritizeOperatorLeadPanel())

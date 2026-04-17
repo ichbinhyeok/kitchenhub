@@ -11,6 +11,7 @@ public record CityComplianceProfile(
         @NotBlank String hoodAuthorityId,
         @Min(1) int launchTier,
         boolean indexable,
+        @NotBlank String homeSummary,
         @NotBlank String decisionReason
 ) {
 }

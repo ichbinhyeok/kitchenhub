@@ -25,16 +25,20 @@ class OperatorToolServiceTests {
 
         assertThat(tools).hasSize(4);
         assertThat(tools).allSatisfy(tool -> {
-            assertThat(tool.summary()).contains("noindex");
+            assertThat(tool.summary()).isNotBlank();
             assertThat(tool.checklist()).hasSizeGreaterThanOrEqualTo(3);
             assertThat(tool.downloads()).hasSize(1);
             assertThat(tool.relatedLinks()).hasSize(3);
+            assertThat(tool.relatedLinks()).allSatisfy(link ->
+                    assertThat(link.path()).matches("^(/authority/(tx|nc|fl)/|/fl/miami/).+"));
         });
 
         assertThat(tools.getFirst().relatedLinks().stream().map(link -> link.path()))
-                .anyMatch(path -> path.startsWith("/tx/austin/"));
+                .anyMatch(path -> path.startsWith("/authority/tx/austin-water-pretreatment/"));
         assertThat(tools.getLast().relatedLinks().stream().map(link -> link.path()))
-                .anyMatch(path -> path.startsWith("/tx/austin/") || path.startsWith("/ca/santa-clara/"));
+                .allMatch(path -> path.startsWith("/authority/tx/")
+                        || path.startsWith("/authority/nc/")
+                        || path.startsWith("/authority/fl/"));
     }
 
     @Test

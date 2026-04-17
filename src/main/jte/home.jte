@@ -15,12 +15,12 @@
             <div class="home-hero__copy">
                 <div class="eyebrow-pill">
                     <span class="material-symbols-outlined">verified</span>
-                    Verified local authority summaries
+                    Official sources reviewed locally
                 </div>
 
                 <h1>Local compliance + operator action for commercial kitchens</h1>
                 <p class="home-hero__summary">
-                    Start with grease, hood, or inspection work. Open the local page, stage the proof inspectors ask for, and only then route service if the site still needs help.
+                    Start with the issue on your desk, open the local rule page for your city, stage the proof inspectors ask for, and then move into guides, tools, or provider routing.
                 </p>
 
                 <div class="action-row">
@@ -28,7 +28,7 @@
                         Start With The Issue
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
-                    <a class="button button--secondary" href="#active-cities">Browse City Directory</a>
+                    <a class="button button--secondary" href="#active-cities">Browse City Coverage</a>
                     <a class="button button--ghost" href="/authorities">Browse Authorities</a>
                 </div>
             </div>
@@ -38,9 +38,9 @@
                     <img alt="Commercial kitchen" class="home-hero__image" src="/assets/home-kitchen.png">
                 </div>
                 <div class="home-hero__rail">
-                    <div class="status-card__eyebrow">Austin, TX example</div>
-                    <div class="status-card__title">Issue -> local page -> city directory</div>
-                    <p class="status-card__body">Start with the issue, open the local page, and keep the city directory for the cases where you need the broader jurisdiction view.</p>
+                    <div class="status-card__eyebrow">Current city coverage</div>
+                    <div class="status-card__title">Pick a city, then open the rule page you need</div>
+                    <p class="status-card__body">Every city card below links into local grease, hood, inspection, and authority paths so operators can move straight to the next action.</p>
                 </div>
             </div>
         </section>
@@ -51,7 +51,7 @@
                     <div class="section-heading__eyebrow">First-visit operator flow</div>
                     <h2 class="section-heading__title">Start With The Issue On Your Desk</h2>
                 </div>
-                <div class="section-heading__summary">Open the local page for the issue first. The guide stays available, but it no longer takes the first click.</div>
+                <div class="section-heading__summary">Pick the issue first, then choose the city that applies. Guides stay available as backup, not as the first stop.</div>
             </div>
 
             <div class="home-start-grid">
@@ -76,11 +76,11 @@
         <section class="home-section home-section--band" id="active-cities">
             <div class="section-heading">
                 <div>
-                    <div class="section-heading__eyebrow">Verified local code for commercial operators</div>
-                    <h2 class="section-heading__title">Active City Jurisdictions</h2>
-                    <div class="section-heading__summary">Use the city directory after the issue is clear or when you need the broader jurisdiction view.</div>
+                    <div class="section-heading__eyebrow">Current city coverage</div>
+                    <h2 class="section-heading__title">Choose A City</h2>
+                    <div class="section-heading__summary">Open the city that matches your kitchen, then jump into local grease rules, hood requirements, inspection checklists, or the rule holder directory.</div>
                 </div>
-                <a class="section-heading__tag" href="/authorities">Rule Holders</a>
+                <a class="section-heading__tag" href="/authorities">Browse Authorities</a>
             </div>
             <div class="city-grid city-grid--home">
                 @for(CityCard city : page.cityCards())
@@ -144,7 +144,7 @@
                 <article class="panel list-panel list-panel--guides">
                     <div class="list-panel__headline">
                         <span class="material-symbols-outlined">menu_book</span>
-                        Evergreen Guides
+                        Practical Guides
                     </div>
                     <div class="list-panel__items">
                         @for(HomePanelLink guide : page.guideLinks())

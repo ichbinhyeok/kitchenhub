@@ -18,8 +18,8 @@
 
         <section class="panel authority-directory-intro">
             <div class="panel__eyebrow">Why this surface exists</div>
-            <h2>${page.detailView() ? "Authority-owned route map" : "Mixed-governance browse surface"}</h2>
-            <p class="panel__note">City pages help anxious operators get started. This directory makes the true utility, fire AHJ, or department visible before anyone confuses city entry with rule ownership.</p>
+            <h2>${page.detailView() ? "Routes from this office" : "The local offices behind each city page"}</h2>
+            <p class="panel__note">Use this directory when you need the utility, fire office, or department that actually sets the rule.</p>
         </section>
 
         @if(!page.detailView())
@@ -76,8 +76,8 @@
                                         <article class="authority-route-card">
                                             <h3>${route.title()}</h3>
                                             <div class="authority-route-card__actions">
-                                                <a class="button button--dark" href="${route.canonicalPath()}">Authority path</a>
-                                                <a class="button button--ghost" href="${route.cityEntryPath()}">City entry</a>
+                                                <a class="button button--dark" href="${route.canonicalPath()}">Open rule page</a>
+                                                <a class="button button--ghost" href="${route.cityEntryPath()}">Open city page</a>
                                             </div>
                                         </article>
                                     @endfor
@@ -90,8 +90,8 @@
                                             <article class="authority-route-card">
                                                 <h3>${route.title()}</h3>
                                                 <div class="authority-route-card__actions">
-                                                    <a class="button button--dark" href="${route.canonicalPath()}">Authority path</a>
-                                                    <a class="button button--ghost" href="${route.cityEntryPath()}">City entry</a>
+                                                    <a class="button button--dark" href="${route.canonicalPath()}">Open rule page</a>
+                                                    <a class="button button--ghost" href="${route.cityEntryPath()}">Open city page</a>
                                                 </div>
                                             </article>
                                         @endfor
@@ -126,8 +126,8 @@
                                 <article class="authority-route-card">
                                     <h3>${route.title()}</h3>
                                     <div class="authority-route-card__actions">
-                                        <a class="button button--dark" href="${route.canonicalPath()}">Authority path</a>
-                                        <a class="button button--ghost" href="${route.cityEntryPath()}">City entry</a>
+                                        <a class="button button--dark" href="${route.canonicalPath()}">Open rule page</a>
+                                        <a class="button button--ghost" href="${route.cityEntryPath()}">Open city page</a>
                                     </div>
                                 </article>
                             @endfor
@@ -140,8 +140,8 @@
                                     <article class="authority-route-card">
                                         <h3>${route.title()}</h3>
                                         <div class="authority-route-card__actions">
-                                            <a class="button button--dark" href="${route.canonicalPath()}">Authority path</a>
-                                            <a class="button button--ghost" href="${route.cityEntryPath()}">City entry</a>
+                                            <a class="button button--dark" href="${route.canonicalPath()}">Open rule page</a>
+                                            <a class="button button--ghost" href="${route.cityEntryPath()}">Open city page</a>
                                         </div>
                                     </article>
                                 @endfor

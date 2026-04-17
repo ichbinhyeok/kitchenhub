@@ -6,5 +6,6 @@
   "hoodAuthorityId": "santa-clara-fire-department",
   "launchTier": 1,
   "indexable": true,
+  "homeSummary": "Santa Clara operators can confirm FOG recordkeeping, hauling steps, and fire paperwork before the next kitchen inspection.",
   "decisionReason": "Santa Clara has an official FOG program, a city-published hauler list, and fire-code guidance for commercial cooking operations and inspections."
 }

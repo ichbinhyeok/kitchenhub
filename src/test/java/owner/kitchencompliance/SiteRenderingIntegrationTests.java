@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 @SpringBootTest(properties = {
+        "app.site.base-url=http://localhost:8080",
         "app.attribution.log-dir=target/test-site-rendering-attribution",
         "app.leads.log-dir=target/test-site-rendering-leads"
 })
@@ -27,19 +28,22 @@ class SiteRenderingIntegrationTests {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Kitchen compliance with a local next action")))
-                .andExpect(content().string(containsString("Verified local authority summaries")))
+                .andExpect(content().string(containsString("Official sources reviewed locally")))
+                .andExpect(content().string(containsString("Browse City Coverage")))
+                .andExpect(content().string(containsString("Choose A City")))
+                .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")))
+                .andExpect(content().string(containsString("/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")))
                 .andExpect(content().string(containsString("/tx/austin/restaurant-grease-trap-rules")))
-                .andExpect(content().string(containsString("/ca/santa-clara/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/nc/charlotte/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/fl/miami/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/fl/tampa/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/ne/grand-island/restaurant-grease-trap-rules")))
+                .andExpect(content().string(containsString("/ca/santa-clara/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/or/portland/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/tn/nashville/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/guides/fog-vs-grease-trap-cleaning")))
-                .andExpect(content().string(containsString("Active City Jurisdictions")))
+                .andExpect(content().string(containsString("Browse Authorities")))
                 .andExpect(content().string(containsString("Austin Water Pretreatment Program")))
-                .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/authorities")))
                 .andExpect(content().string(containsString("/tools/grease-log")))
                 .andExpect(content().string(containsString("/tools/missing-proof-tracker")))
@@ -97,9 +101,9 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules\"")))
                 .andExpect(content().string(containsString("Rule holder: Austin Water Pretreatment Program")))
-                .andExpect(content().string(containsString("Open authority page")))
-                .andExpect(content().string(containsString("Authority-backed sources")))
-                .andExpect(content().string(containsString("Austin publishes an authority-backed hauler or preferred-pumper list")))
+                .andExpect(content().string(containsString("Open rule page")))
+                .andExpect(content().string(containsString("Official sources for this page")))
+                .andExpect(content().string(containsString("Austin publishes an official hauler or preferred-pumper list")))
                 .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/approved-grease-haulers")))
                 .andExpect(content().string(containsString("action=\"/lead-intake/sponsor\"")))
                 .andExpect(content().string(containsString("Want sponsor placement on Austin coverage?")));
@@ -111,7 +115,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("<title>Austin, TX Grease Trap Rules for Restaurants | Pump-Outs &amp; Manifests</title>")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Open city entry")))
+                .andExpect(content().string(containsString("Open city page")))
                 .andExpect(content().string(containsString("Rule holder: Austin Water Pretreatment Program")));
     }
 
@@ -127,20 +131,21 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("Austin Water Pretreatment Program")))
                 .andExpect(content().string(containsString("/authorities/tx/austin-water-pretreatment")))
                 .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")))
-                .andExpect(content().string(containsString("authority routes")))
+                .andExpect(content().string(containsString("Open rule page")))
                 .andExpect(content().string(containsString("CollectionPage")))
                 .andExpect(content().string(containsString("ItemList")));
 
         mockMvc.perform(get("/authorities").param("type", "utility"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Utility browse")))
+                .andExpect(content().string(containsString("Utility offices")))
                 .andExpect(content().string(containsString("content=\"noindex,follow\"")))
                 .andExpect(content().string(containsString("Austin Water Pretreatment Program")))
                 .andExpect(content().string(not(containsString("Austin Fire Marshal"))));
 
         mockMvc.perform(get("/authorities/tx/austin-water-pretreatment"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Canonical authority-owned routes for Austin, TX")))
+                .andExpect(content().string(containsString("Routes from Austin Water Pretreatment Program for Austin, TX")))
+                .andExpect(content().string(containsString("Routes from this office")))
                 .andExpect(content().string(containsString("Open official source")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authorities/tx/austin-water-pretreatment\"")))
                 .andExpect(content().string(containsString("/tx/austin/restaurant-grease-trap-rules")));
@@ -160,7 +165,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/nc/charlotte-water-flow-free/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Charlotte publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Charlotte publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -169,7 +174,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/fl/tampa-wastewater-grease-ordinance/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Tampa publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Tampa publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -178,7 +183,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/fl/miami/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Miami publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Miami publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -187,7 +192,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/ne/grand-island-utilities-fog-program/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Grand Island publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Grand Island publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -196,7 +201,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/or/portland-bes-fog-program/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Portland publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Portland publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -205,7 +210,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/ca/santa-clara-water-sewer-fog-program/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Santa Clara publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Santa Clara publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -214,7 +219,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("content=\"index,follow\"")))
                 .andExpect(content().string(containsString("href=\"http://localhost:8080/authority/tn/nashville-water-grease-management/restaurant-grease-trap-rules\"")))
-                .andExpect(content().string(containsString("Nashville publishes an authority-backed hauler or preferred-pumper list")));
+                .andExpect(content().string(containsString("Nashville publishes an official hauler or preferred-pumper list")));
     }
 
     @Test
@@ -231,6 +236,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("Visit provider site")))
                 .andExpect(content().string(containsString("Coverage ")))
                 .andExpect(content().string(containsString("Route evidence reviewed")))
+                .andExpect(content().string(containsString("Listings are routing support only.")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
 
         mockMvc.perform(get("/nc/charlotte/find-hood-cleaner"))
@@ -257,6 +263,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/liquid-environmental-solutions-austin")))
                 .andExpect(content().string(containsString("/out/providers/austin-rooter-grease-service")))
                 .andExpect(content().string(containsString("/out/providers/mahoney-environmental-austin")))
+                .andExpect(content().string(containsString("Check before you book")))
                 .andExpect(content().string(containsString("Operator review needed before booking")))
                 .andExpect(content().string(containsString("Verification checklist")))
                 .andExpect(content().string(containsString("Open local route map")))
@@ -274,9 +281,10 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/kitchen-guard-austin-hood-cleaning")))
                 .andExpect(content().string(containsString("/out/providers/pro-hood-cleaning-austin")))
                 .andExpect(content().string(containsString("/out/providers/hoodz-austin-hood-cleaning")))
-                .andExpect(content().string(containsString("Evidence and sponsor status")))
+                .andExpect(content().string(containsString("Evidence and contact details")))
                 .andExpect(content().string(containsString("Coverage ")))
                 .andExpect(content().string(containsString("Route evidence reviewed")))
+                .andExpect(content().string(containsString("Listings are routing support only.")))
                 .andExpect(content().string(containsString("BreadcrumbList")))
                 .andExpect(content().string(containsString("ItemList")))
                 .andExpect(content().string(containsString("Visit provider site")))
@@ -321,6 +329,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/ameri-clean-pumping-miami")))
                 .andExpect(content().string(containsString("/out/providers/grease-trap-fl-miami")))
                 .andExpect(content().string(containsString("/out/providers/united-septic-grease-miami")))
+                .andExpect(content().string(containsString("Check before you book")))
                 .andExpect(content().string(containsString("Operator review needed before booking")))
                 .andExpect(content().string(containsString("Visit provider site")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
@@ -334,7 +343,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/out/providers/hood-cleaning-experts-miami")))
                 .andExpect(content().string(containsString("/out/providers/kitchen-guard-miami")))
                 .andExpect(content().string(containsString("/out/providers/miami-hood-cleaning-llc")))
-                .andExpect(content().string(containsString("Operator review needed before booking")))
+                .andExpect(content().string(containsString("Check before you book")))
                 .andExpect(content().string(containsString("Visit provider site")))
                 .andExpect(content().string(not(containsString("MANUAL_ONLY"))));
     }
@@ -494,15 +503,15 @@ class SiteRenderingIntegrationTests {
     void guidePagesUseSharedLinksThatReferenceMultipleLiveCities() throws Exception {
         mockMvc.perform(get("/guides/fog-vs-grease-trap-cleaning"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Authority-first route map")))
-                .andExpect(content().string(containsString("City search is the entry. The rule holder is the truth.")))
+                .andExpect(content().string(containsString("Local pages to open next")))
+                .andExpect(content().string(containsString("Keep going with a local page")))
                 .andExpect(content().string(containsString("Austin Water Pretreatment Program")))
                 .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")))
-                .andExpect(content().string(containsString("/tx/austin/restaurant-grease-trap-rules")))
-                .andExpect(content().string(containsString("/ca/santa-clara/restaurant-grease-trap-rules")))
-                .andExpect(content().string(containsString("/nc/charlotte/restaurant-grease-trap-rules")))
-                .andExpect(content().string(containsString(">Austin<")))
-                .andExpect(content().string(containsString(">Santa Clara<")))
-                .andExpect(content().string(containsString(">Charlotte<")));
+                .andExpect(content().string(containsString("/authority/nc/charlotte-water-flow-free/restaurant-grease-trap-rules")))
+                .andExpect(content().string(containsString("/fl/miami/restaurant-grease-trap-rules")))
+                .andExpect(content().string(containsString("Austin, TX")))
+                .andExpect(content().string(containsString("Charlotte, NC")))
+                .andExpect(content().string(containsString("Miami, FL")))
+                .andExpect(content().string(not(containsString("Santa Clara, CA"))));
     }
 }

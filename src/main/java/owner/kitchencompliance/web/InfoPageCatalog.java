@@ -21,13 +21,13 @@ public class InfoPageCatalog {
                         "about",
                         "About KitchenRuleHub",
                         "An operator-first local compliance workflow",
-                        "KitchenRuleHub is an independent product for commercial kitchen operators. It summarizes local authority guidance, keeps proof-on-site requirements visible, and keeps vendor routing secondary to rule clarity.",
+                        "KitchenRuleHub is an independent product for commercial kitchen operators. It summarizes local authority guidance, keeps on-site record requirements visible, and keeps vendor routing secondary to rule clarity.",
                         "AboutPage",
                         "index,follow",
                         List.of(
                                 new GuideSection("What the product is", List.of(
                                         "A city- and authority-aware workflow for grease, hood, and inspection preparation.",
-                                        "A source-backed summary layer that points operators to the governing utility, fire authority, county, or city workflow."
+                                        "A local summary layer grounded in official source material that points operators to the governing utility, fire authority, county, or city workflow."
                                 )),
                                 new GuideSection("What the product is not", List.of(
                                         "Not a government site or municipal portal.",
@@ -45,17 +45,17 @@ public class InfoPageCatalog {
                         "methodology",
                         "Methodology",
                         "How KitchenRuleHub decides what to publish",
-                        "Each indexed local route is built from source-backed authority logic first. City display helps operators orient themselves, but the governing rule holder may be a utility, fire marshal, county, or other local authority.",
+                        "Each indexed local route is built from the office that can actually enforce the rule. City display helps operators orient themselves, but the governing rule holder may be a utility, fire marshal, county, or other local authority.",
                         "WebPage",
                         "index,follow",
                         List.of(
                                 new GuideSection("Source and route rules", List.of(
                                         "Canonical local pages must identify the authority that can actually enforce the rule.",
-                                        "Every local page is expected to show authority requirement, proof on site, fail conditions, and next action before service routing."
+                                        "Every local page is expected to show the requirement, the records to keep on site, likely fail conditions, and the next action before service routing."
                                 )),
                                 new GuideSection("Finder and sponsor rules", List.of(
                                         "Provider routing stays secondary to local rule clarity.",
-                                        "Sponsor placement does not change the authority summary, source stack, or inspection guidance on a page."
+                                        "Sponsor placement does not change the rule summary, source list, or inspection guidance on a page."
                                 )),
                                 new GuideSection("Freshness and mixed governance", List.of(
                                         "Last verified dates are shown at the page level, not as a site-wide placeholder.",
@@ -109,7 +109,7 @@ public class InfoPageCatalog {
                                 )),
                                 new GuideSection("How it is used", List.of(
                                         "Operator requests are used to route service help through the product's operations workflow.",
-                                        "Sponsor inquiries are used to discuss local placement and coverage, not to rewrite the authority-backed rule content."
+                                        "Sponsor inquiries are used to discuss local placement and coverage, not to rewrite the rule content."
                                 )),
                                 new GuideSection("What this policy does not claim", List.of(
                                         "This policy does not claim government handling, municipal sponsorship, or city ownership of the data.",
@@ -131,8 +131,8 @@ public class InfoPageCatalog {
                         "noindex,follow",
                         List.of(
                                 new GuideSection("Use conditions", List.of(
-                                        "Treat the product as a source-backed workflow aid, not as legal advice or a government determination.",
-                                        "Always confirm the live rule holder when the page shows uncertainty, verification-required language, or mixed-governance conditions."
+                                        "Treat the product as a workflow aid grounded in official sources, not as legal advice or a government determination.",
+                                        "Always confirm the live rule holder when the page tells you to verify details or when a city page points you to a utility, fire office, or county department."
                                 )),
                                 new GuideSection("Provider and sponsor boundaries", List.of(
                                         "Listings are routing support only and do not imply municipal endorsement.",
@@ -158,7 +158,7 @@ public class InfoPageCatalog {
                                         "Whether a clearly labeled sponsor placement appears in the provider section."
                                 )),
                                 new GuideSection("What sponsors cannot influence", List.of(
-                                        "Authority summaries, source stacks, last verified dates, fail conditions, proof-on-site lists, or routing-state language.",
+                                        "Rule summaries, source lists, last verified dates, fail conditions, and records-to-keep lists.",
                                         "Whether a city or finder route is indexed when trust gates are not met."
                                 ))
                         ),
@@ -200,11 +200,11 @@ public class InfoPageCatalog {
                         "index,follow",
                         List.of(
                                 new GuideSection("What should be corrected", List.of(
-                                        "Wrong authority naming, stale proof-on-site lists, overstated approval language, or missing source nuance.",
+                                        "Wrong authority naming, stale record lists, overstated approval language, or missing source nuance.",
                                         "Provider evidence labels that imply approval, certification, or endorsement without support."
                                 )),
                                 new GuideSection("How the product responds", List.of(
-                                        "A route can be moved into noindex-monitored status while the evidence or authority logic is re-verified.",
+                                        "A route can be held from search while the evidence or authority logic is re-verified.",
                                         "Corrections should preserve the source trail so operators can see why the page changed."
                                 ))
                         ),

@@ -8,7 +8,7 @@
 
 <section class="panel source-stack">
     <div class="panel__eyebrow">Source stack</div>
-    <h2>Authority-backed sources</h2>
+    <h2>Official sources for this page</h2>
     @if(lastVerified != null)
         <p class="source-stack__date">
             Last verified:

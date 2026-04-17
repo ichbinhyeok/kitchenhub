@@ -6,5 +6,6 @@
   "hoodAuthorityId": "tampa-fire-marshal",
   "launchTier": 1,
   "indexable": true,
+  "homeSummary": "Tampa restaurants can check grease ordinance steps, hood paperwork, and fire record requirements before the inspector arrives.",
   "decisionReason": "Tampa has official grease ordinance, registered hauler, fire inspection, and restaurant safety guidance."
 }
