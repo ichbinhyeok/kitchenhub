@@ -67,6 +67,8 @@ class PageFamilyAcceptanceIntegrationTests {
                 .isLessThan(indexOf(html, "Common Inspection Fails"));
         assertThat(indexOf(html, "Common Inspection Fails"))
                 .isLessThan(indexOf(html, "Cleaner routing"));
+        assertThat(html).contains("/tools/hood-service-report");
+        assertThat(html).contains("/tools/hood-record-binder");
     }
 
     @Test
@@ -97,6 +99,53 @@ class PageFamilyAcceptanceIntegrationTests {
         assertThat(indexOf(html, "Listings are routing support only."))
                 .isLessThan(indexOf(html, "Need grease service help?"));
         assertThat(html).contains("Verification checklist");
+    }
+
+    @Test
+    void hoodServiceReportToolLeadsWithTheSendableArtifactBeforeSupportSections() throws Exception {
+        String html = body(get("/tools/hood-service-report"));
+
+        assertThat(indexOf(html, "Use this as the customer-facing handoff"))
+                .isLessThan(indexOf(html, "Operator workflow"));
+        assertThat(indexOf(html, "Build the handoff in under two minutes"))
+                .isLessThan(indexOf(html, "Operator workflow"));
+        assertThat(indexOf(html, "Use this as the customer-facing handoff"))
+                .isLessThan(indexOf(html, "Ready-to-send email"));
+        assertThat(indexOf(html, "Use this as the customer-facing handoff"))
+                .isLessThan(indexOf(html, "Where this fits in the office"));
+        assertThat(indexOf(html, "Recipient name"))
+                .isLessThan(indexOf(html, "Ready-to-send email"));
+        assertThat(indexOf(html, "Replace sample values before send"))
+                .isLessThan(indexOf(html, "Operator workflow"));
+        assertThat(indexOf(html, "Customer-facing report PDF or printout is ready."))
+                .isLessThan(indexOf(html, "Operator workflow"));
+        assertThat(indexOf(html, "Local proof photos"))
+                .isLessThan(indexOf(html, "Operator workflow"));
+        assertThat(indexOf(html, "Recipient email is blank. Copy the handoff or send it from your existing thread."))
+                .isLessThan(indexOf(html, "Related local pages"));
+        assertThat(indexOf(html, "Attach the rule link without weakening the handoff"))
+                .isLessThan(indexOf(html, "Related local pages"));
+        assertThat(html).doesNotContain("Sample handoff");
+        assertThat(html).doesNotContain("Vendor-only setup");
+        assertThat(html).doesNotContain("Ask about setup");
+        assertThat(html).contains("method=\"post\"");
+    }
+
+    @Test
+    void vendorLandingLeadsWithTheFreeHoodWorkflowBeforeSupportLinks() throws Exception {
+        String html = body(get("/for-vendors"));
+
+        assertThat(indexOf(html, "Send today's hood closeout in a few minutes"))
+                .isLessThan(indexOf(html, "When you'd use this"));
+        assertThat(indexOf(html, "Start today's hood closeout"))
+                .isLessThan(indexOf(html, "City rule pages"));
+        assertThat(indexOf(html, "What you send"))
+                .isLessThan(indexOf(html, "City rule pages"));
+        assertThat(indexOf(html, "Why it helps the office"))
+                .isLessThan(indexOf(html, "City rule pages"));
+        assertThat(html).contains("/tools/hood-service-report?draft=blank");
+        assertThat(html).contains("?draft=blank#customer-copy");
+        assertThat(html).contains("customer-ready record without writing the whole handoff from scratch.");
     }
 
     private String body(org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder request) throws Exception {

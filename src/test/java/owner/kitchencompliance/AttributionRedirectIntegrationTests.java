@@ -2,6 +2,7 @@ package owner.kitchencompliance;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -72,5 +73,19 @@ class AttributionRedirectIntegrationTests {
 
         String csv = Files.readString(logFile);
         assertThat(csv).contains("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules,/authority/tx/austin-water-pretreatment/approved-grease-haulers");
+    }
+
+    @Test
+    void operatorToolActionLogsSendLoopBehaviorWithCityContext() throws Exception {
+        mockMvc.perform(post("/tools/hood-service-report/events")
+                        .param("action", "open_rule_page")
+                        .param("city", "charlotte")
+                        .param("targetPath", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"))
+                .andExpect(status().isOk());
+
+        String csv = Files.readString(logFile);
+        assertThat(csv).contains("tool_action");
+        assertThat(csv).contains("charlotte,nc,operator_tool,hood_cleaning,charlotte-fire-prevention,/tools/hood-service-report,/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements");
+        assertThat(csv).contains("open_rule_page,false,hood-service-report");
     }
 }

@@ -28,6 +28,7 @@ import owner.kitchencompliance.model.CallToAction;
 import owner.kitchencompliance.model.CityCard;
 import owner.kitchencompliance.model.CityVerdict;
 import owner.kitchencompliance.model.GuidePageViewModel;
+import owner.kitchencompliance.model.GuideSection;
 import owner.kitchencompliance.model.AuthorityBrowseCard;
 import owner.kitchencompliance.model.AuthorityBrowseFilterOption;
 import owner.kitchencompliance.model.AuthorityBrowsePageViewModel;
@@ -48,6 +49,7 @@ import owner.kitchencompliance.model.ResolvedPage;
 import owner.kitchencompliance.model.SitemapEntry;
 import owner.kitchencompliance.model.SourceAttribution;
 import owner.kitchencompliance.model.SubmissionNotice;
+import owner.kitchencompliance.model.VendorLandingPageViewModel;
 import owner.kitchencompliance.ops.IndexingPolicyService;
 import owner.kitchencompliance.rules.CityVerdictService;
 import owner.kitchencompliance.rules.ProviderEvidenceService;
@@ -185,6 +187,73 @@ public class SitePageService {
                 cityCards,
                 guideLinks,
                 operatorToolService.homeToolLinks()
+        );
+    }
+
+    public VendorLandingPageViewModel vendorLandingPage() {
+        PageMeta meta = new PageMeta(
+                "For Hood Cleaning Vendors | Send Today's Closeout Faster",
+                "Use the free hood service report to fill today's job, send a customer-ready closeout, and keep city rule pages separate unless the customer asks for records.",
+                canonicalUrl("/for-vendors"),
+                "noindex,follow",
+                null,
+                structuredDataJson(List.of(
+                        schemaObject(
+                                "WebPage",
+                                "For Hood Cleaning Vendors",
+                                canonicalUrl("/for-vendors"),
+                                "Vendor-side entry for sending a customer-ready hood closeout."
+                        ),
+                        breadcrumbStructuredData(List.of(
+                                breadcrumbItem("Home", canonicalUrl("/")),
+                                breadcrumbItem("For Vendors", canonicalUrl("/for-vendors"))
+                        ))
+                ))
+        );
+
+        return new VendorLandingPageViewModel(
+                meta,
+                "Vendor workflow",
+                "Send today's hood closeout in a few minutes",
+                "Use this right after the crew finishes. Fill the job facts once, send the customer-ready report, and pull in the city rule page only if the customer asks for records.",
+                List.of(
+                        "Start from a blank closeout so today's job goes out cleanly.",
+                        "Send one factual report with proof, follow-up notes, and the next recommended service date.",
+                        "Use the city rule page only as backup when the customer wants records or inspection context."
+                ),
+                List.of(
+                        new RelatedPageLink("Start today's hood closeout", "/tools/hood-service-report?draft=blank"),
+                        new RelatedPageLink("See the customer-ready report", "/tools/hood-service-report?draft=blank#customer-copy"),
+                        new RelatedPageLink("See a city rule page example", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")
+                ),
+                List.of(
+                        new GuideSection("When you'd use this", List.of(
+                                "Right after the crew finishes and the office has notes, photos, and an invoice or work-order reference.",
+                                "When the customer expects one clean closeout in the same email thread as the invoice or job wrap-up.",
+                                "When you need a customer-ready record without writing the whole handoff from scratch."
+                        )),
+                        new GuideSection("What you send", List.of(
+                                "A factual hood service report with the site, service date, work completed, proof attached, and any follow-up item.",
+                                "The same draft as email copy, printable PDF, or worksheet export without rewriting the customer handoff.",
+                                "A separate city rule page only when the customer wants records or inspection context."
+                        )),
+                        new GuideSection("Why it helps the office", List.of(
+                                "It gives the office a send step that looks finished without turning into a CRM or account setup project.",
+                                "It catches the common miss where the email is written but the report, photo set, or invoice file is not ready.",
+                                "It keeps the customer-facing report clean while leaving rule links and internal file labels optional."
+                        )),
+                        new GuideSection("What the customer gets", List.of(
+                                "A clear record of what was cleaned on this visit.",
+                                "A simple note about what proof is attached and what still needs follow-up.",
+                                "The next recommended service date without language that sounds official or government-issued."
+                        ))
+                ),
+                List.of(
+                        new RelatedPageLink("Start today's hood closeout", "/tools/hood-service-report?draft=blank"),
+                        new RelatedPageLink("Austin hood requirements", "/authority/tx/austin-fire-marshal/hood-cleaning-requirements"),
+                        new RelatedPageLink("Charlotte hood requirements", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"),
+                        new RelatedPageLink("Miami hood requirements", "/fl/miami/hood-cleaning-requirements")
+                )
         );
     }
 
@@ -884,6 +953,7 @@ public class SitePageService {
                     new RelatedPageLink("Inspection reminder plan", "/tools/inspection-reminder-plan")
             );
             case HOOD_REQUIREMENTS, FIND_HOOD_CLEANER -> List.of(
+                    new RelatedPageLink("Hood service report", "/tools/hood-service-report"),
                     new RelatedPageLink("Hood record binder", "/tools/hood-record-binder"),
                     new RelatedPageLink("Missing proof tracker", "/tools/missing-proof-tracker"),
                     new RelatedPageLink("Inspection reminder plan", "/tools/inspection-reminder-plan")

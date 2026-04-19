@@ -308,6 +308,10 @@
                 <div class="metric-card__value">${page.dashboard().utilityViewEvents()}</div>
             </article>
             <article class="metric-card">
+                <div class="panel__eyebrow">Tool actions</div>
+                <div class="metric-card__value">${page.dashboard().toolActionEvents()}</div>
+            </article>
+            <article class="metric-card">
                 <div class="panel__eyebrow">Total events</div>
                 <div class="metric-card__value">${page.dashboard().totalEvents()}</div>
             </article>
@@ -381,6 +385,25 @@
             </section>
 
             <section class="panel">
+                <div class="panel__eyebrow">Hood send loop</div>
+                <h2>What vendor offices actually do in the free closeout</h2>
+                <ul class="admin-breakdown" style="margin-top: 16px;">
+                    <li><span>Hood report views</span><strong>${page.dashboard().hoodSendLoopViewCount()}</strong></li>
+                    <li><span>Acting viewers</span><strong>${page.dashboard().hoodSendLoopActionVisitors()}</strong></li>
+                    <li><span>View to action rate</span><strong>${page.dashboard().hoodSendLoopVisitorActionRateLabel()}</strong></li>
+                </ul>
+                @if(page.dashboard().hoodSendLoopBreakdown().isEmpty())
+                    <p class="panel__note" style="margin-top: 16px;">No hood send-loop actions yet.</p>
+                @else
+                    <ul class="admin-breakdown" style="margin-top: 16px;">
+                        @for(AdminBreakdownRow row : page.dashboard().hoodSendLoopBreakdown())
+                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
+                        @endfor
+                    </ul>
+                @endif
+            </section>
+
+            <section class="panel">
                 <div class="panel__eyebrow">Recent events</div>
                 <h2>Latest attribution rows</h2>
                 <div class="admin-events">
@@ -400,6 +423,19 @@
                 <div class="panel__eyebrow">Status</div>
                 <h2>No attribution events yet</h2>
                 <p class="panel__note">The file path is ready. The dashboard will populate after the first CTA or provider outbound click is recorded.</p>
+            </section>
+        @endif
+
+        @if(!page.dashboard().hasEvents())
+            <section class="panel">
+                <div class="panel__eyebrow">Hood send loop</div>
+                <h2>What vendor offices actually do in the free closeout</h2>
+                <ul class="admin-breakdown" style="margin-top: 16px;">
+                    <li><span>Hood report views</span><strong>${page.dashboard().hoodSendLoopViewCount()}</strong></li>
+                    <li><span>Acting viewers</span><strong>${page.dashboard().hoodSendLoopActionVisitors()}</strong></li>
+                    <li><span>View to action rate</span><strong>${page.dashboard().hoodSendLoopVisitorActionRateLabel()}</strong></li>
+                </ul>
+                <p class="panel__note" style="margin-top: 16px;">No hood send-loop actions yet.</p>
             </section>
         @endif
 

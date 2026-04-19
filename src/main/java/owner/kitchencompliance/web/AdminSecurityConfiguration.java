@@ -22,7 +22,7 @@ public class AdminSecurityConfiguration {
                         .requestMatchers("/admin", "/admin/**").authenticated()
                         .anyRequest().permitAll()
                 )
-                .csrf(csrf -> csrf.ignoringRequestMatchers("/lead-intake/**"))
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/lead-intake/**", "/tools/**"))
                 .formLogin(Customizer.withDefaults())
                 .httpBasic(Customizer.withDefaults());
         return http.build();

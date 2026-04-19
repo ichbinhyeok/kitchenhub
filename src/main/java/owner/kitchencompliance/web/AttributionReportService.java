@@ -59,11 +59,13 @@ public class AttributionReportService {
                 .filter(event -> event.eventType().equals("page_view"))
                 .filter(event -> event.pageFamily().equals("operator_tool"))
                 .count();
+        long toolActionEvents = events.stream().filter(event -> event.eventType().equals("tool_action")).count();
         long providerClicks = events.stream().filter(event -> event.eventType().equals("provider_click")).count();
         long ctaClicks = events.stream().filter(event -> event.eventType().equals("cta_click")).count();
         long sponsoredClicks = events.stream().filter(AttributionEvent::sponsored).count();
 
         UtilityRevisitSummary utilityRevisitSummary = utilityRevisitSummary(events);
+        HoodSendLoopSummary hoodSendLoopSummary = hoodSendLoopSummary(events);
 
         return new AttributionDashboardSnapshot(
                 logFile.toAbsolutePath().normalize().toString(),
@@ -72,15 +74,20 @@ public class AttributionReportService {
                 events.size(),
                 pageViewEvents,
                 utilityViewEvents,
+                toolActionEvents,
                 providerClicks,
                 ctaClicks,
                 sponsoredClicks,
                 utilityRevisitSummary.returningVisitors(),
                 utilityRevisitSummary.rateLabel(),
+                hoodSendLoopSummary.viewCount(),
+                hoodSendLoopSummary.actionVisitors(),
+                hoodSendLoopSummary.visitorActionRateLabel(),
                 formatTimestamp(sortedEvents.getFirst().capturedAt()),
                 breakdown(events, event -> cityLabel(event.city(), event.state())),
                 breakdown(events, event -> pageFamilyLabel(event.pageFamily())),
                 breakdown(events, event -> verdictStateLabel(event.verdictState())),
+                hoodSendLoopBreakdown(events),
                 breakdown(events, this::destinationLabel),
                 sortedEvents.stream()
                         .limit(RECENT_EVENT_LIMIT)
@@ -176,8 +183,13 @@ public class AttributionReportService {
                 0,
                 0,
                 0,
+                0,
                 "0 of 0 visitors",
+                0,
+                0,
+                "0 of 0 viewers",
                 "No clicks recorded yet",
+                List.of(),
                 List.of(),
                 List.of(),
                 List.of(),
@@ -298,6 +310,16 @@ public class AttributionReportService {
                 .toList();
     }
 
+    private List<AdminBreakdownRow> hoodSendLoopBreakdown(List<AttributionEvent> events) {
+        return breakdown(
+                events.stream()
+                        .filter(event -> event.eventType().equals("tool_action"))
+                        .filter(event -> event.toolSlug().equals("hood-service-report"))
+                        .toList(),
+                event -> hoodSendLoopLabel(event.ctaType())
+        );
+    }
+
     private AdminRecentEvent toRecentEvent(AttributionEvent event) {
         return new AdminRecentEvent(
                 formatTimestamp(event.capturedAt()),
@@ -328,12 +350,44 @@ public class AttributionReportService {
         return new UtilityRevisitSummary(returningVisitors, revisitRateLabel(returningVisitors, uniqueVisitors));
     }
 
+    private HoodSendLoopSummary hoodSendLoopSummary(List<AttributionEvent> events) {
+        List<AttributionEvent> hoodViews = events.stream()
+                .filter(event -> event.eventType().equals("page_view"))
+                .filter(event -> event.toolSlug().equals("hood-service-report"))
+                .toList();
+        long viewVisitors = hoodViews.stream()
+                .map(AttributionEvent::visitorId)
+                .filter(visitorId -> !visitorId.isBlank())
+                .distinct()
+                .count();
+        long actionVisitors = events.stream()
+                .filter(event -> event.eventType().equals("tool_action"))
+                .filter(event -> event.toolSlug().equals("hood-service-report"))
+                .map(AttributionEvent::visitorId)
+                .filter(visitorId -> !visitorId.isBlank())
+                .distinct()
+                .count();
+        return new HoodSendLoopSummary(
+                hoodViews.size(),
+                actionVisitors,
+                viewerRateLabel(actionVisitors, viewVisitors)
+        );
+    }
+
     private String revisitRateLabel(long returningVisitors, long uniqueVisitors) {
         if (uniqueVisitors == 0) {
             return "0 of 0 visitors";
         }
         long percent = Math.round((returningVisitors * 100.0) / uniqueVisitors);
         return returningVisitors + " of " + uniqueVisitors + " visitors (" + percent + "%)";
+    }
+
+    private String viewerRateLabel(long actingViewers, long totalViewers) {
+        if (totalViewers == 0) {
+            return "0 of 0 viewers";
+        }
+        long percent = Math.round((actingViewers * 100.0) / totalViewers);
+        return actingViewers + " of " + totalViewers + " viewers (" + percent + "%)";
     }
 
     private String formatTimestamp(OffsetDateTime timestamp) {
@@ -373,12 +427,27 @@ public class AttributionReportService {
         return switch (event.eventType()) {
             case "provider_click" -> "Provider outbound";
             case "cta_click" -> event.sponsored() ? "Sponsored CTA" : "Next-action CTA";
+            case "tool_action" -> "Tool action";
             case "page_view" -> event.pageFamily().equals("operator_tool") ? "Operator tool view" : "Local page view";
             default -> event.eventType();
         };
     }
 
+    private String hoodSendLoopLabel(String actionType) {
+        return switch (actionType) {
+            case "copy_subject" -> "Copy subject";
+            case "copy_body" -> "Copy email body";
+            case "open_email_draft" -> "Open email draft";
+            case "print_pdf" -> "Print / PDF";
+            case "open_rule_page" -> "Open rule page";
+            default -> actionType == null || actionType.isBlank() ? "Unknown send action" : titleCase(actionType.replace('_', ' '));
+        };
+    }
+
     private String destinationLabel(AttributionEvent event) {
+        if (event.eventType().equals("tool_action")) {
+            return toolActionDestinationLabel(event.ctaType(), event.targetPath());
+        }
         if (!event.providerId().isBlank()) {
             String host = hostLabel(event.targetUrl());
             if (!host.isBlank()) {
@@ -399,6 +468,21 @@ public class AttributionReportService {
             return event.sourcePath();
         }
         return "Unknown destination";
+    }
+
+    private String toolActionDestinationLabel(String actionType, String targetPath) {
+        String actionLabel = switch (actionType) {
+            case "copy_subject" -> "Copy subject";
+            case "copy_body" -> "Copy email body";
+            case "open_email_draft" -> "Open email draft";
+            case "print_pdf" -> "Print / PDF";
+            case "open_rule_page" -> "Open rule page";
+            default -> actionType == null || actionType.isBlank() ? "Tool action" : titleCase(actionType.replace('_', ' '));
+        };
+        if (targetPath == null || targetPath.isBlank()) {
+            return actionLabel;
+        }
+        return actionLabel + " -> " + targetPath;
     }
 
     private String hostLabel(String targetUrl) {
@@ -456,6 +540,13 @@ public class AttributionReportService {
     private record UtilityRevisitSummary(
             long returningVisitors,
             String rateLabel
+    ) {
+    }
+
+    private record HoodSendLoopSummary(
+            long viewCount,
+            long actionVisitors,
+            String visitorActionRateLabel
     ) {
     }
 

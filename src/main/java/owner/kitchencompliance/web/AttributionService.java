@@ -148,6 +148,37 @@ public class AttributionService {
         ));
     }
 
+    public void recordOperatorToolAction(
+            String slug,
+            IssueType issueType,
+            String actionType,
+            String targetPath,
+            String city,
+            String state,
+            String authorityId,
+            String visitorId
+    ) {
+        appendRow(List.of(
+                OffsetDateTime.now(clock).toString(),
+                "tool_action",
+                visitorId,
+                "operator_tool",
+                city == null ? "" : city,
+                state == null ? "" : state,
+                pageFamilyValue(PageFamily.OPERATOR_TOOL),
+                issueTypeValue(issueType),
+                authorityId == null ? "" : authorityId,
+                "/tools/" + slug,
+                targetPath == null ? "" : targetPath,
+                "",
+                "",
+                "",
+                actionType == null ? "" : actionType,
+                Boolean.toString(false),
+                slug
+        ));
+    }
+
     public void recordProviderClick(RouteRecord route, ProviderRecord provider, String visitorId) {
         recordProviderClick(route, provider, route.path(), visitorId);
     }

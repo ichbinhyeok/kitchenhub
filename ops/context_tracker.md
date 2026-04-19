@@ -4,7 +4,7 @@
 - Product docs are merged and agent-readable.
 - A Spring Boot MVC implementation now exists and runs from Maven Wrapper.
 - The sharp wedge is local FOG plus hood plus inspection-prep, not broad restaurant compliance.
-- The strongest monetization path is direct sponsor routing for hood cleaning, grease hauling, and grease service vendors.
+- The current commercial learning step is free hood-report usage, not sponsor or setup packaging.
 - The strongest product moat is city and authority rule normalization plus recurring operator workflows.
 - Code bootstrap package roots are now scaffolded under `src/main/java` and `src/test/java`.
 - Implementation-prep specs now include entity schema, route inventory, sample data contracts, and acceptance tests.
@@ -40,6 +40,11 @@
 - Public brand and launch domain are now `KitchenRuleHub` and `kitchenrulehub.com`, while the internal Java package root stays `owner.kitchencompliance`.
 - Production deploy now targets Docker Hub plus OCI over SSH using `shinhyeok22/kitchenhub`, with the legacy jar-copy Oracle workflow removed from `main` pushes.
 - Site surface can stay broad, but the active operating wedge for the next 4 to 6 weeks is now fixed to Austin, Charlotte, and Miami local rule pages first, with grease-service and hood-service proof routes treated as secondary commercial evidence surfaces.
+- The first free B2B vendor wedge is now a factual hood service report for small vendor offices; inspection-prep and missing-proof tools stay secondary to that sendable artifact.
+- The free hood report should stay free of setup, pricing, or account language until real vendor reuse shows up in live customer threads.
+- The vendor entry should stay separate from the home SEO front door, with a noindex landing page routing small vendor offices into the hood closeout workflow.
+- Send-loop learning matters more than wider tool inventory right now, so copy, email-draft, print/PDF, and rule-link behavior should be measurable before any setup pitch returns.
+- The free hood wedge should read as a first-send tool before it reads as a repeat-use mini app; saved customer setups, office defaults, recent drafts, and local proof photos must stay secondary to the first customer handoff.
 
 ## What changed this session
 - Created a standardized design packet under `C:\Development\Owner\KitchenComplianceHub`.
@@ -91,6 +96,7 @@
 - Upgraded provider finder cards with coverage-confidence, why-listed, and route-evidence-review labels so evidence quality stays visible at the card level.
 - Upgraded structured data on local and browse pages to include breadcrumb trails plus item-list markup only where the page truly behaves like a directory or collection.
 - Reworked the home front door so issue-first cards now send the first click directly into local grease, hood, and inspection pages, with guides moved to support status.
+- Tightened the live front door and evergreen guides around the Austin, Charlotte, and Miami wedge so Tier A rule pages sit ahead of the wider city directory and finder support routes.
 - Hardened sponsor and operator lead intake with a honeypot field, form-age guard, stronger validation, and normalization while preserving the existing redirect flow.
 - Added a sponsor-beta focus section to `/admin` so Austin, Miami, and Charlotte are visible as the primary launch-market sales slice.
 - Hardened launch config by requiring production env values for base URL and admin credentials, updated deploy docs, and blocked `/admin` plus `/login` in `robots.txt`.
@@ -99,6 +105,40 @@
 - Rebranded the public product surface, deploy assets, and runtime metadata from `KitchenComplianceHub` to `KitchenRuleHub`, updated deploy defaults to `kitchenrulehub.com`, and renamed the Spring Boot entrypoint plus Oracle service examples accordingly.
 - Added `Dockerfile`, `docker-compose.yml`, and `.github/workflows/deploy.yml` so `main` can build an ARM64 image, push to Docker Hub, ship `docker-compose.yml` to OCI, and restart the live container behind nginx.
 - Added `ops/wedge_focus_2026-04-12.md` and wired it into the read path so future weekly review, Search Console analysis, and sponsor-proof work defaults to the narrow wedge instead of all live routes equally.
+- Added `ops/free_vendor_wedge_2026-04-19.md` to lock the first free B2B product around a hood service report instead of a broader inspection or packet workflow.
+- Added the first `hood-service-report` operator tool with CSV and TXT handoff templates, customer-ready send structure, and language guardrails so the free wedge behaves like a real vendor deliverable instead of a generic worksheet.
+- Upgraded the hood service report page to show vendor workflow timing, customer-facing value, repeat-use logic, and a sample handoff preview so the free wedge reads like a real deliverable instead of a tool catalog entry.
+- Split the hood service report loop into primary vendor handoff plus secondary customer reference path so the artifact can circulate back into local rule pages without turning the report itself into an official-sounding document.
+- Reordered the hood service report page so a sendable report-body preview now leads the first screen ahead of the support guidance, downloads, and workflow explanation.
+- Removed early setup framing from the hood service report so the free sendable artifact stays focused on real vendor usage, not premature packaging.
+- Replaced the static hood service report sample with a vendor-side builder on the same page so the office can fill city, site, follow-up, and handoff fields once and export matching page preview, TXT email copy, and CSV output.
+- Locked the hood service report reference line to real Austin, Charlotte, and Miami hood-rule routes so the customer return path is no longer a placeholder and the free artifact can send traffic back into the live wedge surface.
+- Moved the hood service report builder and current-draft exports onto POST so customer name, site address, and follow-up details do not ride in the URL, browser history, or same-origin referrer trail during normal vendor use.
+- Expanded the hood service report from one follow-up line to a multi-item follow-up block so a real closeout can carry more than one deferred item without collapsing the report back into free text email cleanup.
+- Added a proof-pack section plus print-safe output behavior so the free wedge now behaves more like a customer-ready closeout packet than a plain web form.
+- Split restaurant account from recipient identity on the hood service report and added email-draft plus copy actions so a vendor office can move from report builder to real send behavior with less manual cleanup.
+- Tightened the hood report record trail so subject lines, preview facts, and CSV exports now distinguish restaurant account, site/location, and actual recipient instead of collapsing them into one label.
+- Kept sample values only on the first-load teaching state, then switched the hood builder to preserve real blanks plus a before-send status block so vendor edits no longer snap back to example placeholders mid-workflow.
+- Added a vendor-side attachment checklist for the hood report so send readiness now catches the common failure mode where the office writes the handoff correctly but forgets the PDF, photo set, invoice/report file, or separate rule reference.
+- Added a dedicated `/for-vendors` noindex landing page and linked it from home plus primary navigation so vendor offices get a clean entry path without turning the main home surface into a vendor portal.
+- Tightened `/for-vendors` into a clearer live-demo entry for hood closeout and added tool-action attribution for copy subject, copy body, open email draft, print/PDF, and rule-link clicks on the hood service report.
+- Kept vendor setup CTA off the free hood flow for now; if it returns later, it should stay below the sendable artifact and repeat-use proof instead of interrupting the first send loop.
+- Added a hood send-loop panel to `/admin` so the free hood artifact can be reviewed by actual send actions, not just page opens or generic destination clicks.
+- Added hood closeout view-to-action metrics to `/admin` so ops can see hood report views, acting viewers, and the current send-loop conversion rate beside the action breakdown.
+- Added browser-local office defaults plus stronger packet-status and print-closeout framing to the hood service report so repeat vendor use can improve without adding accounts or server-side memory.
+- Added a second browser-local layer for the most recent hood closeout draft so a small vendor office can restore the last job from the same browser without introducing accounts or server-stored memory.
+- Added an attachment bundle plan with consistent suggested file names for report PDF, photo zip, invoice/work-order file, and optional rule-reference note so the send loop stays usable outside the page itself.
+- Tightened the hood closeout print/PDF output into a more stable single-column print layout with a clearer record note so the customer-facing artifact reads like a finished closeout when exported.
+- Added browser-local hood photo uploads that stay in the current tab, render into the customer copy, and print into PDF without introducing server-side file storage or account setup.
+- Tightened the hood report free flow for repeat vendor use: vendors can now start from a real blank closeout, clear no-follow-up visits in one click, and save browser-local customer setups that restore city, contact, site, and handoff defaults without carrying over job-specific proof or work notes.
+- Removed false follow-up pressure from blank jobs by making non-sample follow-up due dates optional and suppressing the old `Owner: TBD | Target date: TBD` output when no follow-up items exist.
+- Switched `/for-vendors` from a sample-demo framing to a blank-closeout entry so the first vendor click now lands in a real-job state instead of asking the office to mentally convert a teaching sample into today's closeout.
+- Lowered the proof-reference burden in the hood closeout: photo/report reference fields are now framed as optional, and the customer/proof sections accept attached files as valid proof even when the office does not type an internal reference name.
+- Added smart reference suggestions inside the hood closeout so a vendor office can fill photo/report reference labels in one click; report suggestions prefer the work order when present, and photo suggestions follow the current account plus service date.
+- Dogfooded the free hood closeout flow against real vendor-office scenarios and fixed two send-loop breaks: `Start blank closeout` no longer wipes the saved recent draft, and the quick actions for copying the account into the location field or clearing follow-up items now refresh the customer handoff immediately instead of leaving stale copy behind.
+- Reframed `/for-vendors` in vendor-first language so it now explains when the office would use the free hood closeout, what gets sent, and why the customer might need a separate city rule page, without leaking internal strategy labels like wedge boundary or send loop into the surface copy.
+- Reduced first-use friction on the hood service report by collapsing repeat-use shortcuts, optional file-label helpers, local proof photos, and send-status support blocks behind secondary drawers so the first visible path is now report entry first, support systems second.
+- Reconfirmed test stability with a clean run of `.\mvnw.cmd test`; the earlier `NoClassDefFoundError` was reproduced only while multiple concurrent `spring-boot:run` processes were mutating `target/classes`, not as a standing application-code defect.
 
 ## Next recommended tasks
 - Improve provider ranking beyond evidence presence alone by weighting city-specific coverage, direct local numbers, and freshness of the cited authority source.
@@ -110,6 +150,9 @@
 - Run the sponsor beta plan in `ops/sponsor_beta_plan_2026-04-12.md` before adding more cities or guide inventory.
 - Use `ops/route_trigger_tracker_2026-04-12.csv` as the weekly route-review source of truth and only promote held routes when the trigger doc and route checklist both pass.
 - Use `ops/wedge_focus_2026-04-12.md` as the first filter for Search Console review, internal-link work, and weekly route interpretation before looking at the wider 48-route surface.
+- Treat Austin/Charlotte/Miami Tier A local rule pages as the front-door scoreboard; full city browse, guides, tools, and finders should stay behind that wedge-first path instead of leading the first click.
+- Recheck Austin authority-canonical adoption in Search Console; the city grease URL is indexed while the authority alias is still only discovered.
+- Validate the new hood service report with real hood vendors before adding a second free artifact; the next decision should be live reuse and send behavior, not pricing or setup packaging.
 - Set the real production env file to `APP_SITE_BASE_URL=https://kitchenrulehub.com` before the first deploy and submit the live sitemap to Search Console after launch.
 - Add GitHub secrets `APP_ADMIN_USERNAME` and `APP_ADMIN_PASSWORD` before the first OCI deploy; the new container workflow treats them as required and the production profile will not boot without them.
 - Decide whether authority alias routes should stay secondary navigation inside home/guides or become first-class browse surfaces elsewhere in the product.

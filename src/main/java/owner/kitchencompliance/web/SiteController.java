@@ -2,11 +2,12 @@ package owner.kitchencompliance.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.MultiValueMap;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,6 +54,12 @@ public class SiteController {
     public String home(Model model) {
         model.addAttribute("page", sitePageService.homePage());
         return "home";
+    }
+
+    @GetMapping("/for-vendors")
+    public String vendorLanding(Model model) {
+        model.addAttribute("page", sitePageService.vendorLandingPage());
+        return "vendor-page";
     }
 
     @GetMapping("/guides/{slug}")
@@ -157,10 +164,32 @@ public class SiteController {
             @PathVariable String slug,
             Model model,
             HttpServletRequest request,
-            HttpServletResponse response
+            HttpServletResponse response,
+            @RequestParam MultiValueMap<String, String> params
+    ) {
+        return renderOperatorTool(slug, model, request, response, params);
+    }
+
+    @PostMapping("/tools/{slug}")
+    public String operatorToolPost(
+            @PathVariable String slug,
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            @RequestParam MultiValueMap<String, String> params
+    ) {
+        return renderOperatorTool(slug, model, request, response, params);
+    }
+
+    private String renderOperatorTool(
+            String slug,
+            Model model,
+            HttpServletRequest request,
+            HttpServletResponse response,
+            MultiValueMap<String, String> params
     ) {
         try {
-            model.addAttribute("page", operatorToolService.toolPage(slug));
+            model.addAttribute("page", operatorToolService.toolPage(slug, params));
             String visitorId = attributionService.ensureVisitorId(request, response);
             attributionService.recordOperatorToolView(slug, visitorId, operatorToolService.issueTypeFor(slug));
             return "operator-tool";
@@ -171,9 +200,83 @@ public class SiteController {
 
     @GetMapping(value = "/tools/{slug}.csv", produces = "text/csv")
     @ResponseBody
-    public String operatorToolCsv(@PathVariable String slug) {
+    public String operatorToolCsv(
+            @PathVariable String slug,
+            @RequestParam MultiValueMap<String, String> params
+    ) {
         try {
-            return operatorToolService.csvTemplate(slug);
+            return operatorToolService.csvTemplate(slug, params);
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        }
+    }
+
+    @PostMapping(value = "/tools/{slug}.csv", produces = "text/csv")
+    @ResponseBody
+    public String operatorToolCsvPost(
+            @PathVariable String slug,
+            @RequestParam MultiValueMap<String, String> params
+    ) {
+        try {
+            return operatorToolService.csvTemplate(slug, params);
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        }
+    }
+
+    @PostMapping("/tools/{slug}/events")
+    @ResponseBody
+    public void operatorToolEvent(
+            @PathVariable String slug,
+            @RequestParam String action,
+            @RequestParam(required = false) String city,
+            @RequestParam(required = false) String targetPath,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) {
+        if (targetPath != null && !targetPath.isBlank() && !targetPath.startsWith("/")) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tool event target must stay local.");
+        }
+        try {
+            operatorToolService.requireKnownTool(slug);
+            String visitorId = attributionService.ensureVisitorId(request, response);
+            OperatorToolService.ToolAttributionContext context = operatorToolService.toolAttributionContext(slug, city);
+            attributionService.recordOperatorToolAction(
+                    slug,
+                    operatorToolService.issueTypeFor(slug),
+                    action,
+                    targetPath,
+                    context.city(),
+                    context.state(),
+                    context.authorityId(),
+                    visitorId
+            );
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        }
+    }
+
+    @GetMapping(value = "/tools/{slug}.txt", produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public String operatorToolText(
+            @PathVariable String slug,
+            @RequestParam MultiValueMap<String, String> params
+    ) {
+        try {
+            return operatorToolService.textTemplate(slug, params);
+        } catch (IllegalArgumentException ex) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+        }
+    }
+
+    @PostMapping(value = "/tools/{slug}.txt", produces = MediaType.TEXT_PLAIN_VALUE)
+    @ResponseBody
+    public String operatorToolTextPost(
+            @PathVariable String slug,
+            @RequestParam MultiValueMap<String, String> params
+    ) {
+        try {
+            return operatorToolService.textTemplate(slug, params);
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
         }

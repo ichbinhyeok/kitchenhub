@@ -12,8 +12,11 @@
         </a>
 
         <nav class="top-nav" aria-label="Primary">
-            <a class="top-nav__link${!meta.canonicalUrl().contains("/guides/") && !meta.canonicalUrl().contains("/tools/") && !meta.canonicalUrl().contains("/admin") && !meta.canonicalUrl().contains("/authorities") ? " is-active" : ""}" href="/">
+            <a class="top-nav__link${!meta.canonicalUrl().contains("/guides/") && !meta.canonicalUrl().contains("/tools/") && !meta.canonicalUrl().contains("/admin") && !meta.canonicalUrl().contains("/authorities") && !meta.canonicalUrl().contains("/for-vendors") ? " is-active" : ""}" href="/">
                 Find Your City
+            </a>
+            <a class="top-nav__link${meta.canonicalUrl().contains("/for-vendors") ? " is-active" : ""}" href="/for-vendors">
+                For Vendors
             </a>
             <a class="top-nav__link${meta.canonicalUrl().contains("/authorities") ? " is-active" : ""}" href="/authorities">
                 Browse Authorities

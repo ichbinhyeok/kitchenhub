@@ -29,6 +29,7 @@
                         <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
                     <a class="button button--secondary" href="#active-cities">Browse City Coverage</a>
+                    <a class="button button--secondary" href="/for-vendors">For Vendors</a>
                     <a class="button button--ghost" href="/authorities">Browse Authorities</a>
                 </div>
             </div>
