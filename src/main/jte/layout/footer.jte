@@ -18,7 +18,6 @@
             <div class="footer-column__label">Legal</div>
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms of Use</a>
-            <a href="/sponsor-policy">Sponsor Policy</a>
             <a href="/contact">Contact</a>
         </div>
 

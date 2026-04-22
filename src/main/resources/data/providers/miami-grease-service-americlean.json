@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "ameri-clean-pumping-miami",
   "providerName": "Ameri-Clean Pumping, Inc.",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "miami-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://americleanpumping.com/",
   "email": "americleanpumping@gmail.com",
   "phone": "305-270-3233",

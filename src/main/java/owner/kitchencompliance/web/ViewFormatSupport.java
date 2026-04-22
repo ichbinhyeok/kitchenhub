@@ -149,21 +149,8 @@ public final class ViewFormatSupport {
                 .count();
     }
 
-    public static boolean isSponsoredProvider(ProviderCard provider) {
-        if (provider == null) {
-            return false;
-        }
-        String listingLabel = provider.listingLabel() == null ? "" : provider.listingLabel().toLowerCase(Locale.ROOT);
-        String sponsorStatusLabel = provider.sponsorStatusLabel() == null
-                ? ""
-                : provider.sponsorStatusLabel().toLowerCase(Locale.ROOT);
-        return listingLabel.contains("sponsor") || sponsorStatusLabel.contains("sponsor");
-    }
-
     public static String providerOutboundRel(ProviderCard provider) {
-        return isSponsoredProvider(provider)
-                ? "sponsored nofollow noopener noreferrer"
-                : "noopener noreferrer";
+        return "noopener noreferrer";
     }
 
     private static String categoryFor(String value) {

@@ -27,7 +27,7 @@
 - Trigger: warning, deficiency, or reinspection
 - Questions:
   - What must be fixed first?
-  - Which vendor category is relevant?
+  - Which service category, record fix, or authority follow-up is relevant?
   - What proof will be checked on reinspection?
 
 ### Multi-location
@@ -44,25 +44,34 @@
 - `grease trap manifest requirements`
 - `city hood cleaning requirements`
 - `restaurant fire inspection checklist`
-- `hood cleaning records`
 - `hood sticker requirements`
 - `failed hood inspection what now`
 - `grease trap violation checklist`
 - `find hood cleaner city`
 - `find grease service city`
+- `grease log template`
+- `hood record binder`
+- `missing proof tracker`
+- `inspection reminder plan`
 
 ## Priority page set
-- `/{city}/restaurant-grease-trap-rules`
-- `/{city}/approved-grease-haulers`
-- `/{city}/hood-cleaning-requirements`
-- `/{city}/restaurant-fire-inspection-checklist`
-- `/{city}/hood-cleaning-records`
-- `/{city}/grease-interceptor-log-template`
-- `/{city}/find-hood-cleaner`
-- `/{city}/find-grease-service`
+- `/{state}/{city}/restaurant-grease-trap-rules`
+- `/{state}/{city}/approved-grease-haulers`
+- `/{state}/{city}/hood-cleaning-requirements`
+- `/{state}/{city}/restaurant-fire-inspection-checklist`
+- `/{state}/{city}/find-hood-cleaner`
+- `/{state}/{city}/find-grease-service`
+- `/guides/fog-vs-grease-trap-cleaning`
+- `/guides/how-often-clean-commercial-hood`
+- `/guides/what-records-restaurant-inspections-check`
+- `/tools/grease-log`
+- `/tools/hood-record-binder`
+- `/tools/missing-proof-tracker`
+- `/tools/inspection-reminder-plan`
 
 ## Funnel logic
-- Search lands on rule page or inspection-prep page.
+- Search lands on a rule page, inspection-prep page, guide, or operator tool.
 - Page resolves applicability and proof burden.
 - Verdict or checklist identifies the missing step.
-- CTA routes to the matching vendor category, not a generic directory.
+- Next action routes to the right authority contact path, operator tool, public provider finder, or page-level routing request.
+- Provider routing stays secondary to rule clarity and must never behave like a generic directory.

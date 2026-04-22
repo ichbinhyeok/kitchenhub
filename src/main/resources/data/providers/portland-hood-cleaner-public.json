@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "silver-lining-hood-cleaners-portland",
   "providerName": "Silver Lining Hood Cleaners",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "portland-or-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://silverliningcleaners.com/faq/",
   "email": "info@silverliningcleaners.com",
   "phone": "503-384-2232",

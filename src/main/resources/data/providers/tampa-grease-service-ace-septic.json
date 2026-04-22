@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "ace-septic-waste-tampa",
   "providerName": "ACE Septic & Waste",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "tampa-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.acesepticandwaste.com/tampa-septic-services/",
   "email": "office@acesepticandwaste.com",
   "phone": "813-971-8770",

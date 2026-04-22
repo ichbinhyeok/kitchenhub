@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "logue-plumbing-grand-island",
   "providerName": "Logue Plumbing LLC",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "grand-island-ne-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.facebook.com/LoguePlumbingLLC/",
   "email": "logueplumbing@gmail.com",
   "phone": "308-390-6544",

@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "hood-cleaning-charlotte-nc",
   "providerName": "Hood Cleaning Charlotte",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "charlotte-nc-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://hoodcleaningcharlotte.com/",
   "email": "office@hoodcleaningcharlotte.com",
   "phone": "980-385-8020",

@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "restaurant-exhaust-cleaning-specialists-portland",
   "providerName": "Restaurant Exhaust Cleaning Specialists",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "portland-or-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.hoodcleaning-oregon.com/",
   "email": "gradye@msn.com",
   "phone": "503-297-7072",

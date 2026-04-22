@@ -14,25 +14,21 @@
             <p class="hero__summary">${page.summary()}</p>
         </section>
 
-        <section class="guide-grid">
-            @for(GuideSection section : page.sections())
-                <article class="panel panel--plain">
-                    <div class="panel__eyebrow">Guide section</div>
-                    <h2>${section.heading()}</h2>
-                    <ul class="bullet-list" style="margin-top: 16px;">
-                        @for(String item : section.bullets())
-                            <li>${item}</li>
-                        @endfor
-                    </ul>
-                </article>
-            @endfor
+        <section class="panel guide-action-panel">
+            <div class="panel__eyebrow">Use this guide fast</div>
+            <h2>Get the answer, then go back to the local rule page</h2>
+            <ul class="bullet-list" style="margin-top: 16px;">
+                <li>Use this page to understand the issue, not to replace the city or authority rule page.</li>
+                <li>Open the matching local page as soon as you know which city applies.</li>
+                <li>Keep the next action tied to proof on site, not generic best practice.</li>
+            </ul>
         </section>
 
         @if(page.authorityRoutes() != null && !page.authorityRoutes().isEmpty())
             <section class="panel guide-authority-panel" style="margin-top: 18px;">
-                <div class="panel__eyebrow">Local pages to open next</div>
-                <h2>Use a local rule page before you book service</h2>
-                <p class="panel__note" style="margin-top: 10px;">Open the matching rule page first, then use the city page if that is the easier way to get back later.</p>
+                <div class="panel__eyebrow">Open a local page now</div>
+                <h2>Do not stop at the guide</h2>
+                <p class="panel__note" style="margin-top: 10px;">Use the matching city rule page when you need a decision, a checklist, or the right next action.</p>
                 <div class="guide-authority-grid">
                     @for(AuthorityRouteLink authorityRoute : page.authorityRoutes())
                         <article class="guide-authority-card">
@@ -48,6 +44,20 @@
                 </div>
             </section>
         @endif
+
+        <section class="guide-grid">
+            @for(GuideSection section : page.sections())
+                <article class="panel panel--plain">
+                    <div class="panel__eyebrow">Guide section</div>
+                    <h2>${section.heading()}</h2>
+                    <ul class="bullet-list" style="margin-top: 16px;">
+                        @for(String item : section.bullets())
+                            <li>${item}</li>
+                        @endfor
+                    </ul>
+                </article>
+            @endfor
+        </section>
 
         <section class="panel" style="margin-top: 18px;">
             <div class="panel__eyebrow">Local rule routes</div>

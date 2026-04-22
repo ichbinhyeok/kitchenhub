@@ -13,7 +13,7 @@
 ## Why this matters
 - Operators lose trust when a city page hides that the real requirement comes from another body.
 - Search pages become weak when multiple city pages say almost the same thing and bury the governing authority.
-- Finder pages become dangerous when vendor routing appears before the actual rule holder is made explicit.
+- Finder pages become dangerous when provider routing appears before the actual rule holder is made explicit.
 
 ## Current launch stance
 - Keep current city-shaped URLs for the launch slice.

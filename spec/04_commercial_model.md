@@ -1,36 +1,46 @@
-# 04 Commercial Model
+# 04 Operator Routing And Retention Model
 
-## Revenue architecture
+## Current product stance
+- This repo serves the operator-facing B2C product.
+- The product helps commercial kitchen operators understand local rules, keep proof on site, and take the next action.
+- Public provider routing exists only as operator support.
+- Any future paid-placement, provider-sales, or third-party transaction workflow should live on a separate domain or repository.
 
-### Direct sponsor routing
-- Hood cleaning vendors
-- Grease haulers
-- Grease trap service vendors
+## Value architecture
 
-### Lead products
-- Call clicks
-- Short lead forms
-- Sponsor slots on local verdict pages
+### Rule-clarity surfaces
+- local rule pages
+- inspection-prep pages
+- authority browse pages
+- trust and methodology pages
 
-### Retention products
-- Log templates
-- Inspection-prep bundle
-- Reminder workflows
-- Multi-location monitoring in later versions
+### Next-action surfaces
+- approved-hauler and verification workflow pages
+- public provider finder pages
+- page-level operator routing requests when the operator wants help
 
-## Why this is sponsor-first
-- Query volume is smaller and colder than consumer home-service traffic.
-- Buyers are operators, not casual homeowners.
-- Local service vendors are more likely to buy direct visibility than join broad affiliate networks.
-- Revenue is strongest when tied to local problem pages with obvious next actions.
+### Retention surfaces
+- grease log worksheet
+- hood binder checklist
+- missing proof tracker
+- inspection reminder plan
 
 ## CTA rules
-- CTA appears after a verdict, checklist, or local rule explanation.
-- CTA must match the problem state: hood, grease, or inspection-prep.
-- Approved language may only be used where an official list exists.
-- Vendor routing must never appear as official guidance.
+- CTA appears after the rule summary, proof burden, and fail conditions.
+- CTA must match the issue state: authority contact, operator tool, checklist, provider finder, or routing request.
+- Official approval language may appear only when an official list or authority source supports it.
+- Provider routing must never appear as official guidance.
+- Lead capture must stay clearly optional and secondary to public guidance.
 
-## Expected monetization path
-- v1: direct sponsor slots and tracked calls
-- v2: reminder or operator utility upsell
-- v3: multi-location and ops workflow revenue
+## Current conversion path
+1. Search lands on a local rule page, inspection-prep page, guide, or operator tool.
+2. The page resolves authority, proof-on-site, and urgency.
+3. The operator either fixes the records problem directly or uses a finder or routing request for outside help.
+4. The operator returns through tools, reminders, and repeat-use local pages.
+
+## What not to build here
+- paid provider slots
+- paid provider ranking
+- third-party transaction workflows
+- separate-domain provider CRM or sales ops
+- ad-led surfaces that outrank authority guidance

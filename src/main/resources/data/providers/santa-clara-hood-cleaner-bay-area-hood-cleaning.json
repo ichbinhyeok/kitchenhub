@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "bay-area-hood-cleaning-santa-clara",
   "providerName": "Bay Area Hood Cleaning",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "santa-clara-ca-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://bayareahoodcleaning.com/",
   "email": "office@bayareahoodcleaning.com",
   "phone": "415-212-9858",

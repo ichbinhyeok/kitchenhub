@@ -1,15 +1,15 @@
-# Primary Wedge And Operating Focus - 2026-04-12
+# Primary Wedge And Operating Focus - 2026-04-21
 
 ## Why this exists
 
 KitchenRuleHub is now broad enough at the surface level that the next mistake would be trying to learn from every route equally.
 
 The site can stay wide.
-The learning loop cannot.
+The operating loop cannot.
 
 This document answers one operating question:
 
-What exactly is the narrow wedge for the next 4 to 6 weeks?
+What exactly is the narrow B2C wedge for the next 4 to 6 weeks?
 
 ## Short answer
 
@@ -18,21 +18,21 @@ KitchenRuleHub is narrowing its operating focus.
 
 For the next 4 to 6 weeks, the product should be treated as:
 
-- an authority-backed local rule workflow for inspection-pressure operators
-- focused on grease, hood, and inspection-prep
+- an authority-backed local rule workflow for operators under grease, hood, or inspection pressure
+- focused on grease, hood, and inspection prep
 - measured first in Austin, Charlotte, and Miami
 
 ## Primary wedge
 
 Primary wedge statement:
 
-KitchenRuleHub helps commercial kitchen operators under grease, hood, or inspection pressure in Austin, Charlotte, and Miami confirm the real local rule holder, see what proof must stay on site, and move into the next service action without relying on vendor-led copy.
+KitchenRuleHub helps commercial kitchen operators in Austin, Charlotte, and Miami confirm the real local rule holder, see what proof must stay on site, understand common fail points, and move into the safest next action without relying on scattered local pages.
 
 ## What stays broad
 
 The following stay live and part of the product surface:
 
-- all 48 live routes
+- all live routes
 - authority browse
 - evergreen guides
 - operator tools
@@ -48,9 +48,9 @@ The following should default to the wedge routes first:
 - title and intro rewrites
 - guide-to-local internal linking
 - home support-link decisions
-- route screenshots for sponsor proof
+- provider-evidence cleanup on next-action routes
 - manual QA after deploy
-- sponsor packet preparation
+- hold and noindex promotion review
 
 Routes outside the wedge can still improve, but they should not become the default reporting center.
 
@@ -68,12 +68,12 @@ Why these routes:
 
 - they are already source-backed and indexable
 - they represent the core operator jobs-to-be-done
-- they cover the strongest sponsor-adjacent issue families
 - they keep the product anchored to authority-backed rule pages instead of drifting into generic guides
+- they reveal whether the issue-first entry path is mapping cleanly to local operator needs
 
-## Tier B: Commercial proof routes
+## Tier B: Next-action support routes
 
-These routes support sponsor proof and monetization review, even when some remain intentionally held from search.
+These routes help operators move from rules into a safe next step once the authority and proof requirements are clear.
 
 - `/nc/charlotte/find-grease-service`
 - `/tx/austin/find-grease-service`
@@ -82,12 +82,12 @@ These routes support sponsor proof and monetization review, even when some remai
 
 Why these routes:
 
-- they already appear in stored demand or sponsor-priority review
-- they are closest to direct next-action monetization
-- they help prove whether the rule-to-service bridge is commercially real
+- they already show stored demand or outbound-click signals
+- they test whether the rule-to-service bridge is helpful without weakening trust
+- they surface provider-evidence gaps that block held routes from promotion
 
 Tier B is not the main SEO learning set.
-Tier B is the sponsor-proof and conversion-adjacent set.
+Tier B is the operator next-action and evidence-quality set.
 
 ## Tier C: Maintain, do not center
 
@@ -105,7 +105,7 @@ That means:
 Every weekly review should happen in this order:
 
 1. Review Tier A search and engagement signals.
-2. Review Tier B sponsor-proof and click signals.
+2. Review Tier B next-action and provider-evidence signals.
 3. Review Tier C only for freshness, evidence, or trust blockers.
 
 If a route decision does not affect Tier A or Tier B, it is maintenance unless it removes a blocker.
@@ -126,7 +126,7 @@ Examples:
 When rewriting titles, intros, or CTA wording:
 
 - optimize Tier A first for clarity and snippet fit
-- optimize Tier B second for proof and next-action fit
+- optimize Tier B second for next-action fit and evidence visibility
 - avoid spending polish cycles on Tier C unless trust or freshness is involved
 
 ### Search Console review
@@ -134,7 +134,7 @@ When rewriting titles, intros, or CTA wording:
 When reading Search Console:
 
 - treat Tier A as the main SEO scoreboard
-- treat Tier B as commercial proof support
+- treat Tier B as support-route interpretation
 - do not average all live routes together and call that insight
 
 ### New work
@@ -148,10 +148,10 @@ A new route only joins the wedge when it replaces or clearly outperforms an exis
 
 By the end of the next 4 to 6 weeks:
 
-- one issue family should clearly emerge as the strongest first-money wedge
-- one or two cities should clearly emerge as the strongest sponsor-proof markets
+- one or two cities should clearly emerge as the strongest B2C growth markets
 - Tier A should have cleaner internal linking and better route-level interpretation
-- Tier B should produce sponsor screenshots, click proof, or inquiry proof without relying on site-wide traffic stories
+- Tier B should show stronger provider evidence, clearer next-step copy, and cleaner promotion readiness
+- held routes should graduate only when the trust checklist is actually satisfied
 
 ## What failure looks like
 
@@ -160,10 +160,11 @@ The wedge is being ignored if any of the following happens:
 - weekly reporting talks about all routes at once
 - broad guides get more attention than Tier A rule pages
 - new cities keep getting discussed as if they are equal to Austin, Charlotte, and Miami
-- sponsor proof is built from generic traffic claims instead of route-level evidence
+- provider pages start leading the product story instead of supporting it
+- held routes get promoted on demand alone instead of evidence and trust quality
 
 ## Relationship to other docs
 
-- Use `ops/sponsor_beta_plan_2026-04-12.md` for the sales loop.
 - Use `ops/route_promotion_triggers_2026-04-12.md` for stage movement and hold logic.
+- Use `ops/route_trigger_tracker_2026-04-12.csv` for the weekly due queue.
 - Use this file to decide what the team should care about first when the rest of the site is still live.

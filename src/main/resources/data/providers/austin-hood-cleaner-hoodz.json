@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "hoodz-austin-hood-cleaning",
   "providerName": "HOODZ of Austin",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "austin-tx-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.hoodzinternational.com/austin/request-service/",
   "email": "jennifer.mouser@hoodz.us.com",
   "phone": "512-770-6540",

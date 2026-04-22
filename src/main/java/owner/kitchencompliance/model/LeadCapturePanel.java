@@ -7,7 +7,6 @@ public record LeadCapturePanel(
         String description,
         String submitPath,
         String submitLabel,
-        String consentLabel,
-        boolean sponsor
+        String consentLabel
 ) {
 }

@@ -3,13 +3,14 @@
 ## Goal
 - Turn the product thesis into ship criteria that can be applied to every page family.
 - Keep operator trust high when inspection pressure is high.
-- Make authority logic, proof requirements, and next action clearer than vendor routing.
+- Make authority logic, proof requirements, and next action clearer than provider routing.
 
 ## Product identity
 - KitchenRuleHub is a local compliance and next-action product for commercial kitchen operators.
 - It is not a generic restaurant operations blog.
 - It is not a national compliance explainer that smooths over local differences.
-- It is not a vendor directory with compliance copy wrapped around it.
+- It is not a provider directory with compliance copy wrapped around it.
+- This repo is the operator-facing B2C surface. Any future provider-sales workflow belongs elsewhere.
 
 ## Core invariants
 - Canonical indexed pages must resolve to a city, utility, fire authority, or other local rule holder.
@@ -19,7 +20,7 @@
   - what proof must stay on site
   - what fails inspection or triggers enforcement risk
   - what action the operator should take next
-- Official guidance, sponsor layers, and public provider inventory must stay visually and structurally separate.
+- Official guidance, public provider evidence, and operator-routing UI must stay visually and structurally separate.
 - Finder trust depends on visible evidence quality, not on card count alone.
 - If local source quality or provider coverage is weak, the route should fall back to noindex or to a verification workflow instead of pretending certainty.
 - `noindex` routes should remain in a monitored promotion queue with a clear reason, a concrete checklist, and a next review date.
@@ -46,15 +47,15 @@
 ### Operator under inspection pressure
 - Wants to start from the issue on the desk, not from a browse-heavy content tree.
 - Needs the next action to be obvious within seconds.
-- Will distrust the page if vendor blocks appear before the rule summary.
+- Will distrust the page if provider-routing modules appear before the rule summary.
 
 ## Global page test
 - Can the operator identify the local authority in one screen?
 - Can the operator see the required proof-on-site without reading the full page?
 - Can the operator tell what fails inspection or blocks approval?
-- Can the operator see the next operational step without being forced into a lead form?
-- Can the operator distinguish official guidance from sponsor or vendor content immediately?
-- If the page contains providers, can the operator see why each provider appears there?
+- Can the operator see the next operational step without being forced into a routing request form?
+- Can the operator distinguish official guidance from provider or routing content immediately?
+- If the page contains providers, can the operator see why each provider appears and whether verification is still required?
 
 ## Entry logic
 
@@ -64,7 +65,7 @@
   - hood cleaning, suppression, and tags
   - inspection prep and on-site records
 - Resolve into city-aware or authority-aware destinations as early as possible.
-- Do not make vendor discovery the primary first-click behavior.
+- Do not make provider discovery the primary first-click behavior.
 - Explain the product in operator terms:
   - choose city
   - check rule
@@ -84,7 +85,7 @@
 - Let the operator begin from the operational issue, not from a generic content taxonomy.
 - Push the user toward city selection or local authority resolution quickly.
 - Show that the site is authority-backed and operator-oriented.
-- Make the separation between rule clarity and vendor routing visible.
+- Make the separation between rule clarity and provider routing visible.
 
 #### Should do
 - Offer direct paths for first-visit operators and repeat operators.
@@ -93,12 +94,12 @@
 
 #### Must not do
 - Read like a generic restaurant blog homepage.
-- Lead with sponsor cards, provider logos, or marketplace language.
+- Lead with provider cards, logos, or booking-first language.
 - Promise broad national answers that ignore city differences.
 
 #### No-ship signals
-- The hero can be mistaken for a marketing site for service vendors.
-- The first clear CTA is a vendor directory click.
+- The hero can be mistaken for a marketing site for service providers.
+- The first clear CTA is a provider directory click.
 - The page does not explain what proof or inspection-prep value the product provides.
 
 ### Canonical FOG rule pages
@@ -118,7 +119,7 @@
 #### Must not do
 - Generalize another city's FOG rules onto this page.
 - Claim an approved list where no official list exists.
-- Bury the local source stack below vendor content.
+- Bury the local source stack below provider or routing content.
 
 ### Approved hauler and verification workflow pages
 
@@ -135,9 +136,9 @@
 - Explain what the product knows, what it does not know, and what the operator still needs to verify.
 
 #### Must not do
-- Flatten official approval and public directory inclusion into the same visual status.
+- Flatten official approval and public provider inclusion into the same visual status.
 - Imply city endorsement because a provider is listed on KitchenRuleHub.
-- Hide the verification workflow behind lead capture.
+- Hide the verification workflow behind a routing request form.
 
 #### No-ship signals
 - Provider cards read like ads before the authority logic is clear.
@@ -181,26 +182,26 @@
 #### Must not do
 - Read like a long generic safety article.
 - Mix optional best practices with likely fail items without labeling the difference.
-- Route into vendors before the checklist is usable on its own.
+- Route into providers before the checklist is usable on its own.
 
 ### Finder pages
 
 #### Role in the product
 - Finder pages are secondary surfaces that support the next action after rule clarity.
-- They can help sponsor sales, but only if trust survives.
+- They can support public provider discovery and page-level routing requests, but only if trust survives.
 
 #### Must do
 - Explain why each provider appears on the page.
 - Show evidence quality, source type, and cited authority link when available.
-- Show service geography and service scope clearly enough to prevent bad leads.
-- Keep sponsor treatment clearly separate from public or authority-backed evidence blocks.
+- Show service geography and service scope clearly enough to prevent bad routing.
+- Keep routing request UI clearly separate from public or authority-backed evidence blocks.
 - Stay indexable only when source quality and provider depth are strong enough to help an operator.
 - When the local workflow depends on an official hauler or transporter list, at least one provider card should carry authority-backed evidence before the finder is allowed into search.
 
 #### Must not do
-- Behave like a thin lead-gen directory.
+- Behave like a thin request-a-quote directory.
 - Give all providers the same trust treatment when the evidence tiers differ.
-- Use local-rule copy as a pretext for a weak directory.
+- Use local-rule copy as a pretext for a weak provider catalog.
 
 #### Indexing gate
 - `index` only when:
@@ -211,7 +212,7 @@
 - `noindex` when:
   - coverage is thin
   - evidence is mostly contact-only
-  - sponsor pressure would outrun trust
+  - routing pressure would outrun trust
   - the local workflow requires stronger authority-backed provider evidence than the current cards can show
 - `noindex` routes must stay on a promotion queue:
   - why the route is held
@@ -225,7 +226,7 @@
 
 #### Must do
 - State clearly that local requirements vary by authority.
-- Link back to city-aware rule pages, verification workflows, or operator tools.
+- Link back to city-aware rule pages, authority pages, verification workflows, or operator tools.
 - Stay useful for repeat operators, not just top-of-funnel search traffic.
 
 #### Must not do
@@ -269,12 +270,13 @@
   - when the route must be reviewed again
 - Treat promotion as a deliberate decision, not as a memory-based cleanup task.
 
-## Sponsor and vendor separation rules
-- Official requirement blocks must render before sponsor blocks on local rule pages.
-- Sponsor blocks must never mimic authority status language.
+## Provider-routing separation rules
+- Official requirement blocks must render before provider blocks on local rule pages.
+- Provider blocks must never mimic authority status language.
 - Provider evidence labels must reflect the real source tier.
+- Routing request UI must stay secondary to proof-on-site and authority context.
 - When no official approval exists, the UI should say verification is still required.
-- Commercial pressure is never a reason to invent certainty.
+- Conversion pressure is never a reason to invent certainty.
 
 ## Ship and no-ship framework
 
@@ -284,7 +286,7 @@
 - Proof-on-site is explicit.
 - Fail conditions are concrete.
 - Next action is operationally clear.
-- Sponsor or vendor layers are visibly subordinate.
+- Provider evidence and routing UI are visibly subordinate.
 
 ### Hold for revision
 - The page is locally relevant but still reads like generic guidance.
@@ -295,11 +297,11 @@
 ### Do not ship
 - The page implies official approval without an official source.
 - The page hides local uncertainty behind confident generic copy.
-- The page pushes directory or sponsor conversion before rule clarity.
+- The page pushes directory or routing conversion before rule clarity.
 - The operator cannot tell what document to keep on site.
 
 ## Common failure modes
-- Vendor-first information architecture that makes the product feel like a directory.
+- Provider-first information architecture that makes the product feel like a directory.
 - Nationalized advice that erases city or authority differences.
 - Source stacks that sit too low on the page to support trust when the core claim is read.
 - Provider cards that do not explain evidence quality.
@@ -311,5 +313,5 @@
 - Favor operational clarity over content volume.
 - Favor local authority logic over generic advice.
 - Favor repeat utility over one-off SEO traffic.
-- Favor trust preservation over short-term sponsor surface expansion.
+- Favor trust preservation over short-term routing surface expansion.
 - Favor organic acquisition only when it reinforces the canonical local page hierarchy in `spec/14_seo_indexing_strategy.md`.

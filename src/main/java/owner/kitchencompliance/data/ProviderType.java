@@ -13,6 +13,6 @@ public enum ProviderType {
     @JsonProperty("hood_cleaner")
     HOOD_CLEANER,
 
-    @JsonProperty("suppression_vendor")
-    SUPPRESSION_VENDOR
+    @JsonProperty("suppression_service")
+    SUPPRESSION_SERVICE
 }

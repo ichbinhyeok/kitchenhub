@@ -1,169 +1,46 @@
 # Context Tracker
 
 ## Current status
-- Product docs are merged and agent-readable.
-- A Spring Boot MVC implementation now exists and runs from Maven Wrapper.
-- The sharp wedge is local FOG plus hood plus inspection-prep, not broad restaurant compliance.
-- The current commercial learning step is free hood-report usage, not sponsor or setup packaging.
-- The strongest product moat is city and authority rule normalization plus recurring operator workflows.
-- Code bootstrap package roots are now scaffolded under `src/main/java` and `src/test/java`.
-- Implementation-prep specs now include entity schema, route inventory, sample data contracts, and acceptance tests.
-- Austin, TX, Charlotte, NC, Tampa, FL, Portland, OR, Santa Clara, CA, Nashville, TN, Grand Island, NE, and Miami, FL are implemented as live seed slices with SSR local pages and three guides.
-- Contract, routing, decision, freshness, attribution, admin, and SSR integration tests pass with `.\mvnw.cmd test` across the five-city Tier 1 cohort plus the full three-city Tier 2 set.
+- KitchenRuleHub is now documented as a B2C-only operator product.
+- A Spring Boot MVC implementation exists, and the last recorded clean verification run was `.\mvnw.cmd test`.
+- The active wedge remains local FOG, hood, and inspection-prep guidance for anxious operators, not broad restaurant compliance.
+- Austin, Charlotte, and Miami remain the primary weekly review set; the rest of the live cities stay maintained for freshness, source quality, and trust.
+- Authority-backed local rule pages are the SEO core. Provider finder pages and tools can support next actions, but they must stay clearly separate from official guidance.
+- Freshness, source depth, provider evidence quality, and held-route promotion checks are the main release gates for indexed pages.
+- `ops/source_audit_2026-04-07.md`, `ops/wedge_focus_2026-04-12.md`, and the route-review docs are the current operating sources of truth inside `ops/`.
 
 ## Latest decisions
-- Package root is `owner.kitchencompliance`.
+- Package root stays `owner.kitchencompliance`.
+- This repository must stay B2C-only. Do not add mixed-audience or partner-marketplace workflows here.
+- Any future provider-sales product or sales motion must live on a separate domain and outside this codebase.
 - Canonical entities are local enforcement authorities and cities, not generic restaurant categories.
-- Launch scope is fixed to FOG control, hood cleaning cadence, suppression and recordkeeping, and inspection-prep.
-- Vendor pages are secondary. Rule and verdict pages are the primary entry surfaces.
+- Launch scope remains FOG control, hood cleaning cadence and records, suppression and recordkeeping, and inspection prep.
+- Home should stay issue-first for anxious operators, while canonical indexed pages stay city-first or authority-first depending on governance.
+- Every local verdict page should follow the same operator order: rule holder, proof on site, fail conditions, then next action.
 - Approved-list pages require official list evidence. Otherwise the product must fall back to self-verification guidance.
-- This product should be treated as a direct sponsor and retention candidate, not a pure affiliate bet.
-- Spring Boot `3.4.4` is the implementation baseline because it cleanly supports the expected `com.fasterxml.jackson` MVC stack.
-- Provider finder pages stay live but `noindex` until real public or active sponsor inventory exists.
-- Indexed routes now have an explicit freshness gate: if any source is past `nextReviewOn`, the route is treated as stale and the build-level verification test fails.
-- Local CTA links and provider outbound links now flow through a server-side attribution redirect that logs city, page family, issue type, and sponsored status.
-- Attribution storage now defaults outside the app working directory and can be pinned with `APP_ATTRIBUTION_LOG_DIR` for deploy-safe persistence.
-- Deploy readiness is now a first-class gate: freshness, source depth, and minimum finder coverage are assessed together before an indexed route is treated as deploy-safe.
-- Operator utilities now exist as noindex SSR surfaces for grease logs, hood binders, and inspection reminder planning.
-- Server-side analytics now track visitor ids, verdict states, and operator-tool revisits in addition to click events.
-- Lead capture now stays file-backed and deploy-safe by default via `${user.home}/.kitchenrulehub/leads`, with `/admin` exposing raw and summary lead exports.
-- Home should be issue-first for anxious operators, while canonical indexed pages must stay city-first and authority-aware.
-- Every local verdict page should follow the same operator order: authority requirement, proof on site, fail conditions, then next action.
-- Finder trust now depends on visible provider evidence quality and explicit separation from official guidance.
-- Weak routes should move into a monitored noindex promotion queue, not disappear into an unowned backlog.
-- Organic acquisition is allowed, but canonical local rule pages remain the SEO core and weak pages stay monitored instead of forced into indexation.
-- `/admin` is a protected surface and should never rely on `noindex` as its only guardrail.
-- Public trust pages should exist before launch so the product can explain independence, methodology, sponsor boundaries, privacy, and corrections in its own voice.
-- City-first entry can stay, but mixed-governance markets need an authority-first canonical design rule.
-- Authority-first canonical logic is now implemented for utility- and fire-owned routes, with city URLs acting as entry surfaces and `/authority/...` aliases acting as canonical paths.
-- Search-demand snapshots should be treated as an explicit ops input, not tribal knowledge, when deciding promotion, CTR fixes, or discoverability work.
-- Public brand and launch domain are now `KitchenRuleHub` and `kitchenrulehub.com`, while the internal Java package root stays `owner.kitchencompliance`.
-- Production deploy now targets Docker Hub plus OCI over SSH using `shinhyeok22/kitchenhub`, with the legacy jar-copy Oracle workflow removed from `main` pushes.
-- Site surface can stay broad, but the active operating wedge for the next 4 to 6 weeks is now fixed to Austin, Charlotte, and Miami local rule pages first, with grease-service and hood-service proof routes treated as secondary commercial evidence surfaces.
-- The first free B2B vendor wedge is now a factual hood service report for small vendor offices; inspection-prep and missing-proof tools stay secondary to that sendable artifact.
-- The free hood report should stay free of setup, pricing, or account language until real vendor reuse shows up in live customer threads.
-- The vendor entry should stay separate from the home SEO front door, with a noindex landing page routing small vendor offices into the hood closeout workflow.
-- Send-loop learning matters more than wider tool inventory right now, so copy, email-draft, print/PDF, and rule-link behavior should be measurable before any setup pitch returns.
-- The free hood wedge should read as a first-send tool before it reads as a repeat-use mini app; saved customer setups, office defaults, recent drafts, and local proof photos must stay secondary to the first customer handoff.
+- Weak or incomplete routes should move into a monitored hold or noindex promotion queue, not disappear into an unowned backlog.
+- Provider pages may help an operator choose a next step, but they must not read like endorsements, paid placements, or an official directory.
+- Weekly review should focus first on the Austin, Charlotte, and Miami Tier A rule pages, then on Tier B support routes that help operators complete the next action safely.
 
 ## What changed this session
-- Created a standardized design packet under `C:\Development\Owner\KitchenComplianceHub`.
-- Converted the sharp v1-v3 source note into the shared `README + AGENT_START_HERE + ops + spec/00-08` format.
-- Locked the project around local rule clarity, operator workflow states, source freshness, and direct vendor routing.
-- Added bootstrap package roots for implementation.
-- Added `spec/09` through `spec/12` for implementation handoff.
-- Added Maven Wrapper, Spring Boot MVC app structure, JSON seed loading, route resolution, jte templates, and Austin launch data.
-- Added sitemap, robots, canonical metadata, structured data, and source-stack rendering.
-- Added test coverage for seed contracts, decision logic, rendered launch pages, and freshness verification.
-- Added real Austin provider inventory and a second city slice for Charlotte, NC.
-- Added public Charlotte provider inventory and moved Charlotte finder routes from held `noindex` to indexable.
-- Added Tampa, FL as the third live city slice with official grease ordinance, fire inspection, and public provider inventory.
-- Added Portland, OR as the fourth live city slice with BES FOG rules, Preferred Pumper guidance, fire inspection workflow, and public provider inventory.
-- Added Santa Clara, CA as the fifth live city slice with city FOG program materials, fire inspection guidance, and public provider inventory.
-- Added server-side click attribution for next-action CTAs and provider outbound links, with CSV logging under the configured external attribution directory.
-- Added a read-only `/admin` dashboard for attribution totals, breakdowns, and recent events.
-- Added a freshness watch section to `/admin` so indexed-route review timing is visible without running tests locally.
-- Added third public provider listings across the five-city cohort so each finder category now has at least three public options.
-- Added evidence-quality ordering for provider cards so authority-cited listings sort ahead of contact-only listings.
-- Added `/admin/exports/*` CSV exports for raw attribution, attribution summaries, and freshness watch data.
-- Added scheduled ops snapshots that write freshness and attribution summary CSVs to the configured ops directory.
-- Moved default attribution storage to `${user.home}/.kitchenrulehub/attribution` and added env override support for mounted persistent storage.
-- Added Nashville, TN as the first Tier 2 expansion city with Metro Water FOG policy coverage, approved hauler workflow, Fire Marshal hood reporting, inspection-prep records, and public finder inventory.
-- Added Grand Island, NE as the second Tier 2 expansion city with city FOG guidance, approved preferred hauler workflow, Fire Department hood permit records, inspection-prep records, and public finder inventory.
-- Added Miami, FL as the third Tier 2 expansion city with Miami-Dade FOG permit guidance, liquid waste transporter workflow, county building and fire inspection requirements, and public finder inventory.
-- Ran a current-source audit across the live Tier 1 and Tier 2 cohort and corrected Santa Clara's FOG canonical URL to the newer sewer-utility path.
-- Captured the live-cohort audit results in `ops/source_audit_2026-04-07.md`.
-- Added a deploy-readiness dashboard, export, ops snapshot, and build gate so the pre-deploy surface now has a single blocker view across freshness, source quality, and finder inventory.
-- Added noindex operator tools with CSV worksheet downloads for grease logs, hood record binders, and inspection reminder planning.
-- Expanded analytics to include local page views, operator tool views, visitor ids, verdict states, and operator utility revisit summaries.
-- Added source evidence snapshots and ops alert Markdown outputs to the scheduled audit bundle.
-- Added short operator lead forms on provider finder pages and sponsor inquiry forms on local verdict pages, with persistent CSV capture and `/admin` lead reporting.
-- Added an Oracle VM deployment skeleton with a GitHub Actions workflow, `systemd` service example, and persistent-path env example so redeploys do not wipe attribution or lead CSV files.
-- Reworked the visual and content hierarchy on home, hood, inspection, and provider pages so the product reads as an operator compliance workflow instead of a vendor-led directory.
-- Validated the current Austin operator flow against official Austin fire inspection and liquid waste hauler guidance, then tightened provider evidence visibility and inspection taxonomy accordingly.
-- Added `spec/13_product_principles_and_page_checklists.md` so future work can be judged against page-family ship and no-ship criteria instead of ad hoc taste calls.
-- Added a noindex promotion queue in `/admin`, export snapshots, and route metadata support so intentionally held routes keep a visible reason, checklist, and next review date.
-- Added `spec/14_seo_indexing_strategy.md` to codify canonical local SEO, guide linking, indexing states, finder thresholds, freshness discipline, and a 90-day organic priority model.
-- Added Spring Security protection for `/admin` and `/admin/exports/*` with env-overridable credentials.
-- Added public trust and legal pages for about, methodology, contact, privacy, terms, sponsor policy, independence, and corrections.
-- Removed quasi-official UI copy and hardcoded seal usage from public surfaces so the product reads as an independent source-backed workflow rather than a municipal portal.
-- Forced all finder pages into evidence-first ordering so source and provider context appear before operator lead capture.
-- Added `spec/15_authority_first_route_design.md` to document how city-first entry and authority-first canonical logic should coexist in mixed-governance markets.
-- Implemented authority-first canonical routing, authority alias URLs, governance messaging on local pages, authority-aware sitemap output, and path-preserving attribution and lead logging.
-- Extended authority-first exposure into home and evergreen guides so city entry surfaces now show the actual rule holder and guides can drop directly into authority-backed local routes.
-- Added a public authority browse directory plus authority detail pages so mixed-governance markets have a first-class browse surface, not just hidden canonical aliases.
-- Added imported search-demand snapshots, `/admin` demand reporting, CSV exports, and ops audit snapshots so noindex promotion and CTR work can be reviewed on a standing loop.
-- Upgraded provider finder cards with coverage-confidence, why-listed, and route-evidence-review labels so evidence quality stays visible at the card level.
-- Upgraded structured data on local and browse pages to include breadcrumb trails plus item-list markup only where the page truly behaves like a directory or collection.
-- Reworked the home front door so issue-first cards now send the first click directly into local grease, hood, and inspection pages, with guides moved to support status.
-- Tightened the live front door and evergreen guides around the Austin, Charlotte, and Miami wedge so Tier A rule pages sit ahead of the wider city directory and finder support routes.
-- Hardened sponsor and operator lead intake with a honeypot field, form-age guard, stronger validation, and normalization while preserving the existing redirect flow.
-- Added a sponsor-beta focus section to `/admin` so Austin, Miami, and Charlotte are visible as the primary launch-market sales slice.
-- Hardened launch config by requiring production env values for base URL and admin credentials, updated deploy docs, and blocked `/admin` plus `/login` in `robots.txt`.
-- Added `ops/sponsor_beta_plan_2026-04-12.md` and `ops/sponsor_beta_targets_2026-04-12.csv` so the next operator can run sponsor outreach from the strongest live demand routes instead of inventing a GTM plan from scratch.
-- Added `ops/route_promotion_triggers_2026-04-12.md` and `ops/route_trigger_tracker_2026-04-12.csv` so promotion, hold states, and next review dates are tracked at the route level instead of living in memory.
-- Rebranded the public product surface, deploy assets, and runtime metadata from `KitchenComplianceHub` to `KitchenRuleHub`, updated deploy defaults to `kitchenrulehub.com`, and renamed the Spring Boot entrypoint plus Oracle service examples accordingly.
-- Added `Dockerfile`, `docker-compose.yml`, and `.github/workflows/deploy.yml` so `main` can build an ARM64 image, push to Docker Hub, ship `docker-compose.yml` to OCI, and restart the live container behind nginx.
-- Added `ops/wedge_focus_2026-04-12.md` and wired it into the read path so future weekly review, Search Console analysis, and sponsor-proof work defaults to the narrow wedge instead of all live routes equally.
-- Added `ops/free_vendor_wedge_2026-04-19.md` to lock the first free B2B product around a hood service report instead of a broader inspection or packet workflow.
-- Added the first `hood-service-report` operator tool with CSV and TXT handoff templates, customer-ready send structure, and language guardrails so the free wedge behaves like a real vendor deliverable instead of a generic worksheet.
-- Upgraded the hood service report page to show vendor workflow timing, customer-facing value, repeat-use logic, and a sample handoff preview so the free wedge reads like a real deliverable instead of a tool catalog entry.
-- Split the hood service report loop into primary vendor handoff plus secondary customer reference path so the artifact can circulate back into local rule pages without turning the report itself into an official-sounding document.
-- Reordered the hood service report page so a sendable report-body preview now leads the first screen ahead of the support guidance, downloads, and workflow explanation.
-- Removed early setup framing from the hood service report so the free sendable artifact stays focused on real vendor usage, not premature packaging.
-- Replaced the static hood service report sample with a vendor-side builder on the same page so the office can fill city, site, follow-up, and handoff fields once and export matching page preview, TXT email copy, and CSV output.
-- Locked the hood service report reference line to real Austin, Charlotte, and Miami hood-rule routes so the customer return path is no longer a placeholder and the free artifact can send traffic back into the live wedge surface.
-- Moved the hood service report builder and current-draft exports onto POST so customer name, site address, and follow-up details do not ride in the URL, browser history, or same-origin referrer trail during normal vendor use.
-- Expanded the hood service report from one follow-up line to a multi-item follow-up block so a real closeout can carry more than one deferred item without collapsing the report back into free text email cleanup.
-- Added a proof-pack section plus print-safe output behavior so the free wedge now behaves more like a customer-ready closeout packet than a plain web form.
-- Split restaurant account from recipient identity on the hood service report and added email-draft plus copy actions so a vendor office can move from report builder to real send behavior with less manual cleanup.
-- Tightened the hood report record trail so subject lines, preview facts, and CSV exports now distinguish restaurant account, site/location, and actual recipient instead of collapsing them into one label.
-- Kept sample values only on the first-load teaching state, then switched the hood builder to preserve real blanks plus a before-send status block so vendor edits no longer snap back to example placeholders mid-workflow.
-- Added a vendor-side attachment checklist for the hood report so send readiness now catches the common failure mode where the office writes the handoff correctly but forgets the PDF, photo set, invoice/report file, or separate rule reference.
-- Added a dedicated `/for-vendors` noindex landing page and linked it from home plus primary navigation so vendor offices get a clean entry path without turning the main home surface into a vendor portal.
-- Tightened `/for-vendors` into a clearer live-demo entry for hood closeout and added tool-action attribution for copy subject, copy body, open email draft, print/PDF, and rule-link clicks on the hood service report.
-- Kept vendor setup CTA off the free hood flow for now; if it returns later, it should stay below the sendable artifact and repeat-use proof instead of interrupting the first send loop.
-- Added a hood send-loop panel to `/admin` so the free hood artifact can be reviewed by actual send actions, not just page opens or generic destination clicks.
-- Added hood closeout view-to-action metrics to `/admin` so ops can see hood report views, acting viewers, and the current send-loop conversion rate beside the action breakdown.
-- Added browser-local office defaults plus stronger packet-status and print-closeout framing to the hood service report so repeat vendor use can improve without adding accounts or server-side memory.
-- Added a second browser-local layer for the most recent hood closeout draft so a small vendor office can restore the last job from the same browser without introducing accounts or server-stored memory.
-- Added an attachment bundle plan with consistent suggested file names for report PDF, photo zip, invoice/work-order file, and optional rule-reference note so the send loop stays usable outside the page itself.
-- Tightened the hood closeout print/PDF output into a more stable single-column print layout with a clearer record note so the customer-facing artifact reads like a finished closeout when exported.
-- Added browser-local hood photo uploads that stay in the current tab, render into the customer copy, and print into PDF without introducing server-side file storage or account setup.
-- Tightened the hood report free flow for repeat vendor use: vendors can now start from a real blank closeout, clear no-follow-up visits in one click, and save browser-local customer setups that restore city, contact, site, and handoff defaults without carrying over job-specific proof or work notes.
-- Removed false follow-up pressure from blank jobs by making non-sample follow-up due dates optional and suppressing the old `Owner: TBD | Target date: TBD` output when no follow-up items exist.
-- Switched `/for-vendors` from a sample-demo framing to a blank-closeout entry so the first vendor click now lands in a real-job state instead of asking the office to mentally convert a teaching sample into today's closeout.
-- Lowered the proof-reference burden in the hood closeout: photo/report reference fields are now framed as optional, and the customer/proof sections accept attached files as valid proof even when the office does not type an internal reference name.
-- Added smart reference suggestions inside the hood closeout so a vendor office can fill photo/report reference labels in one click; report suggestions prefer the work order when present, and photo suggestions follow the current account plus service date.
-- Dogfooded the free hood closeout flow against real vendor-office scenarios and fixed two send-loop breaks: `Start blank closeout` no longer wipes the saved recent draft, and the quick actions for copying the account into the location field or clearing follow-up items now refresh the customer handoff immediately instead of leaving stale copy behind.
-- Reframed `/for-vendors` in vendor-first language so it now explains when the office would use the free hood closeout, what gets sent, and why the customer might need a separate city rule page, without leaking internal strategy labels like wedge boundary or send loop into the surface copy.
-- Reduced first-use friction on the hood service report by collapsing repeat-use shortcuts, optional file-label helpers, local proof photos, and send-status support blocks behind secondary drawers so the first visible path is now report entry first, support systems second.
-- Reconfirmed test stability with a clean run of `.\mvnw.cmd test`; the earlier `NoClassDefFoundError` was reproduced only while multiple concurrent `spring-boot:run` processes were mutating `target/classes`, not as a standing application-code defect.
+- Rewrote `AGENT_START_HERE.md` and the live ops docs so they now describe KitchenRuleHub as a B2C-only operator product.
+- Removed legacy commercial beta guidance from the current handoff docs and route-review docs.
+- Recast the route-promotion model around source safety, search demand, provider evidence quality, and operator next-action clarity instead of sales proof.
+- Deleted obsolete separate-domain sales docs for commercial outreach and partner-product planning.
 
 ## Next recommended tasks
-- Improve provider ranking beyond evidence presence alone by weighting city-specific coverage, direct local numbers, and freshness of the cited authority source.
-- Encode the new page-family checklist from `spec/13` into acceptance tests and recurring product QA so trust regressions are caught before deploy.
-- Decide which future city or finder slices should enter the noindex promotion queue first instead of being built directly as indexed pages.
-- Encode the SEO strategy into future page titles, guide links, and route promotion review cadence.
-- Decide whether alert delivery should stay file-and-log based or escalate to email, Slack, or issue creation.
-- Keep source dates and provider depth current; deploy readiness now fails closed when indexed routes fall out of bounds.
-- Run the sponsor beta plan in `ops/sponsor_beta_plan_2026-04-12.md` before adding more cities or guide inventory.
-- Use `ops/route_trigger_tracker_2026-04-12.csv` as the weekly route-review source of truth and only promote held routes when the trigger doc and route checklist both pass.
-- Use `ops/wedge_focus_2026-04-12.md` as the first filter for Search Console review, internal-link work, and weekly route interpretation before looking at the wider 48-route surface.
-- Treat Austin/Charlotte/Miami Tier A local rule pages as the front-door scoreboard; full city browse, guides, tools, and finders should stay behind that wedge-first path instead of leading the first click.
-- Recheck Austin authority-canonical adoption in Search Console; the city grease URL is indexed while the authority alias is still only discovered.
-- Validate the new hood service report with real hood vendors before adding a second free artifact; the next decision should be live reuse and send behavior, not pricing or setup packaging.
-- Set the real production env file to `APP_SITE_BASE_URL=https://kitchenrulehub.com` before the first deploy and submit the live sitemap to Search Console after launch.
-- Add GitHub secrets `APP_ADMIN_USERNAME` and `APP_ADMIN_PASSWORD` before the first OCI deploy; the new container workflow treats them as required and the production profile will not boot without them.
-- Decide whether authority alias routes should stay secondary navigation inside home/guides or become first-class browse surfaces elsewhere in the product.
-- Decide how imported Search Console snapshots should be refreshed operationally: manual JSON seed commit, admin upload flow, or external pull job.
+- Keep source dates, authority ownership, and provider evidence current; indexed routes should continue to fail closed when freshness or proof drops below the bar.
+- Use `ops/route_trigger_tracker_2026-04-12.csv` as the weekly route-review queue and only promote held routes when the trigger doc and route checklist both pass.
+- Treat the Austin, Charlotte, and Miami Tier A rule pages as the first review surface for Search Console, snippet rewrites, and internal-link decisions.
+- Continue tightening provider ranking with city-specific coverage, direct local evidence, and freshness instead of generic listing volume.
+- Audit out-of-scope strategy and spec docs later if ownership allows; legacy commercial references may still remain outside `AGENT_START_HERE.md` and `ops/`.
+- Recheck authority-first canonical adoption in Search Console where mixed-governance city URLs still outrank authority aliases.
 
 ## Open questions
-- Which launch cluster is best: Hampton Roads, Northern California, Florida Gulf, or Texas?
-- Should utility-level pages outrank city pages in mixed-governance markets?
-- How much of the reminder and log workflow should exist in v1 versus v2?
-- Should inspection-prep templates be gated lead magnets or fully public utilities?
-- What is the minimum provider-count and vetting bar for keeping a finder route indexed over time?
+- Which city cluster should receive the next B2C expansion after Austin, Charlotte, and Miami stabilize?
+- Should authority-level pages become more prominent in navigation for mixed-governance markets?
+- What is the minimum provider-count and evidence bar for keeping a finder route indexed over time?
+- How much operator tooling should stay fully public versus remain noindex support surfaces?
 
 ## Source notes
-- Original ideation source: `C:\Users\tlsgu\OneDrive\문서\카카오톡 받은 파일\KitchenComplianceHub_Sharp_v1-v3.md`
+- Original ideation source: legacy Sharp v1-v3 note stored in the author's OneDrive project folder.

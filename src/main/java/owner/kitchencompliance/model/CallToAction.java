@@ -4,7 +4,6 @@ public record CallToAction(
         String title,
         String description,
         String label,
-        String path,
-        boolean sponsored
+        String path
 ) {
 }

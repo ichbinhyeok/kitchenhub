@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "kitchen-guard-tampa-hood-cleaning",
   "providerName": "Kitchen Guard of Tampa-Lakeland",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "tampa-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://kitchenguard.com/tampa/hood-cleaning/",
   "email": "marketing@kitchenguard.com",
   "phone": "813-524-6511",

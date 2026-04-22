@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "hood-cleaning-experts-miami",
   "providerName": "Hoods Cleaning Experts",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "miami-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.hoodcleaningexperts.net/",
   "email": "Info@hoodcleaningexperts.net",
   "phone": "786-600-5263",

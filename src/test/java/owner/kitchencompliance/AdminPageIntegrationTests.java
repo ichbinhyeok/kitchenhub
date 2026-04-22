@@ -48,15 +48,7 @@ class AdminPageIntegrationTests {
     void adminPageShowsEmptyStateAndResolvedStoragePath() throws Exception {
         mockMvc.perform(get("/admin").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Sponsor beta admin")))
-                .andExpect(content().string(containsString("Sponsor beta focus")))
-                .andExpect(content().string(containsString("Direct sponsor traction by launch market")))
-                .andExpect(content().string(containsString("Austin, TX")))
-                .andExpect(content().string(containsString("Miami, FL")))
-                .andExpect(content().string(containsString("Charlotte, NC")))
-                .andExpect(content().string(containsString("FOG rules")))
-                .andExpect(content().string(containsString("Hood requirements")))
-                .andExpect(content().string(containsString("Inspection checklist")))
+                .andExpect(content().string(containsString("Ops admin")))
                 .andExpect(content().string(containsString("Freshness watch")))
                 .andExpect(content().string(containsString("Indexed route review status")))
                 .andExpect(content().string(containsString("Source quality")))
@@ -73,13 +65,6 @@ class AdminPageIntegrationTests {
                 .andExpect(content().string(containsString("austin grease hauler service")))
                 .andExpect(content().string(containsString("Tool actions")))
                 .andExpect(content().string(containsString("Utility revisit rate")))
-                .andExpect(content().string(containsString("Hood send loop")))
-                .andExpect(content().string(containsString("What vendor offices actually do in the free closeout")))
-                .andExpect(content().string(containsString("Hood report views")))
-                .andExpect(content().string(containsString("Acting viewers")))
-                .andExpect(content().string(containsString("View to action rate")))
-                .andExpect(content().string(containsString("0 of 0 viewers")))
-                .andExpect(content().string(containsString("No hood send-loop actions yet.")))
                 .andExpect(content().string(containsString("No leads recorded yet")))
                 .andExpect(content().string(containsString("No attribution events yet")))
                 .andExpect(content().string(containsString("/admin/exports/attribution-events.csv")))
@@ -102,60 +87,45 @@ class AdminPageIntegrationTests {
     @Test
     void adminPageSummarizesExistingAttributionRows() throws Exception {
         String csv = """
-                captured_at,event_type,visitor_id,verdict_state,city,state,page_family,issue_type,authority_id,source_path,target_path,target_url,provider_id,provider_type,cta_type,sponsored,tool_slug
-                2026-04-07T15:00:00+09:00,page_view,visitor-1,official_list,austin,tx,fog_rules,fog_cleaning,austin-water-pretreatment,/tx/austin/restaurant-grease-trap-rules,,,,,page_view,false,
-                2026-04-07T15:05:00+09:00,page_view,visitor-2,operator_tool,,,operator_tool,inspection_prep,,/tools/inspection-reminder-plan,,,,,page_view,false,inspection-reminder-plan
-                2026-04-08T15:05:00+09:00,page_view,visitor-2,operator_tool,,,operator_tool,inspection_prep,,/tools/inspection-reminder-plan,,,,,page_view,false,inspection-reminder-plan
-                2026-04-07T15:06:00+09:00,page_view,visitor-6,operator_tool,charlotte,nc,operator_tool,hood_cleaning,charlotte-fire-prevention,/tools/hood-service-report,,,,,page_view,false,hood-service-report
-                2026-04-07T15:10:00+09:00,provider_click,visitor-3,provider_multi,austin,tx,provider_finder,fog_cleaning,austin-water-pretreatment,/tx/austin/find-grease-service,,https://www.lesclean.com/,liquid-environmental-solutions-austin,grease_hauler,provider_outbound,false,
-                2026-04-07T15:12:00+09:00,cta_click,visitor-4,official_list,tampa,fl,fog_rules,fog_cleaning,tampa-wastewater-grease-ordinance,/fl/tampa/restaurant-grease-trap-rules,/fl/tampa/approved-grease-haulers,,,,next_action_cta,false,
-                2026-04-07T15:14:00+09:00,cta_click,visitor-5,provider_multi,charlotte,nc,provider_finder,hood_cleaning,charlotte-fire-marshal,/nc/charlotte/find-hood-cleaner,/nc/charlotte/hood-cleaning-requirements,,,,sponsor_cta,true,
-                2026-04-07T15:16:00+09:00,tool_action,visitor-6,operator_tool,charlotte,nc,operator_tool,hood_cleaning,charlotte-fire-prevention,/tools/hood-service-report,/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements,,,,open_rule_page,false,hood-service-report
+                captured_at,event_type,visitor_id,verdict_state,city,state,page_family,issue_type,authority_id,source_path,target_path,target_url,provider_id,provider_type,cta_type,tool_slug
+                2026-04-07T15:00:00+09:00,page_view,visitor-1,official_list,austin,tx,fog_rules,fog_cleaning,austin-water-pretreatment,/tx/austin/restaurant-grease-trap-rules,,,,,page_view,
+                2026-04-07T15:05:00+09:00,page_view,visitor-2,operator_tool,,,operator_tool,inspection_prep,,/tools/inspection-reminder-plan,,,,,page_view,inspection-reminder-plan
+                2026-04-08T15:05:00+09:00,page_view,visitor-2,operator_tool,,,operator_tool,inspection_prep,,/tools/inspection-reminder-plan,,,,,page_view,inspection-reminder-plan
+                2026-04-07T15:10:00+09:00,provider_click,visitor-3,provider_multi,austin,tx,provider_finder,fog_cleaning,austin-water-pretreatment,/tx/austin/find-grease-service,,https://www.lesclean.com/,liquid-environmental-solutions-austin,grease_hauler,provider_outbound,
+                2026-04-07T15:12:00+09:00,cta_click,visitor-4,official_list,tampa,fl,fog_rules,fog_cleaning,tampa-wastewater-grease-ordinance,/fl/tampa/restaurant-grease-trap-rules,/fl/tampa/approved-grease-haulers,,,,next_action_cta,
+                2026-04-07T15:14:00+09:00,cta_click,visitor-5,provider_multi,charlotte,nc,provider_finder,hood_cleaning,charlotte-fire-marshal,/nc/charlotte/find-hood-cleaner,/nc/charlotte/hood-cleaning-requirements,,,,next_action_cta,
+                2026-04-07T15:16:00+09:00,tool_action,visitor-6,operator_tool,charlotte,nc,operator_tool,manifest_or_log,charlotte-fire-prevention,/tools/grease-log,/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements,,,,download_template,grease-log
                 """;
         String leadCsv = """
                 captured_at,lead_type,visitor_id,city,state,page_family,issue_type,authority_id,source_path,verdict_state,provider_intent,contact_name,business_name,email,phone,coverage_note,notes,routing_consent
                 2026-04-07T15:20:00+09:00,operator_request,visitor-11,austin,tx,provider_finder,fog_cleaning,austin-water-pretreatment,/tx/austin/find-grease-service,provider_multi,need_grease_service,Alex Kim,Kim Kitchen,alex@example.com,010-1234-5678,,Need service,true
-                2026-04-07T16:20:00+09:00,sponsor_inquiry,visitor-12,charlotte,nc,provider_finder,hood_cleaning,charlotte-fire-marshal,/nc/charlotte/find-hood-cleaner,provider_multi,hood_cleaning_sponsor_slot,Jamie Lee,Vendor Co,jamie@example.com,555-000-1111,Charlotte metro,Interested,true
                 """;
         Files.writeString(logFile, csv, StandardCharsets.UTF_8);
         Files.writeString(leadLogFile, leadCsv, StandardCharsets.UTF_8);
 
         mockMvc.perform(get("/admin").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Sponsor beta focus")))
                 .andExpect(content().string(containsString("Freshness watch")))
                 .andExpect(content().string(containsString("Source quality")))
                 .andExpect(content().string(containsString("Deploy readiness")))
                 .andExpect(content().string(containsString("Noindex promotion queue")))
                 .andExpect(content().string(containsString("Search Console demand")))
                 .andExpect(content().string(containsString("Utility revisit rate")))
-                .andExpect(content().string(containsString("1 of 2 visitors (50%)")))
+                .andExpect(content().string(containsString("1 of 1 visitors (100%)")))
                 .andExpect(content().string(containsString("Verdict states")))
                 .andExpect(content().string(containsString("Total leads")))
                 .andExpect(content().string(containsString("Operator requests")))
-                .andExpect(content().string(containsString("Sponsor inquiries")))
-                .andExpect(content().string(containsString("What local buyers ask for")))
                 .andExpect(content().string(containsString("Operator request")))
-                .andExpect(content().string(containsString("Sponsor inquiry")))
                 .andExpect(content().string(containsString("Indexed routes")))
                 .andExpect(content().string(containsString("Review soon")))
-                .andExpect(content().string(containsString(">8<")))
-                .andExpect(content().string(containsString(">1<")))
-                .andExpect(content().string(containsString(">4<")))
                 .andExpect(content().string(containsString("Austin, TX")))
                 .andExpect(content().string(containsString("Tampa, FL")))
                 .andExpect(content().string(containsString("Alex Kim | Kim Kitchen | alex@example.com")))
-                .andExpect(content().string(containsString("Jamie Lee | Vendor Co | jamie@example.com")))
                 .andExpect(content().string(containsString("Provider outbound")))
                 .andExpect(content().string(containsString("Operator tool view")))
                 .andExpect(content().string(containsString("Tool action")))
-                .andExpect(content().string(containsString("Hood send loop")))
-                .andExpect(content().string(containsString("Hood report views")))
-                .andExpect(content().string(containsString("Acting viewers")))
-                .andExpect(content().string(containsString("View to action rate")))
-                .andExpect(content().string(containsString("1 of 1 viewers (100%)")))
-                .andExpect(content().string(containsString("Open rule page")))
-                .andExpect(content().string(containsString("Open rule page -&gt; /authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")))
+                .andExpect(content().string(containsString("Download Template")))
+                .andExpect(content().string(containsString("/tools/grease-log")))
                 .andExpect(content().string(containsString("liquid-environmental-solutions-austin")))
                 .andExpect(content().string(containsString("/fl/tampa/approved-grease-haulers")));
     }
@@ -164,7 +134,7 @@ class AdminPageIntegrationTests {
     void adminCsvExportsReturnExpectedHeaders() throws Exception {
         mockMvc.perform(get("/admin/exports/attribution-summary.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("city,state,page_family,event_type,verdict_state,destination,sponsored,count")));
+                .andExpect(content().string(containsString("city,state,page_family,event_type,verdict_state,destination,count")));
 
         mockMvc.perform(get("/admin/exports/lead-intake.csv").with(httpBasic("admin", "tlsgur3108")))
                 .andExpect(status().isOk())

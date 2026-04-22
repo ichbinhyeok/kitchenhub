@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "music-city-sanitizing-nashville",
   "providerName": "Music City Sanitizing Services",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "nashville-tn-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.mcsanitizing.com/",
   "email": "info@mcsanitizing.com",
   "phone": "615-430-1015",

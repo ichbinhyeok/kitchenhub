@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "express-jet-services-charlotte",
   "providerName": "Express Jet Services",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "charlotte-nc-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://expressjetnc.com/",
   "email": "admin@expressjetnc.com",
   "phone": "919-892-7107",

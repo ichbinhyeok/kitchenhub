@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "liquid-environmental-solutions-nashville",
   "providerName": "Liquid Environmental Solutions",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "nashville-tn-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.liquidenviro.com/",
   "email": "customerservice@liquidenviro.com",
   "phone": "866-694-7327",

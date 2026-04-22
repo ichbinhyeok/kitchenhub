@@ -12,17 +12,12 @@ public record AttributionDashboardSnapshot(
         long toolActionEvents,
         long providerClicks,
         long ctaClicks,
-        long sponsoredClicks,
         long returningUtilityVisitors,
         String utilityRevisitRateLabel,
-        long hoodSendLoopViewCount,
-        long hoodSendLoopActionVisitors,
-        String hoodSendLoopVisitorActionRateLabel,
         String lastCapturedAt,
         List<AdminBreakdownRow> cityBreakdown,
         List<AdminBreakdownRow> pageFamilyBreakdown,
         List<AdminBreakdownRow> verdictBreakdown,
-        List<AdminBreakdownRow> hoodSendLoopBreakdown,
         List<AdminBreakdownRow> destinationBreakdown,
         List<AdminRecentEvent> recentEvents
 ) {

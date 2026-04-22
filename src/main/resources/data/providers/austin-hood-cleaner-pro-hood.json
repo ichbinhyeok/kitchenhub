@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "pro-hood-cleaning-austin",
   "providerName": "Pro Hood Cleaning",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "austin-tx-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://prohoodcleaning.com/",
   "email": "Prohoodcleaning@yahoo.com",
   "phone": "512-751-7450",

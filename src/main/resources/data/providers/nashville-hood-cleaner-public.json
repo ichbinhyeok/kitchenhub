@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "nashville-hood-cleaning-pros",
   "providerName": "Nashville Hood Cleaning Pros",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "nashville-tn-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://nashvillehoodcleaningpros.com/",
   "email": "office@nashvillehoodcleaningpros.com",
   "phone": "615-235-5373",

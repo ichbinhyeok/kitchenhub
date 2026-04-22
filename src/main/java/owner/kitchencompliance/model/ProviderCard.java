@@ -7,7 +7,6 @@ public record ProviderCard(
         String email,
         String phone,
         String listingLabel,
-        String sponsorStatusLabel,
         String evidenceLabel,
         String coverageConfidenceLabel,
         String whyListed,

@@ -1,8 +1,8 @@
-# Route Promotion Triggers - 2026-04-12
+# Route Promotion Triggers - 2026-04-21
 
 ## Why this exists
 
-KitchenRuleHub now has enough live routes that promotion, SEO work, and sponsor focus cannot stay in memory.
+KitchenRuleHub now has enough live routes that promotion, SEO work, and trust review cannot stay in memory.
 
 This document is the operating rule:
 
@@ -15,23 +15,19 @@ This document is the operating rule:
 
 - `S0_BUILD`
   - The route exists on paper or in draft only.
-  - Do not spend SEO or sponsor time here yet.
+  - Do not spend SEO time here yet.
 
 - `S1_WATCH`
   - The route is live, source-backed, and safe to keep live.
-  - The job is not expansion. The job is demand observation and freshness control.
+  - The job is not expansion. The job is demand observation, freshness control, and trust maintenance.
 
 - `S2_OPTIMIZE`
-  - The route has a real signal.
-  - Improve title, intro, internal links, snippet clarity, and CTA fit.
+  - The route has a real signal or belongs to the active operating wedge.
+  - Improve title, intro, internal links, snippet clarity, proof-on-site framing, and next-action copy.
 
 - `S3_PROMOTE_READY`
   - A held route now passes its promotion checklist.
   - It can move from `noindex-monitored` to `indexable` in the next shipping cycle.
-
-- `S4_MONETIZE`
-  - The route has enough proof to support sponsor packets, sponsor screenshots, or recurring commercial review.
-  - This does not mean the whole site is ready. It means this route is worth selling against.
 
 - `HOLD`
   - Do not promote.
@@ -56,16 +52,7 @@ Move when any one is true:
 - `28d clicks >= 5`
 - average position is between `8` and `20`
 - provider outbound clicks are non-zero
-- sponsor-facing route is in a city or category already named in the active beta plan
-
-### Move from `S2_OPTIMIZE` to `S4_MONETIZE`
-
-Move when any one is true:
-
-- `28d clicks >= 10`
-- provider outbound clicks are repeatable over the last `28d`
-- sponsor inquiry count is non-zero
-- the route is already listed as a primary or backup proof route in the sponsor beta plan
+- the route sits inside Tier A or Tier B and needs active copy or linking work
 
 ### Move from `HOLD` to `S3_PROMOTE_READY`
 
@@ -73,7 +60,7 @@ All of the following must be true:
 
 - every route-level `promotionChecklist` item is complete
 - freshness is green
-- at least `3` renderable providers remain visible
+- at least `3` renderable providers remain visible if the page is a provider finder
 - at least `1` provider card carries authority-backed local evidence if the route depends on official hauler or transporter workflow
 - the page still reads as a trust-safe workflow page, not a public-contact-only filler page
 
@@ -102,19 +89,13 @@ Move immediately when any one is true:
   - tighten title
   - tighten hero intro
   - add or fix internal links from guide and city entry surfaces
-  - clarify next action copy
+  - clarify proof-on-site and next-action copy
 
 - `S3_PROMOTE_READY`
   - flip route metadata from hold to indexable
   - ship
   - verify sitemap, canonical, and robots behavior
   - move the row back to `S1_WATCH` after release
-
-- `S4_MONETIZE`
-  - capture screenshots
-  - review click and inquiry proof
-  - update sponsor packet inputs
-  - keep SEO work narrow and route-specific
 
 - `HOLD`
   - fix the blocker only
@@ -125,9 +106,9 @@ Move immediately when any one is true:
 ### Monday
 
 1. Open `/admin`.
-2. Review demand snapshots, noindex promotion queue, freshness watch, and lead or click summaries.
+2. Review demand snapshots, noindex promotion queue, freshness watch, and click summaries.
 3. Open `ops/route_trigger_tracker_2026-04-12.csv`.
-4. Sort by `next_review_on`, then by `commercial_priority`.
+4. Sort by `next_review_on`, then by `review_priority`.
 
 ### During the review
 
@@ -137,8 +118,8 @@ For each due row, choose exactly one next action:
 - `rewrite_title_intro`
 - `add_internal_links`
 - `upgrade_provider_evidence`
+- `tighten_next_action`
 - `promote_to_index`
-- `prepare_sponsor_proof`
 - `hold`
 
 Then update:
@@ -150,13 +131,13 @@ Then update:
 
 ### Friday
 
-- review only `S4_MONETIZE` rows for sponsor proof and route screenshots
+- review only `S2_OPTIMIZE` rows for copy, linking, and route-cluster interpretation
 - review only `HOLD` rows for blocker removal progress
 - do not create new route work until the current week's due rows are updated
 
 ## Current standing exceptions
 
-- Austin grease service stays in `HOLD` for search promotion until at least one provider card carries authority-backed evidence, even though the rule cluster is already viable for sponsor proof.
+- Austin grease service stays in `HOLD` for search promotion until at least one provider card carries authority-backed evidence.
 - Miami grease service stays in `HOLD` for the same reason.
 - Miami hood cleaner stays in `HOLD` until one provider card carries stronger local evidence than a generic public contact page.
 - Grand Island hood routes should stay permit and inspection-led in tone. Do not force cadence-heavy claims there.

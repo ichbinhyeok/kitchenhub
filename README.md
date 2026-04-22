@@ -4,13 +4,13 @@
 **Purpose:** This folder is a self-contained design packet for building a US-focused **commercial kitchen compliance and next-action site** centered on FOG control, hood cleaning, and inspection-prep workflows.
 
 ## What you are building
-A city and authority aware operations-compliance site for restaurant owners, kitchen managers, and multi-location operators who need to know what the local rule requires, what proof must be kept on site, what happens when something is overdue or missing, and which local vendor to call next.
+A city- and authority-aware operations-compliance site for restaurant owners, kitchen managers, and multi-location operators who need to know what the local rule requires, what proof must be kept on site, what happens when something is overdue or missing, and which local service option to evaluate next.
 
 ## Why this concept is attractive
 - Search intent is operational and action-heavy, not generic educational traffic.
 - Demand repeats because cleaning, manifests, inspections, and records recur.
 - The moat is local rule normalization plus operator workflow clarity.
-- Revenue can come from hood cleaners, grease haulers, trap services, inspection-prep bundles, and reminder products.
+- The repo can measure real operator demand and repeat-use utility without mixing in a separate provider-sales surface.
 
 ## File map
 - `AGENT_START_HERE.md` - read order and handoff rules for any future agent
@@ -21,7 +21,7 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - `spec/01_query_and_user_map.md` - jobs-to-be-done, user states, query families, and priority pages
 - `spec/02_site_architecture.md` - canonical entities, URL graph, page modules, and internal linking
 - `spec/03_data_and_operations.md` - data model, source hierarchy, verification workflow, and refresh cadence
-- `spec/04_commercial_model.md` - sponsor model, CTA logic, lead handling, and retention paths
+- `spec/04_commercial_model.md` - commercial model, CTA logic, lead handling, and retention paths
 - `spec/05_editorial_rules_and_execution.md` - writing rules, trust guardrails, launch phases, and definition of done
 - `spec/06_indexing_quality_and_analytics.md` - indexing rules, quality gates, kill rules, and measurement plan
 - `spec/07_technical_architecture.md` - system boundaries, package map, rendering model, and operational services
@@ -63,7 +63,7 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - Noindex operator utilities under `/tools/*` for grease logs, hood record binders, missing-proof tracking, and inspection reminder planning
 - SSR pages include canonical, robots, structured data, source stack, and last-verified date
 - Server-side click attribution now wraps local next-action CTAs and provider outbound links
-- Local provider finder pages now include short operator lead forms, and all local verdict pages include sponsor inquiry forms
+- Local provider finder pages now include short operator lead forms
 - Local route views and operator-tool views now also log server-side analytics with persistent visitor ids and verdict-state labels
 - Read-only attribution and lead dashboard is available at `/admin`
 - `/admin` and `/admin/exports/*` now require Spring Security authentication instead of relying on `noindex`
@@ -71,10 +71,10 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - `/admin` now includes a deploy-readiness section that rolls freshness, source quality, and finder coverage into a single pre-deploy route gate
 - `/admin` now includes a noindex promotion queue so intentionally held routes keep a visible reason, promotion checklist, and next review date
 - `/admin` now includes verdict-state breakdowns and operator-utility revisit metrics from page-view tracking
-- `/admin` now includes lead totals, operator vs sponsor mix, provider-intent breakdowns, and recent lead rows from persistent CSV intake
+- `/admin` now includes lead totals, provider-intent breakdowns, and recent lead rows from persistent CSV intake
 - Provider finder cards are ordered by evidence quality first and now show an evidence label plus cited authority link when available
 - Weak finder routes can stay live for operators while remaining `noindex-monitored` until provider evidence is strong enough for search
-- Public trust pages now exist for `/about`, `/methodology`, `/contact`, `/privacy`, `/terms`, `/sponsor-policy`, `/not-government-affiliated`, and `/corrections`
+- Public trust pages now exist for `/about`, `/methodology`, `/contact`, `/privacy`, `/terms`, `/not-government-affiliated`, and `/corrections`
 - Finder pages now keep evidence, source, and provider context ahead of operator lead capture even when the route is strong enough to index
 - Mixed-governance routes now keep city URLs as entry surfaces while emitting authority-first canonical URLs and live `/authority/{state}/{authorityId}/{slug}` aliases for utility- and fire-owned workflows
 - Authority alias page views, CTA redirects, provider outbound links, lead intake, sitemap entries, and admin path reporting now preserve the authority-first path instead of collapsing everything back to the city entry URL
@@ -136,11 +136,12 @@ A city and authority aware operations-compliance site for restaurant owners, kit
 - Home can be issue-first, but canonical indexed destinations must resolve to a local authority context.
 - Canonical pages must be tied to a local rule holder: city, utility, or fire authority.
 - Every local page must show the exact requirement, the proof to keep on site, the consequence of missing it, and the next action.
-- Official requirements and sponsor content must stay visibly separate.
+- Official requirements and provider routing must stay visibly separate.
 - `noindex` routes must live in a monitored promotion queue with a reason, a checklist, and a next review date.
 - Organic search should support acquisition, but canonical local rule pages remain the SEO core.
 - Launch scope is fixed to FOG, Type I hood cleaning, suppression and inspection-prep, and the records needed to survive inspection.
 - Do not sprawl into full restaurant licensing, HACCP, labor posters, or opening-a-restaurant content.
-- Build for direct sponsor sales and repeat operator utility, not display ad traffic.
+- Build for repeat operator utility and clean B2C routing, not display ad traffic.
+- Any future provider-sales product should live on a separate domain instead of being layered into this repository.
 - Keep the site surface broad if useful, but keep weekly learning and SEO interpretation narrow around the active wedge.
 - Keep source `verifiedOn` and `nextReviewOn` dates current for any route that remains indexable.

@@ -20,48 +20,6 @@
         </section>
 
         <section class="panel">
-            <div class="panel__eyebrow">Sponsor beta focus</div>
-            <h2>Direct sponsor traction by launch market</h2>
-            <p class="panel__note">${page.sponsorBetaFocus().note()}</p>
-            <div class="metric-grid">
-                <article class="metric-card">
-                    <div class="panel__eyebrow">Sponsored clicks</div>
-                    <div class="metric-card__value">${page.sponsorBetaFocus().sponsoredClicks()}</div>
-                </article>
-                <article class="metric-card">
-                    <div class="panel__eyebrow">Sponsor inquiries</div>
-                    <div class="metric-card__value">${page.sponsorBetaFocus().sponsorInquiries()}</div>
-                </article>
-                <article class="metric-card">
-                    <div class="panel__eyebrow">Launch markets</div>
-                    <div class="metric-card__value">${page.sponsorBetaFocus().launchCities().size()}</div>
-                </article>
-                <article class="metric-card">
-                    <div class="panel__eyebrow">Sponsor categories</div>
-                    <div class="metric-card__value">${page.sponsorBetaFocus().launchCategories().size()}</div>
-                </article>
-            </div>
-            <div class="admin-events">
-                <article class="admin-event">
-                    <p class="admin-event__meta">Launch markets | Austin, Miami, Charlotte</p>
-                    <ul class="admin-breakdown">
-                        @for(AdminBreakdownRow row : page.sponsorBetaFocus().launchCities())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                        @endfor
-                    </ul>
-                </article>
-                <article class="admin-event">
-                    <p class="admin-event__meta">Sponsor categories | FOG, hood, inspection</p>
-                    <ul class="admin-breakdown">
-                        @for(AdminBreakdownRow row : page.sponsorBetaFocus().launchCategories())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                        @endfor
-                    </ul>
-                </article>
-            </div>
-        </section>
-
-        <section class="panel">
             <div class="panel__eyebrow">Storage</div>
             <h2>Persistent ops files</h2>
             <p><strong>${page.dashboard().storagePath()}</strong></p>
@@ -82,6 +40,49 @@
                 <li><a href="/admin/exports/evidence-index.csv">Download evidence index CSV</a></li>
                 <li><a href="/admin/exports/ops-alerts.md">Download ops alerts Markdown</a></li>
             </ul>
+        </section>
+
+        <section class="metric-grid">
+            <article class="metric-card">
+                <div class="panel__eyebrow">Total leads</div>
+                <div class="metric-card__value">${page.leads().totalLeads()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Operator requests</div>
+                <div class="metric-card__value">${page.leads().operatorRequests()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Consented leads</div>
+                <div class="metric-card__value">${page.leads().consentedLeads()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Page views</div>
+                <div class="metric-card__value">${page.dashboard().pageViewEvents()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Utility views</div>
+                <div class="metric-card__value">${page.dashboard().utilityViewEvents()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Tool actions</div>
+                <div class="metric-card__value">${page.dashboard().toolActionEvents()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Provider outbound</div>
+                <div class="metric-card__value">${page.dashboard().providerClicks()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">CTA clicks</div>
+                <div class="metric-card__value">${page.dashboard().ctaClicks()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Utility revisit rate</div>
+                <div class="metric-card__value">${page.dashboard().utilityRevisitRateLabel()}</div>
+            </article>
+            <article class="metric-card">
+                <div class="panel__eyebrow">Total events</div>
+                <div class="metric-card__value">${page.dashboard().totalEvents()}</div>
+            </article>
         </section>
 
         <section class="panel">
@@ -139,7 +140,6 @@
                     <div class="metric-card__value">${page.sourceQuality().thinRoutes()}</div>
                 </article>
             </div>
-            <p class="panel__note">Critical source quality issues should be zero for deploy-safe indexed routes.</p>
             <div class="admin-events">
                 @for(SourceQualityWatchRow row : page.sourceQuality().watchRows())
                     <article class="admin-event">
@@ -173,7 +173,6 @@
                     <div class="metric-card__value">${page.deployReadiness().blockedRoutes()}</div>
                 </article>
             </div>
-            <p class="panel__note">Blocked routes should be zero before deploy. Watch routes are live but need source or provider follow-up.</p>
             <div class="admin-events">
                 @for(DeployReadinessWatchRow row : page.deployReadiness().watchRows())
                     <article class="admin-event">
@@ -209,7 +208,6 @@
                     <div class="metric-card__value">${page.noindexPromotionQueue().overdueRoutes()}</div>
                 </article>
             </div>
-            <p class="panel__note">Noindex routes should stay visible here until they are promoted, intentionally held, or removed from scope.</p>
             @if(page.noindexPromotionQueue().rows().isEmpty())
                 <p class="panel__note">No noindex routes are currently queued for promotion.</p>
             @else
@@ -221,17 +219,6 @@
                             <p class="admin-event__path">Next review: ${row.nextReviewOn()}</p>
                             <p class="admin-event__path">Reason: ${row.reason()}</p>
                             <p class="admin-event__path">Sources: ${row.totalSources()} total / ${row.strongSources()} strong</p>
-                            @if(row.renderableProviders() > 0 || row.authorityBackedProviders() > 0)
-                                <p class="admin-event__path">Providers: ${row.renderableProviders()} renderable / ${row.authorityBackedProviders()} authority-backed</p>
-                            @endif
-                            @if(row.topQuery() != null && !row.topQuery().isBlank())
-                                <p class="admin-event__path">Search demand: ${row.searchDemandStatusLabel()} | ${row.topQuery()} | ${row.impressions28d()} impressions / ${row.clicks28d()} clicks / ${row.ctrLabel()} CTR / avg pos ${row.averagePositionLabel()}</p>
-                            @endif
-                            <ul class="admin-checklist">
-                                @for(String step : row.checklist())
-                                    <li>${step}</li>
-                                @endfor
-                            </ul>
                         </article>
                     @endfor
                 </div>
@@ -263,110 +250,64 @@
                     <div class="metric-card__value">${page.searchDemand().monitorRoutes()}</div>
                 </article>
             </div>
-            <p class="panel__note">This is an imported GSC-style snapshot, not a live API call. Keep it current so promotion and CTR work do not depend on memory.</p>
-            @if(page.searchDemand().rows().isEmpty())
-                <p class="panel__note">No imported demand snapshots are loaded yet.</p>
-            @else
-                <div class="admin-events">
-                    @for(SearchDemandWatchRow row : page.searchDemand().rows())
-                        <article class="admin-event">
-                            <p class="admin-event__meta">${row.cityLabel()} | ${row.pageLabel()} | ${row.statusLabel()} | ${row.routeStateLabel()}</p>
-                            <p><strong>${row.path()}</strong></p>
-                            <p class="admin-event__path">Top query: ${row.topQuery()}</p>
-                            <p class="admin-event__path">Metrics: ${row.impressions28d()} impressions / ${row.clicks28d()} clicks / ${row.ctrLabel()} CTR / avg pos ${row.averagePositionLabel()}</p>
-                            <p class="admin-event__path">Captured: ${row.capturedOn()}</p>
-                            <p class="admin-event__path">${row.note()}</p>
-                        </article>
-                    @endfor
-                </div>
-            @endif
+            <div class="admin-events">
+                @for(SearchDemandWatchRow row : page.searchDemand().rows())
+                    <article class="admin-event">
+                        <p class="admin-event__meta">${row.cityLabel()} | ${row.pageLabel()} | ${row.statusLabel()} | ${row.routeStateLabel()}</p>
+                        <p><strong>${row.path()}</strong></p>
+                        <p class="admin-event__path">Top query: ${row.topQuery()}</p>
+                        <p class="admin-event__path">Metrics: ${row.impressions28d()} impressions / ${row.clicks28d()} clicks / ${row.ctrLabel()} CTR / avg pos ${row.averagePositionLabel()}</p>
+                        <p class="admin-event__path">Captured: ${row.capturedOn()}</p>
+                        <p class="admin-event__path">${row.note()}</p>
+                    </article>
+                @endfor
+            </div>
         </section>
 
-        <section class="metric-grid">
-            <article class="metric-card">
-                <div class="panel__eyebrow">Total leads</div>
-                <div class="metric-card__value">${page.leads().totalLeads()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Operator requests</div>
-                <div class="metric-card__value">${page.leads().operatorRequests()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Sponsor inquiries</div>
-                <div class="metric-card__value">${page.leads().sponsorInquiries()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Consented leads</div>
-                <div class="metric-card__value">${page.leads().consentedLeads()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Page views</div>
-                <div class="metric-card__value">${page.dashboard().pageViewEvents()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Utility views</div>
-                <div class="metric-card__value">${page.dashboard().utilityViewEvents()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Tool actions</div>
-                <div class="metric-card__value">${page.dashboard().toolActionEvents()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Total events</div>
-                <div class="metric-card__value">${page.dashboard().totalEvents()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Provider outbound</div>
-                <div class="metric-card__value">${page.dashboard().providerClicks()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">CTA clicks</div>
-                <div class="metric-card__value">${page.dashboard().ctaClicks()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Sponsored clicks</div>
-                <div class="metric-card__value">${page.dashboard().sponsoredClicks()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Returning utility visitors</div>
-                <div class="metric-card__value">${page.dashboard().returningUtilityVisitors()}</div>
-            </article>
-            <article class="metric-card">
-                <div class="panel__eyebrow">Utility revisit rate</div>
-                <div class="metric-card__value">${page.dashboard().utilityRevisitRateLabel()}</div>
-            </article>
-        </section>
-
-        @if(page.dashboard().hasEvents())
+        <div class="content-grid">
             <section class="panel">
-                <div class="panel__eyebrow">Latest event</div>
-                <h2>${page.dashboard().lastCapturedAt()}</h2>
+                <div class="panel__eyebrow">Lead intake</div>
+                <h2>Recent routing requests</h2>
+                @if(page.leads().recentLeads().isEmpty())
+                    <p class="panel__note">No leads recorded yet</p>
+                @else
+                    <div class="admin-events">
+                        @for(AdminRecentLead lead : page.leads().recentLeads())
+                            <article class="admin-event">
+                                <p class="admin-event__meta">${lead.capturedAt()} | ${lead.leadType()} | ${lead.location()}</p>
+                                <p><strong>${lead.contact()}</strong></p>
+                                <p class="admin-event__path">${lead.providerIntent()} | ${lead.consentLabel()}</p>
+                                <p class="admin-event__path">${lead.sourcePath()}</p>
+                            </article>
+                        @endfor
+                    </div>
+                @endif
             </section>
 
-            <section class="grid-two">
-                <article class="panel">
-                    <div class="panel__eyebrow">By city</div>
-                    <h2>Top local demand</h2>
-                    <ul class="admin-breakdown">
-                        @for(AdminBreakdownRow row : page.dashboard().cityBreakdown())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
+            <section class="panel">
+                <div class="panel__eyebrow">Attribution</div>
+                <h2>Recent product events</h2>
+                @if(page.dashboard().recentEvents().isEmpty())
+                    <p class="panel__note">No attribution events yet</p>
+                @else
+                    <div class="admin-events">
+                        @for(AdminRecentEvent event : page.dashboard().recentEvents())
+                            <article class="admin-event">
+                                <p class="admin-event__meta">${event.capturedAt()} | ${event.eventType()} | ${event.location()}</p>
+                                <p><strong>${event.sourcePath()}</strong></p>
+                                <p class="admin-event__path">${event.destination()}</p>
+                                <p class="admin-event__path">${event.pageFamily()} | ${event.verdictState()}</p>
+                            </article>
                         @endfor
-                    </ul>
-                </article>
-                <article class="panel">
-                    <div class="panel__eyebrow">By page family</div>
-                    <h2>Where clicks start</h2>
-                    <ul class="admin-breakdown">
-                        @for(AdminBreakdownRow row : page.dashboard().pageFamilyBreakdown())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                        @endfor
-                    </ul>
-                </article>
+                    </div>
+                @endif
             </section>
+        </div>
 
+        <div class="content-grid">
             <section class="panel">
                 <div class="panel__eyebrow">Verdict states</div>
-                <h2>What state the route resolved to</h2>
+                <h2>What operators are landing on</h2>
                 <ul class="admin-breakdown">
                     @for(AdminBreakdownRow row : page.dashboard().verdictBreakdown())
                         <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
@@ -375,122 +316,14 @@
             </section>
 
             <section class="panel">
-                <div class="panel__eyebrow">Top destinations</div>
-                <h2>What operators click into</h2>
+                <div class="panel__eyebrow">Destinations</div>
+                <h2>Where clicks and actions go</h2>
                 <ul class="admin-breakdown">
                     @for(AdminBreakdownRow row : page.dashboard().destinationBreakdown())
                         <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
                     @endfor
                 </ul>
             </section>
-
-            <section class="panel">
-                <div class="panel__eyebrow">Hood send loop</div>
-                <h2>What vendor offices actually do in the free closeout</h2>
-                <ul class="admin-breakdown" style="margin-top: 16px;">
-                    <li><span>Hood report views</span><strong>${page.dashboard().hoodSendLoopViewCount()}</strong></li>
-                    <li><span>Acting viewers</span><strong>${page.dashboard().hoodSendLoopActionVisitors()}</strong></li>
-                    <li><span>View to action rate</span><strong>${page.dashboard().hoodSendLoopVisitorActionRateLabel()}</strong></li>
-                </ul>
-                @if(page.dashboard().hoodSendLoopBreakdown().isEmpty())
-                    <p class="panel__note" style="margin-top: 16px;">No hood send-loop actions yet.</p>
-                @else
-                    <ul class="admin-breakdown" style="margin-top: 16px;">
-                        @for(AdminBreakdownRow row : page.dashboard().hoodSendLoopBreakdown())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                        @endfor
-                    </ul>
-                @endif
-            </section>
-
-            <section class="panel">
-                <div class="panel__eyebrow">Recent events</div>
-                <h2>Latest attribution rows</h2>
-                <div class="admin-events">
-                    @for(AdminRecentEvent event : page.dashboard().recentEvents())
-                        <article class="admin-event">
-                            <p class="admin-event__meta">${event.capturedAt()} | ${event.eventType()} | ${event.sponsoredLabel()}</p>
-                            <p><strong>${event.location()}</strong> via ${event.pageFamily()}</p>
-                            <p class="admin-event__path">Verdict: ${event.verdictState()}</p>
-                            <p class="admin-event__path">Source: ${event.sourcePath()}</p>
-                            <p class="admin-event__path">Destination: ${event.destination()}</p>
-                        </article>
-                    @endfor
-                </div>
-            </section>
-        @else
-            <section class="panel">
-                <div class="panel__eyebrow">Status</div>
-                <h2>No attribution events yet</h2>
-                <p class="panel__note">The file path is ready. The dashboard will populate after the first CTA or provider outbound click is recorded.</p>
-            </section>
-        @endif
-
-        @if(!page.dashboard().hasEvents())
-            <section class="panel">
-                <div class="panel__eyebrow">Hood send loop</div>
-                <h2>What vendor offices actually do in the free closeout</h2>
-                <ul class="admin-breakdown" style="margin-top: 16px;">
-                    <li><span>Hood report views</span><strong>${page.dashboard().hoodSendLoopViewCount()}</strong></li>
-                    <li><span>Acting viewers</span><strong>${page.dashboard().hoodSendLoopActionVisitors()}</strong></li>
-                    <li><span>View to action rate</span><strong>${page.dashboard().hoodSendLoopVisitorActionRateLabel()}</strong></li>
-                </ul>
-                <p class="panel__note" style="margin-top: 16px;">No hood send-loop actions yet.</p>
-            </section>
-        @endif
-
-        @if(page.leads().hasLeads())
-            <section class="grid-two">
-                <article class="panel">
-                    <div class="panel__eyebrow">Leads by city</div>
-                    <h2>Where operator demand appears</h2>
-                    <ul class="admin-breakdown">
-                        @for(AdminBreakdownRow row : page.leads().cityBreakdown())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                        @endfor
-                    </ul>
-                </article>
-                <article class="panel">
-                    <div class="panel__eyebrow">Lead types</div>
-                    <h2>Operator vs sponsor mix</h2>
-                    <ul class="admin-breakdown">
-                        @for(AdminBreakdownRow row : page.leads().leadTypeBreakdown())
-                            <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                        @endfor
-                    </ul>
-                </article>
-            </section>
-
-            <section class="panel">
-                <div class="panel__eyebrow">Lead intents</div>
-                <h2>What local buyers ask for</h2>
-                <ul class="admin-breakdown">
-                    @for(AdminBreakdownRow row : page.leads().providerIntentBreakdown())
-                        <li><span>${row.label()}</span><strong>${row.count()}</strong></li>
-                    @endfor
-                </ul>
-            </section>
-
-            <section class="panel">
-                <div class="panel__eyebrow">Recent leads</div>
-                <h2>Latest intake rows</h2>
-                <div class="admin-events">
-                    @for(AdminRecentLead lead : page.leads().recentLeads())
-                        <article class="admin-event">
-                            <p class="admin-event__meta">${lead.capturedAt()} | ${lead.leadType()} | ${lead.consentLabel()}</p>
-                            <p><strong>${lead.location()}</strong> | ${lead.providerIntent()}</p>
-                            <p class="admin-event__path">${lead.contact()}</p>
-                            <p class="admin-event__path">Source: ${lead.sourcePath()}</p>
-                        </article>
-                    @endfor
-                </div>
-            </section>
-        @else
-            <section class="panel">
-                <div class="panel__eyebrow">Lead status</div>
-                <h2>No leads recorded yet</h2>
-                <p class="panel__note">Service requests and sponsor inquiries will populate here after the first form submission.</p>
-            </section>
-        @endif
+        </div>
     </main>
 `)

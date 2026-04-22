@@ -21,7 +21,7 @@ public class InfoPageCatalog {
                         "about",
                         "About KitchenRuleHub",
                         "An operator-first local compliance workflow",
-                        "KitchenRuleHub is an independent product for commercial kitchen operators. It summarizes local authority guidance, keeps on-site record requirements visible, and keeps vendor routing secondary to rule clarity.",
+                        "KitchenRuleHub is an independent product for commercial kitchen operators. It summarizes local authority guidance, keeps on-site record requirements visible, and keeps provider routing secondary to rule clarity.",
                         "AboutPage",
                         "index,follow",
                         List.of(
@@ -32,7 +32,7 @@ public class InfoPageCatalog {
                                 new GuideSection("What the product is not", List.of(
                                         "Not a government site or municipal portal.",
                                         "Not a generic restaurant operations blog.",
-                                        "Not a vendor directory that outranks local authority guidance."
+                                        "Not a provider directory that outranks local authority guidance."
                                 ))
                         ),
                         List.of(
@@ -53,9 +53,9 @@ public class InfoPageCatalog {
                                         "Canonical local pages must identify the authority that can actually enforce the rule.",
                                         "Every local page is expected to show the requirement, the records to keep on site, likely fail conditions, and the next action before service routing."
                                 )),
-                                new GuideSection("Finder and sponsor rules", List.of(
+                                new GuideSection("Finder and routing rules", List.of(
                                         "Provider routing stays secondary to local rule clarity.",
-                                        "Sponsor placement does not change the rule summary, source list, or inspection guidance on a page."
+                                        "Provider visibility does not change the rule summary, source list, or inspection guidance on a page."
                                 )),
                                 new GuideSection("Freshness and mixed governance", List.of(
                                         "Last verified dates are shown at the page level, not as a site-wide placeholder.",
@@ -64,7 +64,6 @@ public class InfoPageCatalog {
                         ),
                         List.of(
                                 new RelatedPageLink("About", "/about"),
-                                new RelatedPageLink("Sponsor policy", "/sponsor-policy"),
                                 new RelatedPageLink("Corrections policy", "/corrections")
                         )
                 ),
@@ -72,17 +71,13 @@ public class InfoPageCatalog {
                         "contact",
                         "Contact",
                         "Current contact paths",
-                        "KitchenRuleHub currently supports page-level contact workflows. Operator routing requests and sponsor inquiries should use the forms shown on the relevant local page so the request stays attached to the correct city and authority context.",
+                        "KitchenRuleHub currently supports page-level operator routing requests. Use the form shown on the relevant local page so the request stays attached to the correct city and authority context.",
                         "ContactPage",
                         "index,follow",
                         List.of(
                                 new GuideSection("Operator routing requests", List.of(
                                         "Use the service-request form on the relevant grease or hood finder page.",
                                         "Open the city and issue route first so the request stays attached to the right authority and workflow."
-                                )),
-                                new GuideSection("Sponsor and coverage inquiries", List.of(
-                                        "Use the sponsor inquiry form on the local route where placement is requested.",
-                                        "Sponsor requests do not change authority summaries, source stacks, or proof-on-site guidance."
                                 )),
                                 new GuideSection("Corrections and trust issues", List.of(
                                         "Use the corrections workflow described on the corrections page when a source summary, route label, or provider evidence signal looks wrong.",
@@ -99,7 +94,7 @@ public class InfoPageCatalog {
                         "privacy",
                         "Privacy",
                         "Privacy policy",
-                        "KitchenRuleHub stores operator and sponsor contact data only when a user submits a page-level form. The stored data is used for routing, follow-up, attribution review, and operational auditing inside the product.",
+                        "KitchenRuleHub stores operator contact data only when a user submits a page-level form. The stored data is used for routing, follow-up, attribution review, and operational auditing inside the product.",
                         "WebPage",
                         "noindex,follow",
                         List.of(
@@ -108,11 +103,10 @@ public class InfoPageCatalog {
                                         "Basic attribution events may log local page views, tool views, CTA clicks, and provider outbound clicks for product operations."
                                 )),
                                 new GuideSection("How it is used", List.of(
-                                        "Operator requests are used to route service help through the product's operations workflow.",
-                                        "Sponsor inquiries are used to discuss local placement and coverage, not to rewrite the rule content."
+                                        "Operator requests are used to route service help through the product's operations workflow."
                                 )),
                                 new GuideSection("What this policy does not claim", List.of(
-                                        "This policy does not claim government handling, municipal sponsorship, or city ownership of the data.",
+                                        "This policy does not claim government handling, city ownership of the data, or any official submission status.",
                                         "No page-level lead form should be treated as an official government submission channel."
                                 ))
                         ),
@@ -134,38 +128,14 @@ public class InfoPageCatalog {
                                         "Treat the product as a workflow aid grounded in official sources, not as legal advice or a government determination.",
                                         "Always confirm the live rule holder when the page tells you to verify details or when a city page points you to a utility, fire office, or county department."
                                 )),
-                                new GuideSection("Provider and sponsor boundaries", List.of(
+                                new GuideSection("Provider listing boundaries", List.of(
                                         "Listings are routing support only and do not imply municipal endorsement.",
-                                        "Sponsor placement does not convert a provider into an approved or certified local authority listing."
+                                        "A provider listing does not convert that company into an approved or certified local authority listing."
                                 ))
                         ),
                         List.of(
                                 new RelatedPageLink("Methodology", "/methodology"),
-                                new RelatedPageLink("Sponsor policy", "/sponsor-policy"),
                                 new RelatedPageLink("Privacy", "/privacy")
-                        )
-                ),
-                new InfoPageDefinition(
-                        "sponsor-policy",
-                        "Sponsor policy",
-                        "How sponsor visibility stays separate from rule content",
-                        "Sponsor placement is a commercial layer on top of a compliance workflow. It must never blur local rule clarity, source hierarchy, or uncertainty handling.",
-                        "WebPage",
-                        "index,follow",
-                        List.of(
-                                new GuideSection("What sponsors can influence", List.of(
-                                        "Whether a sponsor inquiry is shown on an eligible route.",
-                                        "Whether a clearly labeled sponsor placement appears in the provider section."
-                                )),
-                                new GuideSection("What sponsors cannot influence", List.of(
-                                        "Rule summaries, source lists, last verified dates, fail conditions, and records-to-keep lists.",
-                                        "Whether a city or finder route is indexed when trust gates are not met."
-                                ))
-                        ),
-                        List.of(
-                                new RelatedPageLink("Methodology", "/methodology"),
-                                new RelatedPageLink("About", "/about"),
-                                new RelatedPageLink("Not government affiliated", "/not-government-affiliated")
                         )
                 ),
                 new InfoPageDefinition(

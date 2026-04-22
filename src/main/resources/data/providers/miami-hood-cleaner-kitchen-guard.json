@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "kitchen-guard-miami",
   "providerName": "Kitchen Guard of Miami",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "miami-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://kitchenguard.com/miami/hood-cleaning/",
   "email": "marketing@kitchenguard.com",
   "phone": "954-663-4737",

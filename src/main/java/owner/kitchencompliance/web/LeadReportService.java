@@ -41,30 +41,31 @@ public class LeadReportService {
             return emptyDashboard(logFile);
         }
         List<LeadEvent> leads = readLeads(logFile);
-        if (leads.isEmpty()) {
+        List<LeadEvent> activeLeads = leads.stream()
+                .filter(lead -> lead.leadType().equals("operator_request"))
+                .toList();
+        if (activeLeads.isEmpty()) {
             return emptyDashboard(logFile);
         }
 
-        List<LeadEvent> sortedLeads = leads.stream()
+        List<LeadEvent> sortedLeads = activeLeads.stream()
                 .sorted(Comparator.comparing(LeadEvent::capturedAt).reversed())
                 .toList();
 
-        long operatorRequests = leads.stream().filter(lead -> lead.leadType().equals("operator_request")).count();
-        long sponsorInquiries = leads.stream().filter(lead -> lead.leadType().equals("sponsor_inquiry")).count();
-        long consentedLeads = leads.stream().filter(LeadEvent::routingConsent).count();
+        long operatorRequests = activeLeads.stream().filter(lead -> lead.leadType().equals("operator_request")).count();
+        long consentedLeads = activeLeads.stream().filter(LeadEvent::routingConsent).count();
 
         return new LeadDashboardSnapshot(
                 logFile.toAbsolutePath().normalize().toString(),
                 "To keep leads through redeploys, point APP_LEAD_LOG_DIR at a mounted persistent directory on the host.",
                 true,
-                leads.size(),
+                activeLeads.size(),
                 operatorRequests,
-                sponsorInquiries,
                 consentedLeads,
                 TIMESTAMP_FORMAT.format(sortedLeads.getFirst().capturedAt()),
-                breakdown(leads, lead -> cityLabel(lead.city(), lead.state())),
-                breakdown(leads, this::leadTypeLabel),
-                breakdown(leads, lead -> titleCase(lead.providerIntent().replace('_', ' '))),
+                breakdown(activeLeads, lead -> cityLabel(lead.city(), lead.state())),
+                breakdown(activeLeads, this::leadTypeLabel),
+                breakdown(activeLeads, lead -> titleCase(lead.providerIntent().replace('_', ' '))),
                 sortedLeads.stream()
                         .limit(RECENT_LEAD_LIMIT)
                         .map(this::toRecentLead)
@@ -119,7 +120,6 @@ public class LeadReportService {
                 logFile.toAbsolutePath().normalize().toString(),
                 "To keep leads through redeploys, point APP_LEAD_LOG_DIR at a mounted persistent directory on the host.",
                 false,
-                0,
                 0,
                 0,
                 0,
@@ -232,7 +232,6 @@ public class LeadReportService {
     private String leadTypeLabel(LeadEvent lead) {
         return switch (lead.leadType()) {
             case "operator_request" -> "Operator request";
-            case "sponsor_inquiry" -> "Sponsor inquiry";
             default -> lead.leadType();
         };
     }

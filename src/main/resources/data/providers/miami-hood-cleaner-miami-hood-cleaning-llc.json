@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "miami-hood-cleaning-llc",
   "providerName": "Miami Hood Cleaning LLC",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "miami-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://miamihoodcleaningllc.com/contact-us/",
   "email": "miamihoodcleaningllc@gmail.com",
   "phone": "954-310-4235",

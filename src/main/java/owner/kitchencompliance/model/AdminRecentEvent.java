@@ -7,7 +7,6 @@ public record AdminRecentEvent(
         String sourcePath,
         String destination,
         String pageFamily,
-        String verdictState,
-        String sponsoredLabel
+        String verdictState
 ) {
 }

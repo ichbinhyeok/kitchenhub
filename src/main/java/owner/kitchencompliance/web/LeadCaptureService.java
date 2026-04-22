@@ -107,53 +107,6 @@ public class LeadCaptureService {
         return CaptureResult.success("operator-submitted");
     }
 
-    public CaptureResult captureSponsorInquiry(
-            RouteRecord route,
-            String sourcePath,
-            HttpServletRequest request,
-            HttpServletResponse response,
-            String contactName,
-            String businessName,
-            String email,
-            String phone,
-            String coverageNote,
-            String notes,
-            boolean routingConsent
-    ) {
-        if (!routingConsent) {
-            return CaptureResult.invalid("consent-required");
-        }
-        if (isSpamSubmission(request) || !isValidSubmission(request, contactName, businessName, email, phone, notes, coverageNote)) {
-            return CaptureResult.invalid("sponsor-invalid");
-        }
-
-        String visitorId = attributionService.ensureVisitorId(request, response);
-        String normalizedContactName = normalizeText(contactName);
-        String normalizedBusinessName = normalizeText(businessName);
-        String normalizedEmail = normalizeEmail(email);
-        appendRow(List.of(
-                OffsetDateTime.now(clock).toString(),
-                "sponsor_inquiry",
-                visitorId,
-                route.city(),
-                route.state(),
-                pageFamilyValue(route.template().pageFamily()),
-                issueTypeValue(issueTypeFor(route.template())),
-                route.authorityId(),
-                sourcePath,
-                attributionService.verdictStateForRoute(route),
-                sponsorIntent(route.template()),
-                normalizedContactName,
-                normalizedBusinessName,
-                normalizedEmail,
-                safe(phone),
-                safe(coverageNote),
-                safe(notes),
-                Boolean.toString(true)
-        ));
-        return CaptureResult.success("sponsor-submitted");
-    }
-
     private boolean isValidSubmission(
             HttpServletRequest request,
             String contactName,
@@ -245,14 +198,6 @@ public class LeadCaptureService {
         };
     }
 
-    private String sponsorIntent(RouteTemplate template) {
-        return switch (template) {
-            case FOG_RULES, APPROVED_HAULERS, FIND_GREASE_SERVICE -> "grease_service_sponsor_slot";
-            case HOOD_REQUIREMENTS, FIND_HOOD_CLEANER -> "hood_cleaning_sponsor_slot";
-            case INSPECTION_CHECKLIST -> "inspection_prep_sponsor_slot";
-        };
-    }
-
     private IssueType issueTypeFor(RouteTemplate template) {
         return switch (template) {
             case FOG_RULES, APPROVED_HAULERS, FIND_GREASE_SERVICE -> IssueType.FOG_CLEANING;
@@ -278,7 +223,7 @@ public class LeadCaptureService {
             case MANIFEST_OR_LOG -> "manifest_or_log";
             case HOOD_CLEANING -> "hood_cleaning";
             case INSPECTION_PREP -> "inspection_prep";
-            case VENDOR_SEARCH -> "vendor_search";
+            case PROVIDER_SEARCH -> "provider_search";
             case OPERATOR_UTILITY -> "operator_utility";
         };
     }

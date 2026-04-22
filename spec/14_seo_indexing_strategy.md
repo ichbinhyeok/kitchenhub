@@ -3,7 +3,7 @@
 ## Goal
 - Use organic search as acquisition without turning the product into thin programmatic SEO.
 - Keep canonical local rule pages as the SEO core.
-- Preserve trust by keeping weak finder and transaction pages in monitored states instead of forcing indexation.
+- Preserve trust by keeping weak finder and routing pages in monitored states instead of forcing indexation.
 
 ## SEO thesis
 - Search should bring operators into authoritative local rule pages first.
@@ -31,10 +31,10 @@
 - Their job is to translate broad search intent into a local rule page or operator tool.
 - Guides should never outrank the city or authority page for a local query.
 
-### Commercial layer
-- Finder pages are commercial support pages.
+### Provider-routing layer
+- Finder pages are operator-support pages.
 - They can be indexable when trust is strong.
-- They should never replace the authority summary or read like a directory first.
+- They should never replace the authority summary or read like a provider directory first.
 
 ### Utility layer
 - Noindex operator tools are retention assets.
@@ -82,7 +82,7 @@
   - a promotion checklist
   - a review date
   - a gate that explains what would need to change
-- This is the default holding state for weak finder pages and early commercial pages.
+- This is the default holding state for weak finder pages and early routing pages.
 
 ### `blocked`
 - Use when the route is not safe to work on yet.
@@ -91,14 +91,14 @@
   - missing authority source
   - stale source stack
   - no trustworthy local rule answer
-  - sponsor pressure exceeding available evidence
+  - routing pressure exceeding available evidence
 
 ## Finder indexing thresholds
 - Finder pages may be indexed only when all of the following are true:
   - local rule context is strong
   - provider coverage is meaningfully useful to an operator
   - evidence quality is visible on the card
-  - sponsor and authority content are visually separate
+  - provider evidence and routing UI are visually separate from authority content
   - the page resolves a real next action, not just a list of names
   - official-list grease workflows have at least one authority-backed provider card, not only public contact listings
 - Practical threshold:
@@ -158,6 +158,7 @@
 - Never promote a finder page without evidence quality that operators can see.
 - Never leave a noindex route without a reason and a review date.
 - Never let freshness drift become a hidden tax on search trust.
+- Never layer future provider-sales or mixed-audience acquisition pages into this repository's SEO model.
 
 ## Measurement
 - Track organic clicks by page family.

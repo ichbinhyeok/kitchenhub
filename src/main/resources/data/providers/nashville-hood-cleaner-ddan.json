@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "ddan-hood-cleaning-nashville",
   "providerName": "DDAN Hood Cleaning and Repair",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "nashville-tn-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://ddanhoodcleaning.com/",
   "email": "service@ddanhoodcleaning.com",
   "phone": "615-881-6968",

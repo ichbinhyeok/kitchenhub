@@ -3,7 +3,6 @@ package owner.kitchencompliance.rules;
 import java.util.Comparator;
 import java.util.List;
 import org.springframework.stereotype.Service;
-import owner.kitchencompliance.data.ListingMode;
 import owner.kitchencompliance.data.ProviderRecord;
 
 @Service
@@ -19,34 +18,24 @@ public class ProviderEvidenceService {
 
     public String evidenceLabel(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
-            return provider.listingMode() == ListingMode.PUBLIC
-                    ? "Official source + public contact"
-                    : "Official source + paid placement";
-        }
-        if (provider.listingMode() == ListingMode.PUBLIC) {
             return hasCompleteContact(provider)
-                    ? "Public contact"
-                    : "Public contact only";
+                    ? "Official source + public contact"
+                    : "Official source + limited contact";
         }
         return hasCompleteContact(provider)
-                ? "Paid placement"
-                : "Paid placement only";
+                ? "Public contact"
+                : "Public contact only";
     }
 
     public String providerNote(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
-            return provider.listingMode() == ListingMode.PUBLIC
-                    ? "Ranked first when an official source link is paired with a public service listing."
-                    : "Ranked ahead of weaker listings when an official source link is paired with a paid placement.";
-        }
-        if (provider.listingMode() == ListingMode.PUBLIC) {
             return hasCompleteContact(provider)
-                    ? "Shown from a public service page with complete contact details, but the operator should still verify current local coverage."
-                    : "Shown from a public service page with partial contact details, so the operator should verify current local coverage before booking.";
+                    ? "Ranked first when an official source link is paired with complete public contact details."
+                    : "Official source is present, but the contact details are still incomplete, so the operator should verify local coverage before booking.";
         }
         return hasCompleteContact(provider)
-                ? "Shown as a paid placement with direct contact details; operator verification still applies."
-                : "Shown as a paid placement with partial contact details; operator verification still applies.";
+                ? "Shown from a public service page with complete contact details, but the operator should still verify current local coverage."
+                : "Shown from a public service page with partial contact details, so the operator should verify current local coverage before booking.";
     }
 
     public String coverageConfidenceLabel(ProviderRecord provider) {
@@ -61,18 +50,13 @@ public class ProviderEvidenceService {
 
     public String whyListed(ProviderRecord provider) {
         if (hasOfficialEvidence(provider)) {
-            return provider.listingMode() == ListingMode.PUBLIC
-                    ? "Official source link plus a public service contact."
-                    : "Official source link is visible even though placement is paid.";
-        }
-        if (provider.listingMode() == ListingMode.PUBLIC) {
             return hasCompleteContact(provider)
-                    ? "Public listing with direct contact details and declared local coverage."
-                    : "Public listing with partial contact details that still needs a direct coverage check.";
+                    ? "Official source link plus complete public contact details."
+                    : "Official source link plus partial public contact details that still need a direct coverage check.";
         }
         return hasCompleteContact(provider)
-                ? "Paid placement with direct contact details, kept separate from the rule summary."
-                : "Paid placement is visible, but the operator should verify coverage before booking.";
+                ? "Public listing with direct contact details and declared local coverage."
+                : "Public listing with partial contact details that still needs a direct coverage check.";
     }
 
     private int rankingScore(ProviderRecord provider) {
@@ -80,14 +64,8 @@ public class ProviderEvidenceService {
         if (hasOfficialEvidence(provider)) {
             score += 10_000;
         }
-        if (provider.listingMode() == ListingMode.PUBLIC) {
-            score += 3_000;
-        } else {
-            score += 1_500;
-        }
         score += contactQualityScore(provider) * 120;
         score += scopeFocusScore(provider) * 25;
-        score += sponsorStatusScore(provider) * 10;
         return score;
     }
 
@@ -117,14 +95,6 @@ public class ProviderEvidenceService {
             return 1;
         }
         return 0;
-    }
-
-    private int sponsorStatusScore(ProviderRecord provider) {
-        return switch (provider.sponsorStatus()) {
-            case ACTIVE -> 2;
-            case PROSPECT -> 1;
-            case HOLD -> 0;
-        };
     }
 
     private boolean hasOfficialEvidence(ProviderRecord provider) {

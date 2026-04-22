@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "a1-tank-santa-clara-grease-service",
   "providerName": "A-1 Septic Tank Service",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "santa-clara-ca-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.a1tank.net/service-map/grease-trap-cleaning-santa-clara-ca/",
   "email": "info@a1tank.net",
   "phone": "510-886-4455",

@@ -30,7 +30,6 @@ public record LocalPageViewModel(
         String providerModeSummary,
         CallToAction callToAction,
         LeadCapturePanel operatorLeadPanel,
-        LeadCapturePanel sponsorPanel,
         SubmissionNotice submissionNotice,
         CityVerdict cityVerdict,
         ProviderRoutingDecision routingDecision,

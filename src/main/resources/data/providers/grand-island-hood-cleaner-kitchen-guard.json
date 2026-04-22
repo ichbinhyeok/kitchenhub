@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "kitchen-guard-grand-island",
   "providerName": "Kitchen Guard of Nebraska",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "grand-island-ne-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://kitchenguard.com/nebraska/hood-cleaning/",
   "email": "marketing@kitchenguard.com",
   "phone": "402-480-6102",

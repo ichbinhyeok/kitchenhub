@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "grease-trap-fl-miami",
   "providerName": "Grease Trap FL",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "miami-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://greasetrapfl.com/contact",
   "email": "info@greasetrapfl.com",
   "phone": "786-841-1991",

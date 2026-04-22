@@ -29,7 +29,7 @@ import owner.kitchencompliance.ops.IndexingPolicyService;
 public class AttributionService {
 
     private static final String HEADER =
-            "captured_at,event_type,visitor_id,verdict_state,city,state,page_family,issue_type,authority_id,source_path,target_path,target_url,provider_id,provider_type,cta_type,sponsored,tool_slug\n";
+            "captured_at,event_type,visitor_id,verdict_state,city,state,page_family,issue_type,authority_id,source_path,target_path,target_url,provider_id,provider_type,cta_type,tool_slug\n";
     private static final String VISITOR_COOKIE_NAME = "kch_vid";
     private static final int VISITOR_COOKIE_MAX_AGE_SECONDS = 180 * 24 * 60 * 60;
 
@@ -70,15 +70,14 @@ public class AttributionService {
                 .toUriString();
     }
 
-    public String ctaClickPath(RouteRecord route, String targetPath, boolean sponsored) {
-        return ctaClickPath(route.path(), targetPath, sponsored);
+    public String ctaClickPath(RouteRecord route, String targetPath) {
+        return ctaClickPath(route.path(), targetPath);
     }
 
-    public String ctaClickPath(String sourcePath, String targetPath, boolean sponsored) {
+    public String ctaClickPath(String sourcePath, String targetPath) {
         return UriComponentsBuilder.fromPath("/out/cta")
                 .queryParam("source", sourcePath)
                 .queryParam("target", targetPath)
-                .queryParam("sponsored", sponsored)
                 .toUriString();
     }
 
@@ -121,7 +120,6 @@ public class AttributionService {
                 "",
                 "",
                 "page_view",
-                Boolean.toString(false),
                 ""
         ));
     }
@@ -143,7 +141,6 @@ public class AttributionService {
                 "",
                 "",
                 "page_view",
-                Boolean.toString(false),
                 slug
         ));
     }
@@ -174,7 +171,6 @@ public class AttributionService {
                 "",
                 "",
                 actionType == null ? "" : actionType,
-                Boolean.toString(false),
                 slug
         ));
     }
@@ -200,20 +196,18 @@ public class AttributionService {
                 provider.providerId(),
                 provider.providerType().name().toLowerCase(),
                 "provider_outbound",
-                Boolean.toString(provider.listingMode() != owner.kitchencompliance.data.ListingMode.PUBLIC),
                 ""
         ));
     }
 
-    public void recordCtaClick(RouteRecord route, String targetPath, boolean sponsored, String visitorId) {
-        recordCtaClick(route, route.path(), targetPath, sponsored, visitorId);
+    public void recordCtaClick(RouteRecord route, String targetPath, String visitorId) {
+        recordCtaClick(route, route.path(), targetPath, visitorId);
     }
 
     public void recordCtaClick(
             RouteRecord route,
             String sourcePath,
             String targetPath,
-            boolean sponsored,
             String visitorId
     ) {
         appendRow(List.of(
@@ -231,8 +225,7 @@ public class AttributionService {
                 "",
                 "",
                 "",
-                sponsored ? "sponsor_cta" : "next_action_cta",
-                Boolean.toString(sponsored),
+                "next_action_cta",
                 ""
         ));
     }
@@ -335,7 +328,7 @@ public class AttributionService {
             case MANIFEST_OR_LOG -> "manifest_or_log";
             case HOOD_CLEANING -> "hood_cleaning";
             case INSPECTION_PREP -> "inspection_prep";
-            case VENDOR_SEARCH -> "vendor_search";
+            case PROVIDER_SEARCH -> "provider_search";
             case OPERATOR_UTILITY -> "operator_utility";
         };
     }

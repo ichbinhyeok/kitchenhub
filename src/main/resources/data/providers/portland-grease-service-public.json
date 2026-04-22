@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "nw-biofuel-portland",
   "providerName": "NW Biofuel",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "portland-or-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://nwbiofuel.com/grease-trap-cleaning/",
   "email": "info@nwbiofuel.com",
   "phone": "503-954-6173",

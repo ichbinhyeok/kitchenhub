@@ -17,17 +17,21 @@
 ## Rendering model
 - Local rule pages
 - Local checklist pages
-- Local vendor-routing pages
+- Local provider-routing pages
+- Authority browse and detail pages
 - Support guides
-- Optional noindex operator tools
+- Noindex operator tools
+- Trust and methodology pages
 
 ## Operational services
 - source freshness audit
 - stale-page suppression
-- sponsor inventory gating
+- provider evidence gating
+- noindex promotion queue reporting
+- search-demand snapshot import and review
 - rule diff monitoring in later versions
 
 ## Launch storage
 - JSON as the main registry
-- CSV for imports, exports, and sponsor ops
+- CSV for attribution, lead intake, demand imports, and downloadable operator worksheets
 - snapshots for source evidence where useful

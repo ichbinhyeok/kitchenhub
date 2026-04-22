@@ -21,7 +21,6 @@ import owner.kitchencompliance.data.FogRuleRecord;
 import owner.kitchencompliance.data.HoodRuleRecord;
 import owner.kitchencompliance.data.InspectionPrepRecord;
 import owner.kitchencompliance.data.InspectionType;
-import owner.kitchencompliance.data.ListingMode;
 import owner.kitchencompliance.data.ProviderRecord;
 import owner.kitchencompliance.data.ProviderType;
 import owner.kitchencompliance.data.RouteRecord;
@@ -30,7 +29,6 @@ import owner.kitchencompliance.data.SeedRegistry;
 import owner.kitchencompliance.data.SourceRecord;
 import owner.kitchencompliance.data.SourceScopeType;
 import owner.kitchencompliance.data.SourceTier;
-import owner.kitchencompliance.data.SponsorStatus;
 import owner.kitchencompliance.data.VerificationStatus;
 import owner.kitchencompliance.model.LocalPageViewModel;
 import owner.kitchencompliance.model.ResolvedPage;
@@ -77,20 +75,18 @@ class SitePageServiceDecisionTests {
 
     @Test
     void weakCoverageFinderStaysManualOnlyAndNoindex() {
-        ProviderRecord heldProvider = new ProviderRecord(
+        ProviderRecord incompleteProvider = new ProviderRecord(
                 "pending-provider",
                 "Pending provider",
                 ProviderType.HOOD_CLEANER,
                 List.of("austin-tx-kitchen-compliance"),
-                ListingMode.SPONSOR_ONLY,
-                SponsorStatus.HOLD,
                 "https://not-yet-vetted.invalid/provider",
-                "coverage-review@kitchenrulehub.local",
-                "000-000-0000",
+                " ",
+                " ",
                 "",
                 "Hold until vetted"
         );
-        SitePageService service = createService(fogRule(ApprovedHaulerMode.OFFICIAL_LIST), List.of(heldProvider), RouteTemplate.FIND_HOOD_CLEANER);
+        SitePageService service = createService(fogRule(ApprovedHaulerMode.OFFICIAL_LIST), List.of(incompleteProvider), RouteTemplate.FIND_HOOD_CLEANER);
 
         ResolvedPage resolvedPage = service.localPage("/tx/austin/find-hood-cleaner", null);
         LocalPageViewModel page = (LocalPageViewModel) resolvedPage.page();
@@ -108,8 +104,6 @@ class SitePageServiceDecisionTests {
                 "Public One",
                 ProviderType.HOOD_CLEANER,
                 List.of("austin-tx-kitchen-compliance"),
-                ListingMode.PUBLIC,
-                SponsorStatus.ACTIVE,
                 "https://example.com/public-one",
                 "one@example.com",
                 "111-111-1111",
@@ -121,8 +115,6 @@ class SitePageServiceDecisionTests {
                 "Public Two",
                 ProviderType.HOOD_CLEANER,
                 List.of("austin-tx-kitchen-compliance"),
-                ListingMode.PUBLIC,
-                SponsorStatus.ACTIVE,
                 "https://example.com/public-two",
                 "two@example.com",
                 "222-222-2222",
@@ -146,8 +138,6 @@ class SitePageServiceDecisionTests {
                 "Public No Official",
                 ProviderType.GREASE_HAULER,
                 List.of("austin-tx-kitchen-compliance"),
-                ListingMode.PUBLIC,
-                SponsorStatus.ACTIVE,
                 "https://example.com/public",
                 "public@example.com",
                 "111-111-1111",
@@ -159,8 +149,6 @@ class SitePageServiceDecisionTests {
                 "Public With Official",
                 ProviderType.GREASE_HAULER,
                 List.of("austin-tx-kitchen-compliance"),
-                ListingMode.PUBLIC,
-                SponsorStatus.ACTIVE,
                 "https://example.com/official",
                 "official@example.com",
                 "222-222-2222",
@@ -183,7 +171,7 @@ class SitePageServiceDecisionTests {
     }
 
     @Test
-    void providerFinderIncludesOperatorLeadAndSponsorPanels() {
+    void providerFinderKeepsOnlyOperatorLeadPanel() {
         SitePageService service = createService(fogRule(ApprovedHaulerMode.OFFICIAL_LIST), List.of(), RouteTemplate.FIND_GREASE_SERVICE);
 
         ResolvedPage resolvedPage = service.localPage("/tx/austin/find-grease-service", "operator-submitted");
@@ -191,19 +179,17 @@ class SitePageServiceDecisionTests {
 
         assertThat(page.operatorLeadPanel()).isNotNull();
         assertThat(page.prioritizeOperatorLeadPanel()).isFalse();
-        assertThat(page.sponsorPanel()).isNotNull();
         assertThat(page.submissionNotice().title()).contains("saved");
     }
 
     @Test
-    void rulePagesExposeSponsorPanelOnly() {
+    void rulePagesDoNotExposeLeadPanels() {
         SitePageService service = createService(fogRule(ApprovedHaulerMode.OFFICIAL_LIST), List.of(), RouteTemplate.FOG_RULES);
 
         ResolvedPage resolvedPage = service.localPage("/tx/austin/restaurant-grease-trap-rules", null);
         LocalPageViewModel page = (LocalPageViewModel) resolvedPage.page();
 
         assertThat(page.operatorLeadPanel()).isNull();
-        assertThat(page.sponsorPanel()).isNotNull();
     }
 
     @Test

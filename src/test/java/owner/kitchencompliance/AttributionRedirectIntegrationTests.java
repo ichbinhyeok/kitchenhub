@@ -51,23 +51,21 @@ class AttributionRedirectIntegrationTests {
     void ctaRedirectLogsCityPageFamilyAndCtaType() throws Exception {
         mockMvc.perform(get("/out/cta")
                         .queryParam("source", "/fl/tampa/restaurant-grease-trap-rules")
-                        .queryParam("target", "/fl/tampa/approved-grease-haulers")
-                        .queryParam("sponsored", "false"))
+                        .queryParam("target", "/fl/tampa/approved-grease-haulers"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/fl/tampa/approved-grease-haulers"));
 
         String csv = Files.readString(logFile);
         assertThat(csv).contains("cta_click");
         assertThat(csv).contains("official_list,tampa,fl,fog_rules,fog_cleaning,tampa-wastewater-grease-ordinance,/fl/tampa/restaurant-grease-trap-rules,/fl/tampa/approved-grease-haulers");
-        assertThat(csv).contains("next_action_cta,false");
+        assertThat(csv).contains("next_action_cta");
     }
 
     @Test
     void authorityAliasSourcePathIsPreservedInRedirectLogs() throws Exception {
         mockMvc.perform(get("/out/cta")
                         .queryParam("source", "/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")
-                        .queryParam("target", "/authority/tx/austin-water-pretreatment/approved-grease-haulers")
-                        .queryParam("sponsored", "false"))
+                        .queryParam("target", "/authority/tx/austin-water-pretreatment/approved-grease-haulers"))
                 .andExpect(status().is3xxRedirection())
                 .andExpect(redirectedUrl("/authority/tx/austin-water-pretreatment/approved-grease-haulers"));
 
@@ -76,16 +74,13 @@ class AttributionRedirectIntegrationTests {
     }
 
     @Test
-    void operatorToolActionLogsSendLoopBehaviorWithCityContext() throws Exception {
+    void hoodServiceReportEventEndpointIsNotPublic() throws Exception {
         mockMvc.perform(post("/tools/hood-service-report/events")
                         .param("action", "open_rule_page")
                         .param("city", "charlotte")
                         .param("targetPath", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"))
-                .andExpect(status().isOk());
+                .andExpect(status().isNotFound());
 
-        String csv = Files.readString(logFile);
-        assertThat(csv).contains("tool_action");
-        assertThat(csv).contains("charlotte,nc,operator_tool,hood_cleaning,charlotte-fire-prevention,/tools/hood-service-report,/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements");
-        assertThat(csv).contains("open_rule_page,false,hood-service-report");
+        assertThat(Files.exists(logFile)).isFalse();
     }
 }

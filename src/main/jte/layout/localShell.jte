@@ -121,6 +121,27 @@
                     </article>
                 </section>
 
+                <section class="panel quick-action-panel">
+                    <div class="panel__eyebrow">Do this next</div>
+                    <h2>${page.nextActions().size() > 0 ? page.nextActions().get(0) : "Move from reading into action"}</h2>
+                    <p class="panel__note" style="margin-top: 10px;">Use the rest of the page to confirm the local rule and proof burden, but start with the next move below.</p>
+                    <div class="quick-action-panel__grid">
+                        <article class="quick-action-panel__item">
+                            <div class="panel__eyebrow">First move</div>
+                            <p>${page.nextActions().size() > 0 ? page.nextActions().get(0) : page.summary()}</p>
+                        </article>
+                        <article class="quick-action-panel__item">
+                            <div class="panel__eyebrow">Stage this proof</div>
+                            <p>${page.onSiteRecords().size() > 0 ? page.onSiteRecords().get(0) : page.recordsHeading()}</p>
+                        </article>
+                    </div>
+                    @if(page.callToAction() != null)
+                        <div class="action-row quick-action-panel__actions">
+                            <a class="button button--accent" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
+                        </div>
+                    @endif
+                </section>
+
                 <section class="fog-overview">
                     <article class="authority-card">
                         <div class="authority-card__label">Overall verdict</div>
@@ -218,27 +239,18 @@
                     </article>
                 @endif
 
-                @if(page.sponsorPanel() != null)
-                    <section class="panel">
-                        <div class="panel__eyebrow">${page.sponsorPanel().eyebrow()}</div>
-                        <h2>${page.sponsorPanel().title()}</h2>
-                        <p class="panel__note" style="margin-top: 8px;">${page.sponsorPanel().description()}</p>
-                        @template.layout.leadForm(page.sourcePath(), page.sponsorPanel())
-                    </section>
-                @endif
-
                 @if(page.providers() != null && !page.providers().isEmpty())
                     <section class="panel">
                         <div class="panel__eyebrow">Local service providers</div>
                         <h2>Qualified providers serving the ${page.city()} area</h2>
                         <div class="provider-list" style="margin-top: 18px;">
                             @for(ProviderCard provider : page.providers())
-                                <article class="provider-card${provider.listingLabel().toLowerCase().contains("sponsor") || provider.sponsorStatusLabel().toLowerCase().contains("sponsor") ? " provider-card--featured" : ""}">
+                                <article class="provider-card">
                                     <div class="provider-card__identity">
                                         <div class="provider-card__heading">
                                             <div class="provider-card__topline">
                                                 <div class="provider-card__title">${provider.providerName()}</div>
-                                                <div class="provider-card__badge${provider.listingLabel().toLowerCase().contains("sponsor") || provider.sponsorStatusLabel().toLowerCase().contains("sponsor") ? "" : " provider-card__badge--neutral"}">
+                                                <div class="provider-card__badge provider-card__badge--neutral">
                                                     ${provider.listingLabel()}
                                                 </div>
                                             </div>
@@ -261,7 +273,6 @@
                                     </div>
                                     <p class="provider-card__note">${provider.note()}</p>
                                     <div class="provider-card__footer">
-                                        <span class="panel__note">${provider.sponsorStatusLabel()}</span>
                                         <a class="text-link" href="${provider.siteUrl()}" rel="${ViewFormatSupport.providerOutboundRel(provider)}" target="_blank">Visit provider site</a>
                                     </div>
                                 </article>
@@ -295,6 +306,27 @@
                         <div class="metric-card__label">Next action</div>
                         <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.nextActions(), page.summary())}</div>
                     </article>
+                </section>
+
+                <section class="panel quick-action-panel">
+                    <div class="panel__eyebrow">Do this next</div>
+                    <h2>${page.nextActions().size() > 0 ? page.nextActions().get(0) : "Move from reading into action"}</h2>
+                    <p class="panel__note" style="margin-top: 10px;">Start with the next move below, then use the rest of the page to confirm reports, tags, and inspection proof.</p>
+                    <div class="quick-action-panel__grid">
+                        <article class="quick-action-panel__item">
+                            <div class="panel__eyebrow">First move</div>
+                            <p>${page.nextActions().size() > 0 ? page.nextActions().get(0) : page.summary()}</p>
+                        </article>
+                        <article class="quick-action-panel__item">
+                            <div class="panel__eyebrow">Stage this proof</div>
+                            <p>${page.onSiteRecords().size() > 0 ? page.onSiteRecords().get(0) : page.recordsHeading()}</p>
+                        </article>
+                    </div>
+                    @if(page.callToAction() != null)
+                        <div class="action-row quick-action-panel__actions">
+                            <a class="button button--accent" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
+                        </div>
+                    @endif
                 </section>
 
                 <section class="hood-portal">
@@ -420,18 +452,6 @@
                             </div>
                         </article>
 
-                        @if(page.sponsorPanel() != null)
-                            <section class="partner-stack">
-                                <div class="partner-stack__label">Verified Partners</div>
-                                <article class="partner-card">
-                                    <div class="partner-card__mark">SP</div>
-                                    <div>
-                                        <h4>${page.sponsorPanel().title()}</h4>
-                                        <p>${page.sponsorPanel().description()}</p>
-                                    </div>
-                                </article>
-                            </section>
-                        @endif
                     </div>
                 </section>
             @endif
@@ -479,6 +499,27 @@
                         <div class="metric-card__label">Next action</div>
                         <div class="metric-card__body">${ViewFormatSupport.firstOrFallback(page.nextActions(), page.summary())}</div>
                     </article>
+                </section>
+
+                <section class="panel quick-action-panel">
+                    <div class="panel__eyebrow">Do this next</div>
+                    <h2>${page.nextActions().size() > 0 ? page.nextActions().get(0) : "Move from reading into action"}</h2>
+                    <p class="panel__note" style="margin-top: 10px;">Start with the next move below, then use the checklist and binder sections to close gaps before the inspection window opens.</p>
+                    <div class="quick-action-panel__grid">
+                        <article class="quick-action-panel__item">
+                            <div class="panel__eyebrow">First move</div>
+                            <p>${page.nextActions().size() > 0 ? page.nextActions().get(0) : page.summary()}</p>
+                        </article>
+                        <article class="quick-action-panel__item">
+                            <div class="panel__eyebrow">Stage this proof</div>
+                            <p>${page.onSiteRecords().size() > 0 ? page.onSiteRecords().get(0) : page.recordsHeading()}</p>
+                        </article>
+                    </div>
+                    @if(page.callToAction() != null)
+                        <div class="action-row quick-action-panel__actions">
+                            <a class="button button--accent" href="${page.callToAction().path()}">${page.callToAction().label()}</a>
+                        </div>
+                    @endif
                 </section>
 
                 <section class="inspection-callout">
@@ -675,12 +716,12 @@
 
                     <div class="provider-list">
                         @for(ProviderCard provider : page.providers())
-                            <article class="provider-card${provider.listingLabel().toLowerCase().contains("sponsor") || provider.sponsorStatusLabel().toLowerCase().contains("sponsor") ? " provider-card--featured" : ""}">
+                            <article class="provider-card">
                                 <div class="provider-card__identity">
                                     <div class="provider-card__heading">
                                         <div class="provider-card__topline">
                                             <div class="provider-card__title">${provider.providerName()}</div>
-                                            <div class="provider-card__badge${provider.listingLabel().toLowerCase().contains("sponsor") || provider.sponsorStatusLabel().toLowerCase().contains("sponsor") ? "" : " provider-card__badge--neutral"}">
+                                            <div class="provider-card__badge provider-card__badge--neutral">
                                                 ${provider.listingLabel()}
                                             </div>
                                         </div>
@@ -714,9 +755,6 @@
                                     @endif
                                 </div>
                                 <div class="provider-card__footer">
-                                    @if(provider.sponsorStatusLabel() != null && !provider.sponsorStatusLabel().isBlank())
-                                        <span class="panel__note">${provider.sponsorStatusLabel()}</span>
-                                    @endif
                                     <a class="text-link" href="${provider.siteUrl()}" rel="${ViewFormatSupport.providerOutboundRel(provider)}" target="_blank">Visit provider site</a>
                                 </div>
                             </article>
@@ -738,14 +776,6 @@
                     </section>
                 @endif
 
-                @if(page.sponsorPanel() != null)
-                    <section class="panel panel--accent">
-                        <div class="panel__eyebrow">${page.sponsorPanel().eyebrow()}</div>
-                        <h2>${page.sponsorPanel().title()}</h2>
-                        <p class="panel__note" style="margin-top: 8px;">${page.sponsorPanel().description()}</p>
-                        @template.layout.leadForm(page.sourcePath(), page.sponsorPanel())
-                    </section>
-                @endif
             @endif
 
             @if(page.submissionNotice() != null)

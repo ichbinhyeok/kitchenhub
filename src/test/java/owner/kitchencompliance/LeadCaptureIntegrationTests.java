@@ -60,30 +60,6 @@ class LeadCaptureIntegrationTests {
     }
 
     @Test
-    void sponsorInquiryPersistsCsvAndRedirectsBackToSourcePage() throws Exception {
-        mockMvc.perform(post("/lead-intake/sponsor")
-                        .param("source", "/tx/austin/restaurant-grease-trap-rules")
-                        .param("formLoadedAt", String.valueOf(Clock.systemUTC().millis() - 5_000))
-                        .param("website", "")
-                        .param("contactName", "Jamie Lee")
-                        .param("businessName", "Grease Vendor Co")
-                        .param("email", "JAMIE@VENDOR.EXAMPLE")
-                        .param("phone", "555-000-1111")
-                        .param("coverageNote", "Austin and Round Rock")
-                        .param("notes", "Interested in grease pages")
-                        .param("routingConsent", "true"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/tx/austin/restaurant-grease-trap-rules?lead=sponsor-submitted#sponsor-slot"));
-
-        String csv = Files.readString(leadLogFile);
-        assertThat(csv).contains("sponsor_inquiry");
-        assertThat(csv).contains("grease_service_sponsor_slot");
-        assertThat(csv).contains("Jamie Lee");
-        assertThat(csv).contains("Austin and Round Rock");
-        assertThat(csv).contains("jamie@vendor.example");
-    }
-
-    @Test
     void missingConsentDoesNotWriteLeadRow() throws Exception {
         mockMvc.perform(post("/lead-intake/operator")
                         .param("source", "/tx/austin/find-grease-service")
@@ -115,22 +91,6 @@ class LeadCaptureIntegrationTests {
     }
 
     @Test
-    void tooFastSubmissionDoesNotWriteLeadRow() throws Exception {
-        mockMvc.perform(post("/lead-intake/sponsor")
-                        .param("source", "/tx/austin/restaurant-grease-trap-rules")
-                        .param("formLoadedAt", String.valueOf(Clock.systemUTC().millis()))
-                        .param("website", "")
-                        .param("contactName", "Jamie Lee")
-                        .param("businessName", "Grease Vendor Co")
-                        .param("email", "jamie@vendor.example")
-                        .param("routingConsent", "true"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/tx/austin/restaurant-grease-trap-rules?lead=sponsor-invalid#sponsor-slot"));
-
-        assertThat(Files.exists(leadLogFile)).isFalse();
-    }
-
-    @Test
     void overlongContactNameDoesNotWriteLeadRow() throws Exception {
         mockMvc.perform(post("/lead-intake/operator")
                         .param("source", "/tx/austin/find-grease-service")
@@ -146,20 +106,4 @@ class LeadCaptureIntegrationTests {
         assertThat(Files.exists(leadLogFile)).isFalse();
     }
 
-    @Test
-    void authorityAliasSourcePathIsPreservedInLeadStorageAndRedirect() throws Exception {
-        mockMvc.perform(post("/lead-intake/sponsor")
-                        .param("source", "/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")
-                        .param("formLoadedAt", String.valueOf(Clock.systemUTC().millis() - 5_000))
-                        .param("website", "")
-                        .param("contactName", "Jamie Lee")
-                        .param("businessName", "Grease Vendor Co")
-                        .param("email", "jamie@vendor.example")
-                        .param("routingConsent", "true"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(redirectedUrl("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules?lead=sponsor-submitted#sponsor-slot"));
-
-        String csv = Files.readString(leadLogFile);
-        assertThat(csv).contains("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules");
-    }
 }

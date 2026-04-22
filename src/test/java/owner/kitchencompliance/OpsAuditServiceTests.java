@@ -143,7 +143,7 @@ class OpsAuditServiceTests {
                 .contains("## Sources");
         assertThat(Files.readString(tempDir.resolve("source-evidence").resolve("2026-04-07").resolve("authority-tx-austin-water-pretreatment-restaurant-grease-trap-rules.md")))
                 .contains("Deploy status");
-        assertThat(Files.readString(tempDir.resolve("attribution-summary-latest.csv"))).contains("city,state,page_family,event_type,verdict_state,destination,sponsored,count");
-        assertThat(Files.readString(tempDir.resolve("attribution-summary-2026-04-07.csv"))).contains("city,state,page_family,event_type,verdict_state,destination,sponsored,count");
+        assertThat(Files.readString(tempDir.resolve("attribution-summary-latest.csv"))).contains("city,state,page_family,event_type,verdict_state,destination,count");
+        assertThat(Files.readString(tempDir.resolve("attribution-summary-2026-04-07.csv"))).contains("city,state,page_family,event_type,verdict_state,destination,count");
     }
 }

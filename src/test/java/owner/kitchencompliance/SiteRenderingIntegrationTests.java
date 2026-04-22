@@ -32,11 +32,11 @@ class SiteRenderingIntegrationTests {
     void homePageExplainsScopeAndLinksIntoAllLiveCities() throws Exception {
         mockMvc.perform(get("/"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Kitchen compliance with a local next action")))
-                .andExpect(content().string(containsString("Official sources reviewed locally")))
-                .andExpect(content().string(containsString("Browse City Coverage")))
-                .andExpect(content().string(containsString("For Vendors")))
-                .andExpect(content().string(containsString("href=\"/for-vendors\"")))
+                .andExpect(content().string(containsString("Find what is missing before inspection does")))
+                .andExpect(content().string(containsString("For restaurant owners and kitchen managers")))
+                .andExpect(content().string(containsString("Choose City")))
+                .andExpect(content().string(not(containsString("Vendor workflow"))))
+                .andExpect(content().string(not(containsString("href=\"/for-vendors\""))))
                 .andExpect(content().string(containsString("Choose A City")))
                 .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")))
@@ -49,10 +49,9 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("/or/portland/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/tn/nashville/restaurant-grease-trap-rules")))
                 .andExpect(content().string(containsString("/guides/fog-vs-grease-trap-cleaning")))
-                .andExpect(content().string(containsString("Browse Authorities")))
+                .andExpect(content().string(containsString("Need the office behind the rule?")))
                 .andExpect(content().string(containsString("Austin Water Pretreatment Program")))
                 .andExpect(content().string(containsString("/authorities")))
-                .andExpect(content().string(containsString("/tools/hood-service-report")))
                 .andExpect(content().string(containsString("/tools/grease-log")))
                 .andExpect(content().string(containsString("/tools/missing-proof-tracker")))
                 .andExpect(content().string(containsString("/tools/inspection-reminder-plan")))
@@ -65,24 +64,9 @@ class SiteRenderingIntegrationTests {
     }
 
     @Test
-    void vendorLandingPageFramesTheFreeVendorWedgeWithoutReplacingHome() throws Exception {
+    void vendorLandingRouteIsNotPubliclyReachable() throws Exception {
         mockMvc.perform(get("/for-vendors"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("content=\"noindex,follow\"")))
-                .andExpect(content().string(containsString("Send today's hood closeout in a few minutes")))
-                .andExpect(content().string(containsString("Start today's hood closeout")))
-                .andExpect(content().string(containsString("See the customer-ready report")))
-                .andExpect(content().string(containsString("/tools/hood-service-report?draft=blank")))
-                .andExpect(content().string(containsString("?draft=blank#customer-copy")))
-                .andExpect(content().string(containsString("What you send")))
-                .andExpect(content().string(containsString("A factual hood service report with the site, service date, work completed, proof attached, and any follow-up item.")))
-                .andExpect(content().string(containsString("/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")))
-                .andExpect(content().string(containsString("Why it helps the office")))
-                .andExpect(content().string(containsString("What the customer gets")))
-                .andExpect(content().string(containsString("Use the free report first, then open the local rule page only when the customer asks for records")))
-                .andExpect(content().string(containsString("Find Your City")))
-                .andExpect(content().string(containsString("For Vendors")))
-                .andExpect(content().string(not(containsString("Admin Login"))));
+                .andExpect(status().isNotFound());
     }
 
     @Test
@@ -105,105 +89,7 @@ class SiteRenderingIntegrationTests {
     }
 
     @Test
-    void operatorToolsRenderAsNoindexUtilitiesWithDownloads() throws Exception {
-        String today = LocalDate.now().toString();
-        String displayToday = LocalDate.now().format(DateTimeFormatter.ofPattern("MMMM d, uuuu", Locale.US));
-
-        mockMvc.perform(get("/tools/hood-service-report"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("content=\"noindex,follow\"")))
-                .andExpect(content().string(containsString("Hood service report")))
-                .andExpect(content().string(containsString("Use this as the customer-facing handoff")))
-                .andExpect(content().string(containsString("Build the handoff in under two minutes")))
-                .andExpect(content().string(containsString("Refresh handoff")))
-                .andExpect(content().string(containsString("method=\"post\"")))
-                .andExpect(content().string(containsString("Recipient name")))
-                .andExpect(content().string(containsString("Recipient email")))
-                .andExpect(content().string(containsString("Customer-facing report PDF or printout is ready.")))
-                .andExpect(content().string(containsString("Photo set is attached.")))
-                .andExpect(content().string(containsString("Invoice or internal report file is attached.")))
-                .andExpect(content().string(containsString("Start faster")))
-                .andExpect(content().string(containsString("Start blank closeout")))
-                .andExpect(content().string(containsString("No follow-up on this visit")))
-                .andExpect(content().string(containsString("Saved customer setup")))
-                .andExpect(content().string(containsString("Save current customer")))
-                .andExpect(content().string(containsString("Office defaults")))
-                .andExpect(content().string(containsString("Apply saved defaults")))
-                .andExpect(content().string(containsString("Save office defaults")))
-                .andExpect(content().string(containsString("Recent local draft")))
-                .andExpect(content().string(containsString("Restore recent draft")))
-                .andExpect(content().string(containsString("Save current draft")))
-                .andExpect(content().string(containsString("Save the current job draft in this browser only. Restore it later and keep working from the refreshed handoff.")))
-                .andExpect(content().string(containsString("Local proof photos")))
-                .andExpect(content().string(containsString("Add before and after images from this device only when you want the same browser tab to print them into the PDF closeout.")))
-                .andExpect(content().string(containsString("Photos for this closeout")))
-                .andExpect(content().string(containsString("accept=\"image/*\"")))
-                .andExpect(content().string(containsString("Clear local photos")))
-                .andExpect(content().string(containsString("Photo reference (optional)")))
-                .andExpect(content().string(containsString("Report reference (optional)")))
-                .andExpect(content().string(containsString("Use suggested photo label")))
-                .andExpect(content().string(containsString("Use suggested report label")))
-                .andExpect(content().string(containsString("Suggested photo label:")))
-                .andExpect(content().string(containsString("Suggested report label:")))
-                .andExpect(content().string(containsString("Leave these blank if the files are already attached and the customer does not need your internal file names.")))
-                .andExpect(content().string(containsString("formaction=\"/tools/hood-service-report.txt\"")))
-                .andExpect(content().string(containsString("formaction=\"/tools/hood-service-report.csv\"")))
-                .andExpect(content().string(containsString("Print / PDF")))
-                .andExpect(content().string(containsString("Include the city rule link in the customer email only when this account actually wants it.")))
-                .andExpect(content().string(containsString("Keep the wording factual")))
-                .andExpect(content().string(containsString("Attach these with it")))
-                .andExpect(content().string(containsString("Closeout packet status")))
-                .andExpect(content().string(containsString("Attachment bundle plan")))
-                .andExpect(content().string(containsString("Use consistent file names so the office, customer, and later follow-up all point to the same closeout.")))
-                .andExpect(content().string(containsString("example-bistro-" + today + "-hood-service-report.pdf")))
-                .andExpect(content().string(containsString("example-bistro-" + today + "-before-after-photos.zip")))
-                .andExpect(content().string(containsString("packet items ready")))
-                .andExpect(content().string(containsString("Proof pack to send")))
-                .andExpect(content().string(containsString("Customer-facing service report: this page or PDF printout")))
-                .andExpect(content().string(containsString("Photo proof")))
-                .andExpect(content().string(containsString("Local browser photos included in this closeout preview.")))
-                .andExpect(content().string(containsString("Replace sample values before send")))
-                .andExpect(content().string(containsString("Ready-to-send email")))
-                .andExpect(content().string(containsString("Recipient email is blank. Copy the handoff or send it from your existing thread.")))
-                .andExpect(content().string(containsString("Copy email body")))
-                .andExpect(content().string(containsString("data-tool-event-endpoint=\"/tools/hood-service-report/events\"")))
-                .andExpect(content().string(containsString("data-tool-action=\"copy_subject\"")))
-                .andExpect(content().string(containsString("data-tool-action=\"copy_body\"")))
-                .andExpect(content().string(containsString("data-tool-action=\"print_pdf\"")))
-                .andExpect(content().string(containsString("data-tool-action=\"open_rule_page\"")))
-                .andExpect(content().string(containsString("Location name: Example Bistro")))
-                .andExpect(content().string(containsString("Where this fits in the office")))
-                .andExpect(content().string(containsString("What the customer gets")))
-                .andExpect(content().string(containsString("Why this gets reused")))
-                .andExpect(content().string(containsString("Draft hood service report")))
-                .andExpect(content().string(containsString("Prepared by:")))
-                .andExpect(content().string(containsString("Closeout packet")))
-                .andExpect(content().string(containsString("For your records: this report documents service performed and attached proof.")))
-                .andExpect(content().string(containsString("This closeout is a customer record of service performed and attached proof. Local rule pages stay separate as reference.")))
-                .andExpect(content().string(containsString("Attach the rule link without weakening the handoff")))
-                .andExpect(content().string(containsString("Need the local hood rule page for your records? Reference link for Charlotte: http://localhost:8080/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")))
-                .andExpect(content().string(not(containsString("Vendor-only setup"))))
-                .andExpect(content().string(not(containsString("Setup lives only on this page"))))
-                .andExpect(content().string(not(containsString("Ask about setup"))))
-                .andExpect(content().string(not(containsString("repeat accounts"))))
-                .andExpect(content().string(containsString("/tools/hood-service-report.csv")))
-                .andExpect(content().string(containsString("/tools/hood-service-report.txt")))
-                .andExpect(content().string(not(containsString("Sample handoff"))))
-                .andExpect(content().string(not(containsString("href=\"/tools/hood-service-report.csv?"))))
-                .andExpect(content().string(not(containsString("href=\"/tools/hood-service-report.txt?"))));
-
-        mockMvc.perform(get("/tools/hood-service-report").param("draft", "blank"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Before you send this")))
-                .andExpect(content().string(containsString("Hood service report | Charlotte location | " + displayToday)))
-                .andExpect(content().string(not(containsString("Example Bistro"))))
-                .andExpect(content().string(not(containsString("before-after-set-12"))))
-                .andExpect(content().string(not(containsString("INV-2048"))))
-                .andExpect(content().string(not(containsString("Hood service report | | " + displayToday))))
-                .andExpect(content().string(not(containsString("Attached is today's hood service report for ."))))
-                .andExpect(content().string(containsString("No follow-up items noted.")))
-                .andExpect(content().string(not(containsString("Owner: TBD | Target date:"))));
-
+    void operatorToolsKeepPublicUtilitiesAndBlockVendorWorkflow() throws Exception {
         mockMvc.perform(get("/tools/grease-log"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Grease service log template")));
@@ -212,159 +98,41 @@ class SiteRenderingIntegrationTests {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("reminder_date,city,authority,issue_type,source_route,missing_proof,next_action,owner,status")));
 
-        mockMvc.perform(get("/tools/hood-service-report.csv"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("service_date,city,authority,customer_name,location_name,recipient_name,recipient_email,site_address,vendor_name,crew_or_technician,systems_serviced,photo_reference,report_attachment_ready,photo_set_attached,report_file_attached,reference_link_added,follow_up_item,next_service_date,customer_handoff_note")));
-
-        mockMvc.perform(get("/tools/hood-service-report.txt"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Subject: Hood service report | Example Bistro | " + displayToday)))
-                .andExpect(content().string(containsString("Attached is today's hood service report for Example Bistro.")))
-                .andExpect(content().string(not(containsString("Request setup"))))
-                .andExpect(content().string(not(containsString("Vendor-only setup"))));
-
         mockMvc.perform(get("/tools/missing-proof-tracker.csv"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("detected_on,city,authority,issue_type,missing_proof,source_route,owner,next_review_on,status,closure_note")));
+
+        mockMvc.perform(get("/tools/hood-service-report"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(post("/tools/hood-service-report"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(get("/tools/hood-service-report.csv"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(post("/tools/hood-service-report.csv"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(get("/tools/hood-service-report.txt"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(post("/tools/hood-service-report.txt"))
+                .andExpect(status().isNotFound());
+        mockMvc.perform(post("/tools/hood-service-report/events")
+                        .param("action", "open_rule_page")
+                        .param("city", "charlotte")
+                        .param("targetPath", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"))
+                .andExpect(status().isNotFound());
     }
 
     @Test
-    void hoodServiceReportDraftFlowsIntoPageAndExports() throws Exception {
-        mockMvc.perform(post("/tools/hood-service-report")
-                        .param("city", "austin")
-                        .param("serviceDate", "2026-04-19")
-                        .param("nextServiceDate", "2026-07-19")
-                        .param("customerName", "Sunset Tacos")
-                        .param("siteName", "Sunset Tacos South")
-                        .param("recipientName", "Maria")
-                        .param("recipientEmail", "maria@sunsettacos.com")
-                        .param("siteAddress", "500 Congress Ave, Austin, TX")
-                        .param("vendorName", "Fire Clean Co")
-                        .param("crewOrTechnician", "Crew 7")
-                        .param("workOrderReference", "WO-9001")
-                        .param("systemsServiced", "hood canopy, accessible duct, filters, rooftop fan")
-                        .param("completedWork", "Cleaned canopy\nReinstalled filters")
-                        .param("photoReference", "photo-set-44")
-                        .param("reportReference", "INV-9001")
-                        .param("customerHandoffNote", "Sent to owner and GM")
-                        .param("followUpItems", "Replace bent hinge\nSchedule hinge re-check")
-                        .param("followUpOwner", "GM")
-                        .param("followUpDueDate", "2026-04-30")
-                        .param("reportAttachmentReady", "true")
-                        .param("photoSetAttached", "true")
-                        .param("reportFileAttached", "true")
-                        .param("referenceLinkAdded", "true")
-                        .param("includeReferenceLink", "true"))
+    void publicLocalPagesDoNotRenderSponsorPromotion() throws Exception {
+        mockMvc.perform(get("/tx/austin/restaurant-grease-trap-rules"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Sunset Tacos")))
-                .andExpect(content().string(containsString("500 Congress Ave, Austin, TX")))
-                .andExpect(content().string(containsString("Fire Clean Co | Crew 7")))
-                .andExpect(content().string(containsString("Systems serviced: hood canopy, accessible duct, filters, rooftop fan")))
-                .andExpect(content().string(containsString("Replace bent hinge")))
-                .andExpect(content().string(containsString("Schedule hinge re-check")))
-                .andExpect(content().string(containsString("mailto:maria@sunsettacos.com?subject=")))
-                .andExpect(content().string(containsString("data-tool-action=\"open_email_draft\"")))
-                .andExpect(content().string(containsString("Hi Maria,")))
-                .andExpect(content().string(containsString("Owner: GM | Target date: April 30, 2026")))
-                .andExpect(content().string(containsString("Before and after photo set: photo-set-44")))
-                .andExpect(content().string(containsString("Location name: Sunset Tacos South")))
-                .andExpect(content().string(containsString("Ready to send")))
-                .andExpect(content().string(containsString("Attachment checklist is complete.")))
-                .andExpect(content().string(containsString("Open email draft")))
-                .andExpect(content().string(containsString("sunset-tacos-south-2026-04-19-hood-service-report.pdf")))
-                .andExpect(content().string(containsString("sunset-tacos-south-2026-04-19-before-after-photos.zip")))
-                .andExpect(content().string(containsString("sunset-tacos-south-2026-04-19-austin-hood-rule-link.txt")))
-                .andExpect(content().string(containsString("http://localhost:8080/authority/tx/austin-fire-marshal/hood-cleaning-requirements")));
+                .andExpect(content().string(not(containsString("Want sponsor placement"))))
+                .andExpect(content().string(not(containsString("Sponsor slot"))))
+                .andExpect(content().string(not(containsString("action=\"/lead-intake/sponsor\""))));
 
-        mockMvc.perform(post("/tools/hood-service-report.txt")
-                        .param("city", "austin")
-                        .param("serviceDate", "2026-04-19")
-                        .param("nextServiceDate", "2026-07-19")
-                        .param("customerName", "Sunset Tacos")
-                        .param("siteName", "Sunset Tacos South")
-                        .param("recipientName", "Maria")
-                        .param("recipientEmail", "maria@sunsettacos.com")
-                        .param("vendorName", "Fire Clean Co")
-                        .param("systemsServiced", "hood canopy, accessible duct, filters, rooftop fan")
-                        .param("followUpItems", "Replace bent hinge\nSchedule hinge re-check")
-                        .param("followUpOwner", "GM")
-                        .param("followUpDueDate", "2026-04-30")
-                        .param("reportAttachmentReady", "true")
-                        .param("photoSetAttached", "true")
-                        .param("reportFileAttached", "true")
-                        .param("referenceLinkAdded", "true")
-                        .param("includeReferenceLink", "true"))
+        mockMvc.perform(get("/tx/austin/find-hood-cleaner"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("To: maria@sunsettacos.com")))
-                .andExpect(content().string(containsString("Subject: Hood service report | Sunset Tacos South | April 19, 2026")))
-                .andExpect(content().string(containsString("Hi Maria,")))
-                .andExpect(content().string(containsString("Attached is today's hood service report for Sunset Tacos South.")))
-                .andExpect(content().string(containsString("Systems serviced: hood canopy, accessible duct, filters, rooftop fan.")))
-                .andExpect(content().string(containsString("Follow-up items: Replace bent hinge; Schedule hinge re-check.")))
-                .andExpect(content().string(containsString("Local rule reference for records only: http://localhost:8080/authority/tx/austin-fire-marshal/hood-cleaning-requirements")))
-                .andExpect(content().string(containsString("Fire Clean Co")));
-
-        mockMvc.perform(post("/tools/hood-service-report")
-                        .param("city", "austin")
-                        .param("serviceDate", "2026-04-19")
-                        .param("customerName", "")
-                        .param("siteName", "")
-                        .param("recipientName", "")
-                        .param("recipientEmail", "")
-                        .param("siteAddress", "")
-                        .param("vendorName", "")
-                        .param("crewOrTechnician", "")
-                        .param("workOrderReference", "")
-                        .param("completedWork", "")
-                        .param("photoReference", "")
-                        .param("reportReference", "")
-                        .param("customerHandoffNote", "")
-                        .param("followUpItems", "")
-                        .param("followUpOwner", ""))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Before you send this")))
-                .andExpect(content().string(containsString("Add the restaurant account name.")))
-                .andExpect(content().string(containsString("Export or print the customer-facing report before send.")))
-                .andExpect(content().string(not(containsString("Example Bistro"))))
-                .andExpect(content().string(not(containsString("before-after-set-12"))))
-                .andExpect(content().string(not(containsString("INV-2048"))))
-                .andExpect(content().string(containsString("No follow-up items noted.")))
-                .andExpect(content().string(not(containsString("Owner: TBD | Target date:"))));
-
-        mockMvc.perform(post("/tools/hood-service-report")
-                        .param("city", "miami")
-                        .param("serviceDate", "2026-04-21")
-                        .param("customerName", "Bayside Grill")
-                        .param("siteName", "Bayside Grill Downtown")
-                        .param("recipientName", "Andre")
-                        .param("recipientEmail", "andre@baysidegrill.com")
-                        .param("siteAddress", "225 NE 2nd St, Miami, FL")
-                        .param("vendorName", "South Coast Hood")
-                        .param("completedWork", "Cleaned canopy and filters")
-                        .param("reportAttachmentReady", "true")
-                        .param("photoSetAttached", "true")
-                        .param("reportFileAttached", "true"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Before and after photos: attached separately")))
-                .andExpect(content().string(containsString("Invoice or internal report: attached separately")))
-                .andExpect(content().string(containsString("Photo and report proof are covered by the attached files or a named reference.")))
-                .andExpect(content().string(not(containsString("Add the photo reference or confirm the photo set is attached."))))
-                .andExpect(content().string(not(containsString("Add the invoice or internal report reference."))));
-
-                mockMvc.perform(post("/tools/hood-service-report.csv")
-                        .param("city", "miami")
-                        .param("serviceDate", "2026-04-21")
-                        .param("customerName", "Bayside Grill")
-                        .param("siteName", "Bayside Grill Downtown")
-                        .param("recipientName", "Andre")
-                        .param("recipientEmail", "andre@baysidegrill.com")
-                        .param("siteAddress", "225 NE 2nd St, Miami, FL")
-                        .param("vendorName", "South Coast Hood")
-                        .param("reportAttachmentReady", "true")
-                        .param("photoSetAttached", "true")
-                        .param("reportFileAttached", "true"))
-                .andExpect(status().isOk())
-                .andExpect(content().string(containsString("2026-04-21,Miami,Miami-Dade Building Mechanical,Bayside Grill,Bayside Grill Downtown,Andre,andre@baysidegrill.com,\"225 NE 2nd St, Miami, FL\",South Coast Hood,,,,true,true,true,false")));
+                .andExpect(content().string(not(containsString("Sponsor placement"))))
+                .andExpect(content().string(not(containsString("Sponsored placement"))));
     }
 
     @Test
@@ -379,9 +147,7 @@ class SiteRenderingIntegrationTests {
                 .andExpect(content().string(containsString("Open rule page")))
                 .andExpect(content().string(containsString("Official sources for this page")))
                 .andExpect(content().string(containsString("Austin publishes an official hauler or preferred-pumper list")))
-                .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/approved-grease-haulers")))
-                .andExpect(content().string(containsString("action=\"/lead-intake/sponsor\"")))
-                .andExpect(content().string(containsString("Want sponsor placement on Austin coverage?")));
+                .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/approved-grease-haulers")));
     }
 
     @Test
@@ -737,7 +503,7 @@ class SiteRenderingIntegrationTests {
         mockMvc.perform(get("/tx/austin/restaurant-grease-trap-rules"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString(
-                        "href=\"/out/cta?source=/tx/austin/restaurant-grease-trap-rules&amp;target=/authority/tx/austin-water-pretreatment/approved-grease-haulers&amp;sponsored=false\""
+                        "href=\"/out/cta?source=/tx/austin/restaurant-grease-trap-rules&amp;target=/authority/tx/austin-water-pretreatment/approved-grease-haulers\""
                 )));
     }
 
@@ -778,7 +544,7 @@ class SiteRenderingIntegrationTests {
     void guidePagesUseSharedLinksThatReferenceMultipleLiveCities() throws Exception {
         mockMvc.perform(get("/guides/fog-vs-grease-trap-cleaning"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Local pages to open next")))
+                .andExpect(content().string(containsString("Open a local page now")))
                 .andExpect(content().string(containsString("Keep going with a local page")))
                 .andExpect(content().string(containsString("Austin Water Pretreatment Program")))
                 .andExpect(content().string(containsString("/authority/tx/austin-water-pretreatment/restaurant-grease-trap-rules")))

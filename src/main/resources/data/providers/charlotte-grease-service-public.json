@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "greenway-waste-solutions-charlotte",
   "providerName": "Greenway Waste Solutions",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "charlotte-nc-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.greenwaywastesolutions.com/services/",
   "email": "info@greenwaywastesolutions.com",
   "phone": "704.885.2705",

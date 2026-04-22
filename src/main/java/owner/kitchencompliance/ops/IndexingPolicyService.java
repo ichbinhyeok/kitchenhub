@@ -3,13 +3,11 @@ package owner.kitchencompliance.ops;
 import java.util.List;
 import org.springframework.stereotype.Service;
 import owner.kitchencompliance.data.ApprovedHaulerMode;
-import owner.kitchencompliance.data.ListingMode;
 import owner.kitchencompliance.data.ProviderRecord;
 import owner.kitchencompliance.data.RouteRecord;
 import owner.kitchencompliance.data.RouteTemplate;
 import owner.kitchencompliance.data.SeedRegistry;
 import owner.kitchencompliance.data.SourceRecord;
-import owner.kitchencompliance.data.SponsorStatus;
 
 @Service
 public class IndexingPolicyService {
@@ -56,10 +54,7 @@ public class IndexingPolicyService {
     }
 
     public boolean isPubliclyRenderable(ProviderRecord provider) {
-        if (provider.listingMode() == ListingMode.PUBLIC) {
-            return provider.sponsorStatus() != SponsorStatus.HOLD;
-        }
-        return provider.sponsorStatus() == SponsorStatus.ACTIVE;
+        return hasDirectContact(provider);
     }
 
     public int minimumFinderProviderCount() {

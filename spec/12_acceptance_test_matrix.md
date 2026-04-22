@@ -8,7 +8,7 @@ Define launch-done behavior before code is written.
 ### Home and navigation
 - home explains `FOG + hood + inspection prep` clearly
 - site does not read like a generic restaurant blog
-- city and guide routes are discoverable from home
+- city, guide, authority, and tool routes are discoverable from home
 
 ### City FOG page
 - shows local rule holder
@@ -28,14 +28,14 @@ Define launch-done behavior before code is written.
 
 ### Provider finder page
 - never implies official approval unless the authority publishes it
-- routes to public providers only, or clearly labeled sponsor mode
+- routes to public providers only and labels any verification requirement clearly
 - stays noindex if coverage is weak
 - if it stays noindex, the route has a visible promotion reason, checklist, and next review date in ops tooling
 - follows the finder indexing threshold and freshness discipline in `spec/14_seo_indexing_strategy.md`
 
 ## Trust acceptance
 - every indexed local page has source stack and last-verified date
-- sponsor copy is visibly separate from official requirement text
+- provider evidence and routing UI are visibly separate from official requirement text
 - no claim of approval without an official list
 - noindex routes are not orphaned; they remain visible in a promotion queue until promoted, intentionally held, or removed
 - guides point into canonical local pages instead of competing with them for local intent
@@ -52,7 +52,8 @@ Define launch-done behavior before code is written.
 - seed JSON matches contracts in `spec/11`
 - launch route inventory matches `spec/10`
 
-## Commercial acceptance
+## Routing and retention acceptance
 - CTA placement follows the rule summary, not the other way around
-- lead attribution preserves city, page family, and issue type
+- lead attribution preserves city, page family, issue type, and provider intent
 - provider routing never exceeds the consent model documented publicly
+- operator-tool usage logs separately from local page traffic

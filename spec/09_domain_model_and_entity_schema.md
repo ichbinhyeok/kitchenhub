@@ -1,7 +1,7 @@
 # 09 Domain Model And Entity Schema
 
 ## Goal
-Turn the product packet into an implementation-ready model so multiple agents can build against the same nouns.
+Turn the product packet into an implementation-ready model so multiple agents can build against the same nouns and persisted contracts.
 
 ## Package map
 - `owner.kitchencompliance.data` - file-backed records and loaders
@@ -37,6 +37,7 @@ Why it exists:
 - `hoodAuthorityId`
 - `launchTier`
 - `indexable`
+- `homeSummary`
 - `decisionReason`
 
 Why it exists:
@@ -95,20 +96,16 @@ Why it exists:
   - `grease_hauler`
   - `grease_trap_service`
   - `hood_cleaner`
-  - `suppression_vendor`
+  - `suppression_service`
 - `coverageTargets[]`
-- `listingMode`
-  - `public`
-  - `sponsor_only`
-- `sponsorStatus`
-  - `prospect`
-  - `active`
-  - `hold`
 - `siteUrl`
 - `email`
 - `phone`
 - `officialApprovalSourceUrl`
 - `internalNote`
+
+Why it exists:
+- Public provider evidence is part of the operator next-action layer, but providers are never first-party paid placements in this repo.
 
 ### `RouteRecord`
 - `path`
@@ -141,6 +138,15 @@ Why it exists:
 - `verifiedOn`
 - `nextReviewOn`
 
+### `SearchDemandSnapshotRecord`
+- `routePath`
+- `topQuery`
+- `impressions28d`
+- `clicks28d`
+- `averagePosition`
+- `capturedOn`
+- `note`
+
 ### `LeadIntakeRecord`
 - `leadId`
 - `capturedAt`
@@ -154,6 +160,32 @@ Why it exists:
 - `notes`
 - `routingConsent`
 
+Note:
+- This typed data record exists in the codebase, but the launch runtime does not persist it directly.
+
+### `LeadCaptureEventRow`
+- `captured_at`
+- `lead_type`
+- `visitor_id`
+- `city`
+- `state`
+- `page_family`
+- `issue_type`
+- `authority_id`
+- `source_path`
+- `verdict_state`
+- `provider_intent`
+- `contact_name`
+- `business_name`
+- `email`
+- `phone`
+- `coverage_note`
+- `notes`
+- `routing_consent`
+
+Why it exists:
+- This is the actual launch persistence contract used by `lead-intake.csv` and the `/admin` lead exports.
+
 ## Launch-safe enums
 - `pageFamily`
   - `fog_rules`
@@ -161,12 +193,14 @@ Why it exists:
   - `hood_requirements`
   - `inspection_checklist`
   - `provider_finder`
+  - `operator_tool`
 - `issueType`
   - `fog_cleaning`
   - `manifest_or_log`
   - `hood_cleaning`
   - `inspection_prep`
-  - `vendor_search`
+  - `provider_search`
+  - `operator_utility`
 
 ## Decision outputs
 
@@ -192,3 +226,4 @@ Why it exists:
 ## Build rule
 - Do not let templates invent fields.
 - Every rendered page must be traceable to one or more records above.
+- Do not reintroduce removed listing or paid-placement-only fields that are absent from the live runtime.

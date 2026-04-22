@@ -16,8 +16,8 @@ public enum IssueType {
     @JsonProperty("inspection_prep")
     INSPECTION_PREP,
 
-    @JsonProperty("vendor_search")
-    VENDOR_SEARCH,
+    @JsonProperty("provider_search")
+    PROVIDER_SEARCH,
 
     @JsonProperty("operator_utility")
     OPERATOR_UTILITY

@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "hoodz-santa-clara-hood-cleaning",
   "providerName": "HOODZ of San Francisco and West San Jose",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "santa-clara-ca-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.hoodzinternational.com/san-francisco-w-san-jose/exhaust-hood-cleaning/",
   "email": "Tobin.Lent@hoodz.us.com",
   "phone": "415-762-7888",

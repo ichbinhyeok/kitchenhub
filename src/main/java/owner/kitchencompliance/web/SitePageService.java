@@ -16,7 +16,6 @@ import owner.kitchencompliance.data.CityComplianceProfile;
 import owner.kitchencompliance.data.FogRuleRecord;
 import owner.kitchencompliance.data.HoodRuleRecord;
 import owner.kitchencompliance.data.InspectionPrepRecord;
-import owner.kitchencompliance.data.ListingMode;
 import owner.kitchencompliance.data.ProviderRecord;
 import owner.kitchencompliance.data.ProviderType;
 import owner.kitchencompliance.data.RouteRecord;
@@ -49,7 +48,6 @@ import owner.kitchencompliance.model.ResolvedPage;
 import owner.kitchencompliance.model.SitemapEntry;
 import owner.kitchencompliance.model.SourceAttribution;
 import owner.kitchencompliance.model.SubmissionNotice;
-import owner.kitchencompliance.model.VendorLandingPageViewModel;
 import owner.kitchencompliance.ops.IndexingPolicyService;
 import owner.kitchencompliance.rules.CityVerdictService;
 import owner.kitchencompliance.rules.ProviderEvidenceService;
@@ -177,7 +175,7 @@ public class SitePageService {
         return new HomePageViewModel(
                 meta,
                 "Kitchen compliance with a local next action",
-                "KitchenRuleHub helps commercial kitchen operators start with grease, hood, or inspection work, confirm the local rule holder, and then move into the next action without mixing vendor copy into rule guidance.",
+                "KitchenRuleHub helps commercial kitchen operators start with grease, hood, or inspection work, confirm the local rule holder, and then move into the next action without mixing provider copy into rule guidance.",
                 List.of(
                         "Choose the local rule holder before you rely on a city summary or provider page.",
                         "Stage the records, tags, manifests, and checklists inspectors usually ask for on site.",
@@ -187,73 +185,6 @@ public class SitePageService {
                 cityCards,
                 guideLinks,
                 operatorToolService.homeToolLinks()
-        );
-    }
-
-    public VendorLandingPageViewModel vendorLandingPage() {
-        PageMeta meta = new PageMeta(
-                "For Hood Cleaning Vendors | Send Today's Closeout Faster",
-                "Use the free hood service report to fill today's job, send a customer-ready closeout, and keep city rule pages separate unless the customer asks for records.",
-                canonicalUrl("/for-vendors"),
-                "noindex,follow",
-                null,
-                structuredDataJson(List.of(
-                        schemaObject(
-                                "WebPage",
-                                "For Hood Cleaning Vendors",
-                                canonicalUrl("/for-vendors"),
-                                "Vendor-side entry for sending a customer-ready hood closeout."
-                        ),
-                        breadcrumbStructuredData(List.of(
-                                breadcrumbItem("Home", canonicalUrl("/")),
-                                breadcrumbItem("For Vendors", canonicalUrl("/for-vendors"))
-                        ))
-                ))
-        );
-
-        return new VendorLandingPageViewModel(
-                meta,
-                "Vendor workflow",
-                "Send today's hood closeout in a few minutes",
-                "Use this right after the crew finishes. Fill the job facts once, send the customer-ready report, and pull in the city rule page only if the customer asks for records.",
-                List.of(
-                        "Start from a blank closeout so today's job goes out cleanly.",
-                        "Send one factual report with proof, follow-up notes, and the next recommended service date.",
-                        "Use the city rule page only as backup when the customer wants records or inspection context."
-                ),
-                List.of(
-                        new RelatedPageLink("Start today's hood closeout", "/tools/hood-service-report?draft=blank"),
-                        new RelatedPageLink("See the customer-ready report", "/tools/hood-service-report?draft=blank#customer-copy"),
-                        new RelatedPageLink("See a city rule page example", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements")
-                ),
-                List.of(
-                        new GuideSection("When you'd use this", List.of(
-                                "Right after the crew finishes and the office has notes, photos, and an invoice or work-order reference.",
-                                "When the customer expects one clean closeout in the same email thread as the invoice or job wrap-up.",
-                                "When you need a customer-ready record without writing the whole handoff from scratch."
-                        )),
-                        new GuideSection("What you send", List.of(
-                                "A factual hood service report with the site, service date, work completed, proof attached, and any follow-up item.",
-                                "The same draft as email copy, printable PDF, or worksheet export without rewriting the customer handoff.",
-                                "A separate city rule page only when the customer wants records or inspection context."
-                        )),
-                        new GuideSection("Why it helps the office", List.of(
-                                "It gives the office a send step that looks finished without turning into a CRM or account setup project.",
-                                "It catches the common miss where the email is written but the report, photo set, or invoice file is not ready.",
-                                "It keeps the customer-facing report clean while leaving rule links and internal file labels optional."
-                        )),
-                        new GuideSection("What the customer gets", List.of(
-                                "A clear record of what was cleaned on this visit.",
-                                "A simple note about what proof is attached and what still needs follow-up.",
-                                "The next recommended service date without language that sounds official or government-issued."
-                        ))
-                ),
-                List.of(
-                        new RelatedPageLink("Start today's hood closeout", "/tools/hood-service-report?draft=blank"),
-                        new RelatedPageLink("Austin hood requirements", "/authority/tx/austin-fire-marshal/hood-cleaning-requirements"),
-                        new RelatedPageLink("Charlotte hood requirements", "/authority/nc/charlotte-fire-prevention/hood-cleaning-requirements"),
-                        new RelatedPageLink("Miami hood requirements", "/fl/miami/hood-cleaning-requirements")
-                )
         );
     }
 
@@ -523,17 +454,15 @@ public class SitePageService {
                 cityName + " publishes a clear local service cadence and verification workflow, so this page can stay specific without falling back to generic national advice.",
                 fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
                         ? cityName + " publishes an official hauler or preferred-pumper list, but it does not recommend or endorse any provider on that list."
-                        : cityName + " does not publish a safe approved list for this workflow, so the operator must verify the vendor directly.",
+                        : cityName + " does not publish a safe approved list for this workflow, so the operator must verify the service company directly.",
                 null,
                 new CallToAction(
                         "Need a hauler check before the next pump-out?",
-                        "Start with the city's official list and then confirm the vendor still covers grease waste and manifest handling.",
+                        "Start with the city's official list and then confirm the service company still covers grease waste and manifest handling.",
                         "Review the " + cityName + " hauler workflow",
-                        localRoutePath(profile.profileId(), RouteTemplate.APPROVED_HAULERS),
-                        false
+                        localRoutePath(profile.profileId(), RouteTemplate.APPROVED_HAULERS)
                 ),
                 null,
-                sponsorPanel(route, cityName),
                 submissionNotice(noticeCode),
                 verdict,
                 null,
@@ -592,11 +521,9 @@ public class SitePageService {
                         "Still need service help?",
                         "Move from the list check to an action page that tells staff what to confirm before booking.",
                         "Open grease service next steps",
-                        localRoutePath(profile.profileId(), RouteTemplate.FIND_GREASE_SERVICE),
-                        false
+                        localRoutePath(profile.profileId(), RouteTemplate.FIND_GREASE_SERVICE)
                 ),
                 null,
-                sponsorPanel(route, cityName),
                 submissionNotice(noticeCode),
                 verdict,
                 null,
@@ -644,17 +571,15 @@ public class SitePageService {
                 verdict.nextActions(),
                 "Separation rule",
                 cityName + "'s cited fire documents support hood-system paperwork and scheduled system attention. They should not be collapsed into a single generic claim about all cleaning intervals.",
-                "This route stays focused on local fire paperwork and inspection prep, not a vendor's universal cleaning promise.",
+                "This route stays focused on local fire paperwork and inspection prep, not a cleaner's universal marketing promise.",
                 null,
                 new CallToAction(
                         "Need a cleaner who can leave inspection-ready paperwork?",
                         "Use the finder route carefully: it keeps authority guidance separate from provider listings and only stays indexed while coverage remains strong.",
                         "Check hood cleaner coverage",
-                        localRoutePath(profile.profileId(), RouteTemplate.FIND_HOOD_CLEANER),
-                        false
+                        localRoutePath(profile.profileId(), RouteTemplate.FIND_HOOD_CLEANER)
                 ),
                 null,
-                sponsorPanel(route, cityName),
                 submissionNotice(noticeCode),
                 verdict,
                 null,
@@ -708,11 +633,9 @@ public class SitePageService {
                         "Need to close a paperwork gap before inspection?",
                         "Start from the hood route if the missing item is a report, tag, or system service record.",
                         "Review hood requirements",
-                        seedRegistry.routeFor(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS).path(),
-                        false
+                        seedRegistry.routeFor(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS).path()
                 ),
                 null,
-                sponsorPanel(route, cityName),
                 submissionNotice(noticeCode),
                 verdict,
                 null,
@@ -750,10 +673,7 @@ public class SitePageService {
                         attributionService.providerClickPath(requestPath, provider),
                         provider.email(),
                         provider.phone(),
-                        provider.listingMode() == ListingMode.PUBLIC
-                                ? "Public listing"
-                                : "Sponsor placement",
-                        provider.listingMode() == ListingMode.PUBLIC ? "" : "Sponsored placement",
+                        "Public listing",
                         providerEvidenceService.evidenceLabel(provider),
                         providerEvidenceService.coverageConfidenceLabel(provider),
                         providerEvidenceService.whyListed(provider),
@@ -779,7 +699,7 @@ public class SitePageService {
         } else if (authorityBackedProviderCount == 0) {
             providerModeSummary = "These listings can help you make first contact, but you should still verify service scope, manifest handling, and current city coverage before booking.";
         } else {
-            providerModeSummary = "The cards below separate public listings from paid placements and show the paperwork signals that matter before booking.";
+            providerModeSummary = "The cards below separate stronger evidence-backed listings from general service listings and keep the paperwork signals visible before booking.";
         }
 
         String noteTitle;
@@ -792,8 +712,7 @@ public class SitePageService {
                     "Need the rule summary first?",
                     "Go back to the grease rule page if staff still needs the actual city requirement before calling anyone.",
                     "Return to " + cityName + " grease trap rules",
-                    localRoutePath(profile.profileId(), RouteTemplate.FOG_RULES),
-                    false
+                    localRoutePath(profile.profileId(), RouteTemplate.FOG_RULES)
             );
         } else {
             noteTitle = "Before you call a hood cleaner";
@@ -802,8 +721,7 @@ public class SitePageService {
                     "Need the hood paperwork rule first?",
                     "Go back to the hood requirement page if the team still needs the local inspection-ready record list.",
                     "Return to " + cityName + " hood requirements",
-                    localRoutePath(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS),
-                    false
+                    localRoutePath(profile.profileId(), RouteTemplate.HOOD_REQUIREMENTS)
             );
         }
 
@@ -837,7 +755,6 @@ public class SitePageService {
                 providerModeSummary,
                 callToAction,
                 operatorLeadPanel(route, cityName),
-                sponsorPanel(route, cityName),
                 submissionNotice(noticeCode),
                 verdict,
                 routingDecision,
@@ -876,7 +793,6 @@ public class SitePageService {
             String providerModeSummary,
             CallToAction callToAction,
             LeadCapturePanel operatorLeadPanel,
-            LeadCapturePanel sponsorPanel,
             SubmissionNotice submissionNotice,
             CityVerdict cityVerdict,
             ProviderRoutingDecision routingDecision,
@@ -928,7 +844,6 @@ public class SitePageService {
                 providerModeSummary,
                 trackedCallToAction(requestPath, callToAction),
                 operatorLeadPanel,
-                sponsorPanel,
                 submissionNotice,
                 cityVerdict,
                 routingDecision,
@@ -953,7 +868,6 @@ public class SitePageService {
                     new RelatedPageLink("Inspection reminder plan", "/tools/inspection-reminder-plan")
             );
             case HOOD_REQUIREMENTS, FIND_HOOD_CLEANER -> List.of(
-                    new RelatedPageLink("Hood service report", "/tools/hood-service-report"),
                     new RelatedPageLink("Hood record binder", "/tools/hood-record-binder"),
                     new RelatedPageLink("Missing proof tracker", "/tools/missing-proof-tracker"),
                     new RelatedPageLink("Inspection reminder plan", "/tools/inspection-reminder-plan")
@@ -975,8 +889,7 @@ public class SitePageService {
                 callToAction.title(),
                 callToAction.description(),
                 callToAction.label(),
-                attributionService.ctaClickPath(sourcePath, callToAction.path(), callToAction.sponsored()),
-                callToAction.sponsored()
+                attributionService.ctaClickPath(sourcePath, callToAction.path())
         );
     }
 
@@ -994,21 +907,7 @@ public class SitePageService {
                 description,
                 "/lead-intake/operator",
                 "Send service request",
-                "I consent to routing this request for local service follow-up.",
-                false
-        );
-    }
-
-    private LeadCapturePanel sponsorPanel(RouteRecord route, String cityName) {
-        return new LeadCapturePanel(
-                "sponsor-slot",
-                "Sponsor slot",
-                "Want sponsor placement on " + cityName + " coverage?",
-                "This inquiry is only about sponsor placement. It does not change the rule summary, source list, or inspection guidance on the page.",
-                "/lead-intake/sponsor",
-                "Request sponsor details",
-                "I consent to follow-up about sponsor placement for this route family.",
-                true
+                "I consent to routing this request for local service follow-up."
         );
     }
 
@@ -1021,20 +920,12 @@ public class SitePageService {
                     "Service request saved",
                     "We received your request and will use the city and issue details from this page when we follow up."
             );
-            case "sponsor-submitted" -> new SubmissionNotice(
-                    "Sponsor inquiry saved",
-                    "We received your inquiry and will follow up about sponsor placement for this route."
-            );
             case "consent-required" -> new SubmissionNotice(
                     "Consent required",
                     "Check the consent box before sending the request."
             );
             case "operator-invalid" -> new SubmissionNotice(
                     "Service request incomplete",
-                    "Add a contact name, business name, and email before submitting."
-            );
-            case "sponsor-invalid" -> new SubmissionNotice(
-                    "Sponsor inquiry incomplete",
                     "Add a contact name, business name, and email before submitting."
             );
             default -> null;
@@ -1075,7 +966,7 @@ public class SitePageService {
         if (route.template() == RouteTemplate.FIND_GREASE_SERVICE) {
             return List.of(
                     "Confirm the current city hauler or transporter workflow before booking, especially if the authority publishes a list or registry.",
-                    "Ask the vendor to confirm current " + cityName + " grease coverage, manifest handling, and who leaves the receipt trail on site.",
+                    "Ask the service company to confirm current " + cityName + " grease coverage, manifest handling, and who leaves the receipt trail on site.",
                     "File the trip ticket, receipt, and follow-up date into the grease log and reminder plan as soon as service is complete."
             );
         }

@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "hoodklean-tampa",
   "providerName": "HoodKlean",
   "providerType": "hood_cleaner",
   "coverageTargets": [
     "tampa-fl-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.hoodklean.com/",
   "email": "sales@hoodklean.com",
   "phone": "813-872-9500",

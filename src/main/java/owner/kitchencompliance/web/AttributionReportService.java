@@ -27,11 +27,12 @@ public class AttributionReportService {
 
     private static final int EXPECTED_COLUMNS_V1 = 14;
     private static final int EXPECTED_COLUMNS_V2 = 17;
+    private static final int EXPECTED_COLUMNS_V3 = 16;
     private static final int RECENT_EVENT_LIMIT = 12;
     private static final int BREAKDOWN_LIMIT = 8;
     private static final DateTimeFormatter TIMESTAMP_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss xxx");
     private static final String HEADER =
-            "captured_at,event_type,visitor_id,verdict_state,city,state,page_family,issue_type,authority_id,source_path,target_path,target_url,provider_id,provider_type,cta_type,sponsored,tool_slug\n";
+            "captured_at,event_type,visitor_id,verdict_state,city,state,page_family,issue_type,authority_id,source_path,target_path,target_url,provider_id,provider_type,cta_type,tool_slug\n";
 
     private final AttributionProperties properties;
 
@@ -62,10 +63,7 @@ public class AttributionReportService {
         long toolActionEvents = events.stream().filter(event -> event.eventType().equals("tool_action")).count();
         long providerClicks = events.stream().filter(event -> event.eventType().equals("provider_click")).count();
         long ctaClicks = events.stream().filter(event -> event.eventType().equals("cta_click")).count();
-        long sponsoredClicks = events.stream().filter(AttributionEvent::sponsored).count();
-
         UtilityRevisitSummary utilityRevisitSummary = utilityRevisitSummary(events);
-        HoodSendLoopSummary hoodSendLoopSummary = hoodSendLoopSummary(events);
 
         return new AttributionDashboardSnapshot(
                 logFile.toAbsolutePath().normalize().toString(),
@@ -77,17 +75,12 @@ public class AttributionReportService {
                 toolActionEvents,
                 providerClicks,
                 ctaClicks,
-                sponsoredClicks,
                 utilityRevisitSummary.returningVisitors(),
                 utilityRevisitSummary.rateLabel(),
-                hoodSendLoopSummary.viewCount(),
-                hoodSendLoopSummary.actionVisitors(),
-                hoodSendLoopSummary.visitorActionRateLabel(),
                 formatTimestamp(sortedEvents.getFirst().capturedAt()),
                 breakdown(events, event -> cityLabel(event.city(), event.state())),
                 breakdown(events, event -> pageFamilyLabel(event.pageFamily())),
                 breakdown(events, event -> verdictStateLabel(event.verdictState())),
-                hoodSendLoopBreakdown(events),
                 breakdown(events, this::destinationLabel),
                 sortedEvents.stream()
                         .limit(RECENT_EVENT_LIMIT)
@@ -110,7 +103,7 @@ public class AttributionReportService {
 
     public String exportSummaryCsv() {
         List<AttributionEvent> events = readEvents(properties.logFilePath());
-        StringBuilder builder = new StringBuilder("city,state,page_family,event_type,verdict_state,destination,sponsored,count\n");
+        StringBuilder builder = new StringBuilder("city,state,page_family,event_type,verdict_state,destination,count\n");
         events.stream()
                 .collect(Collectors.groupingBy(
                         event -> new SummaryKey(
@@ -119,8 +112,7 @@ public class AttributionReportService {
                                 event.pageFamily(),
                                 event.eventType(),
                                 event.verdictState(),
-                                destinationLabel(event),
-                                event.sponsored()
+                                destinationLabel(event)
                         ),
                         Collectors.counting()
                 ))
@@ -134,7 +126,6 @@ public class AttributionReportService {
                         .append(csv(entry.getKey().eventType())).append(',')
                         .append(csv(entry.getKey().verdictState())).append(',')
                         .append(csv(entry.getKey().destination())).append(',')
-                        .append(entry.getKey().sponsored()).append(',')
                         .append(entry.getValue())
                         .append('\n'));
         return builder.toString();
@@ -183,13 +174,8 @@ public class AttributionReportService {
                 0,
                 0,
                 0,
-                0,
                 "0 of 0 visitors",
-                0,
-                0,
-                "0 of 0 viewers",
                 "No clicks recorded yet",
-                List.of(),
                 List.of(),
                 List.of(),
                 List.of(),
@@ -222,6 +208,26 @@ public class AttributionReportService {
     }
 
     private AttributionEvent parseEvent(List<String> columns) {
+        if (columns.size() == EXPECTED_COLUMNS_V3) {
+            return new AttributionEvent(
+                    OffsetDateTime.parse(columns.get(0)),
+                    columns.get(1),
+                    columns.get(2),
+                    columns.get(3),
+                    columns.get(4),
+                    columns.get(5),
+                    columns.get(6),
+                    columns.get(7),
+                    columns.get(8),
+                    columns.get(9),
+                    columns.get(10),
+                    columns.get(11),
+                    columns.get(12),
+                    columns.get(13),
+                    columns.get(14),
+                    columns.get(15)
+            );
+        }
         if (columns.size() == EXPECTED_COLUMNS_V2) {
             return new AttributionEvent(
                     OffsetDateTime.parse(columns.get(0)),
@@ -239,7 +245,6 @@ public class AttributionReportService {
                     columns.get(12),
                     columns.get(13),
                     columns.get(14),
-                    Boolean.parseBoolean(columns.get(15)),
                     columns.get(16)
             );
         }
@@ -260,7 +265,6 @@ public class AttributionReportService {
                     columns.get(10),
                     columns.get(11),
                     columns.get(12),
-                    Boolean.parseBoolean(columns.get(13)),
                     ""
             );
         }
@@ -310,16 +314,6 @@ public class AttributionReportService {
                 .toList();
     }
 
-    private List<AdminBreakdownRow> hoodSendLoopBreakdown(List<AttributionEvent> events) {
-        return breakdown(
-                events.stream()
-                        .filter(event -> event.eventType().equals("tool_action"))
-                        .filter(event -> event.toolSlug().equals("hood-service-report"))
-                        .toList(),
-                event -> hoodSendLoopLabel(event.ctaType())
-        );
-    }
-
     private AdminRecentEvent toRecentEvent(AttributionEvent event) {
         return new AdminRecentEvent(
                 formatTimestamp(event.capturedAt()),
@@ -328,8 +322,7 @@ public class AttributionReportService {
                 event.sourcePath(),
                 destinationLabel(event),
                 pageFamilyLabel(event.pageFamily()),
-                verdictStateLabel(event.verdictState()),
-                event.sponsored() ? "Sponsored" : "Organic"
+                verdictStateLabel(event.verdictState())
         );
     }
 
@@ -350,44 +343,12 @@ public class AttributionReportService {
         return new UtilityRevisitSummary(returningVisitors, revisitRateLabel(returningVisitors, uniqueVisitors));
     }
 
-    private HoodSendLoopSummary hoodSendLoopSummary(List<AttributionEvent> events) {
-        List<AttributionEvent> hoodViews = events.stream()
-                .filter(event -> event.eventType().equals("page_view"))
-                .filter(event -> event.toolSlug().equals("hood-service-report"))
-                .toList();
-        long viewVisitors = hoodViews.stream()
-                .map(AttributionEvent::visitorId)
-                .filter(visitorId -> !visitorId.isBlank())
-                .distinct()
-                .count();
-        long actionVisitors = events.stream()
-                .filter(event -> event.eventType().equals("tool_action"))
-                .filter(event -> event.toolSlug().equals("hood-service-report"))
-                .map(AttributionEvent::visitorId)
-                .filter(visitorId -> !visitorId.isBlank())
-                .distinct()
-                .count();
-        return new HoodSendLoopSummary(
-                hoodViews.size(),
-                actionVisitors,
-                viewerRateLabel(actionVisitors, viewVisitors)
-        );
-    }
-
     private String revisitRateLabel(long returningVisitors, long uniqueVisitors) {
         if (uniqueVisitors == 0) {
             return "0 of 0 visitors";
         }
         long percent = Math.round((returningVisitors * 100.0) / uniqueVisitors);
         return returningVisitors + " of " + uniqueVisitors + " visitors (" + percent + "%)";
-    }
-
-    private String viewerRateLabel(long actingViewers, long totalViewers) {
-        if (totalViewers == 0) {
-            return "0 of 0 viewers";
-        }
-        long percent = Math.round((actingViewers * 100.0) / totalViewers);
-        return actingViewers + " of " + totalViewers + " viewers (" + percent + "%)";
     }
 
     private String formatTimestamp(OffsetDateTime timestamp) {
@@ -426,21 +387,10 @@ public class AttributionReportService {
     private String eventTypeLabel(AttributionEvent event) {
         return switch (event.eventType()) {
             case "provider_click" -> "Provider outbound";
-            case "cta_click" -> event.sponsored() ? "Sponsored CTA" : "Next-action CTA";
+            case "cta_click" -> "Next-action CTA";
             case "tool_action" -> "Tool action";
             case "page_view" -> event.pageFamily().equals("operator_tool") ? "Operator tool view" : "Local page view";
             default -> event.eventType();
-        };
-    }
-
-    private String hoodSendLoopLabel(String actionType) {
-        return switch (actionType) {
-            case "copy_subject" -> "Copy subject";
-            case "copy_body" -> "Copy email body";
-            case "open_email_draft" -> "Open email draft";
-            case "print_pdf" -> "Print / PDF";
-            case "open_rule_page" -> "Open rule page";
-            default -> actionType == null || actionType.isBlank() ? "Unknown send action" : titleCase(actionType.replace('_', ' '));
         };
     }
 
@@ -521,7 +471,6 @@ public class AttributionReportService {
             String providerId,
             String providerType,
             String ctaType,
-            boolean sponsored,
             String toolSlug
     ) {
     }
@@ -532,21 +481,13 @@ public class AttributionReportService {
             String pageFamily,
             String eventType,
             String verdictState,
-            String destination,
-            boolean sponsored
+            String destination
     ) {
     }
 
     private record UtilityRevisitSummary(
             long returningVisitors,
             String rateLabel
-    ) {
-    }
-
-    private record HoodSendLoopSummary(
-            long viewCount,
-            long actionVisitors,
-            String visitorActionRateLabel
     ) {
     }
 

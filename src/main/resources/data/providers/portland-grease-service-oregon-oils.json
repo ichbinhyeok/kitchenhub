@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "oregon-oils-portland",
   "providerName": "Oregon Oils, Inc.",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "portland-or-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.oregonoilsinc.com/fat-oil-grease",
   "email": "mattburns@oregonoils.com",
   "phone": "503-233-0818",

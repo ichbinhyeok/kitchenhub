@@ -57,14 +57,14 @@ public class CityVerdictService {
                     List.of(
                             "Recent manifests or trip tickets.",
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                                    ? "The vendor's current listing or program status in the city's published registry."
-                                    : "The vendor's current self-verification proof for grease-waste coverage.",
+                                    ? "The service company's current listing or program status in the city's published registry."
+                                    : "The service company's current self-verification proof for grease-waste coverage.",
                             "Receiving-station or disposal paperwork when applicable."
                     ),
                     List.of(
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                                    ? "Using a vendor outside the published registry can break the paper trail " + cityName + " expects."
-                                    : "Using an unverified vendor can break the paper trail " + cityName + " expects.",
+                                    ? "Using a service company outside the published registry can break the paper trail " + cityName + " expects."
+                                    : "Using an unverified service company can break the paper trail " + cityName + " expects.",
                             "An outdated provider check can leave the operator without defensible records."
                     ),
                     approvedHaulerActions(cityName, fogRule.approvedHaulerMode()),
@@ -117,15 +117,15 @@ public class CityVerdictService {
                     List.of(
                             fogRule.pumpOutFrequency(),
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
-                                    ? "Your vendor must align with the city's published hauler or preferred-pumper program."
-                                    : "Your vendor must align with the city's grease-hauling verification workflow.",
-                            "Manifest retention is part of the operating requirement, not just a vendor detail."
+                                    ? "Your service company must align with the city's published hauler or preferred-pumper program."
+                                    : "Your service company must align with the city's grease-hauling verification workflow.",
+                            "Manifest retention is part of the operating requirement, not just a service-company detail."
                     ),
                     List.of(
                             fogRule.manifestRequirement(),
                             fogRule.approvedHaulerMode() == ApprovedHaulerMode.OFFICIAL_LIST
                                     ? "The current registry or preferred-pumper status check."
-                                    : "The current vendor verification check.",
+                                    : "The current service-company verification check.",
                             "Your last cleaning date and next due window."
                     ),
                     List.of(
@@ -133,7 +133,7 @@ public class CityVerdictService {
                             "A missing provider verification check turns a service call into a compliance problem."
                     ),
                     greaseFinderActions(fogRule.approvedHaulerMode()),
-                    "vendor_search"
+                    "provider_search"
             );
             case FIND_HOOD_CLEANER -> new CityVerdict(
                     cityName,
@@ -150,7 +150,7 @@ public class CityVerdictService {
                             "The last cleaning report and any suppression follow-up."
                     ),
                     List.of(
-                            "If records are fragmented across vendors, fire inspection prep gets harder fast.",
+                            "If records are fragmented across service companies, fire inspection prep gets harder fast.",
                             "A generic hood-cleaned claim is weaker than a real report and visible tag."
                     ),
                     List.of(
@@ -158,7 +158,7 @@ public class CityVerdictService {
                             "Confirm whether hood cleaning and suppression work are separate visits.",
                             "Stage the final report where staff can show it immediately."
                     ),
-                    "vendor_search"
+                    "provider_search"
             );
         };
     }
@@ -192,22 +192,22 @@ public class CityVerdictService {
         return List.of(
                 cityName + " does not publish a safe approved-hauler list for this workflow.",
                 "Operators need a self-verification workflow for grease-waste coverage and paper-trail requirements.",
-                "Vendor routing must stay separate from authority guidance until verification is complete."
+                "Provider routing must stay separate from authority guidance until verification is complete."
         );
     }
 
     private List<String> approvedHaulerActions(String cityName, ApprovedHaulerMode mode) {
         if (mode == ApprovedHaulerMode.OFFICIAL_LIST) {
             return List.of(
-                    "Start from the city's published registry, then confirm the vendor still covers grease waste.",
+                    "Start from the city's published registry, then confirm the service company still covers grease waste.",
                     "Keep the registry check with your manifests.",
-                    "If a vendor cannot verify coverage, switch before the next pump-out."
+                    "If a service company cannot verify coverage, switch before the next pump-out."
             );
         }
         return List.of(
-                "Ask the vendor to confirm grease-waste coverage and disposal workflow in writing.",
+                "Ask the service company to confirm grease-waste coverage and disposal workflow in writing.",
                 "Keep the verification check together with your manifests.",
-                "If a vendor cannot verify coverage, switch before the next pump-out."
+                "If a service company cannot verify coverage, switch before the next pump-out."
         );
     }
 
@@ -215,13 +215,13 @@ public class CityVerdictService {
         if (mode == ApprovedHaulerMode.OFFICIAL_LIST) {
             return List.of(
                     "Use the published hauler or preferred-pumper registry as the first filter.",
-                    "Ask the vendor to confirm grease-waste coverage and manifest handling.",
+                    "Ask the service company to confirm grease-waste coverage and manifest handling.",
                     "Store the registry check with your next trip ticket."
             );
         }
         return List.of(
                 "Use a documented self-verification checklist before booking service.",
-                "Ask the vendor to confirm grease-waste coverage and manifest handling.",
+                "Ask the service company to confirm grease-waste coverage and manifest handling.",
                 "Store the verification check with your next trip ticket."
         );
     }

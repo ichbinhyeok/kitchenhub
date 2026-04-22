@@ -8,7 +8,6 @@ public record LeadDashboardSnapshot(
         boolean hasLeads,
         long totalLeads,
         long operatorRequests,
-        long sponsorInquiries,
         long consentedLeads,
         String lastCapturedAt,
         List<AdminBreakdownRow> cityBreakdown,

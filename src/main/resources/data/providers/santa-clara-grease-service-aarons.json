@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "aarons-septic-santa-clara-grease-service",
   "providerName": "Aaron's Septic Tank Service",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "santa-clara-ca-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://www.aaronspumping.com/grease-traps",
   "email": "jeni@aaronspumping.com",
   "phone": "408-371-2350",

@@ -1,12 +1,10 @@
-{
+﻿{
   "providerId": "mahoney-environmental-austin",
   "providerName": "Mahoney Environmental",
   "providerType": "grease_hauler",
   "coverageTargets": [
     "austin-tx-kitchen-compliance"
   ],
-  "listingMode": "public",
-  "sponsorStatus": "active",
   "siteUrl": "https://mahoneyes.com/contact-us/",
   "email": "customerservice@mahoneyes.com",
   "phone": "800-892-9392",

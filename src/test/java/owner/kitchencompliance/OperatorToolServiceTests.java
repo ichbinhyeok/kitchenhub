@@ -23,22 +23,18 @@ class OperatorToolServiceTests {
     void toolCatalogStaysUtilityFirstAndLocalRouteLinked() {
         List<ToolDefinition> tools = catalog.allTools();
 
-        assertThat(tools).hasSize(5);
+        assertThat(tools).hasSize(4);
         assertThat(tools).allSatisfy(tool -> {
             assertThat(tool.summary()).isNotBlank();
             assertThat(tool.checklist()).hasSizeGreaterThanOrEqualTo(3);
-            if ("hood-service-report".equals(tool.slug())) {
-                assertThat(tool.downloads()).hasSize(2);
-            } else {
-                assertThat(tool.downloads()).hasSize(1);
-            }
+            assertThat(tool.downloads()).hasSize(1);
             assertThat(tool.relatedLinks()).hasSize(3);
             assertThat(tool.relatedLinks()).allSatisfy(link ->
                     assertThat(link.path()).matches("^(/authority/(tx|nc|fl)/|/fl/miami/).+"));
         });
 
         assertThat(tools.getFirst().relatedLinks().stream().map(link -> link.path()))
-                .anyMatch(path -> path.startsWith("/authority/tx/austin-fire-marshal/"));
+                .anyMatch(path -> path.startsWith("/authority/tx/austin-water-pretreatment/"));
         assertThat(tools.getLast().relatedLinks().stream().map(link -> link.path()))
                 .allMatch(path -> path.startsWith("/authority/tx/")
                         || path.startsWith("/authority/nc/")
@@ -55,6 +51,7 @@ class OperatorToolServiceTests {
         assertThat(page.checklist()).anySatisfy(item -> assertThat(item).contains("manifest"));
         assertThat(page.downloads()).singleElement().satisfies(download ->
                 assertThat(download.note()).containsIgnoringCase("worksheet"));
+        assertThat(page.relatedLinks()).hasSize(3);
 
         assertThat(service.csvTemplate("grease-log")).contains("manifest_reference");
         assertThat(service.csvTemplate("hood-record-binder")).contains("proof_status");

@@ -43,7 +43,7 @@ public class ProviderRoutingDecisionService {
                     routeKey,
                     List.of(renderableProviders.get(0).providerId()),
                     RoutingMode.SINGLE,
-                    "One public or active sponsor option is available for this route."
+                    "One public option is available for this route."
             );
         }
 
@@ -51,7 +51,7 @@ public class ProviderRoutingDecisionService {
                 routeKey,
                 renderableProviders.stream().map(ProviderRecord::providerId).collect(Collectors.toList()),
                 RoutingMode.MULTI,
-                "Multiple public or active sponsor options are available for this route, ordered by evidence quality first."
+                "Multiple public options are available for this route, ordered by evidence quality first."
         );
     }
 }

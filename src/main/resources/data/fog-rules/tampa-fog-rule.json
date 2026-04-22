@@ -8,7 +8,7 @@
   "pumpOutFrequency": "Indoor grease traps must be opened, inspected, cleaned, and maintained at least weekly and whenever grease plus solids exceed 25% of trap volume. Grease interceptors must be pumped when solids exceed the outlet invert, grease plus solids exceed 25% of capacity, or the interceptor stops capturing grease.",
   "manifestRequirement": "Keep pump logs and maintenance records on site for three years and use City of Tampa approved manifest forms for registered grease haulers.",
   "approvedHaulerMode": "official_list",
-  "submissionMethod": "Use Tampa's grease ordinance workflow and confirm the vendor appears on the current registered grease haulers list.",
+  "submissionMethod": "Use Tampa's grease ordinance workflow and confirm the service company appears on the current registered grease haulers list.",
   "enforcementNote": "Tampa can require grease trap cleaning within 24 hours, interceptor pumping within 72 hours, and continued noncompliance can escalate to city pump-out charges or code enforcement.",
   "sourceRefs": [
     "src-tampa-grease-ordinance",

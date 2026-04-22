@@ -20,7 +20,7 @@
     </label>
 
     <label class="lead-form__field">
-        <span>${panel.sponsor() ? "Company name" : "Restaurant or business name"}</span>
+        <span>Restaurant or business name</span>
         <input type="text" name="businessName" required>
     </label>
 
@@ -35,16 +35,9 @@
         </label>
     </div>
 
-    @if(panel.sponsor())
-        <label class="lead-form__field">
-            <span>Coverage note</span>
-            <textarea name="coverageNote" rows="2" placeholder="Markets, category, or slot interest"></textarea>
-        </label>
-    @endif
-
     <label class="lead-form__field">
-        <span>${panel.sponsor() ? "Anything we should know about your placement request?" : "What service gap needs to be closed?"}</span>
-        <textarea name="notes" rows="3" placeholder="${panel.sponsor() ? "Inventory depth, category, or timing" : "Inspection date, missing paperwork, or service urgency"}"></textarea>
+        <span>What service gap needs to be closed?</span>
+        <textarea name="notes" rows="3" placeholder="Inspection date, missing paperwork, or service urgency"></textarea>
     </label>
 
     <label class="lead-form__consent">

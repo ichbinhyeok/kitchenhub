@@ -56,12 +56,6 @@ public class SiteController {
         return "home";
     }
 
-    @GetMapping("/for-vendors")
-    public String vendorLanding(Model model) {
-        model.addAttribute("page", sitePageService.vendorLandingPage());
-        return "vendor-page";
-    }
-
     @GetMapping("/guides/{slug}")
     public String guide(@PathVariable String slug, Model model) {
         try {
@@ -98,7 +92,6 @@ public class SiteController {
             "/contact",
             "/privacy",
             "/terms",
-            "/sponsor-policy",
             "/not-government-affiliated",
             "/corrections"
     })
@@ -189,6 +182,7 @@ public class SiteController {
             MultiValueMap<String, String> params
     ) {
         try {
+            operatorToolService.requirePublicTool(slug);
             model.addAttribute("page", operatorToolService.toolPage(slug, params));
             String visitorId = attributionService.ensureVisitorId(request, response);
             attributionService.recordOperatorToolView(slug, visitorId, operatorToolService.issueTypeFor(slug));
@@ -205,6 +199,7 @@ public class SiteController {
             @RequestParam MultiValueMap<String, String> params
     ) {
         try {
+            operatorToolService.requirePublicTool(slug);
             return operatorToolService.csvTemplate(slug, params);
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -218,6 +213,7 @@ public class SiteController {
             @RequestParam MultiValueMap<String, String> params
     ) {
         try {
+            operatorToolService.requirePublicTool(slug);
             return operatorToolService.csvTemplate(slug, params);
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -238,7 +234,7 @@ public class SiteController {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Tool event target must stay local.");
         }
         try {
-            operatorToolService.requireKnownTool(slug);
+            operatorToolService.requirePublicTool(slug);
             String visitorId = attributionService.ensureVisitorId(request, response);
             OperatorToolService.ToolAttributionContext context = operatorToolService.toolAttributionContext(slug, city);
             attributionService.recordOperatorToolAction(
@@ -263,6 +259,7 @@ public class SiteController {
             @RequestParam MultiValueMap<String, String> params
     ) {
         try {
+            operatorToolService.requirePublicTool(slug);
             return operatorToolService.textTemplate(slug, params);
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -276,6 +273,7 @@ public class SiteController {
             @RequestParam MultiValueMap<String, String> params
     ) {
         try {
+            operatorToolService.requirePublicTool(slug);
             return operatorToolService.textTemplate(slug, params);
         } catch (IllegalArgumentException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -416,7 +414,6 @@ public class SiteController {
     public String ctaRedirect(
             @RequestParam String source,
             @RequestParam String target,
-            @RequestParam(defaultValue = "false") boolean sponsored,
             HttpServletRequest request,
             HttpServletResponse response
     ) {
@@ -426,7 +423,7 @@ public class SiteController {
         try {
             RouteRecord route = seedRegistry.route(source);
             String visitorId = attributionService.ensureVisitorId(request, response);
-            attributionService.recordCtaClick(route, source, target, sponsored, visitorId);
+            attributionService.recordCtaClick(route, source, target, visitorId);
             return "redirect:" + target;
         } catch (IllegalStateException ex) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
@@ -465,37 +462,4 @@ public class SiteController {
         }
     }
 
-    @PostMapping("/lead-intake/sponsor")
-    public String sponsorLead(
-            @RequestParam String source,
-            @RequestParam String contactName,
-            @RequestParam String businessName,
-            @RequestParam String email,
-            @RequestParam(required = false) String phone,
-            @RequestParam(required = false) String coverageNote,
-            @RequestParam(required = false) String notes,
-            @RequestParam(defaultValue = "false") boolean routingConsent,
-            HttpServletRequest request,
-            HttpServletResponse response
-    ) {
-        try {
-            RouteRecord route = seedRegistry.route(source);
-            LeadCaptureService.CaptureResult result = leadCaptureService.captureSponsorInquiry(
-                    route,
-                    source,
-                    request,
-                    response,
-                    contactName,
-                    businessName,
-                    email,
-                    phone,
-                    coverageNote,
-                    notes,
-                    routingConsent
-            );
-            return "redirect:" + source + "?lead=" + result.noticeCode() + "#sponsor-slot";
-        } catch (IllegalStateException ex) {
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
-        }
-    }
 }
